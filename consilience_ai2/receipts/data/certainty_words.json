@@ -1,0 +1,36 @@
+{
+  "version": "consilience-ai2.certainty/1",
+  "description": "Fixed word lists for the W2 certainty-upgrade check. Words are matched whole, case-insensitively, on text normalised with consilience_ai2.core.normalise. W2 flags a claim that contains at least one assertive word (not negated) and no hedged word, when its quote or cited passage contains at least one hedged word and no assertive word (not negated). An assertive word is negated when one of the 'negators' (or any word ending in n't) occurs among the 'negation_window' words before it. Any change to these lists changes 'version'.",
+  "negation_window": 2,
+  "negators": ["cannot", "neither", "never", "no", "nor", "not", "without"],
+  "hedged": [
+    "apparently", "appear", "appeared", "appears",
+    "associated", "association", "associations",
+    "correlate", "correlated", "correlates", "correlation", "correlations",
+    "could",
+    "hypothesise", "hypothesised", "hypothesize", "hypothesized",
+    "indicate", "indicated", "indicates",
+    "likely",
+    "linked",
+    "may", "might",
+    "perhaps", "plausible", "plausibly", "possible", "possibly", "potentially",
+    "preliminary", "presumably", "probably", "putative",
+    "seem", "seemed", "seems",
+    "speculate", "speculative",
+    "suggest", "suggested", "suggesting", "suggestive", "suggests",
+    "tentative", "tentatively"
+  ],
+  "assertive": [
+    "always",
+    "causal", "causally", "cause", "caused", "causes", "causing",
+    "certainly", "clearly", "conclusively",
+    "confirm", "confirmed", "confirms",
+    "definitely", "definitively",
+    "demonstrate", "demonstrated", "demonstrates",
+    "establish", "established", "establishes",
+    "guarantee", "guaranteed", "guarantees",
+    "prove", "proved", "proven", "proves",
+    "show", "showed", "shown", "shows",
+    "undoubtedly", "unequivocally"
+  ]
+}

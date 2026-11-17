@@ -1,0 +1,6 @@
+---
+title: "A clean workspace"
+---
+
+[The method converges in 40 iterations]{.ev key="convergence"}, and
+[error fell by 3.1 points]{.ev key="error-drop"} [@lee2023].

@@ -1,0 +1,46 @@
+---
+title: "Clean controls"
+---
+
+Every `.ev` span on this page is correct. The checker must report no error and no
+warning here; each span gets one E6 `FOUND` receipt when run with `--sources sources`.
+
+The final score was [0.42 ± 0.03]{.ev key="c-ligature"} [@smith2024].
+
+Earlier work found [a 12% gain]{.ev key="c-hyphenation"}.
+
+[Regularisation could reduce overfitting]{.ev key="c-dehyphenated"}.
+
+[Comparisons were paired]{.ev key="c-curly-quotes"}.
+
+Accuracy on the held-out set was [87.5 % in 2024]{.ev key="c-percent"}.
+
+[The effect may be linked to batch size]{.ev key="c-hedged-both"}.
+
+[The method was shown to converge within 40 iterations]{.ev key="c-assertive-both"}.
+
+[Error fell by 3.1 points (p = 0.004)]{.ev key="c-p-value"}.
+
+[310 laboratories in 14 countries]{.ev key="c-corpus-id"} took part.
+
+[Smaller laboratories responded more often]{.ev key="c-asta-uri"}.
+
+[This does not prove that regularisation works]{.ev key="c-negated"}.
+
+[The model saw 1,200 images]{.ev quote="We trained the model on 1,200 images" cite="smith2024"}.
+
+[Accuracy reached 87.5%]{.ev
+  key="c-percent"
+  locator="abstract"}.
+
+[*Lee* reported convergence in 40 iterations in 2023 [@lee2023]]{.ev key="c-assertive-both"}.
+
+Spans inside code are not spans, so neither of these is read:
+
+```markdown
+[A code example]{.ev key="not-a-real-key"}
+```
+
+and inline: `[another]{.ev key="also-not-real"}`.
+
+<!-- [a commented-out claim]{.ev key="commented-out"} -->
