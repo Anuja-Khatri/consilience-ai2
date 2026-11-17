@@ -1,6 +1,10 @@
 {
-  "components": [],
-  "n_metrics": 0,
+  "components": [
+    "audit",
+    "receipts",
+    "reproduce"
+  ],
+  "n_metrics": 207,
   "note": "Docs render from this snapshot. A new snapshot requires re-checking every doc that cited the previous one (make lock, then make ci).",
-  "registry_metrics_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  "registry_metrics_sha256": "09aec02807e4b863c3494bc0cc04aa6730daa08c39ff1c8200c360fd7278f948"
 }

@@ -54,7 +54,7 @@ def resolve_backend(backend: str = "auto") -> str:
     have = consilience_version() is not None
     if backend == "consilience" and not have:
         raise ValueError("backend 'consilience' requested but the consilience package is "
-                         "not installed (pip install 'consilience-ai2[consilience]')")
+                         "not installed (pip install consilience)")
     if backend == "auto":
         return "consilience" if have else "fallback"
     return backend

@@ -1,6 +1,3147 @@
 {
-  "components": {},
-  "metrics": [],
-  "metrics_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "components": {
+    "audit": {
+      "file": "results/audit.json",
+      "n_metrics": 67,
+      "sha256": "f044067304b851bc59f6af344a4ffe929408750525e1b26b555766c8dc291084"
+    },
+    "receipts": {
+      "file": "results/receipts.json",
+      "n_metrics": 77,
+      "sha256": "9db63212dc3fec64c9f01c895d4f62c32f34f36127e1ecbaee1d29974f0c84a3"
+    },
+    "reproduce": {
+      "file": "results/reproduce.json",
+      "n_metrics": 63,
+      "sha256": "cdac983de5c47cb81e49d875b0502666f08260ad7f2317c97dc5d9ba8bb039b8"
+    }
+  },
+  "metrics": [
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags: accepted discoveries with any error or warning",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.accepted_flagged_any",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags: accepted discoveries with any error-severity code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.accepted_flagged_error",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a1.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a1.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a2.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a2.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a4.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a4.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a5.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a5.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a6.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a6.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a7.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a7.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 12
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r1.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r1.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r2.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r2.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r3.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r3.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "the agents never use the graph they build: flagged by R5",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.built_but_unused.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "effect did not replicate with more samples: flagged by R2/R3/A6",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.effect_vanished_at_scale.caught",
+      "n": 3,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "overly simple benchmark, few samples, judge metric not validated: flagged by R3/A2",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.few_samples_unvalidated_metric.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "both conditions hard-coded: a foregone conclusion: flagged by R4",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.foregone_conclusion_hardcoded.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "agent partly hard-coded: flagged by R4",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.partly_hardcoded_agent.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "baseline too simple (a random agent): flagged by R1",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.random_only_baseline.caught",
+      "n": 4,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "report lacks details to evaluate: flagged by A2/A4/A7",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.report_lacks_details.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "unclear motivation and utility: flagged by no code (out of scope)",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.unclear_motivation.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "rejected discoveries with any error or warning",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_any",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 13
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "rejected discoveries with any error-severity code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_error",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4",
+        "count of rejected discoveries flagged by a code meant for their reason; one reason (unclear motivation) has no such code"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_intended",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4",
+        "excludes the unclear-motivation rejection"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_in_scope_flagged_intended",
+      "n": 12,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "distractor columns with BH q < 0.05 (122)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_rate_bh",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.0274
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "distractor columns with raw p < 0.05 (331)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_rate_raw",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.0743
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "1 - (BH hits / raw hits) among distractor columns",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_reduction",
+      "n": 331,
+      "source": "fetch:discoverybench",
+      "value": 0.6314
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hits_bh",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 122
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hits_raw",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 331
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_tests",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 4456
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false",
+        "gold columns enter the target through nonlinear and conditional formulas; a marginal test can miss them"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.gold_recall_bh",
+      "n": 575,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.5235
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false",
+        "gold columns enter the target through nonlinear and conditional formulas; a marginal test can miss them"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.gold_recall_raw",
+      "n": 575,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.5791
+    },
+    {
+      "caveats": [
+        "permuted-target control: every hit is false by construction"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_hit_rate_bh",
+      "n": 5031,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05; target permuted, numpy default_rng(seed 20261117 + task index)",
+      "value": 0.0012
+    },
+    {
+      "caveats": [
+        "permuted-target control: every hit is false by construction"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_hit_rate_raw",
+      "n": 5031,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05; target permuted, numpy default_rng(seed 20261117 + task index)",
+      "value": 0.0473
+    },
+    {
+      "caveats": [
+        "permuted-target control: share of tasks with at least one false discovery"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_tasks_any_hit_bh",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.0382
+    },
+    {
+      "caveats": [
+        "permuted-target control: share of tasks with at least one false discovery"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_tasks_any_hit_raw",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.7325
+    },
+    {
+      "caveats": [
+        "no machine-readable gold relation (target_col, relevant_cols): 720",
+        "target is constant: 26"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_scanned",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "tasks",
+      "value": 157
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_total",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "tasks",
+      "value": 903
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_with_distractor_hit_bh",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.3885
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_with_distractor_hit_raw",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.7516
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_flagged",
+      "n": 38,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.4408
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_passed",
+      "n": 42,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.3433
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary analysis, no decision"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.mwu_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided Mann-Whitney U, unstratified (secondary)",
+      "value": 0.1431
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_flagged",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 38
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "development-set directory: 10",
+        "idea has fewer than 2 judged runs: 13",
+        "no per-run judgement: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_runs",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 80
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.4878
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.2161
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "H1 not supported at alpha 0.05 (requires p < 0.05 and T > 0)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.perm_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.0845
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary; positive means passed runs agree more"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.rank_biserial",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": -0.1861
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.supported",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "1 = yes, 0 = no",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "mean agreement of passed runs minus flagged runs (H1 predicts > 0)",
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.t_difference",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.0975
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_flagged",
+      "n": 9,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6296
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_passed",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6667
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mwu_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided Mann-Whitney U (secondary)",
+      "value": 0.8061
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_flagged",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_papers",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.8561
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.037
+    },
+    {
+      "caveats": [
+        "one table in one report; the recomputation (100 x mean of the within_k_percent booleans per method) was chosen to match the table's column names"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.resistor_table.cells_reproduced",
+      "n": 9,
+      "receipts": [
+        "resistorsubstitutionadvisorcopy3followon1-20250210-090957/modal-python-20250210-091603/modal-output/results.json sha256:bb8d27964d730e151c14695a2542deb65ef600a0d2135cb793b71b615d1fc814",
+        "resistorsubstitutionadvisorcopy3followon1-20250210-090957/report/report.tex sha256:06f57d827bc571714b652ad2844e2092bb1993027356b115a52fffa4a6e79282"
+      ],
+      "source": "fetch:codescientist-example-experiments",
+      "unit": "table cells",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "E6 is UNCHECKABLE: no local source text ships with the example"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.asta_example.errors",
+      "n": 1,
+      "source": "fetch:asta-plugins",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "examples/workspace at the pinned commit"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.asta_example.spans",
+      "n": null,
+      "source": "fetch:asta-plugins",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.asta_example.warnings",
+      "n": 1,
+      "source": "fetch:asta-plugins",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": 0.50414,
+      "ci_lo": 0.382734,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_loses",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.442804
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_permutation_p",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.068293
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_sign_p",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.068201
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": 0.576511,
+      "ci_lo": 0.469071,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_loses",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.522989
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_permutation_p",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.425857
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_sign_p",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.421388
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": 0.542744,
+      "ci_lo": 0.459004,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_loses",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.500879
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_permutation_p",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_sign_p",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)"
+      ],
+      "ci_hi": 0.999994,
+      "ci_lo": 0.999795,
+      "description": "listed citations that are cited inline at least once",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.listed_cited_rate",
+      "n": 27577,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.999964
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.n_inline_citations",
+      "n": null,
+      "source": "fetch:sciarena-eval",
+      "unit": "count",
+      "value": 31820
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.n_listed_citations",
+      "n": null,
+      "source": "fetch:sciarena-eval",
+      "unit": "count",
+      "value": 27577
+    },
+    {
+      "caveats": [
+        "spans of three or more words inside double quotes, in sentences with at least one resolved citation"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.n_quoted_spans",
+      "n": null,
+      "source": "fetch:sciarena-eval",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.n_responses_with_citations",
+      "n": 4000,
+      "source": "fetch:sciarena-eval",
+      "unit": "count",
+      "value": 3993
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.n_votes",
+      "n": null,
+      "source": "fetch:sciarena-eval",
+      "unit": "count",
+      "value": 2000
+    },
+    {
+      "caveats": [
+        "verbatim after normalisation in one of the sentence's cited passages"
+      ],
+      "ci_hi": 0.509838,
+      "ci_lo": 0.056682,
+      "description": "quoted spans found verbatim in a cited passage",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.quote_found_rate",
+      "n": 10,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.2
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)"
+      ],
+      "ci_hi": 0.999994,
+      "ci_lo": 0.999822,
+      "description": "inline citations that resolve to a listed citation with passage text",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.resolution_rate",
+      "n": 31820,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.999969
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
+        "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.029873,
+      "ci_lo": 0.026246,
+      "description": "W1 or W2 per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.w1_or_w2_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.028002
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
+        "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.015565,
+      "ci_lo": 0.012963,
+      "description": "W1 per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.w1_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.014205
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
+        "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.015368,
+      "ci_lo": 0.012782,
+      "description": "W2 per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.w2_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.014017
+    },
+    {
+      "caveats": [
+        "clean controls"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "error or warning findings on the clean controls",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "receipts.seeded.control_false_findings",
+      "n": 14,
+      "source": "examples/receipts/seeded",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "planted defects, true by construction"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "planted defects found (exact code, file, line and key)",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "receipts.seeded.recall",
+      "n": 17,
+      "source": "examples/receipts/seeded",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "planted defects"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "error or warning findings not in the expected file",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "receipts.seeded.unexpected_findings",
+      "n": 17,
+      "source": "examples/receipts/seeded",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded",
+        "permutation p=0.6677"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share of theories with any T1: high minus low predictive-accuracy support fraction",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.t1_diff_high_minus_low_pa",
+      "n": 317,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "difference in proportions",
+      "value": 0.00748
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.t1_diff_permutation_p",
+      "n": 317,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "p-value",
+      "value": 0.667733
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.044697,
+      "ci_lo": 0.0053,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.t1_rate_high_pa",
+      "n": 193,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.015544
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.044268,
+      "ci_lo": 0.001425,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.t1_rate_low_pa",
+      "n": 124,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.008065
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded",
+        "permutation p=0.1476"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share of theories with any W1: high minus low predictive-accuracy support fraction",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.w1_diff_high_minus_low_pa",
+      "n": 317,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "difference in proportions",
+      "value": -0.038609
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.w1_diff_permutation_p",
+      "n": 317,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "p-value",
+      "value": 0.147585
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.059202,
+      "ci_lo": 0.011115,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.w1_rate_high_pa",
+      "n": 193,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.025907
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (1.0000): high is at or above it",
+        "high group n=193, low group n=124",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.122153,
+      "ci_lo": 0.033051,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_accuracy.w1_rate_low_pa",
+      "n": 124,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.064516
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded",
+        "permutation p=1.0000"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share of theories with any T1: high minus low predictive-accuracy support fraction",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.t1_diff_high_minus_low_pa",
+      "n": 115,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "difference in proportions",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.t1_diff_permutation_p",
+      "n": 115,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "p-value",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.061129,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.t1_rate_high_pa",
+      "n": 59,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.064194,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.t1_rate_low_pa",
+      "n": 56,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded",
+        "permutation p=0.7906"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share of theories with any W1: high minus low predictive-accuracy support fraction",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.w1_diff_high_minus_low_pa",
+      "n": 115,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "difference in proportions",
+      "value": -0.027542
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.w1_diff_permutation_p",
+      "n": 115,
+      "source": "fetch:theorizer-paper-data",
+      "test": "two-sided permutation test, 10000 relabellings, seed 0",
+      "unit": "p-value",
+      "value": 0.790621
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.917615,
+      "ci_lo": 0.73482,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.w1_rate_high_pa",
+      "n": 59,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.847458
+    },
+    {
+      "caveats": [
+        "exploratory: not preregistered; one of several possible splits",
+        "support fraction = supporting / (supporting + contradicting) paper counts summed over the theory's predictive-accuracy pages",
+        "split at the condition's median support fraction (0.7500): high is at or above it",
+        "high group n=59, low group n=56",
+        "theories with no supporting or contradicting paper are excluded"
+      ],
+      "ci_hi": 0.938109,
+      "ci_lo": 0.763745,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.theorizer.exploratory.lit_novelty.w1_rate_low_pa",
+      "n": 56,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.875
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.018596,
+      "ci_lo": 0.01408,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_accuracy.t1_rate",
+      "n": 12049,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.016184
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.009634,
+      "ci_lo": 0.005322,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_accuracy.w1_item_rate",
+      "n": 6003,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.007163
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.008382,
+      "ci_lo": 0.000974,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_accuracy.w1_law_rate",
+      "n": 1048,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.002863
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.029788,
+      "ci_lo": 0.021794,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_accuracy.w2_item_rate",
+      "n": 6003,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.025487
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.003652,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_accuracy.w2_law_rate",
+      "n": 1048,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.001672,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_novelty.t1_rate",
+      "n": 2294,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.236608,
+      "ci_lo": 0.197189,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_novelty.w1_item_rate",
+      "n": 1674,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.216249
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.869071,
+      "ci_lo": 0.820264,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_novelty.w1_law_rate",
+      "n": 839,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.846246
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.032373,
+      "ci_lo": 0.017596,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_novelty.w2_item_rate",
+      "n": 1674,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.023895
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.00865,
+      "ci_lo": 0.000654,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.lit_novelty.w2_law_rate",
+      "n": 839,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.002384
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "evidence links in law evidence lists, literature conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_evidence_links",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 18205
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "evidence records (extraction instances) in the results files",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_evidence_records",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 62093
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "distinct evidence IDs cited per law (law, ID pairs), literature conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_evidence_refs",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 14343
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "extraction result files (one extraction of one paper each)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_extraction_files",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 16316
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "laws (statements) parsed",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_laws",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 4187
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "laws in the literature-supported conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_laws_literature",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 1897
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "theory files across the four released conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_theories",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 2856
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "theories in the two literature-supported conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.n_theories_literature",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 1338
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "parametric conditions cite no evidence IDs by design"
+      ],
+      "ci_hi": 0.034017,
+      "ci_lo": 0.018057,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.param_accuracy.t2_rate",
+      "n": 1491,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.024816
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "parametric conditions cite no evidence IDs by design"
+      ],
+      "ci_hi": 0.004785,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.param_novelty.t2_rate",
+      "n": 799,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "a results file with no record may be an extraction that found nothing"
+      ],
+      "ci_hi": 0.81492,
+      "ci_lo": 0.802856,
+      "description": "results files with at least one evidence record parsed",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.parse_coverage_results_files",
+      "n": 16316,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.808961
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 1.0,
+      "ci_lo": 0.999083,
+      "description": "laws whose statement text parsed",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.parse_coverage_statements",
+      "n": 4187,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 1.0,
+      "ci_lo": 0.998657,
+      "description": "theory files with at least one law parsed",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.parse_coverage_theories",
+      "n": 2856,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 1.0,
+      "ci_lo": 0.981606,
+      "description": "T1 links whose href is the export's fallback ../results/<id>.html, which names no extraction file",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t1_href_fallback_share",
+      "n": 205,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 1.0
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "T1 links whose ID is not of the form e<n>.<k>",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t1_malformed_ids",
+      "n": null,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "literature-supported conditions; each (law, ID) pair counted once"
+      ],
+      "ci_hi": 0.015625,
+      "ci_lo": 0.011826,
+      "description": "T1: cited evidence IDs that resolve to no evidence record",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t1_rate",
+      "n": 14343,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.013595
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.01076,
+      "ci_lo": 0.002537,
+      "description": "theories with at least one T1",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t1_theory_rate",
+      "n": 1338,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.005232
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.012156,
+      "ci_lo": 0.006418,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t2_empty_evidence_rate",
+      "n": 4187,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.008837
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.012156,
+      "ci_lo": 0.006418,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t2_empty_scope_rate",
+      "n": 4187,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.008837
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "all four conditions"
+      ],
+      "ci_hi": 0.012156,
+      "ci_lo": 0.006418,
+      "description": "T2: laws with an empty scope or an empty evidence list",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t2_rate",
+      "n": 4187,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.008837
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.002021,
+      "ci_lo": 0.0,
+      "description": "T2 in the literature-supported conditions",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.t2_rate_literature",
+      "n": 1897,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "evidence items with at least one resolved record",
+        "a record holds the extraction, not the full paper"
+      ],
+      "ci_hi": 0.057983,
+      "ci_lo": 0.047974,
+      "description": "W1: a number in an evidence item absent from the records it cites",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.w1_item_rate",
+      "n": 7677,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.052755
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "laws with at least one resolved evidence record",
+        "the novelty-focused condition asks for quantitative predictions, whose thresholds are absent from the evidence by design"
+      ],
+      "ci_hi": 0.399952,
+      "ci_lo": 0.356241,
+      "description": "W1: a number in the law statement absent from its cited records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.w1_law_rate",
+      "n": 1887,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.377848
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.028887,
+      "ci_lo": 0.021868,
+      "description": "W2: assertive evidence item over hedged records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.w2_item_rate",
+      "n": 7677,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.02514
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store"
+      ],
+      "ci_hi": 0.003856,
+      "ci_lo": 0.000291,
+      "description": "W2: assertive law over hedged cited records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.w2_law_rate",
+      "n": 1887,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.00106
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "their label is a language-model judgement of the run's write-up"
+      ],
+      "ci_hi": 0.3958,
+      "ci_lo": 0.1829,
+      "description": "pairs where our V1 verdict matches CodeScientist's judgement of the reproduction run (reproduced~support, not_reproduced~refute, inconclusive~inconclusive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.agreement_with_run_labels",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.2769
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.ambiguous_primary",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.no_bootstrap_block",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 22
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.recoverable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 24
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.unreadable_results_file",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": 0.4908,
+      "ci_lo": 0.2623,
+      "description": "pairs whose two runs both give a recoverable primary bootstrap comparison",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage_recoverable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "fraction",
+      "value": 0.3692
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.decidable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.no_data",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 41
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.underpowered",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.not_comparable",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.proxy",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.same_quantity",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "ideas with at least 2 completed runs, of the batch's ideas",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.ideas_2plus_runs",
+      "n": 50,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 24
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.supported",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-misses_threshold",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-no_data",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 41
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-no_positive_control",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-not_comparable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-underpowered",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs whose two runs state the hypothesis in identical words",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.p2_verbatim",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "(source run, later run) pairs from ideas with at least 2 completed runs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.pairs",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 65
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v1.inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v1.reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_different.ours_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 38
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_different.ours_reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_same.ours_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 23
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_same.ours_reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 16
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_refute",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_support",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 25
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_reproduced.theirs_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_reproduced.theirs_support",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.8609,
+      "ci_lo": 0.6206,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.decidable_reproduced_rate",
+      "n": 46,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.7609
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs with p < 0.05 on all rows",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.full_data_significant",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 122
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.inconclusive",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1527
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.not_reproduced",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9839,
+      "ci_lo": 0.9691,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.not_reproduced_or_inconclusive_rate",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9777
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.rejected",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.supported",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.undecided-misses_threshold",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.undecided-underpowered",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1523
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced_and_full_data_significant",
+      "n": 35,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.0309,
+      "ci_lo": 0.0161,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced_rate",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.0223
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9996,
+      "ci_lo": 0.9949,
+      "description": "D1 class at 10 rows vs empirical power from 200 subsamples (>= 0.8 means decidable)",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.small_d1_agrees_with_empirical_power",
+      "n": 1430,
+      "source": "fetch:discoverybench",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.9986
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9989,
+      "ci_lo": 0.9928,
+      "description": "reproductions on 10 rows classed underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.small_underpowered_rate",
+      "n": 1430,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9972
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.3617,
+      "ci_lo": 0.207,
+      "description": "among pairs whose source half has p < alpha",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.source_significant_reproduced_rate",
+      "n": 126,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.2778
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9844,
+      "ci_lo": 0.928,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.decidable_reproduced_rate",
+      "n": 177,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9661
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs with p < 0.05 on all rows",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.full_data_significant",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 211
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.inconclusive",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 185
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.not_reproduced",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.rejected",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.supported",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.undecided-misses_threshold",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.undecided-underpowered",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 181
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced_and_full_data_significant",
+      "n": 171,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5294,
+      "ci_lo": 0.4264,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced_rate",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.4777
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9811,
+      "ci_lo": 0.9408,
+      "description": "D1 class at 10 rows vs empirical power from 200 subsamples (>= 0.8 means decidable)",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.small_d1_agrees_with_empirical_power",
+      "n": 327,
+      "source": "fetch:discoverybench",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.9664
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.8848,
+      "ci_lo": 0.8074,
+      "description": "reproductions on 10 rows classed underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.small_underpowered_rate",
+      "n": 327,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.8502
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9197,
+      "ci_lo": 0.8284,
+      "description": "among pairs whose source half has p < alpha",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.source_significant_reproduced_rate",
+      "n": 194,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.8814
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "queries with a target column and a gold expression",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.queries_usable",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 183
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.tasks",
+      "n": null,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 374
+    }
+  ],
+  "metrics_sha256": "09aec02807e4b863c3494bc0cc04aa6730daa08c39ff1c8200c360fd7278f948",
   "schema_version": 1
 }

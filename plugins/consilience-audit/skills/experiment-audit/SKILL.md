@@ -1,7 +1,7 @@
 ---
 name: experiment-audit
 description: Run a deterministic, receipt-backed audit over an agent-run experiment and read its verdicts — an AutoDiscovery output directory (mcts_node_*.json, mcts_nodes_all.json, a hosted results.json) or a CodeScientist experiment directory. Checks that reported numbers appear in the printed output (A1), that the stated n matches (A2), that columns exist in the dataset metadata (A3), that "significant"/"surprising" has a printed test (A4), Benjamini–Hochberg q across the run (A5), the minimum detectable effect of a surprising null (A6), an effect size (A7), random-only baselines (R1), rerun flips (R2), a power-based n floor (R3), hard-coded result literals (R4) and built-but-unused components (R5). Triggers on "audit this run", "check the AutoDiscovery results", "are these experiments valid", "validity audit", "multiple testing across the run", or a request to double-check AutoDiscovery's Validity Check.
-allowed-tools: Read Grep Glob Bash(consilience-ai2 audit *) Bash(python -m consilience_ai2 audit *) Bash(pip install consilience-ai2*) Bash(uv tool *)
+allowed-tools: Read Grep Glob Bash(consilience-ai2 audit *) Bash(python -m consilience_ai2 audit *) Bash(pip install *consilience-ai2*) Bash(uv tool *)
 ---
 
 # Experiment audit

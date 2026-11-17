@@ -90,7 +90,7 @@ Fail-closed, in this order of precedence: a declared `substitution`; then any mi
 - the independence axis not stated on both sides, or equal on both.
 
 Units and conditions are compared by the PyPI `consilience` package when it is
-installed (`pip install "consilience-ai2[consilience]"`): `consilience.compare` with the
+installed (`pip install consilience`, or the `[consilience]` extra): `consilience.compare` with the
 two sides' units and conditions (and `conditions_pack` or `--pack`, a consilience
 compare pack), whose named defects (`not_comparable`, `not_stated`, `unparseable`) become
 F1 targets. It converts units through pint, compares quantity-valued conditions after

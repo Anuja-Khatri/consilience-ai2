@@ -86,24 +86,43 @@ def result_tokens(line: str) -> list[str]:
     return _NUM.findall(strip_identifiers(line))
 
 
+def _cell(text: object) -> str:
+    """One Markdown table cell: no pipes or line breaks."""
+    return str(text).replace("|", "/").replace("\n", " ").strip()
+
+
 def render_table(metrics: list[dict]) -> str:
     lines = [
         "# Results table",
         "",
         "Rendered from `results/registry.json` by `scripts/numbers_lock.py`; do not edit.",
-        "",
-        "| metric | value | 95% CI | n | split | source |",
-        "|---|---|---|---|---|---|",
+        "Every metric the project reports, grouped by component. `split` is the label:",
+        "`heldout` (preregistered before scoring), `dev` (rules written knowing the data),",
+        "`exploratory`, `descriptive` (a measured rate, no hypothesis) or `synthetic`",
+        "(planted fixtures, true by construction). Caveats are in the registry.",
     ]
-    for m in sorted(metrics, key=lambda x: x["metric_id"]):
-        v = m["value"]
-        val = "not measured" if v is None else f"{v}"
-        ci = f"[{m['ci_lo']}, {m['ci_hi']}]" if m.get("ci_lo") is not None else ""
-        n = "" if m.get("n") is None else str(m["n"])
-        lines.append(f"| {m['metric_id']} | {val} | {ci} | {n} | {m['dev_or_heldout']} "
-                     f"| {m['source']} |")
     if not metrics:
-        lines.append("| (no results yet) | | | | | |")
+        lines += ["", "| metric | value | 95% CI | n | split | source |",
+                  "|---|---|---|---|---|---|", "| (no results yet) | | | | | |"]
+        return "\n".join(lines) + "\n"
+    by_component: dict[str, list[dict]] = {}
+    for m in metrics:
+        by_component.setdefault(m["metric_id"].split(".", 1)[0], []).append(m)
+    for comp in sorted(by_component):
+        lines += ["", f"## {comp}", "",
+                  "| metric | value | 95% CI | n | split | source | what | test / prereg |",
+                  "|---|---|---|---|---|---|---|---|"]
+        for m in sorted(by_component[comp], key=lambda x: x["metric_id"]):
+            v = m["value"]
+            val = "not measured" if v is None else f"{v}"
+            ci = f"[{m['ci_lo']}, {m['ci_hi']}]" if m.get("ci_lo") is not None else ""
+            n = "" if m.get("n") is None else str(m["n"])
+            unit = f" ({m['unit']})" if m.get("unit") else ""
+            notes = [m[k] for k in ("test", "prereg") if m.get(k)]
+            lines.append(
+                f"| {m['metric_id']} | {val} | {ci} | {n} | {m['dev_or_heldout']} "
+                f"| {_cell(m['source'])} | {_cell(m.get('description', '') + unit)} "
+                f"| {_cell('; '.join(str(x) for x in notes))} |")
     return "\n".join(lines) + "\n"
 
 

@@ -7,7 +7,8 @@
 #
 # `make check` then runs `consilience-ai2 receipts check` on the workspace and fails on
 # any E code (E0-E6). W1/W2 are printed as warnings; set RECEIPTS_FLAGS=--fail-on-warnings
-# to fail on them too. Requires the consilience-ai2 command (pip install consilience-ai2).
+# to fail on them too. Requires the consilience-ai2 command:
+#   pip install "git+https://github.com/Anuja-Khatri/consilience-ai2"
 #
 # Settings (override on the command line or before the include):
 #   CONSILIENCE_AI2   the command to run                 (default: consilience-ai2)

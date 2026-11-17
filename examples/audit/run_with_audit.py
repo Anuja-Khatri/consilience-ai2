@@ -7,7 +7,8 @@ functions from outside, at run time, without modifying the installed package.
     "$(uv tool dir)/asta-autodiscovery/bin/python" -I run_with_audit.py <auto-discovery args>
 
 It must run on AutoDiscovery's own Python (where ``autodiscovery`` is importable) with
-``consilience-ai2`` installed there too (``pip install consilience-ai2``).
+``consilience-ai2`` installed there too
+(``pip install "git+https://github.com/Anuja-Khatri/consilience-ai2"``).
 
 What it does: ``autodiscovery.mcts_utils.save_nodes`` turns the MCTS nodes into dicts
 (``MCTSNode.to_dict``) and writes ``mcts_nodes.json``, ``mcts_nodes_all.json`` and the

@@ -1,6 +1,6 @@
 """Read every reproduction record and write the verdicts from the numbers. Exits non-zero on any error.
 
-    uv run --no-project --with "consilience-ai2[consilience]" python -I scripts/verdict.py [records...]
+    uv run --no-project --with "consilience-ai2[consilience] @ git+https://github.com/Anuja-Khatri/consilience-ai2" python -I scripts/verdict.py [records...]
 
 A drop-in for the asta-flows "Secondary reproduction" workflow, in the pattern of the
 exploration's check.py and runlog.py: put it in the run's scripts/ directory. It reads

@@ -25,7 +25,7 @@ rather than judgement.
 ## Setup
 
 ```bash
-command -v consilience-ai2 || uv tool install "consilience-ai2[consilience]"
+command -v consilience-ai2 || uv tool install "consilience-ai2[consilience] @ git+https://github.com/Anuja-Khatri/consilience-ai2"
 ```
 
 The `consilience` extra adds unit conversion and typed condition comparison for the
