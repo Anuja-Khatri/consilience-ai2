@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -82,6 +83,16 @@ def asta_example_metrics() -> list[dict]:
     ]
 
 
+def prereg_commit_hash() -> str:
+    """The commit that added the preregistration (it must precede the scoring)."""
+    out = subprocess.run(
+        ["git", "log", "--diff-filter=A", "--format=%H", "--", sciarena_analysis.PREREG],
+        cwd=REPO, capture_output=True, text=True, check=True).stdout.split()
+    if not out:
+        raise SystemExit(f"{sciarena_analysis.PREREG} is not committed: commit it before scoring")
+    return out[-1]
+
+
 def main() -> int:
     is_model_id = model_id_screen()
     metrics = seeded_metrics() + asta_example_metrics()
@@ -91,6 +102,9 @@ def main() -> int:
     checked = sciarena_analysis.check_all(data)
     sa_metrics, sa_out = sciarena_analysis.run_descriptive(data, checked, is_model_id)
     metrics += sa_metrics
+    prereg_commit = prereg_commit_hash()
+    ho_metrics, ho_out = sciarena_analysis.run_heldout(data, checked, prereg_commit)
+    metrics += ho_metrics
     path = write_results("receipts", metrics, REPO / "results")
     examples = {
         "note": "Short excerpts with receipts, for illustration. The data are not copied "
@@ -100,6 +114,7 @@ def main() -> int:
         "theorizer": th_out["examples"],
         "theorizer_summary": th_out["summary"],
         "sciarena": sa_out["examples"],
+        "sciarena_heldout": ho_out,
     }
     (HERE / "examples.json").write_text(
         json.dumps(examples, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")

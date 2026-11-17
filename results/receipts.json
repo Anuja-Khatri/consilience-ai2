@@ -40,6 +40,168 @@
     },
     {
       "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": 0.50414,
+      "ci_lo": 0.382734,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_loses",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.442804
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_permutation_p",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.068293
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.0682; permutation p=0.06829",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1722 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w1_rate_sign_p",
+      "n": 271,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.068201
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": 0.576511,
+      "ci_lo": 0.469071,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_loses",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.522989
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_permutation_p",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.425857
+    },
+    {
+      "caveats": [
+        "exploratory secondary analysis named in the preregistration; not decision-bearing",
+        "decision under the preregistered rule: null",
+        "sign-test p=0.4214; permutation p=0.4259",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1645 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "receipts.sciarena.exploratory.higher_w2_rate_sign_p",
+      "n": 348,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 0.421388
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": 0.542744,
+      "ci_lo": 0.459004,
+      "description": "share of included votes in which the response with the higher flag rate lost",
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_loses",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "proportion of included votes",
+      "value": 0.500879
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_permutation_p",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 1.0
+    },
+    {
+      "caveats": [
+        "decision under the preregistered rule: null",
+        "sign-test p=1; permutation p=1",
+        "excluded: 0 tie or missing votes, 7 with a response citing nothing, 1424 with equal flag rates"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "receipts.sciarena.heldout.higher_flag_rate_sign_p",
+      "n": 569,
+      "prereg": "prereg/receipts/sciarena_prereg.md @ adb9f3eedd0c04d98bdd1580df66fd0ae5260bcf",
+      "source": "fetch:sciarena-eval",
+      "test": "two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal rates excluded; permutation null: 10000 sign flips, seed 0",
+      "unit": "p-value",
+      "value": 1.0
+    },
+    {
+      "caveats": [
         "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)"
       ],
       "ci_hi": 0.999994,

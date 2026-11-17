@@ -4,6 +4,12 @@ Descriptive part (``run_descriptive``): every inline citation in every response 
 resolved against the response's listed citations and checked for W1 and W2 against the
 passages its sentence cites; quoted spans of three or more words are checked verbatim
 (``consilience_ai2.receipts.sciarena``). No vote is read here.
+
+Held-out part (``run_heldout``): the preregistered test of
+``prereg/receipts/sciarena_prereg.md`` (committed before this code): in paired votes,
+does the response with the higher W1+W2 flag rate per citation lose more often? Two-sided
+exact sign test, a 10,000-draw sign-flip permutation null (seed 0), and the decision rule
+written in the preregistration. W1 alone and W2 alone are exploratory secondaries.
 """
 
 from __future__ import annotations
@@ -11,6 +17,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
+
+import numpy as np
 
 from consilience_ai2.core.results import metric
 from consilience_ai2.fetch import require
@@ -132,3 +140,106 @@ def run_descriptive(data: list[dict[str, Any]], checked, is_model_id) -> tuple[l
 def _sha(text: str) -> str:
     from consilience_ai2.core.hashing import sha256_text
     return sha256_text(text)
+
+
+# --------------------------------------------------------------------------- heldout
+
+PREREG = "prereg/receipts/sciarena_prereg.md"
+PERMUTATIONS = 10_000
+SEED = 0
+
+
+def flags(r: sa.ResponseResult, which: str) -> int:
+    if which == "w1":
+        return sum(bool(c.w1) for c in r.citations)
+    if which == "w2":
+        return sum(bool(c.w2) for c in r.citations)
+    return sum(bool(c.w1) + bool(c.w2) for c in r.citations)
+
+
+def paired_outcomes(data, checked, which: str) -> tuple[list[int], dict[str, int]]:
+    """Per included vote: 1 when the response with the higher flag rate lost, else 0
+    (the inclusion rules of the preregistration)."""
+    out: list[int] = []
+    excl = {"tie_or_missing_vote": 0, "no_citations": 0, "equal_rates": 0}
+    for (a, b), v in zip(checked, data, strict=True):
+        vote = v.get("vote")
+        if vote not in ("A", "B"):
+            excl["tie_or_missing_vote"] += 1
+            continue
+        if not a.citations or not b.citations:
+            excl["no_citations"] += 1
+            continue
+        ra = flags(a, which) / len(a.citations)
+        rb = flags(b, which) / len(b.citations)
+        if ra == rb:
+            excl["equal_rates"] += 1
+            continue
+        higher = "A" if ra > rb else "B"
+        out.append(1 if vote != higher else 0)
+    return out, excl
+
+
+def sign_and_permutation(outcomes: list[int]) -> dict[str, Any]:
+    from scipy.stats import binomtest
+    n = len(outcomes)
+    k = int(sum(outcomes))
+    bt = binomtest(k, n, 0.5, alternative="two-sided")
+    ci = bt.proportion_ci(confidence_level=0.95, method="exact")
+    rng = np.random.default_rng(SEED)
+    obs = abs(k - n / 2)
+    x = np.array(outcomes)
+    hits = 0
+    for _ in range(PERMUTATIONS):
+        flip = rng.random(n) < 0.5
+        kd = int(np.where(flip, 1 - x, x).sum())
+        if abs(kd - n / 2) >= obs:
+            hits += 1
+    return {"k": k, "n": n, "prop": k / n, "p_sign": float(bt.pvalue),
+            "p_perm": (hits + 1) / (PERMUTATIONS + 1),
+            "ci": (float(ci.low), float(ci.high))}
+
+
+def decision(t: dict[str, Any]) -> str:
+    if t["p_sign"] < 0.05 and t["prop"] > 0.5:
+        return "supported"
+    if t["p_sign"] < 0.05 and t["prop"] < 0.5:
+        return "opposite direction"
+    return "null"
+
+
+def run_heldout(data, checked, prereg_commit: str) -> tuple[list[dict], dict]:
+    metrics: list[dict[str, Any]] = []
+    out: dict[str, Any] = {}
+    test = ("two-sided exact sign test (binomial, p=0.5) on paired votes, ties and equal "
+            f"rates excluded; permutation null: {PERMUTATIONS} sign flips, seed {SEED}")
+    prereg = f"{PREREG} @ {prereg_commit}"
+    for which, split, mid in (("w1w2", "heldout", "receipts.sciarena.heldout.higher_flag_rate_loses"),
+                              ("w1", "exploratory", "receipts.sciarena.exploratory.higher_w1_rate_loses"),
+                              ("w2", "exploratory", "receipts.sciarena.exploratory.higher_w2_rate_loses")):
+        oc, excl = paired_outcomes(data, checked, which)
+        t = sign_and_permutation(oc)
+        d = decision(t)
+        out[which] = {**t, "excluded": excl, "decision": d}
+        cav = [f"decision under the preregistered rule: {d}",
+               f"sign-test p={t['p_sign']:.4g}; permutation p={t['p_perm']:.4g}",
+               f"excluded: {excl['tie_or_missing_vote']} tie or missing votes, "
+               f"{excl['no_citations']} with a response citing nothing, "
+               f"{excl['equal_rates']} with equal flag rates"]
+        if split == "exploratory":
+            cav.insert(0, "exploratory secondary analysis named in the preregistration; "
+                          "not decision-bearing")
+        metrics.append(metric(mid, round(t["prop"], 6), n=t["n"], ci_lo=round(t["ci"][0], 6),
+                              ci_hi=round(t["ci"][1], 6), source=SOURCE, dev_or_heldout=split,
+                              caveats=cav, unit="proportion of included votes", test=test,
+                              prereg=prereg,
+                              description="share of included votes in which the response "
+                                          "with the higher flag rate lost"))
+        base = mid.replace("_loses", "")
+        metrics.append(metric(f"{base}_sign_p", round(t["p_sign"], 6), n=t["n"], source=SOURCE,
+                              dev_or_heldout=split, caveats=cav, unit="p-value", test=test,
+                              prereg=prereg))
+        metrics.append(metric(f"{base}_permutation_p", round(t["p_perm"], 6), n=t["n"],
+                              source=SOURCE, dev_or_heldout=split, caveats=cav, unit="p-value",
+                              test=test, prereg=prereg))
+    return metrics, out

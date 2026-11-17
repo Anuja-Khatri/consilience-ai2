@@ -355,7 +355,25 @@ The release has 2000 votes, 3993 of 4000 responses with at least one inline cita
 - **Quotes.** Responses rarely quote. There are 10 quoted spans of three or more words
   in cited sentences, and 20% of them are found verbatim in a cited passage.
 
-The preregistered comparison of flag rates and human votes is in `prereg/receipts/sciarena_prereg.md`; its result is added once it has been computed.
+### Preregistered: flag rate and the human vote (held-out)
+
+The test is preregistered in `prereg/receipts/sciarena_prereg.md`, which was committed
+before any code related flags to votes.
+
+- **Hypothesis.** The response with the higher W1+W2 flag rate per citation loses the
+  human vote more often.
+- **Included votes.** 569 votes have both responses citing and unequal rates. Of the
+  rest, 7 have a response citing nothing and 1424 have equal rates. There are no ties.
+- **Result.** In 50.09% of included votes the higher-rate response lost. The exact 95%
+  interval is 45.9% to 54.27%. The two-sided sign test gives p = 1.0, and the
+  10,000-draw permutation p is also 1.0.
+- **Decision under the preregistered rule: null.** There is no evidence of a difference
+  at this sample size. This is not evidence that there is no difference.
+
+The exploratory secondaries are not decision-bearing; both are null:
+
+- W1 alone: 44.28% (n = 271, sign-test p 0.07);
+- W2 alone: 52.3% (n = 348, sign-test p 0.42).
 
 ## Limits
 

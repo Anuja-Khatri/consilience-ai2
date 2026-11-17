@@ -250,6 +250,59 @@
       }
     ]
   },
+  "sciarena_heldout": {
+    "w1": {
+      "ci": [
+        0.3827338893122703,
+        0.5041395259340561
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1722,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 120,
+      "n": 271,
+      "p_perm": 0.06829317068293171,
+      "p_sign": 0.06820129335098757,
+      "prop": 0.44280442804428044
+    },
+    "w1w2": {
+      "ci": [
+        0.4590042261261367,
+        0.542744076155967
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1424,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 285,
+      "n": 569,
+      "p_perm": 1.0,
+      "p_sign": 1.0,
+      "prop": 0.5008787346221442
+    },
+    "w2": {
+      "ci": [
+        0.46907132066830126,
+        0.5765112765718513
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1645,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 182,
+      "n": 348,
+      "p_perm": 0.42585741425857415,
+      "p_sign": 0.4213879913728634,
+      "prop": 0.5229885057471264
+    }
+  },
   "theorizer": {
     "T1": [
       {
