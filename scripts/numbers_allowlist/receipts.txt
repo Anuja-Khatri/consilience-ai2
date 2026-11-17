@@ -1,0 +1,18 @@
+# Structural (non-result) decimals and percentages in docs/receipts.md and the
+# receipts plugin docs. Results render from results/receipts.json instead.
+#
+# Worked examples of the number rules and normalisation (synthetic values).
+0.42
+0.03
+0.421
+87.5%
+91.2%
+45%
+0.45
+12%
+88%
+0.004
+3.1
+1.5
+1.234
+0.4213
