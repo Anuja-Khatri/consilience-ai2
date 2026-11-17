@@ -1,0 +1,53 @@
+{
+  "id": "node_2_3",
+  "success": true,
+  "parent_id": "node_1_0",
+  "creation_idx": 4,
+  "created_at": "2026-01-01T00:00:00+00:00",
+  "time_elapsed": 63.0,
+  "visits": 1,
+  "value": 1.0,
+  "self_value": 1.0,
+  "surprising": true,
+  "belief_change": 0.2727,
+  "normalized_surprisal": null,
+  "kl_divergence": null,
+  "prior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 5,
+    "n_false": 5,
+    "_empirical_mean": 0.5,
+    "mean": 0.5
+  },
+  "posterior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 8,
+    "n_false": 2,
+    "_empirical_mean": 0.5,
+    "mean": 0.7727
+  },
+  "hypothesis": "Larger households sleep less.",
+  "experiment_plan": {
+    "objective": "Correlate household size with sleep_hours.",
+    "steps": "1. load the data\n2. run the test\n3. report",
+    "deliverables": "the statistic, the p value and n"
+  },
+  "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nr = stats.spearmanr(df[\"household_size\"], df[\"sleep_hours\"])\nprint(f\"n = {len(df)}\")\nprint(f\"rho = {r.statistic:.2f}, p = {r.pvalue:.3f}\")\n",
+  "code_output": "n = 1200\nrho = -0.12, p = 0.001\n",
+  "analysis": "Household size is negatively associated with sleep (rho = -0.12, p = 0.001).",
+  "review": "Fine.",
+  "untried_experiments": [],
+  "tried_experiments": [],
+  "query": "SYNTHETIC fixture query",
+  "messages": []
+}

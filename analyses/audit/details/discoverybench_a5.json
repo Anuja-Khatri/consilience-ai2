@@ -1,0 +1,17 @@
+{
+  "excluded": {
+    "no machine-readable gold relation (target_col, relevant_cols)": 720,
+    "target is constant": 26
+  },
+  "skipped": {
+    "untestable type (constant vs binary)": 33,
+    "untestable type (constant vs categorical)": 8,
+    "untestable type (constant vs numeric)": 115
+  },
+  "tests_by_type": {
+    "chi-square": 581,
+    "kruskal-wallis": 585,
+    "point-biserial": 1642,
+    "spearman": 2223
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "cells": [
+    {
+      "agrees": true,
+      "column": "within_1_percent",
+      "method": "LLM",
+      "printed": "24.0\\%",
+      "recomputed": 24.0
+    },
+    {
+      "agrees": true,
+      "column": "within_5_percent",
+      "method": "LLM",
+      "printed": "39.3\\%",
+      "recomputed": 39.333333
+    },
+    {
+      "agrees": true,
+      "column": "within_10_percent",
+      "method": "LLM",
+      "printed": "46.7\\%",
+      "recomputed": 46.666667
+    },
+    {
+      "agrees": true,
+      "column": "within_1_percent",
+      "method": "Simple",
+      "printed": "94.0\\%",
+      "recomputed": 94.0
+    },
+    {
+      "agrees": true,
+      "column": "within_5_percent",
+      "method": "Simple",
+      "printed": "98.0\\%",
+      "recomputed": 98.0
+    },
+    {
+      "agrees": true,
+      "column": "within_10_percent",
+      "method": "Simple",
+      "printed": "100.0\\%",
+      "recomputed": 100.0
+    },
+    {
+      "agrees": true,
+      "column": "within_1_percent",
+      "method": "Mathematical",
+      "printed": "100.0\\%",
+      "recomputed": 100.0
+    },
+    {
+      "agrees": true,
+      "column": "within_5_percent",
+      "method": "Mathematical",
+      "printed": "100.0\\%",
+      "recomputed": 100.0
+    },
+    {
+      "agrees": true,
+      "column": "within_10_percent",
+      "method": "Mathematical",
+      "printed": "100.0\\%",
+      "recomputed": 100.0
+    }
+  ],
+  "n_records": 450,
+  "report_file": "report/report.tex",
+  "report_sha256": "06f57d827bc571714b652ad2844e2092bb1993027356b115a52fffa4a6e79282",
+  "results_file": "modal-python-20250210-091603/modal-output/results.json",
+  "results_sha256": "bb8d27964d730e151c14695a2542deb65ef600a0d2135cb793b71b615d1fc814"
+}
