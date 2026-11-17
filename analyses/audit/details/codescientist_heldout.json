@@ -1,0 +1,1538 @@
+{
+  "frozen": true,
+  "frozen_commit": "d24d2f7738496448b9c68fa529ce89cda7ce5c2d",
+  "frozen_tree": "cca16a044d8074fd2672026af812a67dd6cafc31",
+  "h1": {
+    "T": -0.09753550543024225,
+    "excluded": {
+      "development-set directory": 10,
+      "idea has fewer than 2 judged runs": 13,
+      "no per-run judgement": 1
+    },
+    "mean_flagged": 0.4407894736842105,
+    "mean_passed": 0.34325396825396826,
+    "mwu_p": 0.14313573056847384,
+    "n_flagged": 38,
+    "n_passed": 42,
+    "no_dev_ideas": {
+      "T": -0.21611721611721613,
+      "n": 20,
+      "p": 0.48775122487751227
+    },
+    "p": 0.08449155084491551,
+    "per_code": {
+      "A1": {
+        "mean_with": 0.42045454545454547,
+        "mean_without": 0.3778735632183908,
+        "n_with": 22
+      },
+      "A2": {
+        "mean_with": 0.738095238095238,
+        "mean_without": 0.3561643835616438,
+        "n_with": 7
+      },
+      "A4": {
+        "mean_with": 0.47916666666666663,
+        "mean_without": 0.3671875,
+        "n_with": 16
+      },
+      "A5": {
+        "mean_with": 0.2685185185185185,
+        "mean_without": 0.40492957746478875,
+        "n_with": 9
+      },
+      "A6": {
+        "mean_with": 0.32142857142857145,
+        "mean_without": 0.41384180790960445,
+        "n_with": 21
+      },
+      "A7": {
+        "mean_with": 0.38671875,
+        "mean_without": 0.40104166666666663,
+        "n_with": 64
+      },
+      "R1": {
+        "mean_with": 0.4259259259259259,
+        "mean_without": 0.38497652582159625,
+        "n_with": 9
+      },
+      "R3": {
+        "mean_with": 0.36538461538461536,
+        "mean_without": 0.3942786069651741,
+        "n_with": 13
+      }
+    },
+    "rank_biserial": -0.18609022556390975,
+    "supported": false,
+    "units": [
+      {
+        "codes": [
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy1-20250204-171300",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy2-20250204-171307",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy3-20250204-171345",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A6",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy4-20250204-171655",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy5-20250204-171748",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "actionoutcometracking",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy1-20250204-162824",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "pass"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy2-20250204-163010",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "pass"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy3-20250204-163019",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "pass"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy4-20250204-163024",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "pass"
+      },
+      {
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy5-20250204-163027",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "basicconfidencesimulation",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy1-20250204-163356",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "cookinggraphexplorer",
+        "judgement": "refute",
+        "k": 4,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy2-20250204-163700",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "cookinggraphexplorer",
+        "judgement": "inconclusive",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy3-20250204-163713",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "cookinggraphexplorer",
+        "judgement": "inconclusive",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A4",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy1-20250204-151122",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "judgement": "inconclusive",
+        "k": 4,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy3-20250204-151129",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "hierarchicalelimination",
+        "judgement": "support",
+        "k": 4,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A4",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy4-20250204-151131",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "judgement": "refute",
+        "k": 4,
+        "loo_agreement": 0.3333333333333333,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A4",
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy5-20250204-151135",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "judgement": "refute",
+        "k": 4,
+        "loo_agreement": 0.3333333333333333,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgfailuredetectioncopy1-20250204-201642",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "kgfailuredetection",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "kgfailuredetectioncopy5-20250204-202209",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgfailuredetection",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy1-20250204-194947",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy2-20250204-195034",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy3-20250204-195047",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy4-20250204-195134",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy5-20250204-195323",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A2",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy1-20250204-150958",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "llmgraphverification",
+        "judgement": "support",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy2-20250204-151003",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "llmgraphverification",
+        "judgement": "inconclusive",
+        "k": 4,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy5-20250204-151011",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "llmgraphverification",
+        "judgement": "support",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "locationgraphcookingcopy1-20250204-153815",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "locationgraphcooking",
+        "judgement": "support",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A2",
+          "A6",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "locationgraphcookingcopy3-20250204-154244",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "locationgraphcooking",
+        "judgement": "inconclusive",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy1-20250204-200102",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A5",
+          "A7",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy2-20250204-200208",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A6",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy3-20250204-200217",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "progressivestatecomplexity",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy4-20250204-200457",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "progressivestatecomplexity",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A7",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy5-20250204-200719",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy1-20250204-161803",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "reactivegraphconfidence",
+        "judgement": "support",
+        "k": 3,
+        "loo_agreement": 0.0,
+        "verdict": "pass"
+      },
+      {
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy2-20250204-161957",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "reactivegraphconfidence",
+        "judgement": "refute",
+        "k": 3,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy5-20250204-162230",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "reactivegraphconfidence",
+        "judgement": "inconclusive",
+        "k": 3,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy1-20250204-225849",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "resistorsubstitutionadvisor",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy2-20250204-230138",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy3-20250204-230453",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy4-20250204-230847",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy5-20250204-232430",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "resistorsubstitutionadvisor",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "simpledualreflectioncopy1-20250204-172939",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simpledualreflection",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": false,
+        "dir": "simpledualreflectioncopy5-20250204-174807",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "simpledualreflection",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy1-20250204-151103",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplegoalexplorer",
+        "judgement": "support",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy3-20250204-151108",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "simplegoalexplorer",
+        "judgement": "inconclusive",
+        "k": 4,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A1",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy5-20250204-151119",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "simplegoalexplorer",
+        "judgement": "support",
+        "k": 4,
+        "loo_agreement": 0.6666666666666666,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy1-20250204-150945",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "simplegraphalignment",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy2-20250204-150948",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "pass"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy3-20250204-150950",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy4-20250204-150953",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy5-20250204-150956",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "simplemetagraphscopy3-20250204-204506",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplemetagraphs",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A2",
+          "A4",
+          "A7",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "simplemetagraphscopy4-20250204-204509",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simplemetagraphs",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy2-20250204-193739",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy3-20250204-194014",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy4-20250204-194126",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplemetaphorgraph",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "pass"
+      },
+      {
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy5-20250204-194257",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simpleplanningagentcopy2-20250204-151156",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "simpleplanningagent",
+        "judgement": "refute",
+        "k": 3,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A7",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simpleplanningagentcopy5-20250204-151924",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simpleplanningagent",
+        "judgement": "refute",
+        "k": 3,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "simpleselfevaluationcopy4-20250204-180805",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simpleselfevaluation",
+        "judgement": "inconclusive",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": false,
+        "dir": "simpleselfevaluationcopy5-20250204-181218",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simpleselfevaluation",
+        "judgement": "refute",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A2",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy1-20250204-192655",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A2",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy2-20250204-192832",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A2",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy3-20250204-193040",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A5",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy5-20250204-193321",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "simplesocialgraphs",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 1.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A6",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "simpletemplatediscoverycopy1-20250204-161043",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simpletemplatediscovery",
+        "judgement": "inconclusive",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy1-20250204-152901",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy2-20250204-153109",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy3-20250204-153307",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simulationconfidenceanalysis",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "pass"
+      },
+      {
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy4-20250204-153321",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy5-20250204-153659",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "simulationconfidenceanalysis",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.25,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A2",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "templateworldgenerationcopy1-20250204-174847",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "templateworldgeneration",
+        "judgement": "support",
+        "k": 3,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "templateworldgenerationcopy4-20250204-175511",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "idea": "templateworldgeneration",
+        "judgement": "refute",
+        "k": 3,
+        "loo_agreement": 0.0,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy1-20250204-155033",
+        "error_codes": [],
+        "flagged": false,
+        "idea": "twostagegamegeneration",
+        "judgement": "refute",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy2-20250204-155648",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "judgement": "inconclusive",
+        "k": 5,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy3-20250204-160025",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy4-20250204-160405",
+        "error_codes": [
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "flag"
+      },
+      {
+        "codes": [
+          "A1",
+          "A4",
+          "A7"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy5-20250204-160504",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "judgement": "support",
+        "k": 5,
+        "loo_agreement": 0.5,
+        "verdict": "refuse"
+      },
+      {
+        "codes": [
+          "A5",
+          "A7",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "wordnetcookingexplorationcopy1-20250204-150927",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "idea": "wordnetcookingexploration",
+        "judgement": "inconclusive",
+        "k": 2,
+        "loo_agreement": 0.0,
+        "verdict": "flag"
+      }
+    ]
+  },
+  "h2": {
+    "T": 0.03703703703703709,
+    "mwu_p": 0.8061230224933129,
+    "p": 0.8561143885611439,
+    "rank_biserial": 0.07070707070707072,
+    "units": [
+      {
+        "dir": "actionoutcometrackingcopy5followon1-20250209-154714",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "actionoutcometracking",
+        "soundness": 1.0
+      },
+      {
+        "dir": "simpleaffordanceexplorationcopy5-20250204-183313",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "affordanceexploration",
+        "soundness": 0.6666666666666666
+      },
+      {
+        "dir": "basicconfidencesimulationcopy4followon1-20250210-093850",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "confidencesimulation",
+        "soundness": 1.0
+      },
+      {
+        "dir": "cookinggraphexplorercopy4-20250204-164020",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "cookinggraphexplorer",
+        "soundness": 0.0
+      },
+      {
+        "dir": "simplegoalexplorercopy4-20250204-151112",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "goalexplorer",
+        "soundness": 0.0
+      },
+      {
+        "dir": "simplegraphalignmentcopy4followon2-20250210-130336",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "graphalignment",
+        "soundness": 0.0
+      },
+      {
+        "dir": "knowledgegraphdiscoverycopy4followon1a-20250210-090656",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "knowledgegraphdiscovery",
+        "soundness": 0.6666666666666666
+      },
+      {
+        "dir": "basicknowledgesharingcopy5followon2-20250225-220325",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "knowledgesharing",
+        "soundness": 0.3333333333333333
+      },
+      {
+        "dir": "llmgraphverificationcopy3-20250204-151006",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "llmgraphverification",
+        "soundness": 0.6666666666666666
+      },
+      {
+        "dir": "locationgraphcookingcopy3followon1-20250209-143455",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "locationgraphcooking",
+        "soundness": 1.0
+      },
+      {
+        "dir": "simplemetaphorgraphcopy1-20250204-193736",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "metaphorgraph",
+        "soundness": 0.3333333333333333
+      },
+      {
+        "dir": "simpleplanningagentcopy3-20250204-151159",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "planningagent",
+        "soundness": 1.0
+      },
+      {
+        "dir": "progressivestatecomplexitycopy4followon2-20250210-125850",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "progressivestatecomplexity",
+        "soundness": 1.0
+      },
+      {
+        "dir": "resistorsubstitutionadvisorcopy3followon1-20250210-090957",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "resistorsubstitutionadvisor",
+        "soundness": 1.0
+      },
+      {
+        "dir": "simulationconfidenceanalysiscopy4followon1-20250210-092159",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "simulationconfidenceanalysis",
+        "soundness": 1.0
+      },
+      {
+        "dir": "simplesocialgraphscopy4-20250204-193237",
+        "error_codes": [
+          "A1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "socialgraphs",
+        "soundness": 1.0
+      },
+      {
+        "dir": "simpletemplatediscoverycopy4-20250204-161704",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "templatediscovery",
+        "soundness": 1.0
+      },
+      {
+        "dir": "templateworldgenerationcopy5-20250204-175513",
+        "error_codes": [],
+        "flagged": false,
+        "n_ratings": 3,
+        "paper": "templateworldgeneration",
+        "soundness": 0.0
+      },
+      {
+        "dir": "twostagegamegenerationcopy4followon1-20250210-093345",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "twostagegamegeneration",
+        "soundness": 1.0
+      },
+      {
+        "dir": "wordnetcookingexplorationcopy2-20250204-150930",
+        "error_codes": [
+          "R1"
+        ],
+        "flagged": true,
+        "n_ratings": 3,
+        "paper": "wordnetcookingexploration",
+        "soundness": 0.3333333333333333
+      }
+    ]
+  },
+  "rules_tree": "cca16a044d8074fd2672026af812a67dd6cafc31"
+}

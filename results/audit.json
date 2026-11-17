@@ -691,6 +691,280 @@
     },
     {
       "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_flagged",
+      "n": 38,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.4408
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_passed",
+      "n": 42,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.3433
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary analysis, no decision"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.mwu_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided Mann-Whitney U, unstratified (secondary)",
+      "value": 0.1431
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_flagged",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 38
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "development-set directory: 10",
+        "idea has fewer than 2 judged runs: 13",
+        "no per-run judgement: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_runs",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 80
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.4878
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.2161
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "H1 not supported at alpha 0.05 (requires p < 0.05 and T > 0)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.perm_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.0845
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary; positive means passed runs agree more"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.rank_biserial",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": -0.1861
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.supported",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "1 = yes, 0 = no",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "mean agreement of passed runs minus flagged runs (H1 predicts > 0)",
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.t_difference",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.0975
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_flagged",
+      "n": 9,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6296
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_passed",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6667
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mwu_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided Mann-Whitney U (secondary)",
+      "value": 0.8061
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_flagged",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_papers",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.8561
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.037
+    },
+    {
+      "caveats": [
         "one table in one report; the recomputation (100 x mean of the within_k_percent booleans per method) was chosen to match the table's column names"
       ],
       "ci_hi": null,

@@ -154,8 +154,37 @@ in `analyses/audit/dev_table.md`.
 
 ### Held-out, preregistered (CodeScientist full50 reruns and external ratings)
 
-Preregistered in `prereg/audit/heldout_prereg.md`, committed before any scoring, with the
-rules frozen at the commit it names. Results are added in the scoring commit.
+Preregistered in `prereg/audit/heldout_prereg.md` (commit 3d86441), committed before any
+scoring, with the rules frozen at d24d2f7; the scoring script
+(`analyses/audit/codescientist_heldout.py`) checked that `consilience_ai2/audit` was
+unchanged when it ran. Predictor: a run is flagged when it has any error-severity check
+(R2 off, since it would read the outcome).
+
+**H1 (confirmatory, labelled heldout): not supported; the difference is in the opposite
+direction.** Units: 80 judged full50 runs from ideas with at least 2 judged runs (10
+development-set directories, 13 runs of ideas with a single judged run and 1 run without a
+judgement excluded). Outcome: leave-one-out agreement of a run's meta-analysis judgement
+with the other runs of its idea.
+
+| | runs | mean agreement |
+|---|---|---|
+| passed by the audit | 42 | 0.3433 |
+| flagged by the audit | 38 | 0.4408 |
+
+Stratified (within-idea) permutation test, 10,000 draws, seed 20261117: two-sided
+p = 0.0845. The prediction was that flagged runs agree less; they agreed more, and the
+difference is not significant at 0.05. Secondary, no decision: Mann–Whitney p = 0.1431;
+without any run of the 19 development ideas (20 runs left) p = 0.4878.
+
+**H2 (exploratory: the 20 rated papers are the development directories, so not blind):
+null.** Mean binarised external soundness 0.6667 for the 11 papers the audit passes and
+0.6296 for the 9 it flags; permutation p = 0.8561, Mann–Whitney p = 0.8061.
+
+Reading: on these data the audit's error flags do not predict which CodeScientist runs
+replicate in their reruns or which papers external reviewers rated sound. The flags mark
+specific, checkable defects (an unprinted number, a missing test, a random-only
+comparator); the outcomes here are model-judged rerun agreement and three human ratings
+per paper, and neither moves with those defects at this sample size.
 
 ### A5 on DiscoveryBench synthetic tasks (labelled descriptive; null control synthetic)
 
@@ -191,8 +220,11 @@ exactly from its `results.json`: 9 of 9 cells, each 100 times the mean of the ma
 
 ## Limits
 
-- **Small n.** The dev set is 19 discoveries; the held-out tests have a few dozen runs and
-  20 papers. Differences of the size these data allow are noisy.
+- **Small n.** The dev set is 19 discoveries; the held-out tests have 80 runs (from 24
+  ideas at most) and 20 papers. Differences of the size these data allow are noisy.
+- **The held-out prediction failed.** Error-level flags did not predict lower rerun
+  agreement or lower external soundness; the audit's value has to rest on the defects it
+  names (each with a receipt), not on predicting replication.
 - **The dev set is not blind.** The rules were written knowing the CodeScientist rejection
   reasons, and the external-ratings test uses the same 20 papers, so it is exploratory.
 - **No real AutoDiscovery run is public.** The AutoDiscovery adapter is tested only on
