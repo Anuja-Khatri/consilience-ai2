@@ -11,6 +11,8 @@ dist/
 # Data is downloaded by `consilience-ai2 fetch` into ~/.cache/consilience-ai2 and
 # NEVER committed. These guard against accidental copies into the tree.
 data/
+# ...except fixtures a component ships inside the package (small, synthetic or derived).
+!consilience_ai2/*/data/
 *.zip
 *.parquet
 *.tar.gz

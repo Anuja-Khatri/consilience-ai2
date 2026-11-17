@@ -40,7 +40,16 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from decimal import ROUND_HALF_EVEN, ROUND_HALF_UP, Decimal, InvalidOperation
+from decimal import (
+    MAX_EMAX,
+    MIN_EMIN,
+    ROUND_HALF_EVEN,
+    ROUND_HALF_UP,
+    Decimal,
+    DecimalException,
+    InvalidOperation,
+    localcontext,
+)
 
 SUPERSCRIPT = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻", "0123456789+-")
 SIGN_CHARS = "+-−"
@@ -238,16 +247,36 @@ def agrees_at_printed_precision(printed: NumberToken, value: Decimal | float | i
     half-unit boundary agrees whichever convention printed it. Percent scaling is the
     caller's decision: compare 24.0% with 24.0, or with 0.240 after dividing by 100.
     An ambiguous token never agrees.
+
+    It never raises on a number. A value more than one printed unit away from
+    ``printed`` cannot round to it and is rejected before any rounding, so a huge value
+    (``1e400`` against ``0.5``) is simply not agreeing. Rounding runs in a local decimal
+    context wide enough for the printed digits, so a long printed integer (thirty
+    digits) still compares exactly. Anything the decimal module still cannot represent
+    counts as not agreeing (the caller treats it as unsupported), not as an exception.
     """
     if printed.value is None:
         return False
     try:
         v = Decimal(str(value)) if not isinstance(value, Decimal) else value
-    except InvalidOperation:
+    except (InvalidOperation, ValueError, TypeError):
         return False
-    if not v.is_finite():
+    target = printed.value
+    if not v.is_finite() or not target.is_finite():
         return False
     q = printed.quantum
     assert q is not None
-    return any(v.quantize(q, rounding=r) == printed.value.quantize(q)
-               for r in (ROUND_HALF_UP, ROUND_HALF_EVEN))
+    try:
+        with localcontext() as ctx:
+            ctx.Emax, ctx.Emin = MAX_EMAX, MIN_EMIN
+            # rounding to q moves a value by at most half a unit of q
+            if abs(v - target) > q:
+                return False
+            # digits from the leading digit of the larger operand down to q, plus margin
+            lead = max(v.adjusted(), target.adjusted(), q.adjusted())
+            ctx.prec = max(ctx.prec, lead - q.adjusted() + 3)
+            want = target.quantize(q)
+            return any(v.quantize(q, rounding=r) == want
+                       for r in (ROUND_HALF_UP, ROUND_HALF_EVEN))
+    except DecimalException:
+        return False

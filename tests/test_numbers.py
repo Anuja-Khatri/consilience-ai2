@@ -160,6 +160,30 @@ def test_agrees_refuses_non_finite():
     assert not agrees_at_printed_precision(one("1.0"), "abc")
 
 
+@pytest.mark.parametrize("printed,value", [
+    ("0.5", "1e400"),            # far outside the default precision: quantize would raise
+    ("0.5", "1e999999"),
+    ("0.5", "-1e999999"),
+    ("1", "1e-999999999"),       # below the default exponent range
+    ("1.5e-3", "9" * 60),
+    ("1", "Infinity"),
+])
+def test_agrees_huge_values_do_not_raise(printed, value):
+    # decimal.InvalidOperation (or any decimal signal) is not agreeing, never an exception
+    assert agrees_at_printed_precision(one(printed), Decimal(value)) is False
+    assert agrees_at_printed_precision(one(printed), value) is False
+
+
+def test_agrees_long_printed_numbers_compare_exactly():
+    big = "1" + "0" * 30                        # 31 digits, beyond the default 28
+    assert agrees_at_printed_precision(one(big), Decimal(big))
+    assert agrees_at_printed_precision(one(big), Decimal(big + ".4"))
+    assert not agrees_at_printed_precision(one(big), Decimal(big + ".6"))
+    assert not agrees_at_printed_precision(one(big), Decimal(big[:-1] + "1"))
+    assert agrees_at_printed_precision(one("1.5e300"), Decimal("1.54e300"))
+    assert not agrees_at_printed_precision(one("1.5e300"), Decimal("1.56e300"))
+
+
 def test_to_dict_is_json_ready():
     d = one("3.2 ± 0.4".split(" ±")[0]).to_dict()
     assert d["value"] == "3.2" and d["decimals"] == 1
