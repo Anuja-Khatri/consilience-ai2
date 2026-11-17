@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "consilience-ai2/reproduction-record/1",
+  "title": "Reproduction record, version 1",
+  "description": "One hypothesis re-tested on independent data, in the shape of the asta-flows secondary-reproduction rubric: the source claim, the reproduction, the thresholds committed before the run, and the commits that show the order. Numbers are numbers or numeric strings; anything else is refused.",
+  "type": "object",
+  "required": ["schema_version", "id", "hypothesis", "source_hypothesis", "source", "reproduction", "thresholds"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "minLength": 1},
+    "hypothesis": {"type": "string", "description": "The hypothesis text as tested in the reproduction."},
+    "source_hypothesis": {"type": "string", "description": "The hypothesis text of the source finding (for an AutoDS run, the mcts_node hypothesis)."},
+    "direction": {"enum": ["positive", "negative"], "description": "The hypothesized sign of the effect. Default: the sign of the source effect."},
+    "source": {"$ref": "#/$defs/measurement"},
+    "reproduction": {"$ref": "#/$defs/measurement"},
+    "quantity_mapping": {
+      "type": "object",
+      "required": ["relation"],
+      "additionalProperties": false,
+      "properties": {
+        "relation": {"enum": ["same_quantity", "proxy", "substitution"]},
+        "note": {"type": "string"}
+      }
+    },
+    "independence_axis": {"enum": ["instrument", "cohort", "region", "method", "time"], "description": "The one condition the reproduction varies on purpose. It must differ between source and reproduction; it is not a mismatch."},
+    "conditions_pack": {"type": "string", "description": "A consilience compare pack (bundled name or path) that decides which conditions are checked and how. Needs the optional consilience package."},
+    "identifiability": {
+      "type": "object",
+      "required": ["identifiable"],
+      "additionalProperties": false,
+      "properties": {
+        "identifiable": {"type": "boolean"},
+        "reason": {"type": "string"}
+      }
+    },
+    "positive_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "passed": {"type": "boolean"},
+        "p": {"$ref": "#/$defs/number"},
+        "note": {"type": "string"}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "required": ["alpha"],
+      "additionalProperties": false,
+      "properties": {
+        "alpha": {"$ref": "#/$defs/probability"},
+        "sides": {"enum": [1, 2]},
+        "minimum_effect": {"$ref": "#/$defs/number"},
+        "minimum_effect_scale": {"enum": ["effect_size", "value"]},
+        "equivalence_margin": {"$ref": "#/$defs/number"},
+        "power": {"$ref": "#/$defs/probability"},
+        "committed": {"$ref": "#/$defs/commit"}
+      }
+    },
+    "result_committed": {"$ref": "#/$defs/commit"},
+    "reported_verdict": {"enum": ["supported", "partly_supported", "opposite_effect", "rejected", "undecided"], "description": "The verdict written in prose by whoever ran the reproduction. Compared with the verdict read from the numbers; never used to make it."},
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "number": {"type": ["number", "string"], "description": "A finite number, or a string holding exactly one number (read with core.numbers; ambiguous separators are refused)."},
+    "probability": {"type": ["number", "string"]},
+    "count": {"type": ["integer", "string"]},
+    "commit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "commit": {"type": "string", "minLength": 4},
+        "time": {"type": "string"}
+      }
+    },
+    "effect_size": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["r", "d", "dz", "h", "proportions"]},
+        "value": {"$ref": "#/$defs/number"},
+        "p1": {"$ref": "#/$defs/number"},
+        "p2": {"$ref": "#/$defs/number"},
+        "n_groups": {"type": "array", "items": {"$ref": "#/$defs/count"}, "minItems": 2, "maxItems": 2}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quantity": {"type": "string"},
+        "value": {"$ref": "#/$defs/number"},
+        "unit": {"type": "string"},
+        "n": {"$ref": "#/$defs/count"},
+        "effect_size": {"$ref": "#/$defs/effect_size"},
+        "p": {"$ref": "#/$defs/probability"},
+        "ci": {"type": "array", "items": {"$ref": "#/$defs/number"}, "minItems": 2, "maxItems": 2},
+        "ci_level": {"$ref": "#/$defs/probability"},
+        "se": {"$ref": "#/$defs/number"},
+        "conditions": {"type": "object"},
+        "status": {"enum": ["ran", "no_data", "not_run"]},
+        "note": {"type": "string"}
+      }
+    }
+  }
+}

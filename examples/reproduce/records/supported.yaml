@@ -1,0 +1,32 @@
+# Synthetic example (planted numbers). A correlation found by an AutoDS run, re-tested
+# on an independent cohort with the same statistic, direction and decision rule.
+schema_version: 1
+id: H1-sleep-recall
+hypothesis: "Longer nightly sleep is associated with higher next-day word recall."
+source_hypothesis: "Longer nightly sleep is associated with higher next-day word recall."
+direction: positive
+source:
+  quantity: Pearson r between nightly sleep hours and next-day recall score
+  value: 0.31
+  unit: dimensionless
+  n: 240
+  effect_size: {type: r, value: 0.31}
+  p: 0.000001
+  conditions: {cohort: "cohort A (2019)", instrument: "actigraphy", method: "Pearson"}
+reproduction:
+  quantity: Pearson r between nightly sleep hours and next-day recall score
+  value: 0.27
+  unit: dimensionless
+  n: 180
+  effect_size: {type: r, value: 0.27}
+  p: 0.0002
+  conditions: {cohort: "cohort B (2024)", instrument: "actigraphy", method: "Pearson"}
+quantity_mapping: {relation: same_quantity}
+independence_axis: cohort
+thresholds:
+  alpha: 0.05
+  sides: 2
+  minimum_effect: 0.1
+  power: 0.8
+positive_control: {p: 0.001, note: "age vs reaction time recovers its known sign"}
+reported_verdict: supported
