@@ -1,0 +1,53 @@
+{
+  "id": "node_2_11",
+  "success": false,
+  "parent_id": "node_1_0",
+  "creation_idx": 12,
+  "created_at": "2026-01-01T00:00:00+00:00",
+  "time_elapsed": 71.0,
+  "visits": 1,
+  "value": 0.0,
+  "self_value": 0.0,
+  "surprising": false,
+  "belief_change": 0.0,
+  "normalized_surprisal": null,
+  "kl_divergence": null,
+  "prior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 5,
+    "n_false": 5,
+    "_empirical_mean": 0.5,
+    "mean": 0.5
+  },
+  "posterior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 5,
+    "n_false": 5,
+    "_empirical_mean": 0.5,
+    "mean": 0.5
+  },
+  "hypothesis": "Exercise days differ by region.",
+  "experiment_plan": {
+    "objective": "Compare exercise_days across regions (Kruskal-Wallis).",
+    "steps": "1. load the data\n2. run the test\n3. report",
+    "deliverables": "the statistic, the p value and n"
+  },
+  "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nprint(stats.kruskal(*[g[\"exercise_days\"] for _, g in df.groupby(\"region\")]))\n",
+  "code_output": "",
+  "analysis": "Exercise differs by region.",
+  "review": "N/A",
+  "untried_experiments": [],
+  "tried_experiments": [],
+  "query": "SYNTHETIC fixture query",
+  "messages": []
+}

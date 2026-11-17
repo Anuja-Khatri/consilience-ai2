@@ -1,0 +1,9 @@
+{
+  "note": "SYNTHETIC fixture, not a real run",
+  "dataset_metadata": "dataset_metadata.json",
+  "dataset_metadata_type": "asta",
+  "n_experiments": 12,
+  "model": "example-provider/example-model",
+  "exploration_weight": 1.0,
+  "surprisal_width": 0.2
+}

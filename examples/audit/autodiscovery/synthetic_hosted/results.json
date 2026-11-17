@@ -1,0 +1,452 @@
+{
+  "run": {
+    "run_id": "synthetic-hosted-run",
+    "status": "FINISHED",
+    "metadata": {
+      "note": "SYNTHETIC fixture"
+    }
+  },
+  "experiments": [
+    {
+      "experiment_id": "node_2_0",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 1,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 0,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.8636,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 9,
+        "n_false": 1,
+        "_empirical_mean": 0.5,
+        "mean": 0.8636
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Respondents who exercise on more days have a lower bmi.",
+      "analysis": "Across 1200 respondents, exercise_days is negatively correlated with bmi (Spearman rho = -0.31, p = 1.2e-27).",
+      "experiment_plan": {
+        "objective": "Correlate exercise_days with bmi over all respondents (Spearman).",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "The experiment tested the hypothesis directly; rho = -0.31 supports it.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nr = stats.spearmanr(df[\"exercise_days\"], df[\"bmi\"])\nprint(f\"n = {len(df)}\")\nprint(f\"Spearman rho = {r.statistic:.2f}, p = {r.pvalue:.1e}\")\n",
+      "code_output": "n = 1200\nSpearman rho = -0.31, p = 1.2e-27\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_1",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 2,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 1,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.8636,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 9,
+        "n_false": 1,
+        "_empirical_mean": 0.5,
+        "mean": 0.8636
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Older respondents report higher income.",
+      "analysis": "Age correlates with income (r = 0.42, p = 0.001, n = 1200).",
+      "experiment_plan": {
+        "objective": "Correlate age with income (Pearson).",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "Faithful implementation.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nr = stats.pearsonr(df[\"age\"], df[\"income\"])\nprint(f\"n = {len(df)}\")\nprint(f\"r = {r.statistic:.2f}, p = {r.pvalue:.3f}\")\n",
+      "code_output": "n = 1200\nr = 0.24, p = 0.001\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_2",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 3,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 2,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.7727,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 8,
+        "n_false": 2,
+        "_empirical_mean": 0.5,
+        "mean": 0.7727
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "More years of education are associated with more sleep.",
+      "analysis": "Education is positively associated with sleep (rho = 0.68, p = 0.001).",
+      "experiment_plan": {
+        "objective": "Draw a random sample of 2000 respondents and correlate education_years with sleep_hours.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "Looks fine.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nN_SAMPLE = 20\nsub = df.sample(N_SAMPLE, random_state=0)\nr = stats.spearmanr(sub[\"education_years\"], sub[\"sleep_hours\"])\nprint(f\"n = {len(sub)}\")\nprint(f\"rho = {r.statistic:.2f}, p = {r.pvalue:.3f}\")\n",
+      "code_output": "n = 20\nrho = 0.68, p = 0.001\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_3",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 4,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 3,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.7727,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 8,
+        "n_false": 2,
+        "_empirical_mean": 0.5,
+        "mean": 0.7727
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Larger households sleep less.",
+      "analysis": "Household size is negatively associated with sleep (rho = -0.12, p = 0.001).",
+      "experiment_plan": {
+        "objective": "Correlate household size with sleep_hours.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "Fine.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nr = stats.spearmanr(df[\"household_size\"], df[\"sleep_hours\"])\nprint(f\"n = {len(df)}\")\nprint(f\"rho = {r.statistic:.2f}, p = {r.pvalue:.3f}\")\n",
+      "code_output": "n = 1200\nrho = -0.12, p = 0.001\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_4",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 5,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 4,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.8636,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 9,
+        "n_false": 1,
+        "_empirical_mean": 0.5,
+        "mean": 0.8636
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Non-smokers sleep longer than smokers.",
+      "analysis": "Non-smokers sleep significantly longer: 7.4 vs 6.1 hours, a difference of 1.3 hours.",
+      "experiment_plan": {
+        "objective": "Compare mean sleep_hours between smokers and non-smokers.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "The difference is clear.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nm = df.groupby(\"smoker\")[\"sleep_hours\"].mean()\nprint(f\"n = {len(df)}\")\nprint(f\"no: {m['no']:.1f}, yes: {m['yes']:.1f}, difference = {m['no'] - m['yes']:.1f}\")\n",
+      "code_output": "n = 1200\nno: 7.4, yes: 6.1, difference = 1.3\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_5",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 6,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 5,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.7727,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 8,
+        "n_false": 2,
+        "_empirical_mean": 0.5,
+        "mean": 0.7727
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Income relates to smoking differently by region.",
+      "analysis": "In the north region income is associated with smoking (p = 0.04, odds ratio = 1.8).",
+      "experiment_plan": {
+        "objective": "Within each of six regions, test income against smoker status.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "Regional effect found.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nfor reg, g in df.groupby(\"region\"):\n    t = stats.ttest_ind(g[g.smoker == \"yes\"][\"income\"], g[g.smoker == \"no\"][\"income\"])\n    print(f\"{reg}: p = {t.pvalue:.2f}\")\nct = pd.crosstab(df[\"region\"] == \"north\", df[\"smoker\"])\nprint(f\"odds ratio = {ct.iloc[1, 1] * ct.iloc[0, 0] / (ct.iloc[1, 0] * ct.iloc[0, 1]):.1f}\")\n",
+      "code_output": "north: p = 0.04\nsouth: p = 0.21\neast: p = 0.33\nwest: p = 0.47\ncentral: p = 0.62\ncoast: p = 0.81\nodds ratio = 1.8\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_6",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 7,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 6,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.7727,
+      "posterior": 0.2273,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 8,
+        "n_false": 2,
+        "_empirical_mean": 0.5,
+        "mean": 0.7727
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 2,
+        "n_false": 8,
+        "_empirical_mean": 0.5,
+        "mean": 0.2273
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Higher income goes with longer sleep.",
+      "analysis": "No association between income and sleep_hours (rho = 0.05, p = 0.79, n = 30).",
+      "experiment_plan": {
+        "objective": "Correlate income with sleep_hours on a small pilot subsample.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "The null result is clear.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nsub = df.head(30)\nr = stats.spearmanr(sub[\"income\"], sub[\"sleep_hours\"])\nprint(f\"n = {len(sub)}\")\nprint(f\"rho = {r.statistic:.2f}, p = {r.pvalue:.2f}\")\n",
+      "code_output": "n = 30\nrho = 0.05, p = 0.79\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_7",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 8,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 7,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.8636,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 9,
+        "n_false": 1,
+        "_empirical_mean": 0.5,
+        "mean": 0.8636
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Smokers have a higher bmi.",
+      "analysis": "Smokers have a significantly higher bmi (t = 3.2, p = 0.001).",
+      "experiment_plan": {
+        "objective": "Two-sample t test of bmi by smoker status.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "Fine.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nt = stats.ttest_ind(df[df.smoker == \"yes\"][\"bmi\"], df[df.smoker == \"no\"][\"bmi\"])\nprint(f\"n = {len(df)}\")\nprint(f\"t = {t.statistic:.1f}, p = {t.pvalue:.3f}\")\n",
+      "code_output": "n = 1200\nt = 3.2, p = 0.001\n",
+      "rich_outputs": []
+    },
+    {
+      "experiment_id": "node_2_8",
+      "parent_id": "node_1_0",
+      "child_ids": [],
+      "creation_idx": 9,
+      "created_at": "2026-01-01T00:00:00+00:00",
+      "id_in_run": 8,
+      "status": "SUCCESS",
+      "is_surprising": true,
+      "surprise": null,
+      "prior": 0.5,
+      "posterior": 0.8636,
+      "prior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 5,
+        "n_false": 5,
+        "_empirical_mean": 0.5,
+        "mean": 0.5
+      },
+      "posterior_belief": {
+        "_type": "boolean",
+        "prior_params": [
+          0.5,
+          0.5
+        ],
+        "n": 10,
+        "n_true": 9,
+        "n_false": 1,
+        "_empirical_mean": 0.5,
+        "mean": 0.8636
+      },
+      "runtime_ms": 60000.0,
+      "hypothesis": "Smoking status can be predicted from age, income and region.",
+      "analysis": "The classifier outperforms a random baseline (accuracy 0.71 vs 0.50, a difference of 0.21, p = 1e-6).",
+      "experiment_plan": {
+        "objective": "Train a classifier for smoker status; compare its accuracy with chance.",
+        "steps": "1. load the data\n2. run the test\n3. report",
+        "deliverables": "the statistic, the p value and n"
+      },
+      "review": "The classifier is better than chance.",
+      "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nfrom sklearn.linear_model import LogisticRegression\nX = pd.get_dummies(df[[\"age\", \"income\", \"region\"]])\ny = df[\"smoker\"] == \"yes\"\npred = LogisticRegression().fit(X, y).predict(X)\nacc_model = (pred == y).mean()\nacc_random = max(y.mean(), 1 - y.mean())\nk = int((pred == y).sum())\np = stats.binomtest(k, len(y), acc_random).pvalue\nprint(f\"n = {len(df)}\")\nprint(f\"accuracy = {acc_model:.2f}, random baseline accuracy = {acc_random:.2f}, difference = {acc_model - acc_random:.2f}, p = {p:.0e}\")\n",
+      "code_output": "n = 1200\naccuracy = 0.71, random baseline accuracy = 0.50, difference = 0.21, p = 1e-6\n",
+      "rich_outputs": []
+    }
+  ]
+}

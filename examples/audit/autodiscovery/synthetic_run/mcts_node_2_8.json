@@ -1,0 +1,53 @@
+{
+  "id": "node_2_8",
+  "success": true,
+  "parent_id": "node_1_0",
+  "creation_idx": 9,
+  "created_at": "2026-01-01T00:00:00+00:00",
+  "time_elapsed": 68.0,
+  "visits": 1,
+  "value": 1.0,
+  "self_value": 1.0,
+  "surprising": true,
+  "belief_change": 0.3636,
+  "normalized_surprisal": null,
+  "kl_divergence": null,
+  "prior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 5,
+    "n_false": 5,
+    "_empirical_mean": 0.5,
+    "mean": 0.5
+  },
+  "posterior": {
+    "_type": "boolean",
+    "prior_params": [
+      0.5,
+      0.5
+    ],
+    "n": 10,
+    "n_true": 9,
+    "n_false": 1,
+    "_empirical_mean": 0.5,
+    "mean": 0.8636
+  },
+  "hypothesis": "Smoking status can be predicted from age, income and region.",
+  "experiment_plan": {
+    "objective": "Train a classifier for smoker status; compare its accuracy with chance.",
+    "steps": "1. load the data\n2. run the test\n3. report",
+    "deliverables": "the statistic, the p value and n"
+  },
+  "code": "import pandas as pd\nfrom scipy import stats\n\ndf = pd.read_csv(\"survey.csv\")\nfrom sklearn.linear_model import LogisticRegression\nX = pd.get_dummies(df[[\"age\", \"income\", \"region\"]])\ny = df[\"smoker\"] == \"yes\"\npred = LogisticRegression().fit(X, y).predict(X)\nacc_model = (pred == y).mean()\nacc_random = max(y.mean(), 1 - y.mean())\nk = int((pred == y).sum())\np = stats.binomtest(k, len(y), acc_random).pvalue\nprint(f\"n = {len(df)}\")\nprint(f\"accuracy = {acc_model:.2f}, random baseline accuracy = {acc_random:.2f}, difference = {acc_model - acc_random:.2f}, p = {p:.0e}\")\n",
+  "code_output": "n = 1200\naccuracy = 0.71, random baseline accuracy = 0.50, difference = 0.21, p = 1e-6\n",
+  "analysis": "The classifier outperforms a random baseline (accuracy 0.71 vs 0.50, a difference of 0.21, p = 1e-6).",
+  "review": "The classifier is better than chance.",
+  "untried_experiments": [],
+  "tried_experiments": [],
+  "query": "SYNTHETIC fixture query",
+  "messages": []
+}

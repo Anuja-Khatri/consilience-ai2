@@ -1,0 +1,985 @@
+{
+  "component": "audit",
+  "metrics": [
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags: accepted discoveries with any error or warning",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.accepted_flagged_any",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags: accepted discoveries with any error-severity code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.accepted_flagged_error",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a1.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a1.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a2.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a2.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a4.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a4.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a5.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a5.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a6.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a6.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a7.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.a7.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 12
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r1.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r1.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r2.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r2.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "false flags by this code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r3.accepted",
+      "n": 6,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.code.r3.rejected",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "the agents never use the graph they build: flagged by R5",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.built_but_unused.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "effect did not replicate with more samples: flagged by R2/R3/A6",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.effect_vanished_at_scale.caught",
+      "n": 3,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "overly simple benchmark, few samples, judge metric not validated: flagged by R3/A2",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.few_samples_unvalidated_metric.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "both conditions hard-coded: a foregone conclusion: flagged by R4",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.foregone_conclusion_hardcoded.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "agent partly hard-coded: flagged by R4",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.partly_hardcoded_agent.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "baseline too simple (a random agent): flagged by R1",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.random_only_baseline.caught",
+      "n": 4,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "report lacks details to evaluate: flagged by A2/A4/A7",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.report_lacks_details.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "unclear motivation and utility: flagged by no code (out of scope)",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.reason.unclear_motivation.caught",
+      "n": 1,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "rejected discoveries with any error or warning",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_any",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 13
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "rejected discoveries with any error-severity code",
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_error",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4",
+        "count of rejected discoveries flagged by a code meant for their reason; one reason (unclear motivation) has no such code"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_flagged_intended",
+      "n": 13,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "development set: the rejection reasons are public and the rules were written knowing them",
+        "19 discoveries from CodeScientist Table 4",
+        "excludes the unclear-motivation rejection"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "dev",
+      "metric_id": "audit.dev.rejected_in_scope_flagged_intended",
+      "n": 12,
+      "source": "fetch:codescientist-example-experiments + fetch:codescientist (metaanalysis)",
+      "unit": "discoveries",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "distractor columns with BH q < 0.05 (122)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_rate_bh",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.0274
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "distractor columns with raw p < 0.05 (331)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_rate_raw",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.0743
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "1 - (BH hits / raw hits) among distractor columns",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hit_reduction",
+      "n": 331,
+      "source": "fetch:discoverybench",
+      "value": 0.6314
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hits_bh",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 122
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_hits_raw",
+      "n": 4456,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 331
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.distractor_tests",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "unit": "column tests",
+      "value": 4456
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false",
+        "gold columns enter the target through nonlinear and conditional formulas; a marginal test can miss them"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.gold_recall_bh",
+      "n": 575,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.5235
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false",
+        "gold columns enter the target through nonlinear and conditional formulas; a marginal test can miss them"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.gold_recall_raw",
+      "n": 575,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05",
+      "value": 0.5791
+    },
+    {
+      "caveats": [
+        "permuted-target control: every hit is false by construction"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_hit_rate_bh",
+      "n": 5031,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05; target permuted, numpy default_rng(seed 20261117 + task index)",
+      "value": 0.0012
+    },
+    {
+      "caveats": [
+        "permuted-target control: every hit is false by construction"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_hit_rate_raw",
+      "n": 5031,
+      "source": "fetch:discoverybench",
+      "test": "per column vs target: Spearman (numeric), point-biserial (binary-numeric), Kruskal-Wallis (categorical-numeric), chi-square (categorical pairs); BH within task; alpha 0.05; target permuted, numpy default_rng(seed 20261117 + task index)",
+      "value": 0.0473
+    },
+    {
+      "caveats": [
+        "permuted-target control: share of tasks with at least one false discovery"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_tasks_any_hit_bh",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.0382
+    },
+    {
+      "caveats": [
+        "permuted-target control: share of tasks with at least one false discovery"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "audit.discoverybench.null_tasks_any_hit_raw",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.7325
+    },
+    {
+      "caveats": [
+        "no machine-readable gold relation (target_col, relevant_cols): 720",
+        "target is constant: 26"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_scanned",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "tasks",
+      "value": 157
+    },
+    {
+      "caveats": [],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_total",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "tasks",
+      "value": 903
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_with_distractor_hit_bh",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.3885
+    },
+    {
+      "caveats": [
+        "synthetic DiscoveryBench tasks; only tasks with target_col and relevant_cols",
+        "distractors can be genuinely associated with the target (semantic-tree generation): a distractor hit is outside the gold relation, not necessarily false"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.discoverybench.tasks_with_distractor_hit_raw",
+      "n": 157,
+      "source": "fetch:discoverybench",
+      "value": 0.7516
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_flagged",
+      "n": 38,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.4408
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.mean_agreement_passed",
+      "n": 42,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": 0.3433
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary analysis, no decision"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.mwu_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided Mann-Whitney U, unstratified (secondary)",
+      "value": 0.1431
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_flagged",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 38
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "development-set directory: 10",
+        "idea has fewer than 2 judged runs: 13",
+        "no per-run judgement: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.n_runs",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "runs",
+      "value": 80
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.4878
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary: runs of the 19 development ideas removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.no_dev_ideas.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.2161
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "H1 not supported at alpha 0.05 (requires p < 0.05 and T > 0)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.perm_p",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.0845
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated",
+        "secondary; positive means passed runs agree more"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h1.rank_biserial",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "value": -0.1861
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.supported",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "unit": "1 = yes, 0 = no",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "outcome: leave-one-out agreement of the meta-analysis per-run judgements (which are model-generated in the released data)",
+        "predictor: any error-severity audit check; R2 not evaluated"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "mean agreement of passed runs minus flagged runs (H1 predicts > 0)",
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout.h1.t_difference",
+      "n": 80,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis)",
+      "test": "two-sided permutation, labels permuted within idea, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": -0.0975
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_flagged",
+      "n": 9,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6296
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mean_soundness_passed",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "value": 0.6667
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.mwu_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided Mann-Whitney U (secondary)",
+      "value": 0.8061
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_flagged",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.n_papers",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "unit": "papers",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.perm_p",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.8561
+    },
+    {
+      "caveats": [
+        "exploratory: the 20 rated papers are the development-set directories, so this test is not blind",
+        "outcome: mean binarised soundness (Unsound 0, other 1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout.h2.t_difference",
+      "n": 20,
+      "prereg": "prereg/audit/heldout_prereg.md (commit 3d864413cef102e3136d82af8cc9e0660ae78026)",
+      "source": "fetch:codescientist (reviews) + fetch:codescientist-example-experiments",
+      "test": "two-sided permutation, 10000 draws, numpy default_rng(20261117); T = mean(passed) - mean(flagged)",
+      "value": 0.037
+    },
+    {
+      "caveats": [
+        "one table in one report; the recomputation (100 x mean of the within_k_percent booleans per method) was chosen to match the table's column names"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.resistor_table.cells_reproduced",
+      "n": 9,
+      "receipts": [
+        "resistorsubstitutionadvisorcopy3followon1-20250210-090957/modal-python-20250210-091603/modal-output/results.json sha256:bb8d27964d730e151c14695a2542deb65ef600a0d2135cb793b71b615d1fc814",
+        "resistorsubstitutionadvisorcopy3followon1-20250210-090957/report/report.tex sha256:06f57d827bc571714b652ad2844e2092bb1993027356b115a52fffa4a6e79282"
+      ],
+      "source": "fetch:codescientist-example-experiments",
+      "unit": "table cells",
+      "value": 9
+    }
+  ],
+  "schema_version": 1
+}

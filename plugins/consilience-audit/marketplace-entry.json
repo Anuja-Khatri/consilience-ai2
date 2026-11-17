@@ -1,0 +1,5 @@
+{
+  "name": "consilience-audit",
+  "description": "Deterministic, receipt-backed audit of agent-run experiments (AutoDiscovery runs, CodeScientist experiment directories): are the reported numbers in the output, is the n right, is there a real test, effect size, baseline and multiplicity control. Runs beside AutoDiscovery's Validity Check; never calls a model.",
+  "keywords": ["audit", "autodiscovery", "codescientist", "validity", "multiple testing", "benjamini-hochberg", "receipts", "deterministic"]
+}

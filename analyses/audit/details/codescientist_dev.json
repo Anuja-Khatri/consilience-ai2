@@ -1,0 +1,515 @@
+{
+  "rows": [
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A1",
+        "A2",
+        "R1"
+      ],
+      "dir": "simulationconfidenceanalysiscopy4followon1-20250210-092159",
+      "error_codes": [
+        "A1",
+        "R1"
+      ],
+      "error_flag": true,
+      "human": "accepted",
+      "idea": "simulationconfidenceanalysis",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "inconclusive",
+        "inconclusive",
+        "inconclusive",
+        "support",
+        "support"
+      ],
+      "table4": 1,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A5",
+        "A7",
+        "R2"
+      ],
+      "dir": "progressivestatecomplexitycopy4followon2-20250210-125850",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "accepted",
+      "idea": "progressivestatecomplexity",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "inconclusive",
+        "refute",
+        "refute",
+        "support",
+        "support"
+      ],
+      "table4": 2,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A1",
+        "A4",
+        "A7",
+        "R2"
+      ],
+      "dir": "twostagegamegenerationcopy4followon1-20250210-093345",
+      "error_codes": [
+        "A1",
+        "A4"
+      ],
+      "error_flag": true,
+      "human": "accepted",
+      "idea": "twostagegamegeneration",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "inconclusive",
+        "refute",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 3,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A7",
+        "R2"
+      ],
+      "dir": "resistorsubstitutionadvisorcopy3followon1-20250210-090957",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "accepted",
+      "idea": "resistorsubstitutionadvisor",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "inconclusive",
+        "inconclusive",
+        "refute",
+        "support",
+        "support"
+      ],
+      "table4": 4,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A1",
+        "R2"
+      ],
+      "dir": "basicconfidencesimulationcopy4followon1-20250210-093850",
+      "error_codes": [
+        "A1"
+      ],
+      "error_flag": true,
+      "human": "accepted",
+      "idea": "basicconfidencesimulation",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "inconclusive",
+        "refute",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 5,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A7"
+      ],
+      "dir": "knowledgegraphdiscoverycopy4followon1a-20250210-090656",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "accepted",
+      "idea": "knowledgegraphdiscovery",
+      "intended": [],
+      "reason": null,
+      "reruns": [
+        "support"
+      ],
+      "table4": 6,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "A2"
+      ],
+      "codes": [
+        "A1",
+        "A2"
+      ],
+      "dir": "simplesocialgraphscopy4-20250204-193237",
+      "error_codes": [
+        "A1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "simplesocialgraphs",
+      "intended": [
+        "R3",
+        "A2"
+      ],
+      "reason": "few_samples_unvalidated_metric",
+      "reruns": [
+        "refute",
+        "refute",
+        "refute",
+        "refute",
+        "refute"
+      ],
+      "table4": 7,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "R2",
+        "R3"
+      ],
+      "codes": [
+        "A7",
+        "R2",
+        "R3"
+      ],
+      "dir": "simpleplanningagentcopy3-20250204-151159",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "simpleplanningagent",
+      "intended": [
+        "R2",
+        "R3",
+        "A6"
+      ],
+      "reason": "effect_vanished_at_scale",
+      "reruns": [
+        "refute",
+        "refute",
+        "support"
+      ],
+      "table4": 8,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "A6"
+      ],
+      "codes": [
+        "A6",
+        "A7"
+      ],
+      "dir": "locationgraphcookingcopy3followon1-20250209-143455",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "locationgraphcooking",
+      "intended": [
+        "R2",
+        "R3",
+        "A6"
+      ],
+      "reason": "effect_vanished_at_scale",
+      "reruns": [
+        "inconclusive",
+        "support"
+      ],
+      "table4": 9,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "A6",
+        "R2"
+      ],
+      "codes": [
+        "A6",
+        "A7",
+        "R2"
+      ],
+      "dir": "actionoutcometrackingcopy5followon1-20250209-154714",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "actionoutcometracking",
+      "intended": [
+        "R2",
+        "R3",
+        "A6"
+      ],
+      "reason": "effect_vanished_at_scale",
+      "reruns": [
+        "inconclusive",
+        "refute",
+        "refute",
+        "support",
+        "support"
+      ],
+      "table4": 10,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A7"
+      ],
+      "dir": "simpletemplatediscoverycopy4-20250204-161704",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "simpletemplatediscovery",
+      "intended": [
+        "R4"
+      ],
+      "reason": "partly_hardcoded_agent",
+      "reruns": [
+        "inconclusive",
+        "support"
+      ],
+      "table4": 11,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A1",
+        "A7"
+      ],
+      "dir": "llmgraphverificationcopy3-20250204-151006",
+      "error_codes": [
+        "A1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "llmgraphverification",
+      "intended": [
+        "R5"
+      ],
+      "reason": "built_but_unused",
+      "reruns": [
+        "inconclusive",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 12,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "R1"
+      ],
+      "codes": [
+        "A7",
+        "R1"
+      ],
+      "dir": "simpleaffordanceexplorationcopy5-20250204-183313",
+      "error_codes": [
+        "R1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "simpleaffordanceexploration",
+      "intended": [
+        "R1"
+      ],
+      "reason": "random_only_baseline",
+      "reruns": [
+        "support"
+      ],
+      "table4": 13,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "R1"
+      ],
+      "codes": [
+        "A7",
+        "R1"
+      ],
+      "dir": "wordnetcookingexplorationcopy2-20250204-150930",
+      "error_codes": [
+        "R1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "wordnetcookingexploration",
+      "intended": [
+        "R1"
+      ],
+      "reason": "random_only_baseline",
+      "reruns": [
+        "inconclusive",
+        "support"
+      ],
+      "table4": 14,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A5",
+        "A7"
+      ],
+      "dir": "simplemetaphorgraphcopy1-20250204-193736",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "simplemetaphorgraph",
+      "intended": [],
+      "reason": "unclear_motivation",
+      "reruns": [
+        "support",
+        "support",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 15,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "R1"
+      ],
+      "codes": [
+        "A1",
+        "A7",
+        "R1"
+      ],
+      "dir": "simplegoalexplorercopy4-20250204-151112",
+      "error_codes": [
+        "A1",
+        "R1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "simplegoalexplorer",
+      "intended": [
+        "R1"
+      ],
+      "reason": "random_only_baseline",
+      "reruns": [
+        "inconclusive",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 16,
+      "verdict": "refuse"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "R1"
+      ],
+      "codes": [
+        "A7",
+        "R1"
+      ],
+      "dir": "cookinggraphexplorercopy4-20250204-164020",
+      "error_codes": [
+        "R1"
+      ],
+      "error_flag": true,
+      "human": "rejected",
+      "idea": "cookinggraphexplorer",
+      "intended": [
+        "R1"
+      ],
+      "reason": "random_only_baseline",
+      "reruns": [
+        "inconclusive",
+        "inconclusive",
+        "inconclusive",
+        "refute"
+      ],
+      "table4": 17,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [],
+      "codes": [
+        "A7",
+        "R2"
+      ],
+      "dir": "templateworldgenerationcopy5-20250204-175513",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "templateworldgeneration",
+      "intended": [
+        "R4"
+      ],
+      "reason": "foregone_conclusion_hardcoded",
+      "reruns": [
+        "refute",
+        "support",
+        "support"
+      ],
+      "table4": 18,
+      "verdict": "flag"
+    },
+    {
+      "any_flag": true,
+      "caught_by": [
+        "A7"
+      ],
+      "codes": [
+        "A7",
+        "R2"
+      ],
+      "dir": "simplegraphalignmentcopy4followon2-20250210-130336",
+      "error_codes": [],
+      "error_flag": false,
+      "human": "rejected",
+      "idea": "simplegraphalignment",
+      "intended": [
+        "A2",
+        "A4",
+        "A7"
+      ],
+      "reason": "report_lacks_details",
+      "reruns": [
+        "refute",
+        "refute",
+        "support",
+        "support",
+        "support"
+      ],
+      "table4": 19,
+      "verdict": "flag"
+    }
+  ]
+}

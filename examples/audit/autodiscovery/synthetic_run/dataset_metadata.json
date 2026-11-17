@@ -1,0 +1,45 @@
+{
+  "description": "SYNTHETIC survey dataset for audit fixtures",
+  "datasets": [
+    {
+      "name": "survey.csv",
+      "description": "SYNTHETIC: no such data exists",
+      "columns": {
+        "raw": [
+          {
+            "name": "age",
+            "description": "Respondent age in years"
+          },
+          {
+            "name": "income",
+            "description": "Annual household income in thousands"
+          },
+          {
+            "name": "education_years",
+            "description": "Years of formal education"
+          },
+          {
+            "name": "region",
+            "description": "Region of residence"
+          },
+          {
+            "name": "smoker",
+            "description": "Whether the respondent smokes (yes/no)"
+          },
+          {
+            "name": "bmi",
+            "description": "Body mass index"
+          },
+          {
+            "name": "sleep_hours",
+            "description": "Average nightly sleep in hours"
+          },
+          {
+            "name": "exercise_days",
+            "description": "Days per week with at least 30 minutes of exercise"
+          }
+        ]
+      }
+    }
+  ]
+}
