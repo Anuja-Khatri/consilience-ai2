@@ -1,0 +1,29 @@
+---
+title: "Planted defects"
+---
+
+Each span below carries one planted defect; expected_findings.json lists them all.
+
+[Batch size mattered]{.ev key="d-missing-key" quote="The effect may be associated with the larger batch size." cite="smith2024"}.
+
+[An unbacked claim]{.ev cite="smith2024"}.
+
+[Another unbacked claim]{.ev key="d-empty-quote"}.
+
+[A claim with a typo in its key]{.ev key="d-typo-key"}.
+
+[The model saw many images]{.ev key="d-bad-cite"}.
+
+[Training used 1,200 images]{.ev quote="We trained the model on 1,200 images" cite="ghost2021"}.
+
+[Error fell]{.ev key="d-provenance"}.
+
+[It converges]{.ev key="d-provenance-not-map"}.
+
+[Held-out accuracy was reported]{.ev key="d-not-verbatim"}.
+
+The model reached [an accuracy of 91.2%]{.ev key="d-number-overreach"}.
+
+The run ended at [a final score of 0.421]{.ev key="d-precision-overreach"}.
+
+[The larger batch size causes the effect]{.ev key="d-certainty-upgrade"}.

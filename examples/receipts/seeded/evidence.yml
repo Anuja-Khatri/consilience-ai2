@@ -1,0 +1,85 @@
+# Evidence store for the seeded workspace. Entries named c-* back the clean controls in
+# controls.qmd; entries named d-* carry planted defects (see expected_findings.json).
+evidence:
+  # ---- controls: every one of these must produce no error or warning
+  c-ligature:
+    quote: "The final score was 0.42 ± 0.03 across five seeds."
+    cite: smith2024
+    locator: abstract
+  c-hyphenation:
+    quote: "Prior work reported a 12% gain in a related setting"
+    cite: smith2024
+  c-dehyphenated:
+    quote: "the regularisation could reduce overfitting"
+    cite: smith2024
+  c-curly-quotes:
+    quote: 'measured with "paired" comparisons'
+    cite: smith2024
+  c-percent:
+    quote: "report an accuracy of 87.5% on the held-out set"
+    cite: smith2024
+  c-hedged-both:
+    quote: "The effect may be associated with the larger batch size."
+    cite: smith2024
+  c-assertive-both:
+    quote: "We show that the method converges in 40 iterations."
+    cite: lee2023
+    locator: "p. 4"
+  c-p-value:
+    quote: "The treatment reduced error by 3.1 points (p = 0.004)."
+    cite: lee2023
+  c-corpus-id:
+    quote: "The survey covered 310 laboratories in 14 countries"
+    source: "Synthetic Survey Report"
+    provenance:
+      method: asta papers snippet-search
+      query: "laboratory survey response rates"
+      corpus_id: 289622360
+      url: https://api.semanticscholar.org/CorpusID:289622360
+      retrieved: 2026-08-29
+  c-asta-uri:
+    quote: "response rates were higher in smaller laboratories"
+    source: "Synthetic Survey Report"
+    provenance:
+      method: asta documents search
+      corpus_id: 289622360
+      url: asta://documents/synthetic-survey
+      retrieved: 2026-08-30
+      note: "a passthrough command followed by its own subcommand word"
+  c-negated:
+    quote: "Our analysis suggests that the regularisation could reduce"
+    cite: smith2024
+  # ---- planted defects
+  d-empty-quote:
+    quote: ""
+    cite: smith2024
+  d-bad-cite:
+    quote: "We trained the model on 1,200 images"
+    cite: nobody2020
+  d-orphan:
+    quote: "This entry is referenced by no span."
+    cite: smith2024
+  d-provenance:
+    quote: "The treatment reduced error by 3.1 points"
+    cite: lee2023
+    provenance:
+      method: asta search papers
+      corpus_id: 12a
+      url: ftp://example.org/paper.pdf
+      retrieved: 2026-13-01
+  d-provenance-not-map:
+    quote: "We show that the method converges"
+    cite: lee2023
+    provenance: snippet search
+  d-not-verbatim:
+    quote: "report an accuracy of 88% on the held-out set"
+    cite: smith2024
+  d-number-overreach:
+    quote: "report an accuracy of 87.5% on the held-out set"
+    cite: smith2024
+  d-precision-overreach:
+    quote: "The final score was 0.42 ± 0.03 across five seeds."
+    cite: smith2024
+  d-certainty-upgrade:
+    quote: "The effect may be associated with the larger batch size."
+    cite: smith2024

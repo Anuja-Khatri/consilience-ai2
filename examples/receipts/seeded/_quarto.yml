@@ -1,0 +1,15 @@
+# A synthetic Asta-format workspace with planted evidence defects and clean controls.
+# Every source, citation and quote here is invented for the test suite.
+project:
+  type: website
+  render:
+    - controls.qmd
+    - defects.qmd
+
+bibliography: references.bib
+
+metadata-files:
+  - evidence.yml
+
+filters:
+  - _extensions/evidence/snippet.lua

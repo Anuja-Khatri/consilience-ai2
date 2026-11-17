@@ -1,0 +1,10 @@
+# A small synthetic workspace with correct evidence: `make check` must pass on it.
+project:
+  type: website
+  render:
+    - index.qmd
+
+bibliography: references.bib
+
+metadata-files:
+  - evidence.yml

@@ -1,0 +1,1 @@
+Results. The treatment reduced error by 3.1 points (p = 0.004). We show that the method converges in 40 iterations.

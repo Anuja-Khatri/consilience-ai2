@@ -1,0 +1,818 @@
+{
+  "note": "Short excerpts with receipts, for illustration. The data are not copied here: each receipt names the source file, its SHA-256 and the character offsets checked. Theorizer: the released HTML export (theorizer-paper-data). SciArena: SciArena-Eval train.json.",
+  "sciarena": {
+    "W1": [
+      {
+        "claim_excerpt": "Resonance Raman spectroscopy (RRS) improves sensitivity by tuning the excitation wavelength to match electronic trans...",
+        "marker": "Ding et al. 2022a",
+        "receipt": {
+          "end": 985,
+          "offset": 968,
+          "sha256": "eb5be2ed9bce1f3770fb122ed687ffecb80552ebac40852fe59be4e6f1383b10",
+          "source": "sciarena-eval:f9b50e08-1a69-45fc-a639-6fa6c17674c6/responseA"
+        },
+        "side": "A",
+        "unsupported": [
+          "2",
+          "6"
+        ],
+        "vote_index": 7
+      },
+      {
+        "claim_excerpt": "The earliest phase, dating back over 6,000 years, relied on empirical practices such as selective breeding of plants...",
+        "marker": "Godbey et al. 2022a",
+        "receipt": {
+          "end": 316,
+          "offset": 297,
+          "sha256": "c18b0ec0bc5a67b2867490b7d7ae2bbafaf26dcc1a7c759523deebb1eac39ac2",
+          "source": "sciarena-eval:6f2c5be8-6f77-403c-980a-36672cfdb5bc/responseB"
+        },
+        "side": "B",
+        "unsupported": [
+          "6,000"
+        ],
+        "vote_index": 8
+      },
+      {
+        "claim_excerpt": "Materials like PM6 with NFAs have reached efficiencies over 19%, benefiting from enhanced charge generation and trans...",
+        "marker": "Feron et al. 2012a",
+        "receipt": {
+          "end": 638,
+          "offset": 620,
+          "sha256": "aa2b8c6f75711a4cf04b46fdfc7cd5674fdd93af91e1731438625617c3f43945",
+          "source": "sciarena-eval:c34c9324-42b1-4a15-b4fc-850be16bba63/responseA"
+        },
+        "side": "A",
+        "unsupported": [
+          "19%"
+        ],
+        "vote_index": 9
+      },
+      {
+        "claim_excerpt": "Incorporating BO-5Cl, an asymmetric acceptor, into donor blends achieved notable efficiencies over 15%, and further i...",
+        "marker": "Sun et al. 2022a",
+        "receipt": {
+          "end": 1023,
+          "offset": 1007,
+          "sha256": "aa2b8c6f75711a4cf04b46fdfc7cd5674fdd93af91e1731438625617c3f43945",
+          "source": "sciarena-eval:c34c9324-42b1-4a15-b4fc-850be16bba63/responseA"
+        },
+        "side": "A",
+        "unsupported": [
+          "15%",
+          "18%"
+        ],
+        "vote_index": 9
+      },
+      {
+        "claim_excerpt": "High-frequency tagging (>30 Hz) is constrained by technical challenges, as EEG struggles to reliably record cortical...",
+        "marker": "Esposito et al. 2024c",
+        "receipt": {
+          "end": 929,
+          "offset": 908,
+          "sha256": "936fa8d9aa8b65d2317b99756acbb3c92216138ae6f4d8b8f50f816b6efe428d",
+          "source": "sciarena-eval:339a3837-ab17-4039-9524-8439ed68cd40/responseB"
+        },
+        "side": "B",
+        "unsupported": [
+          "30"
+        ],
+        "vote_index": 11
+      }
+    ],
+    "W2": [
+      {
+        "claim_assertive": [
+          "shown"
+        ],
+        "claim_excerpt": "Myeloid-derived suppressor cells (MDSCs) have been shown to be induced in pulmonary fibrosis, with B7H3 playing a key...",
+        "marker": "Liu et al. 2022a",
+        "receipt": {
+          "end": 592,
+          "offset": 576,
+          "sha256": "7f3c9c592c51d7b9efdaff44da800caf5aa2c06921824c2c483e8058a2f71561",
+          "source": "sciarena-eval:0ba5d9c1-7664-4b98-9e05-917c7807a9bf/responseB"
+        },
+        "side": "B",
+        "source_hedged": [
+          "suggests",
+          "probably"
+        ],
+        "vote_index": 2
+      },
+      {
+        "claim_assertive": [
+          "proven"
+        ],
+        "claim_excerpt": "In protocols with controlled cardiac unloading while delaying reperfusion, positive clinical outcomes for the prevent...",
+        "marker": "Hazaveh et al. 2024a",
+        "receipt": {
+          "end": 1884,
+          "offset": 1864,
+          "sha256": "8dd2b0ff36a279f30a1e41cae809608fa2215002deaf4d8de84079f6f95177d4",
+          "source": "sciarena-eval:6a79d3a0-fba9-476b-86cc-e8b8c842ab29/responseB"
+        },
+        "side": "B",
+        "source_hedged": [
+          "suggesting",
+          "may"
+        ],
+        "vote_index": 5
+      },
+      {
+        "claim_assertive": [
+          "establish"
+        ],
+        "claim_excerpt": "By dividing Chinese into distinct historical phases—such as Old Chinese (pre-Qin), Middle Chinese (Jin to Song dynast...",
+        "marker": "Tian et al. 2021b",
+        "receipt": {
+          "end": 485,
+          "offset": 468,
+          "sha256": "9d18a495698425d9a7afb4db2077beedba178e5c9deda74648e10460dbf58068",
+          "source": "sciarena-eval:d5027c9cf3dc4a649d90666ab5330c03/responseA"
+        },
+        "side": "A",
+        "source_hedged": [
+          "may"
+        ],
+        "vote_index": 21
+      },
+      {
+        "claim_assertive": [
+          "shows"
+        ],
+        "claim_excerpt": "Research on women with benign ovarian cysts shows that surgical interventions involving the ovaries can significantly...",
+        "marker": "Zhou et al. 2024a",
+        "receipt": {
+          "end": 720,
+          "offset": 703,
+          "sha256": "e0b58156c50bff9639706ebaef9765ca3ff255f209cdfef9d5eece72f3016e20",
+          "source": "sciarena-eval:44d49366-13b3-49cc-94f9-7b4693307c31/responseB"
+        },
+        "side": "B",
+        "source_hedged": [
+          "may",
+          "could"
+        ],
+        "vote_index": 28
+      },
+      {
+        "claim_assertive": [
+          "confirms"
+        ],
+        "claim_excerpt": "Data-Juicer confirms that filtering for aspect ratio, aesthetics, low NSFW and tight text alignment further lifts T2V...",
+        "marker": "Chen et al. 2024c",
+        "receipt": {
+          "end": 604,
+          "offset": 587,
+          "sha256": "aa84469c07794f34440b675320df30284863ce73d1cce13aaf6c3ae8de1bd072",
+          "source": "sciarena-eval:4a51b138-32a2-4a55-8ac3-d33917b2f290/responseA"
+        },
+        "side": "A",
+        "source_hedged": [
+          "possible",
+          "may",
+          "might",
+          "might"
+        ],
+        "vote_index": 33
+      }
+    ],
+    "quote_not_found": [
+      {
+        "quote_excerpt": "new development pattern",
+        "receipt": {
+          "end": 540,
+          "offset": 517,
+          "sha256": "cbf9b037c0db865b615a5162c8eb5a70b5085748b18727b921fd6eb4e343cf7d",
+          "source": "sciarena-eval:2cd03bcd-bacb-4f1e-a1be-871947be00f2/responseA"
+        },
+        "side": "A",
+        "vote_index": 631
+      },
+      {
+        "quote_excerpt": "14th Five-Year Plan",
+        "receipt": {
+          "end": 1846,
+          "offset": 1827,
+          "sha256": "6c391b5a3658910f20e3740017e14944dd27eb24a37322892102efca053bbbd8",
+          "source": "sciarena-eval:b745b2be-8b54-4eae-a82b-bc3470a40e24/responseB"
+        },
+        "side": "B",
+        "vote_index": 1144
+      },
+      {
+        "quote_excerpt": "reward per unit cost",
+        "receipt": {
+          "end": 237,
+          "offset": 217,
+          "sha256": "3fecd27a3524ad58d291e6678628fae952e021796f23a26ebf2d45b3dd62afb3",
+          "source": "sciarena-eval:ea16d9bc-bf92-4eaf-ad9f-3c4ce3a01d63/responseA"
+        },
+        "side": "A",
+        "vote_index": 1157
+      },
+      {
+        "quote_excerpt": "anti-utopian urban space",
+        "receipt": {
+          "end": 924,
+          "offset": 900,
+          "sha256": "dd717a65c80975151c25fb2bf4b8cca4b7bb36603d2e793e0fd262dc9edad109",
+          "source": "sciarena-eval:5610e4f3-cfe8-4616-b0c8-069d726d82a9/responseA"
+        },
+        "side": "A",
+        "vote_index": 1467
+      },
+      {
+        "quote_excerpt": "unfamiliar oriental cultural symbols",
+        "receipt": {
+          "end": 967,
+          "offset": 931,
+          "sha256": "dd717a65c80975151c25fb2bf4b8cca4b7bb36603d2e793e0fd262dc9edad109",
+          "source": "sciarena-eval:5610e4f3-cfe8-4616-b0c8-069d726d82a9/responseA"
+        },
+        "side": "A",
+        "vote_index": 1467
+      }
+    ],
+    "unresolved": [
+      {
+        "claim_excerpt": "This ambiguity set is typically constructed based on moments (like mean or variance) or distance metrics between dist...",
+        "marker": "Jiang et al. 2023a",
+        "receipt": {
+          "end": 783,
+          "offset": 765,
+          "sha256": "f0637801e510ee0c84604923f1b51e9c30781706649b5bc04c4a35984437d124",
+          "source": "sciarena-eval:6b77ecd3-df08-4565-9244-402e0c10a472/responseA"
+        },
+        "side": "A",
+        "vote_index": 999
+      }
+    ]
+  },
+  "sciarena_heldout": {
+    "w1": {
+      "ci": [
+        0.3827338893122703,
+        0.5041395259340561
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1722,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 120,
+      "n": 271,
+      "p_perm": 0.06829317068293171,
+      "p_sign": 0.06820129335098757,
+      "prop": 0.44280442804428044
+    },
+    "w1w2": {
+      "ci": [
+        0.4590042261261367,
+        0.542744076155967
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1424,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 285,
+      "n": 569,
+      "p_perm": 1.0,
+      "p_sign": 1.0,
+      "prop": 0.5008787346221442
+    },
+    "w2": {
+      "ci": [
+        0.46907132066830126,
+        0.5765112765718513
+      ],
+      "decision": "null",
+      "excluded": {
+        "equal_rates": 1645,
+        "no_citations": 7,
+        "tie_or_missing_vote": 0
+      },
+      "k": 182,
+      "n": 348,
+      "p_perm": 0.42585741425857415,
+      "p_sign": 0.4213879913728634,
+      "prop": 0.5229885057471264
+    }
+  },
+  "theorizer": {
+    "T1": [
+      {
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-172.html",
+        "href": "../results/e2232.5.html#e2232.5",
+        "id": "e2232.5",
+        "key": "theory-172#statement-0",
+        "receipt": {
+          "end": 9924,
+          "normalisation": null,
+          "offset": 9847,
+          "sha256": "1e59e0529d0169e1b2ed1cc42c57a63632f6fe73a30566e9c40d04748f8d841c",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-172.html"
+        },
+        "well_formed": true
+      },
+      {
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-172.html",
+        "href": "../results/e2232.6.html#e2232.6",
+        "id": "e2232.6",
+        "key": "theory-172#statement-0",
+        "receipt": {
+          "end": 10002,
+          "normalisation": null,
+          "offset": 9925,
+          "sha256": "1e59e0529d0169e1b2ed1cc42c57a63632f6fe73a30566e9c40d04748f8d841c",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-172.html"
+        },
+        "well_formed": true
+      },
+      {
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-172.html",
+        "href": "../results/e2232.7.html#e2232.7",
+        "id": "e2232.7",
+        "key": "theory-172#statement-0",
+        "receipt": {
+          "end": 10080,
+          "normalisation": null,
+          "offset": 10003,
+          "sha256": "1e59e0529d0169e1b2ed1cc42c57a63632f6fe73a30566e9c40d04748f8d841c",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-172.html"
+        },
+        "well_formed": true
+      },
+      {
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-172.html",
+        "href": "../results/e2232.8.html#e2232.8",
+        "id": "e2232.8",
+        "key": "theory-172#statement-0",
+        "receipt": {
+          "end": 10158,
+          "normalisation": null,
+          "offset": 10081,
+          "sha256": "1e59e0529d0169e1b2ed1cc42c57a63632f6fe73a30566e9c40d04748f8d841c",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-172.html"
+        },
+        "well_formed": true
+      },
+      {
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-172.html",
+        "href": "../results/e2232.9.html#e2232.9",
+        "id": "e2232.9",
+        "key": "theory-172#statement-0",
+        "receipt": {
+          "end": 10236,
+          "normalisation": null,
+          "offset": 10159,
+          "sha256": "1e59e0529d0169e1b2ed1cc42c57a63632f6fe73a30566e9c40d04748f8d841c",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-172.html"
+        },
+        "well_formed": true
+      }
+    ],
+    "T2": [
+      {
+        "condition": "html_output-parametric-accuracy-focused",
+        "empty_evidence": true,
+        "empty_scope": true,
+        "file": "theories/theory-182.html",
+        "key": "theory-182#statement-0",
+        "receipt": {
+          "end": 3213,
+          "normalisation": null,
+          "offset": 2206,
+          "sha256": "42028efaae8f5de3f9b066fea25055f7427c85957a25951445efe8efab913074",
+          "source": "theorizer:html_output-parametric-accuracy-focused/theories/theory-182.html"
+        }
+      },
+      {
+        "condition": "html_output-parametric-accuracy-focused",
+        "empty_evidence": true,
+        "empty_scope": true,
+        "file": "theories/theory-182.html",
+        "key": "theory-182#statement-1",
+        "receipt": {
+          "end": 4265,
+          "normalisation": null,
+          "offset": 3213,
+          "sha256": "42028efaae8f5de3f9b066fea25055f7427c85957a25951445efe8efab913074",
+          "source": "theorizer:html_output-parametric-accuracy-focused/theories/theory-182.html"
+        }
+      },
+      {
+        "condition": "html_output-parametric-accuracy-focused",
+        "empty_evidence": true,
+        "empty_scope": true,
+        "file": "theories/theory-183.html",
+        "key": "theory-183#statement-0",
+        "receipt": {
+          "end": 3196,
+          "normalisation": null,
+          "offset": 2189,
+          "sha256": "d1589605cab59c564245d46c2fa2b9931ee028e2c7d3c614e47abb8f8cbc63e2",
+          "source": "theorizer:html_output-parametric-accuracy-focused/theories/theory-183.html"
+        }
+      },
+      {
+        "condition": "html_output-parametric-accuracy-focused",
+        "empty_evidence": true,
+        "empty_scope": true,
+        "file": "theories/theory-183.html",
+        "key": "theory-183#statement-1",
+        "receipt": {
+          "end": 4248,
+          "normalisation": null,
+          "offset": 3196,
+          "sha256": "d1589605cab59c564245d46c2fa2b9931ee028e2c7d3c614e47abb8f8cbc63e2",
+          "source": "theorizer:html_output-parametric-accuracy-focused/theories/theory-183.html"
+        }
+      },
+      {
+        "condition": "html_output-parametric-accuracy-focused",
+        "empty_evidence": true,
+        "empty_scope": true,
+        "file": "theories/theory-184.html",
+        "key": "theory-184#statement-0",
+        "receipt": {
+          "end": 3573,
+          "normalisation": null,
+          "offset": 2566,
+          "sha256": "385bc41fc8121cdc6dc9f1178e8c465102084358f0597a1555572fe87b6f63d9",
+          "source": "theorizer:html_output-parametric-accuracy-focused/theories/theory-184.html"
+        }
+      }
+    ],
+    "W1": [
+      {
+        "cited_ids": [
+          "e246.1",
+          "e242.1",
+          "e233.4",
+          "e246.6"
+        ],
+        "claim_excerpt": "MATRES and Multi-Axis Modeling report higher IAA (Cohen's kappa 0.84–0.88) and lower Vague rates (12.2%) compared to...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-25.html",
+        "key": "theory-25#statement-0/item-1",
+        "level": "item",
+        "receipt": {
+          "end": 4204,
+          "normalisation": null,
+          "offset": 3845,
+          "sha256": "2e6ed2f6f70b59ab86cc3c34b4176380e1b1e607faf699fc4711b5a6d8c9c2e5",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-25.html"
+        },
+        "unsupported": [
+          "0.56",
+          "0.64",
+          "46%"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e467.3",
+          "e249.2"
+        ],
+        "claim_excerpt": "SputLink and Timegraph show that closure increases the number of inferable relations by 10x and improves system learn...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-25.html",
+        "key": "theory-25#statement-1/item-2",
+        "level": "item",
+        "receipt": {
+          "end": 9762,
+          "normalisation": null,
+          "offset": 9583,
+          "sha256": "2e6ed2f6f70b59ab86cc3c34b4176380e1b1e607faf699fc4711b5a6d8c9c2e5",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-25.html"
+        },
+        "unsupported": [
+          "10"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e227.0"
+        ],
+        "claim_excerpt": "MAVEN-ERE timeline scheme produces 1.2 million temporal relations, 95.3 per 100 words (vs 14.3 in MATRES), with moder...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-26.html",
+        "key": "theory-26#statement-0/item-2",
+        "level": "item",
+        "receipt": {
+          "end": 3907,
+          "normalisation": null,
+          "offset": 3818,
+          "sha256": "bb168db5c271487b28b1620ac7a3831375a66e5fc82d1ab495efd575c0fc6f82",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-26.html"
+        },
+        "unsupported": [
+          "1.2"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e243.0",
+          "e227.0"
+        ],
+        "claim_excerpt": "NARRATIVETIME and MAVEN-ERE timeline schemes produce 5–10x denser TLINK coverage than pairwise schemes (e.g., TimeBan...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-27.html",
+        "key": "theory-27#statement-0/item-1",
+        "level": "item",
+        "receipt": {
+          "end": 4057,
+          "normalisation": null,
+          "offset": 3878,
+          "sha256": "dfb27df9c87c1ec1521cb4ba222491c7f27aea86734de2df3ce4a15830ab901a",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-27.html"
+        },
+        "unsupported": [
+          "10"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e242.1",
+          "e229.0",
+          "e247.6",
+          "e246.2"
+        ],
+        "claim_excerpt": "MATRES and EventFull focus on start-point relations and use a reduced label set, achieving high inter-annotator agree...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-28.html",
+        "key": "theory-28#statement-1/item-1",
+        "level": "item",
+        "receipt": {
+          "end": 8274,
+          "normalisation": null,
+          "offset": 7915,
+          "sha256": "64d004ee348e3a43e35f63eeff8cf65f888edab6971d7748f8cfcb0f17eab1ec",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-28.html"
+        },
+        "unsupported": [
+          "46%"
+        ]
+      }
+    ],
+    "W2": [
+      {
+        "cited_ids": [
+          "e269.2"
+        ],
+        "claim_assertive": [
+          "show"
+        ],
+        "claim_excerpt": "ReConcile (e269.2) and related round-table consensus methods show that diverse LLMs discussing and voting improve rea...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-1.html",
+        "key": "theory-1#statement-0/item-4",
+        "level": "item",
+        "receipt": {
+          "end": 4930,
+          "normalisation": null,
+          "offset": 4841,
+          "sha256": "82c52ba3dc980013234bea4fb26d2c97ca395b95b97084aef99779dbb396c065",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-1.html"
+        },
+        "source_hedged": [
+          "possible"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e40.2",
+          "e278.1",
+          "e55.1"
+        ],
+        "claim_assertive": [
+          "show"
+        ],
+        "claim_excerpt": "Chateval (e40.2, e278.1) and PRD (e55.1) show that multi-agent debate and peer discussion mitigate single-model bias...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-1.html",
+        "key": "theory-1#statement-0/item-10",
+        "level": "item",
+        "receipt": {
+          "end": 7584,
+          "normalisation": null,
+          "offset": 7321,
+          "sha256": "82c52ba3dc980013234bea4fb26d2c97ca395b95b97084aef99779dbb396c065",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-1.html"
+        },
+        "source_hedged": [
+          "suggested",
+          "suggested",
+          "may"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e264.0",
+          "e31.1",
+          "e61.1"
+        ],
+        "claim_assertive": [
+          "show"
+        ],
+        "claim_excerpt": "LMvLM cross-examination (e264.0) and LM vs LM (e31.1, e61.1) show that multi-turn interrogation by a second agent inc...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-1.html",
+        "key": "theory-1#statement-1/item-2",
+        "level": "item",
+        "receipt": {
+          "end": 13072,
+          "normalisation": null,
+          "offset": 12809,
+          "sha256": "82c52ba3dc980013234bea4fb26d2c97ca395b95b97084aef99779dbb396c065",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-1.html"
+        },
+        "source_hedged": [
+          "may",
+          "may",
+          "may"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e63.7",
+          "e274.0",
+          "e55.1"
+        ],
+        "claim_assertive": [
+          "demonstrate"
+        ],
+        "claim_excerpt": "LLM/Human Judge aggregation (e63.7), Peer Rank (e274.0), and PRD (e55.1) demonstrate that aggregation and weighting o...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-1.html",
+        "key": "theory-1#statement-2/item-3",
+        "level": "item",
+        "receipt": {
+          "end": 19662,
+          "normalisation": null,
+          "offset": 19399,
+          "sha256": "82c52ba3dc980013234bea4fb26d2c97ca395b95b97084aef99779dbb396c065",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-1.html"
+        },
+        "source_hedged": [
+          "may",
+          "correlation",
+          "correlation",
+          "correlation",
+          "correlation"
+        ]
+      },
+      {
+        "cited_ids": [
+          "e48.2",
+          "e268.3"
+        ],
+        "claim_assertive": [
+          "show"
+        ],
+        "claim_excerpt": "RERANK framing (e48.2) and Top-k Majority Voting (e268.3) show that discriminative aggregation among top candidates c...",
+        "condition": "html_output-literature-supported-accuracy-focused",
+        "file": "theories/theory-1.html",
+        "key": "theory-1#statement-2/item-7",
+        "level": "item",
+        "receipt": {
+          "end": 21012,
+          "normalisation": null,
+          "offset": 20836,
+          "sha256": "82c52ba3dc980013234bea4fb26d2c97ca395b95b97084aef99779dbb396c065",
+          "source": "theorizer:html_output-literature-supported-accuracy-focused/theories/theory-1.html"
+        },
+        "source_hedged": [
+          "may",
+          "correlated",
+          "may"
+        ]
+      }
+    ]
+  },
+  "theorizer_summary": {
+    "exploratory": {
+      "html_output-literature-supported-accuracy-focused": {
+        "high": 193,
+        "low": 124,
+        "median_support_fraction": 1.0,
+        "theories_with_pa": 317
+      },
+      "html_output-literature-supported-novelty-focused": {
+        "high": 59,
+        "low": 56,
+        "median_support_fraction": 0.75,
+        "theories_with_pa": 115
+      }
+    },
+    "per_condition": {
+      "html_output-literature-supported-accuracy-focused": {
+        "href_fallback": 205,
+        "item_w1": 43,
+        "item_w2": 153,
+        "items": 6022,
+        "items_checked": 6003,
+        "items_without_ids": 19,
+        "law_checked": 1048,
+        "law_w1": 3,
+        "law_w2": 0,
+        "laws": 1058,
+        "links": 15559,
+        "malformed": 0,
+        "refs": 12049,
+        "t1_links": 205,
+        "t1_theories": 7,
+        "t2": 0,
+        "t2_evidence": 0,
+        "t2_scope": 0,
+        "theories": 579,
+        "unresolved": 195
+      },
+      "html_output-literature-supported-novelty-focused": {
+        "href_fallback": 0,
+        "item_w1": 362,
+        "item_w2": 40,
+        "items": 1675,
+        "items_checked": 1674,
+        "items_without_ids": 1,
+        "law_checked": 839,
+        "law_w1": 710,
+        "law_w2": 2,
+        "laws": 839,
+        "links": 2646,
+        "malformed": 0,
+        "refs": 2294,
+        "t1_links": 0,
+        "t1_theories": 0,
+        "t2": 0,
+        "t2_evidence": 0,
+        "t2_scope": 0,
+        "theories": 759,
+        "unresolved": 0
+      },
+      "html_output-parametric-accuracy-focused": {
+        "href_fallback": 0,
+        "item_w1": 0,
+        "item_w2": 0,
+        "items": 4669,
+        "items_checked": 0,
+        "items_without_ids": 4669,
+        "law_checked": 0,
+        "law_w1": 0,
+        "law_w2": 0,
+        "laws": 1491,
+        "links": 0,
+        "malformed": 0,
+        "refs": 0,
+        "t1_links": 0,
+        "t1_theories": 0,
+        "t2": 37,
+        "t2_evidence": 37,
+        "t2_scope": 37,
+        "theories": 759,
+        "unresolved": 0
+      },
+      "html_output-parametric-novelty-focused": {
+        "href_fallback": 0,
+        "item_w1": 0,
+        "item_w2": 0,
+        "items": 1598,
+        "items_checked": 0,
+        "items_without_ids": 1598,
+        "law_checked": 0,
+        "law_w1": 0,
+        "law_w2": 0,
+        "laws": 799,
+        "links": 0,
+        "malformed": 0,
+        "refs": 0,
+        "t1_links": 0,
+        "t1_theories": 0,
+        "t2": 0,
+        "t2_evidence": 0,
+        "t2_scope": 0,
+        "theories": 759,
+        "unresolved": 0
+      }
+    },
+    "totals": {
+      "files_without_records": 3117,
+      "laws": 4187,
+      "laws_parsed_statement": 4187,
+      "records": 62093,
+      "results_files": 16316,
+      "theories": 2856,
+      "theories_with_laws": 2856
+    }
+  }
+}

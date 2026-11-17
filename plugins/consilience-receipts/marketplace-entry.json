@@ -1,0 +1,5 @@
+{
+  "name": "consilience-receipts",
+  "description": "Deterministic evidence receipts for Asta workspaces: unknown .ev keys, missing quotes, citations missing from references.bib, orphaned entries, provenance format, quotes verbatim in local source text (with SHA-256 and offsets), number overreach and certainty upgrades. No model calls.",
+  "keywords": ["evidence", "receipts", "verbatim", "quarto", "asta", "workspace", "deterministic"]
+}
