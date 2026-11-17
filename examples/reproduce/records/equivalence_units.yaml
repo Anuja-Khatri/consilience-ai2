@@ -1,0 +1,25 @@
+# Synthetic example (planted numbers). An equivalence margin is committed instead of a
+# minimum effect. The reproduction reports in millivolts; the source in volts.
+schema_version: 1
+id: H5-equivalence
+hypothesis: "The open-circuit potential of the coated electrode is 0.512 V."
+source_hypothesis: "The open-circuit potential of the coated electrode is 0.512 V."
+source:
+  quantity: open-circuit potential
+  value: 0.512
+  unit: V
+  n: 12
+  conditions: {electrolyte: "KCl, 0.1 M", instrument: "potentiostat", time: "2025-11"}
+reproduction:
+  quantity: open-circuit potential
+  value: 509
+  unit: mV
+  se: 2.1
+  n: 15
+  conditions: {electrolyte: "KCl, 0.1 M", instrument: "potentiostat", time: "2026-03"}
+quantity_mapping: {relation: same_quantity}
+independence_axis: time
+identifiability: {identifiable: true}
+thresholds:
+  alpha: 0.05
+  equivalence_margin: 0.01

@@ -1,0 +1,22 @@
+# Synthetic example (planted numbers). The "reproduction" tests a different construct:
+# a substitution is not a reproduction and is not run, so no verdict is read.
+schema_version: 1
+id: H4-substitution
+hypothesis: "Remote work increases weekly output."
+source_hypothesis: "Remote work increases weekly output."
+source:
+  quantity: Cohen's d for tickets closed per week, remote vs office
+  n: 200
+  effect_size: {type: d, value: 0.4}
+  conditions: {cohort: "team A"}
+reproduction:
+  quantity: Cohen's d for job-satisfaction score, remote vs office
+  n: 500
+  effect_size: {type: d, value: 0.5}
+  p: 0.00001
+  conditions: {cohort: "team B"}
+quantity_mapping:
+  relation: substitution
+  note: satisfaction is a different construct from output
+independence_axis: cohort
+thresholds: {alpha: 0.05, minimum_effect: 0.2}

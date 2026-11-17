@@ -1,0 +1,26 @@
+# Synthetic example (planted numbers). The independent data has too few cases to
+# detect the source effect: the verdict is undecided (underpowered), whatever p says.
+schema_version: 1
+id: H2-small-cohort
+hypothesis: "Households with a garden report lower weekly stress scores."
+source_hypothesis: "Households with a garden report lower weekly stress scores."
+direction: negative
+source:
+  quantity: Cohen's d for weekly stress score, garden vs no garden
+  n: 400
+  effect_size: {type: d, value: -0.25}
+  p: 0.013
+  conditions: {region: "north", instrument: "PSS-10 questionnaire"}
+reproduction:
+  quantity: Cohen's d for weekly stress score, garden vs no garden
+  n: 60
+  effect_size: {type: d, value: -0.31, n_groups: [30, 30]}
+  p: 0.23
+  conditions: {region: "south", instrument: "PSS-10 questionnaire"}
+quantity_mapping: {relation: same_quantity}
+independence_axis: region
+thresholds:
+  alpha: 0.05
+  sides: 2
+  minimum_effect: 0.2
+reported_verdict: supported

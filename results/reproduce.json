@@ -1,0 +1,1010 @@
+{
+  "component": "reproduce",
+  "metrics": [
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "their label is a language-model judgement of the run's write-up"
+      ],
+      "ci_hi": 0.3958,
+      "ci_lo": 0.1829,
+      "description": "pairs where our V1 verdict matches CodeScientist's judgement of the reproduction run (reproduced~support, not_reproduced~refute, inconclusive~inconclusive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.agreement_with_run_labels",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.2769
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.ambiguous_primary",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.no_bootstrap_block",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 22
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.recoverable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 24
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage.unreadable_results_file",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": 0.4908,
+      "ci_lo": 0.2623,
+      "description": "pairs whose two runs both give a recoverable primary bootstrap comparison",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.coverage_recoverable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "fraction",
+      "value": 0.3692
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.decidable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 9
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.no_data",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 41
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.d1.underpowered",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.not_comparable",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.proxy",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.f1.same_quantity",
+      "n": 24,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "ideas with at least 2 completed runs, of the batch's ideas",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.ideas_2plus_runs",
+      "n": 50,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 24
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.supported",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-misses_threshold",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-no_data",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 41
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-no_positive_control",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-not_comparable",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.outcome.undecided-underpowered",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs whose two runs state the hypothesis in identical words",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.p2_verbatim",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "(source run, later run) pairs from ideas with at least 2 completed runs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.pairs",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 65
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v1.inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v1.reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_different.ours_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 38
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_different.ours_reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_same.ours_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 23
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "their judgements of the two runs of a pair (same or different) beside our V1 verdict for the pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_consistency.their_judgements_same.ours_reproduced",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 16
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_refute",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_inconclusive.theirs_support",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 25
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_reproduced.theirs_inconclusive",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.vs_labels.ours_reproduced.theirs_support",
+      "n": 65,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.8609,
+      "ci_lo": 0.6206,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.decidable_reproduced_rate",
+      "n": 46,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.7609
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs with p < 0.05 on all rows",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.full_data_significant",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 122
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.inconclusive",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1527
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.not_reproduced",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9839,
+      "ci_lo": 0.9691,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.not_reproduced_or_inconclusive_rate",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9777
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.rejected",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.supported",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.undecided-misses_threshold",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.outcome.undecided-underpowered",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1523
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced_and_full_data_significant",
+      "n": 35,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.0309,
+      "ci_lo": 0.0161,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.reproduced_rate",
+      "n": 1569,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.0223
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9996,
+      "ci_lo": 0.9949,
+      "description": "D1 class at 10 rows vs empirical power from 200 subsamples (>= 0.8 means decidable)",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.small_d1_agrees_with_empirical_power",
+      "n": 1430,
+      "source": "fetch:discoverybench",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.9986
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9989,
+      "ci_lo": 0.9928,
+      "description": "reproductions on 10 rows classed underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.small_underpowered_rate",
+      "n": 1430,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9972
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.3617,
+      "ci_lo": 0.207,
+      "description": "among pairs whose source half has p < alpha",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.null.source_significant_reproduced_rate",
+      "n": 126,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.2778
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9844,
+      "ci_lo": 0.928,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.decidable_reproduced_rate",
+      "n": 177,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9661
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs with p < 0.05 on all rows",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.full_data_significant",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 211
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.inconclusive",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 185
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.not_reproduced",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.rejected",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.supported",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.undecided-misses_threshold",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.outcome.undecided-underpowered",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 181
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced_and_full_data_significant",
+      "n": 171,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5294,
+      "ci_lo": 0.4264,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.reproduced_rate",
+      "n": 358,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.4777
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9811,
+      "ci_lo": 0.9408,
+      "description": "D1 class at 10 rows vs empirical power from 200 subsamples (>= 0.8 means decidable)",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.small_d1_agrees_with_empirical_power",
+      "n": 327,
+      "source": "fetch:discoverybench",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.9664
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.8848,
+      "ci_lo": 0.8074,
+      "description": "reproductions on 10 rows classed underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.small_underpowered_rate",
+      "n": 327,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.8502
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9197,
+      "ci_lo": 0.8284,
+      "description": "among pairs whose source half has p < alpha",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.planted.source_significant_reproduced_rate",
+      "n": 194,
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.8814
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "queries with a target column and a gold expression",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.queries_usable",
+      "n": 903,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 183
+    },
+    {
+      "caveats": [
+        "planted = in the gold expression; the expression may be non-linear, so a planted effect need not be a linear correlation",
+        "null = named by no query of the task; indirect dependence through the generator is possible",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.tasks",
+      "n": null,
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 374
+    }
+  ],
+  "schema_version": 1
+}

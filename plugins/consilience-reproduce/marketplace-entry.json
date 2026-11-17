@@ -1,0 +1,5 @@
+{
+  "name": "consilience-reproduce",
+  "description": "Reproduction verdicts read from the numbers: the asta-flows secondary-reproduction rubric (faithfulness, decidability, outcome) as deterministic checks, plus commit-order and verbatim-hypothesis checks, with receipts",
+  "keywords": ["reproduction", "replication", "power", "preregistration", "verdict", "deterministic"]
+}

@@ -1,0 +1,12 @@
+# Structural constants of the reproduction verdict (C3); not results.
+#
+# Default D1 power threshold ("below 0.8 by default"), and the empirical-power cut in
+# the DiscoveryBench check.
+0.8
+# Default confidence level assumed for a reported ci without ci_level.
+0.95
+# The minimum effect |r| committed in the DiscoveryBench analysis.
+0.1
+# A textbook reference value the unit tests check the power formula against
+# (d = 0.5, 64 per group, two-sided alpha 0.05).
+0.8015

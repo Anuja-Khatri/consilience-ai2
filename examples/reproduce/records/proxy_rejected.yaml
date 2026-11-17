@@ -1,0 +1,33 @@
+# Synthetic example (planted numbers). The independent data measures a proxy (a
+# self-report instead of a lab test); the null is adequately powered and the positive
+# control passed, so the hypothesis is rejected, with the proxy carried as a caveat.
+schema_version: 1
+id: H3-proxy-null
+hypothesis: "Daily caffeine intake is associated with shorter sleep latency."
+source_hypothesis: "Daily caffeine intake is associated with shorter sleep latency."
+direction: negative
+source:
+  quantity: Pearson r between caffeine mg/day and polysomnography sleep latency
+  value: -0.22
+  unit: dimensionless
+  n: 300
+  effect_size: {type: r, value: -0.22}
+  p: "0.0001"
+  conditions: {method: "Pearson", cohort: "lab cohort"}
+reproduction:
+  quantity: Pearson r between caffeine mg/day and self-reported sleep latency
+  value: 0.02
+  unit: dimensionless
+  n: 520
+  effect_size: {type: r, value: 0.02}
+  p: 0.65
+  conditions: {method: "Pearson", cohort: "survey cohort"}
+quantity_mapping:
+  relation: proxy
+  note: self-reported latency stands in for polysomnography
+independence_axis: cohort
+thresholds:
+  alpha: 0.05
+  sides: 2
+  minimum_effect: 0.1
+positive_control: {p: 0.0004, note: "age vs self-reported latency recovers its known sign"}
