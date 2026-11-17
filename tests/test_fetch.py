@@ -176,6 +176,25 @@ def test_git_from_dir_checks_out_the_pin(tmp_path, local_repo):
     assert status(git_source(first), root) == "ok"
 
 
+def test_git_from_dir_skips_same_named_non_repo(tmp_path, local_repo):
+    # an old cache root holds myrepo/ (downloaded files) and git/myrepo (the clone):
+    # the folder of files is not a clone and must not stop the search
+    repo, first = local_repo
+    old_cache = tmp_path / "old-cache"
+    (old_cache / "myrepo").mkdir(parents=True)
+    (old_cache / "myrepo" / "archive.bin").write_bytes(b"x")
+    (old_cache / "git").mkdir()
+    import shutil
+    shutil.copytree(repo, old_cache / "git" / "myrepo")
+    root = tmp_path / "cache"
+    p = fetch_source(git_source(first), root, [old_cache, old_cache / "git"], quiet=True,
+                     offline=True)
+    assert (p / "f.txt").read_text() == "one\n"
+    p2 = fetch_source(git_source(first), tmp_path / "cache2", [old_cache], quiet=True,
+                      offline=True)  # found by the shallow recursive search
+    assert (p2 / "f.txt").read_text() == "one\n"
+
+
 def test_git_wrong_pin_refused(tmp_path, local_repo):
     repo, _ = local_repo
     with pytest.raises(FetchError):

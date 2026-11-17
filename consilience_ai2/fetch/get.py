@@ -73,23 +73,35 @@ def _check_file(path: Path, src: Source) -> None:
         raise FetchError(f"{src.name}: sha256 {digest} != pinned {src.sha256}")
 
 
+def _is_git_repo(path: Path) -> bool:
+    """A working clone (``.git`` inside) or a bare repository (``HEAD`` and ``objects``)."""
+    if not path.is_dir():
+        return False
+    return (path / ".git").exists() or ((path / "HEAD").is_file() and (path / "objects").is_dir())
+
+
 def _find_local(src: Source, from_dirs: Iterable[Path], want_dir: bool) -> Path | None:
+    """The first local copy of ``src`` under ``from_dirs``. A git source matches only a
+    directory that is a git repository, so a same-named folder of downloaded files (the
+    cache keeps ``codescientist/`` for archives beside ``git/codescientist``) is skipped."""
     names = src.local_candidates()
+
+    def ok(cand: Path) -> bool:
+        return _is_git_repo(cand) if want_dir else cand.is_file()
+
     for base in from_dirs:
         base = Path(base).expanduser()
         if not base.is_dir():
             continue
         for name in names:
             direct = base / name
-            if (direct.is_dir() if want_dir else direct.is_file()):
+            if ok(direct):
                 return direct
         # shallow recursive search (depth <= 4), deterministic order
         for depth in range(1, 5):
             pattern = "/".join(["*"] * depth)
             for cand in sorted(base.glob(pattern)):
-                if cand.name in names and (cand.is_dir() if want_dir else cand.is_file()):
-                    if want_dir and not (cand / ".git").exists():
-                        continue
+                if cand.name in names and ok(cand):
                     return cand
     return None
 
