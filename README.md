@@ -99,9 +99,9 @@ node_2_4: flag A4
 ...
 node_2_11: refuse U1
 ::error file=mcts_node_2_1.json,line=1::A1 0.42 is not printed in the run's output or code at the printed precision
+::error file=mcts_node_2_10.json,line=5::R5 function 'build_interaction_features' is used but nothing it computes reaches any printed or saved output
 ::error file=mcts_node_2_3.json,line=5::A3 column 'household_size' is read by the code but is not in the dataset metadata
 ::error file=mcts_node_2_8.json,line=1::R1 the only comparator named is random or chance
-::error file=mcts_node_2_10.json,line=5::R5 function 'build_interaction_features' is used but nothing it computes reaches any printed or saved output
 ...
 audit: 12 nodes, 1 pass, 8 flag, 3 refuse; p values parsed for 10; wrote /tmp/validity_audit.json
 ```
