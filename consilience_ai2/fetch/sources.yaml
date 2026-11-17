@@ -1,0 +1,156 @@
+# Pinned data sources for consilience-ai2.
+#
+# `consilience-ai2 fetch <name>|all` downloads each source into the local cache and
+# verifies it before use; nothing here is ever stored in this repository.
+#
+#   cache root: $CONSILIENCE_AI2_DATA if set, else ~/.cache/consilience-ai2
+#   path:       where the source lives under the cache root
+#
+# kind: file  -> one file, verified by its SHA-256 (and size). A mismatch is refused
+#                and the partial download is deleted. `extract: true` unpacks a zip
+#                next to it (into `path` without the .zip suffix) after verification.
+# kind: git   -> a git repository checked out at a pinned commit; the commit SHA is
+#                the integrity check (`git rev-parse HEAD` must equal `commit`).
+#
+# Every source is an Ai2 (or Ai2-collaborator) release, used under its own licence and
+# credited in NOTICE. Data is downloaded by each user, never redistributed.
+#
+# `manual` says what to do when a direct download fails (Google Drive can change its
+# confirmation flow); `consilience-ai2 fetch --from-dir DIR` then picks the file up from
+# a local folder and verifies it exactly as a download would be.
+
+schema_version: 1
+cache_env: CONSILIENCE_AI2_DATA
+default_cache: ~/.cache/consilience-ai2
+
+sources:
+  - name: codescientist
+    kind: git
+    url: https://github.com/allenai/codescientist.git
+    commit: 778b146acf454d9400ed09fc1eb95d3d5cbb6a14
+    path: git/codescientist
+    licence: Apache-2.0
+    used_for: "reviews/ (external review ratings), metaanalysis/ (bulk and per-idea rerun tables), data/"
+    citation: >-
+      Jansen, P., Tafjord, O., Radensky, M., Siangliulue, P., Hope, T., Dalvi Mishra, B.,
+      Majumder, B. P., Weld, D. S. and Clark, P. (2025). CodeScientist: End-to-End
+      Semi-Automated Scientific Discovery with Code-based Experimentation. Findings of
+      the Association for Computational Linguistics: ACL 2025. arXiv:2503.22708.
+
+  - name: codescientist-example-experiments
+    kind: file
+    url: https://drive.usercontent.google.com/download?id=1KJDzCIf5G7ZSqOpUivlUva1oNzp1ubyx&export=download&confirm=t
+    page: https://drive.google.com/file/d/1KJDzCIf5G7ZSqOpUivlUva1oNzp1ubyx/view
+    sha256: 21d2b98599dca158986f75712bde9b928edaa5ccc708438aba8c6c6d2df39c40
+    size: 54640091
+    path: codescientist/example_experiments.zip
+    local_names: [example_experiments.zip, codescientist-example-experiments.zip]
+    extract: true
+    licence: "Apache-2.0 (linked from the CodeScientist repository; the archive carries no separate licence)"
+    used_for: "the 20 Table-4 experiment directories (plans, code, logs, results.json, report.tex)"
+    citation: >-
+      CodeScientist example experiments archive, linked from
+      allenai/codescientist example_experiments/README.md at commit 778b146.
+    manual: >-
+      Open the `page` URL in a browser, download the zip, then run
+      `consilience-ai2 fetch codescientist-example-experiments --from-dir <download folder>`.
+
+  - name: codescientist-full50
+    kind: file
+    url: https://drive.usercontent.google.com/download?id=1lDKtKBMNgzZpZiX4Xqm3C0H5txneSEat&export=download&confirm=t
+    page: https://drive.google.com/file/d/1lDKtKBMNgzZpZiX4Xqm3C0H5txneSEat/view
+    sha256: e0cd9d5ac32a859171c11d7a1f3b88b5525d9ca674ed40e6c6197ebcd1cc433a
+    size: 607151022
+    path: codescientist/full50.zip
+    local_names: [full50.zip]
+    # About 7 GB unzipped: read it in place with zipfile, or extract with --extract.
+    extract: false
+    licence: "Apache-2.0 (linked from the CodeScientist repository; the archive carries no separate licence)"
+    used_for: "the completed experiments of the main run: 50 ideas x 5 runs (code, logs, results.json, report.tex)"
+    citation: >-
+      CodeScientist generated-experiments archive (full 50-idea run), linked from
+      allenai/codescientist generated-experiments/README.md at commit 778b146.
+    manual: >-
+      Open the `page` URL in a browser (Drive asks to confirm a large file), download the
+      zip, then run `consilience-ai2 fetch codescientist-full50 --from-dir <download folder>`.
+
+  - name: theorizer-paper-data
+    kind: file
+    url: https://drive.usercontent.google.com/download?id=1EO7LSuOXd8oIGyvpNKS6zATtfCRFPp7G&export=download&confirm=t
+    page: https://drive.google.com/file/d/1EO7LSuOXd8oIGyvpNKS6zATtfCRFPp7G/view
+    sha256: be0fe4733757c4b64d2c824e17ba135f832f3c1acf598e5c3d50bfbdaddfeaf4
+    size: 155260224
+    path: theorizer/theorizer_paper_data.zip
+    local_names: [theorizer_paper_data.zip]
+    extract: true
+    licence: "Apache-2.0 (linked from the asta-theorizer repository; the archive carries no separate licence)"
+    used_for: "Theorizer theories, laws with scope, evidence IDs, extraction results and predictive-accuracy pages (HTML)"
+    citation: >-
+      Jansen, P., Clark, P., Downey, D. and Weld, D. S. (2026). Generating
+      Literature-Driven Scientific Theories at Scale. ACL 2026. arXiv:2601.16282.
+      Archive linked from allenai/asta-theorizer
+      example-theories/theorizer-paper-data/README.md at commit c4802aa.
+    manual: >-
+      Open the `page` URL in a browser, download the zip, then run
+      `consilience-ai2 fetch theorizer-paper-data --from-dir <download folder>`.
+
+  - name: asta-theorizer
+    kind: git
+    url: https://github.com/allenai/asta-theorizer.git
+    commit: c4802aa947128f1e49621d9a52891f612864716c
+    path: git/asta-theorizer
+    licence: Apache-2.0
+    used_for: "schema reference for Theorizer theory stores and evaluations"
+    citation: >-
+      Jansen, P., Clark, P., Downey, D. and Weld, D. S. (2026). Generating
+      Literature-Driven Scientific Theories at Scale. ACL 2026. arXiv:2601.16282.
+
+  - name: sciarena-eval
+    kind: file
+    url: https://huggingface.co/datasets/yale-nlp/SciArena-Eval/resolve/e20851545db108e94e35f8c0595b8ad72169b480/train.json
+    page: https://huggingface.co/datasets/yale-nlp/SciArena-Eval
+    sha256: fb0e5b44c616cd4a1a9e5ea19c5e51c7f28b372874255074065394c8954ad1f1
+    size: 223334943
+    path: sciarena/SciArena-Eval_train.json
+    local_names: [SciArena-Eval_train.json, train.json]
+    extract: false
+    licence: MIT
+    used_for: "2,000 human-voted response pairs with inline citations and cited passages"
+    citation: >-
+      Zhao, Y. et al. (2025). SciArena: An Open Evaluation Platform for Foundation Models
+      in Scientific Literature Tasks. arXiv:2507.01001. Dataset yale-nlp/SciArena-Eval,
+      revision e20851545db108e94e35f8c0595b8ad72169b480.
+
+  - name: discoverybench
+    kind: git
+    url: https://github.com/allenai/discoverybench.git
+    commit: c31fcf011e070f021a5f5b906896d0821f6880e8
+    path: git/discoverybench
+    licence: ODC-BY
+    used_for: "real and synthetic discovery tasks (CSV + metadata) and the gold answer keys"
+    citation: >-
+      Majumder, B. P., Surana, H., Agarwal, D., Dalvi Mishra, B., Meena, A., Prakhar, A.,
+      Vora, T., Khot, T., Sabharwal, A. and Clark, P. (2024). DiscoveryBench: Towards
+      Data-Driven Discovery with Large Language Models. arXiv:2407.01725.
+
+  - name: asta-autodiscovery
+    kind: git
+    url: https://github.com/allenai/asta-autodiscovery.git
+    commit: 30e080f4ecf50912bb0771abb4accbf1e67bb736
+    path: git/asta-autodiscovery
+    licence: Apache-2.0
+    used_for: "schema reference: MCTSNode.to_dict, the experiment models and the review fields"
+    citation: >-
+      Allen Institute for AI. asta-autodiscovery (AutoDiscovery),
+      https://github.com/allenai/asta-autodiscovery, commit 30e080f.
+
+  - name: asta-plugins
+    kind: git
+    url: https://github.com/allenai/asta-plugins.git
+    commit: a2dcade6ed2a416da26349cf1d1ed476cc2e99ba
+    path: git/asta-plugins
+    licence: Apache-2.0
+    used_for: "format reference: the plugin marketplace layout, workspace evidence files and workflows"
+    citation: >-
+      Allen Institute for AI. asta-plugins, https://github.com/allenai/asta-plugins,
+      commit a2dcade.

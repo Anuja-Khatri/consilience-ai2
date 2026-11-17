@@ -1,0 +1,45 @@
+consilience-ai2
+Copyright (c) 2026 Anuja Khatri. Licensed under the MIT License (see LICENSE).
+
+Independent work, not affiliated with or endorsed by the Allen Institute for AI (Ai2).
+
+This software reads, and its results are measured on, artefacts released by the Allen
+Institute for AI and collaborators. None of that data is redistributed here: each user
+downloads it with `consilience-ai2 fetch`, which pins every source by SHA-256 or git
+commit (consilience_ai2/fetch/sources.yaml). This repository ships only its own code,
+small synthetic fixtures written for it, and derived numbers. File formats are read as
+documented by the projects below; no code from them is included.
+
+Credited artefacts and their licences
+-------------------------------------
+
+CodeScientist (allenai/codescientist, commit 778b146), Apache License 2.0.
+  Also the example-experiments and full-run archives linked from that repository
+  (no separate licence file; used under the repository's terms).
+  Jansen et al. (2025), "CodeScientist: End-to-End Semi-Automated Scientific Discovery
+  with Code-based Experimentation", Findings of ACL 2025, arXiv:2503.22708.
+
+asta-plugins (allenai/asta-plugins, commit a2dcade), Apache License 2.0.
+  The plugin marketplace layout and the workspace evidence file formats are mirrored as
+  formats; no files are copied.
+
+asta-autodiscovery (allenai/asta-autodiscovery, commit 30e080f), Apache License 2.0.
+  Its run-output schema (MCTSNode.to_dict) is used to write synthetic test fixtures.
+
+asta-theorizer (allenai/asta-theorizer, commit c4802aa), Apache License 2.0.
+  Also the paper-data archive linked from that repository (no separate licence file;
+  used under the repository's terms).
+  Jansen, Clark, Downey and Weld (2026), "Generating Literature-Driven Scientific
+  Theories at Scale", ACL 2026, arXiv:2601.16282.
+
+DiscoveryBench (allenai/discoverybench, commit c31fcf0), Open Data Commons Attribution
+  License (ODC-BY).
+  Majumder et al. (2024), "DiscoveryBench: Towards Data-Driven Discovery with Large
+  Language Models", arXiv:2407.01725.
+
+SciArena-Eval (Hugging Face yale-nlp/SciArena-Eval, revision e208515), MIT License.
+  Zhao et al. (2025), "SciArena: An Open Evaluation Platform for Foundation Models in
+  Scientific Literature Tasks", arXiv:2507.01001.
+
+Apache-2.0 artefacts: the licence text is at https://www.apache.org/licenses/LICENSE-2.0.
+ODC-BY: https://opendatacommons.org/licenses/by/1-0/.

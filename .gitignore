@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Data is downloaded by `consilience-ai2 fetch` into ~/.cache/consilience-ai2 and
+# NEVER committed. These guard against accidental copies into the tree.
+data/
+*.zip
+*.parquet
+*.tar.gz
+*.part
+api_keys*.json
+.env
+.env.*
+
+# Local scratch
+scratch/
+*.log

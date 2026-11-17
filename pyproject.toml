@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "consilience-ai2"
+version = "0.1.0"
+description = "Deterministic validity checks for agent-produced science: evidence receipts, experiment audit and reproduction verdicts, read from the native file formats of Ai2's Asta tools. Every finding carries a receipt."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Anuja Khatri" }]
+keywords = ["validity", "reproducibility", "evidence", "receipts", "scientific agents",
+            "audit", "multiple testing", "deterministic"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+]
+# Runtime dependencies are deliberately few: YAML for inputs, numpy and scipy for the
+# statistics. Nothing calls a language model or a network service except `fetch`.
+dependencies = [
+  "PyYAML>=6",
+  "numpy>=1.24",
+  "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+# Unit-aware comparability (C3 faithfulness) through the `consilience` package.
+consilience = ["consilience>=0.1.1"]
+test = ["pytest>=8"]
+dev = ["pytest>=8", "ruff>=0.5", "build", "twine"]
+
+[project.scripts]
+consilience-ai2 = "consilience_ai2.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Anuja-Khatri/consilience-ai2"
+Source = "https://github.com/Anuja-Khatri/consilience-ai2"
+Issues = "https://github.com/Anuja-Khatri/consilience-ai2/issues"
+Changelog = "https://github.com/Anuja-Khatri/consilience-ai2/blob/main/CHANGELOG.md"
+
+# The wheel ships the package only. Repository-level examples/, plugins/, analyses/,
+# prereg/ and results/ go in the sdist (MANIFEST.in). Fixtures a component needs at
+# run time live inside its subpackage under data/ and are picked up below.
+[tool.setuptools.packages.find]
+include = ["consilience_ai2", "consilience_ai2.*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"consilience_ai2" = ["py.typed", "fetch/sources.yaml", "*/data/*", "*/data/**/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --import-mode=importlib"
+filterwarnings = ["ignore::DeprecationWarning"]

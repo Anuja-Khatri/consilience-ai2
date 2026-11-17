@@ -1,0 +1,13 @@
+# Structural (non-result) decimals and percentages allowed in the docs.
+# The numbers lock scans only \d+\.\d+ and \d+% tokens; integers are ignored.
+# Each component adds its own scripts/numbers_allowlist/<component>.txt.
+#
+# The conventional false-discovery level used by A5 (Benjamini-Hochberg q) and the
+# conventional significance level named in the spec.
+0.05
+# "95% CI" in table headers and prose.
+95%
+# Targets stated by construction for the seeded suites (100% recall, 0 false positives).
+100%
+# The ambiguous-separator example in the number-extraction rules ("1.234,5").
+1.234

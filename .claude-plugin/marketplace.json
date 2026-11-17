@@ -1,0 +1,10 @@
+{
+  "name": "consilience-ai2",
+  "owner": {
+    "name": "Anuja Khatri"
+  },
+  "metadata": {
+    "description": "Deterministic validity checks (evidence receipts, experiment audit, reproduction verdicts) for Claude Code"
+  },
+  "plugins": []
+}

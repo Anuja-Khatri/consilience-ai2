@@ -1,0 +1,12 @@
+include LICENSE NOTICE README.md CHANGELOG.md CONTRIBUTING.md Makefile
+include consilience_ai2/fetch/sources.yaml consilience_ai2/py.typed
+recursive-include docs *.md
+recursive-include scripts *.py *.txt
+recursive-include tests *.py
+recursive-include examples *
+recursive-include plugins *
+recursive-include analyses *
+recursive-include prereg *
+recursive-include results *.json *.md .gitkeep
+recursive-include .claude-plugin *.json
+global-exclude __pycache__ *.py[cod] *.zip *.parquet
