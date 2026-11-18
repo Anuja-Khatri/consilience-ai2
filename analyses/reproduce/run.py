@@ -32,7 +32,7 @@ CS_SOURCE_V02 = "fetch:codescientist+codescientist-full50+codescientist-example-
 DB_SOURCE = "fetch:discoverybench"
 PREREG_V02 = "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320"
 DEVIATIONS_V02 = ("prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended "
-                  "@ 9e1f1da and @ 1f92475")
+                  "@ 9e1f1da, 1f92475, a1e60bc and 6cdc34c")
 V01_NOTE = ("v0.1 extraction rule (the single non-random bootstrap block of the final "
             "results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics")
 Z95 = 1.959963984540054

@@ -62,7 +62,7 @@ faithfulness check. Without it the check still runs, comparing units by name.
 |---|---|
 | F1 | `same_quantity`, `proxy` (a caveat), `substitution`, or `not_comparable(<what>)`: a unit, a condition other than the independence axis, the effect type or an unreadable number |
 | D1 | `decidable`, `underpowered` (power at the source effect with the reproduction's n, below 0.8 by default), `no_data`, `not_identifiable`, or `uncheckable` (power cannot be computed) |
-| V1 | `reproduced`, `not_reproduced` or `inconclusive`, with the rubric outcome beside it; warns when a `reported_verdict` written in prose disagrees |
+| V1 | `reproduced`, `not_reproduced` or `inconclusive`, with the rubric outcome beside it; warns when a `reported_verdict` written in prose disagrees. The expected direction is the source effect's sign (verdict rule v0.2; `--rule v0.1` for the declared `direction`); a source that claims no effect is `undecided(source_null)` unless the record commits an equivalence margin |
 | P1 | `committed_first`, or `thresholds_post_hoc` with a reason (an error when proven from git, a warning when it cannot be shown) |
 | P2 | `verbatim` or `reworded` (after a fixed whitespace and quote normalisation) |
 

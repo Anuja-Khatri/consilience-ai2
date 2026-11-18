@@ -92,3 +92,17 @@ and, to separate the two changes, the v0.2 extraction with the v0.1 rule
 (`reproduce.cs.v0_2.as_preregistered.*`) keeps the v0.1 verdict rule it assumed. In the
 DiscoveryBench analysis the v0.1 Pearson numbers keep the v0.1 rule; every v0.2 verdict
 (Pearson, Spearman, derived pairs) uses the v0.2 rule.
+
+Amendment to 4 (commit a1e60bc), before any number under the v0.2 verdict rule was
+committed: the first run read one reproduction with a mean difference of exactly 0 and a
+bootstrap p of 1 (ties) as significant in the other direction (1 - p = 0), which gave
+`undecided(inconsistent_numbers)`. At an effect of exactly 0 there is no evidence in
+either direction, so the complement is no longer taken there.
+
+Second amendment to 4 (commit 6cdc34c), also before any number under the v0.2 verdict rule
+was committed: with a one-sided test in the source's direction an opposite effect could
+never be shown (row 5 needs significance in the other direction), so the first run
+labelled two reruns that were significantly opposite to their source
+`undecided(no_positive_control)`. Under v0.2 a one-sided record now also reads the
+one-sided p in the other direction (1 - p); significant there, with the effect on the
+other side, is `opposite_effect`. Two-sided tests and rule v0.1 are unchanged.

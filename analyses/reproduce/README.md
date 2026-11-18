@@ -25,9 +25,12 @@ python analyses/reproduce/run.py        # writes results/reproduce.json
 - `run.py`: runs both and writes the results file. Each module also prints its summary
   when run on its own.
 
-The v0.2 rules are preregistered in `prereg/reproduce/cs_extraction_v0_2.md`, with three
-corrections made before any number was committed in
-`prereg/reproduce/cs_extraction_v0_2_deviations.md`. The design of each analysis is in its
+The v0.2 extraction rules are preregistered in `prereg/reproduce/cs_extraction_v0_2.md`,
+with three corrections made before any number was committed in
+`prereg/reproduce/cs_extraction_v0_2_deviations.md`. Every v0.2 verdict uses verdict rule
+v0.2 (the expected direction is the source's sign; deviation 4 in the same file, decided
+after the extraction results were seen); the v0.1 numbers keep verdict rule v0.1, and the
+v0.2 extraction is also judged with rule v0.1 to separate the two changes. The design of each analysis is in its
 module docstring; the results and their limits are in
 [docs/reproduce.md](../../docs/reproduce.md). (c), the P1 commit-order tests on a scratch
 git repository, is `tests/reproduce/test_commit_order.py`; the demo of the workflow P1

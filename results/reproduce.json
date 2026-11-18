@@ -519,7 +519,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "their label is a language-model judgement of the run's write-up"
       ],
       "ci_hi": 0.3958,
@@ -540,7 +541,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -558,7 +560,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -576,7 +579,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -594,7 +598,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -612,7 +617,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": 0.6108,
       "ci_lo": 0.3746,
@@ -630,7 +636,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -648,7 +655,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -666,7 +674,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -684,7 +693,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -702,7 +712,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -720,7 +731,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -738,7 +750,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -756,7 +769,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -774,7 +788,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -792,7 +807,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -810,7 +826,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -828,7 +845,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -846,7 +864,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -864,7 +883,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -882,7 +902,8 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
-        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "judged with the v0.1 verdict rule (declared direction), as the preregistration assumed"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -901,7 +922,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -920,7 +942,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -939,7 +962,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -958,7 +982,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -977,7 +1002,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": 0.5815,
       "ci_lo": 0.3459,
@@ -997,7 +1023,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1016,7 +1043,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1035,7 +1063,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1054,7 +1083,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1072,8 +1102,244 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": 0.3958,
+      "ci_lo": 0.1829,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.agreement_with_run_labels",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.2769
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.supported",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-misses_threshold",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-no_data",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-no_positive_control",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-not_comparable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-uncheckable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.outcome.undecided-underpowered",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.per_comparison.v1.inconclusive",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 14
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.per_comparison.v1.not_reproduced",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.per_comparison.v1.reproduced",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.v1.inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule with the v0.1 verdict rule (declared direction), to separate the two changes"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.extraction_only.v1.reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1093,7 +1359,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1113,7 +1380,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1133,7 +1401,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1153,31 +1422,13 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
       "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.outcome.supported",
-      "n": 65,
-      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
-      "source": "fetch:codescientist+codescientist-full50",
-      "unit": "count",
-      "value": 4
-    },
-    {
-      "caveats": [
-        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
-        "thresholds fixed by this analysis, not by the runs' authors",
-        "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)",
-        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
-      ],
-      "ci_hi": null,
-      "ci_lo": null,
-      "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.outcome.undecided-misses_threshold",
+      "metric_id": "reproduce.cs.v0_2.outcome.opposite_effect",
       "n": 65,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
@@ -1191,7 +1442,48 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.supported",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-misses_threshold",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1210,7 +1502,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1220,7 +1513,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 2
+      "value": 3
     },
     {
       "caveats": [
@@ -1229,7 +1522,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1248,17 +1542,18 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
       "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.outcome.undecided-uncheckable",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-source_null",
       "n": 65,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 1
+      "value": 7
     },
     {
       "caveats": [
@@ -1267,7 +1562,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1277,7 +1573,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 10
+      "value": 4
     },
     {
       "caveats": [
@@ -1286,9 +1582,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1307,9 +1604,32 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.opposite_effect",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1319,7 +1639,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 3
+      "value": 6
     },
     {
       "caveats": [
@@ -1328,14 +1648,15 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
       "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-misses_threshold",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-no_positive_control",
       "n": 17,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
@@ -1349,30 +1670,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
-      ],
-      "ci_hi": null,
-      "ci_lo": null,
-      "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-no_positive_control",
-      "n": 17,
-      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
-      "source": "fetch:codescientist+codescientist-full50",
-      "unit": "count",
-      "value": 7
-    },
-    {
-      "caveats": [
-        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
-        "thresholds fixed by this analysis, not by the runs' authors",
-        "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)",
-        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
-        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1391,9 +1692,32 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-source_null",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1403,7 +1727,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 3
+      "value": 1
     },
     {
       "caveats": [
@@ -1412,9 +1736,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1434,20 +1759,21 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "description": "reproduced comparisons by the sign of the source run's own mean difference",
       "dev_or_heldout": "descriptive",
       "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.negative",
-      "n": 3,
+      "n": 6,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 3
+      "value": 6
     },
     {
       "caveats": [
@@ -1456,16 +1782,17 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "description": "reproduced comparisons by the sign of the source run's own mean difference",
       "dev_or_heldout": "descriptive",
       "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.positive",
-      "n": 3,
+      "n": 6,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
@@ -1478,16 +1805,17 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "description": "reproduced comparisons by the sign of the source run's own mean difference",
       "dev_or_heldout": "descriptive",
       "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.zero",
-      "n": 3,
+      "n": 6,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
@@ -1500,9 +1828,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1512,7 +1841,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 14
+      "value": 7
     },
     {
       "caveats": [
@@ -1521,9 +1850,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1533,7 +1863,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 0
+      "value": 4
     },
     {
       "caveats": [
@@ -1542,9 +1872,10 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)",
         "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
-        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+        "for comparisons among several conditions the block's baseline and experimental are an ordering; under the v0.2 verdict rule the expected direction is the source run's sign, not that ordering"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1554,7 +1885,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 3
+      "value": 6
     },
     {
       "caveats": [
@@ -1563,54 +1894,15 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
+      "description": "reproduced pairs by the sign of the source run's own mean difference",
       "dev_or_heldout": "descriptive",
       "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.negative",
-      "n": 4,
-      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
-      "source": "fetch:codescientist+codescientist-full50",
-      "unit": "count",
-      "value": 2
-    },
-    {
-      "caveats": [
-        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
-        "thresholds fixed by this analysis, not by the runs' authors",
-        "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)",
-        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
-      ],
-      "ci_hi": null,
-      "ci_lo": null,
-      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
-      "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.positive",
-      "n": 4,
-      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
-      "source": "fetch:codescientist+codescientist-full50",
-      "unit": "count",
-      "value": 2
-    },
-    {
-      "caveats": [
-        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
-        "thresholds fixed by this analysis, not by the runs' authors",
-        "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)",
-        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
-      ],
-      "ci_hi": null,
-      "ci_lo": null,
-      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
-      "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.zero",
-      "n": 4,
+      "n": 2,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
@@ -1623,7 +1915,50 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced pairs by the sign of the source run's own mean difference",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.positive",
+      "n": 2,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced pairs by the sign of the source run's own mean difference",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.zero",
+      "n": 2,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1643,7 +1978,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1663,7 +1999,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1683,7 +2020,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1703,7 +2041,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1723,7 +2062,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1743,7 +2083,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1763,7 +2104,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1783,7 +2125,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1802,7 +2145,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1821,7 +2165,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1840,7 +2185,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1859,7 +2205,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1879,7 +2226,29 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 verdict to v0.2 verdict, per pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.transition.reproduced.to_not_reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1890,7 +2259,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 4
+      "value": 2
     },
     {
       "caveats": [
@@ -1899,7 +2268,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1918,7 +2288,28 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.v1.not_reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1928,7 +2319,7 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
       "unit": "count",
-      "value": 4
+      "value": 2
     },
     {
       "caveats": [
@@ -1937,7 +2328,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1956,7 +2348,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1975,7 +2368,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1994,12 +2388,13 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
       "dev_or_heldout": "descriptive",
-      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_reproduced.theirs_inconclusive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_not_reproduced.theirs_inconclusive",
       "n": 65,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:codescientist+codescientist-full50",
@@ -2013,7 +2408,8 @@
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
         "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
-        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c",
+        "v0.2 verdict rule: the expected direction is the source run's sign; a source that claims no effect is undecided(source_null) (deviation 4 in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da, 1f92475, a1e60bc and 6cdc34c)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -2698,6 +3094,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.9802,
@@ -2715,6 +3112,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.4299,
@@ -2733,6 +3131,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2750,6 +3149,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.4625,
@@ -2768,6 +3168,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.484,
@@ -2786,11 +3187,12 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "Pearson verdict, derived pairs",
+      "description": "Pearson verdict under the v0.2 verdict rule",
       "dev_or_heldout": "synthetic",
       "metric_id": "reproduce.db.v0_2.derived.inconclusive",
       "n": 94,
@@ -2803,11 +3205,12 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "Pearson verdict, derived pairs",
+      "description": "Pearson verdict under the v0.2 verdict rule",
       "dev_or_heldout": "synthetic",
       "metric_id": "reproduce.db.v0_2.derived.not_reproduced",
       "n": 94,
@@ -2820,6 +3223,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2836,6 +3240,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2852,6 +3257,24 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.outcome.undecided-source_null",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2862,17 +3285,18 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:discoverybench",
       "unit": "count",
-      "value": 66
+      "value": 5
     },
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
       "ci_lo": null,
-      "description": "Pearson verdict, derived pairs",
+      "description": "Pearson verdict under the v0.2 verdict rule",
       "dev_or_heldout": "synthetic",
       "metric_id": "reproduce.db.v0_2.derived.reproduced",
       "n": 94,
@@ -2885,6 +3309,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.3744,
@@ -2901,6 +3326,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.9943,
@@ -2918,6 +3344,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2934,6 +3361,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2950,6 +3378,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2966,6 +3395,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2982,6 +3412,24 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.outcome.undecided-source_null",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 56
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -2992,12 +3440,13 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:discoverybench",
       "unit": "count",
-      "value": 63
+      "value": 7
     },
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": null,
@@ -3014,6 +3463,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.4189,
@@ -3030,6 +3480,7 @@
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
         "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)",
         "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
       ],
       "ci_hi": 0.7569,
@@ -3148,7 +3599,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.0941,
       "ci_lo": 0.0673,
@@ -3165,7 +3617,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3181,7 +3634,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.0989,
       "ci_lo": 0.0714,
@@ -3198,7 +3652,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.1023,
       "ci_lo": 0.0743,
@@ -3215,7 +3670,188 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": 0.8609,
+      "ci_lo": 0.6206,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.decidable_reproduced_rate",
+      "n": 46,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.7609
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.inconclusive",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1527
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.not_reproduced",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": 0.9839,
+      "ci_lo": 0.9691,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.not_reproduced_or_inconclusive_rate",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9777
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.outcome.rejected",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.outcome.supported",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.outcome.undecided-misses_threshold",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.outcome.undecided-source_null",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1443
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.outcome.undecided-underpowered",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 80
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.reproduced",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": 0.0309,
+      "ci_lo": 0.0161,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.pearson.reproduced_rate",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.0223
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.8981,
       "ci_lo": 0.6806,
@@ -3231,7 +3867,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3246,7 +3883,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3261,7 +3899,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.9818,
       "ci_lo": 0.9662,
@@ -3276,7 +3915,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3291,7 +3931,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3306,7 +3947,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3321,22 +3963,24 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
       "dev_or_heldout": "synthetic",
-      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.undecided-uncheckable",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.undecided-source_null",
       "n": 1569,
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:discoverybench",
       "unit": "count",
-      "value": 1
+      "value": 1446
     },
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3346,12 +3990,13 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:discoverybench",
       "unit": "count",
-      "value": 1520
+      "value": 75
     },
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3366,7 +4011,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.0338,
       "ci_lo": 0.0182,
@@ -3381,7 +4027,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.9763,
       "ci_lo": 0.959,
@@ -3397,7 +4044,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.601,
       "ci_lo": 0.4985,
@@ -3414,7 +4062,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3430,7 +4079,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.5873,
       "ci_lo": 0.4845,
@@ -3447,7 +4097,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.5983,
       "ci_lo": 0.4957,
@@ -3464,7 +4115,172 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": 0.9844,
+      "ci_lo": 0.928,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.decidable_reproduced_rate",
+      "n": 177,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9661
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.inconclusive",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 185
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.not_reproduced",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.outcome.rejected",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.outcome.supported",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.outcome.undecided-misses_threshold",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.outcome.undecided-source_null",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 164
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.outcome.undecided-underpowered",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 17
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict under the v0.2 verdict rule",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.reproduced",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 171
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": 0.5294,
+      "ci_lo": 0.4264,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.pearson.reproduced_rate",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.4777
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.9941,
       "ci_lo": 0.9503,
@@ -3480,7 +4296,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3495,7 +4312,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3510,7 +4328,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3525,7 +4344,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3540,7 +4360,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3555,7 +4376,24 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.outcome.undecided-source_null",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 162
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3565,12 +4403,13 @@
       "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
       "source": "fetch:discoverybench",
       "unit": "count",
-      "value": 185
+      "value": 23
     },
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -3585,7 +4424,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.5266,
       "ci_lo": 0.4237,
@@ -3600,7 +4440,8 @@
     {
       "caveats": [
         "sensitivity analysis next to the Pearson verdicts, which it does not replace",
-        "row halves of one synthetic table, seed 0"
+        "row halves of one synthetic table, seed 0",
+        "v0.2 verdict rule: the expected direction is the source half's sign; a source half that claims no effect is undecided(source_null)"
       ],
       "ci_hi": 0.5681,
       "ci_lo": 0.4651,

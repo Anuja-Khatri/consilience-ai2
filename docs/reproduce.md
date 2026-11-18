@@ -9,10 +9,11 @@ Rubric source: `plugins/asta-flows/skills/run-workflow/workflows/secondary-repro
 in asta-plugins (pinned at commit a2dcade), section "Verdicts" and steps 1 and 4.
 
 ```bash
-consilience-ai2 reproduce check record.yaml [--repo PATH] [--json OUT] [--backend auto|consilience|fallback] [--pack PACK] [--skip CODE]
+consilience-ai2 reproduce check record.yaml [--repo PATH] [--json OUT] [--backend auto|consilience|fallback] [--pack PACK] [--skip CODE] [--rule v0.2|v0.1]
 ```
 
-Python: `consilience_ai2.reproduce.check_file(path, repo=...)` returns a `Report`;
+Python: `consilience_ai2.reproduce.check_file(path, repo=..., rule="v0.2")` returns a
+`Report`;
 `report.extra["verdict"]` holds the summary and `report.write(...)` writes
 `reproduction_verdict.json`.
 
@@ -31,7 +32,7 @@ Each line of the asta-flows wording, and where it lives in the code.
 | "**no data**: no independent data covered it;" | D1 | `no_data` |
 | "**not identifiable**: the construct cannot isolate the claim, for example because it is true by construction." | D1 | `not_identifiable` (declared in the record, with its reason) |
 | (added) power cannot be computed from what the record gives | D1 | `uncheckable` (a named reason); never guessed |
-| "**supported**: the threshold was met in the hypothesized direction;" | V1 | `supported` -> `reproduced` |
+| "**supported**: the threshold was met in the hypothesized direction;" | V1 | `supported` -> `reproduced`; under verdict rule v0.2 the direction is the source effect's sign (below) |
 | "**partly supported**: one committed component met it;" | V1 | `partly_supported` from `aggregate()` over one record per component -> `inconclusive` |
 | "**opposite effect**: significant in the other direction, which is never support;" | V1 | `opposite_effect` -> `not_reproduced` |
 | "**rejected**: a null with adequate power and a passing positive control." | V1 | `rejected` -> `not_reproduced`; a null without a passing positive control is `undecided(no_positive_control)` or `undecided(positive_control_failed)` |
@@ -129,18 +130,41 @@ The unit tests check these against standard reference values (for example d = 0.
 
 ### V1 verdict
 
-Minimum-effect mode. `s` is the hypothesized sign, `e` the reproduction effect on the
-committed scale (converted to the source unit on the value scale), `m` the minimum
+**Verdict rule v0.2 (the default) and v0.1.** A reproduction tests the source's finding,
+not the hypothesis wording. Under rule v0.2 the expected direction is the sign of the
+source effect, and a source that claims no effect is not something a minimum-effect test
+can reproduce. Under rule v0.1 (the first release; `--rule v0.1`, `rule="v0.1"`) the
+expected direction is the declared `direction`, the source effect entering only as a
+magnitude for power, so a rerun could "reproduce" a hypothesis its own source run
+contradicted (2 of the 4 CodeScientist pairs v0.1 calls reproduced, below). The rules
+differ only in minimum-effect mode. The change was decided after the v0.2 extraction
+results were seen and is recorded as deviation 4 in
+`prereg/reproduce/cs_extraction_v0_2_deviations.md`; the v0.1 numbers keep the v0.1 rule.
+
+Minimum-effect mode. `s` is the expected sign (v0.2: the sign of the source effect on
+the committed scale; v0.1: `direction`, else that sign), `e` the reproduction effect on
+the committed scale (converted to the source unit on the value scale), `m` the minimum
 effect, `sig` is `p < alpha` (p from the record, else computed from the effect size and
-n with the statistic above; one-sided p is in the hypothesized direction).
+n with the statistic above). A one-sided p in the record is in the declared `direction`
+(default: the source's sign); under v0.2, when `s` is the other sign, its complement
+`1 - p` is used, except at an effect of exactly 0, where there is no evidence either way.
+
+Under v0.2 the source **claims an effect** when its effect on the committed scale is not
+zero, `abs(effect) >= m`, and it is significant in its own direction (the record's p,
+complemented as above, else p computed from the source's effect size and n). A source
+that claims no effect is `undecided(source_null)`: a null can only be reproduced by an
+equivalence test, so commit an `equivalence_margin` to test it (equivalence mode, below).
 
 | # | Condition | Outcome | Verdict |
 |---|---|---|---|
 | 1 | F1 `substitution` | `not_a_reproduction` | `inconclusive` |
 | 2 | F1 `not_comparable` | `undecided(not_comparable)` | `inconclusive` |
+| 3a | (v0.2) D1 `no_data` or `not_identifiable` | `undecided(<D1 class>)` | `inconclusive` |
+| 3b | (v0.2) the source effect or its test cannot be read | `undecided(no_source_effect)`, `undecided(no_source_test)` | `inconclusive` |
+| 3c | (v0.2) the source claims no effect | `undecided(source_null)` | `inconclusive` |
 | 3 | D1 not `decidable` | `undecided(<D1 class>)` | `inconclusive` |
 | 4 | an unreadable threshold or positive control, no direction, no effect or no p | `undecided(<named>)` | `inconclusive` |
-| 5 | `sig` and `s*e < 0` | `opposite_effect` | `not_reproduced` |
+| 5 | `sig` and `s*e < 0`; or (v0.2, one-sided) `s*e < 0` and `1 - p < alpha` (significant in the other direction) | `opposite_effect` | `not_reproduced` |
 | 6 | `sig` and `s*e > 0` and `abs(e) >= m` | `supported` | `reproduced` |
 | 7 | `s*e > 0` and exactly one of `sig`, `abs(e) >= m` | `undecided(misses_threshold)` | `inconclusive` |
 | 8 | not `sig`, `s*e <= 0` or `abs(e) < m`, positive control passed | `rejected` | `not_reproduced` |
@@ -148,7 +172,9 @@ n with the statistic above; one-sided p is in the hypothesized direction).
 | 10 | as 8, positive control failed | `undecided(positive_control_failed)` | `inconclusive` |
 | 11 | `sig` and `e = 0` | `undecided(inconsistent_numbers)` | `inconclusive` |
 
-Equivalence mode (a margin M around the source value S): the `1 - 2*alpha` interval of
+Equivalence mode (a margin M around the source value S; the same under both rules, since
+it already tests the source's value, sign included, and is how a null source is
+reproduced): the `1 - 2*alpha` interval of
 the reproduction value, from `se`, or from `ci` at `ci_level` (default 0.95) converted
 to a standard error and re-centred on the value. Rows 1 to 4 as above, then: the
 interval inside `[S - M, S + M]` is `supported`; wholly outside and beyond zero on the
@@ -218,13 +244,18 @@ with SHA-256, `findings` with receipts, `summary`) plus `record` (path, SHA-256,
 All numbers below render from `results/reproduce.json` (written by
 `analyses/reproduce/run.py`). Fixed seeds; the F1 fallback backend is used so the
 numbers do not depend on whether `consilience` is installed. Two versions are reported:
-**v0.1**, the first release, under its original metric ids, and **v0.2**, which changes
-coverage and parsing only (`*.v0_2.*` metric ids). The verdict code, thresholds and pairs
-are the same in both. The v0.2 rule was preregistered in
-`prereg/reproduce/cs_extraction_v0_2.md` before any v0.2 number existed; three flaws found
-in it after one run, and before any number was committed, are corrected in
-`prereg/reproduce/cs_extraction_v0_2_deviations.md`, and the rule as preregistered is
-reported too (`reproduce.cs.v0_2.as_preregistered.*`).
+**v0.1**, the first release, under its original metric ids and with verdict rule v0.1,
+and **v0.2** (`*.v0_2.*` metric ids), which changes two things: coverage and parsing
+(the extraction rule), and the verdict rule (the expected direction is the source's sign;
+see V1 above). Thresholds and pairs are the same in both. The v0.2 extraction rule was
+preregistered in `prereg/reproduce/cs_extraction_v0_2.md` before any v0.2 number existed;
+three flaws found in it after one run, and before any number was committed, are
+corrected in `prereg/reproduce/cs_extraction_v0_2_deviations.md`, and the rule as
+preregistered is reported too (`reproduce.cs.v0_2.as_preregistered.*`, judged with the
+v0.1 verdict rule it assumed). The verdict rule change is deviation 4 there: it was
+decided after the v0.2 extraction results were seen, and it changes conclusions. To
+separate the two changes, the v0.2 extraction is also judged with the v0.1 verdict rule
+(`reproduce.cs.v0_2.extraction_only.*`).
 
 ### (a) CodeScientist reruns as reproductions (descriptive)
 
@@ -275,40 +306,50 @@ candidate (deviation 1).
 |---|---|---|
 | F1, of the recoverable pairs | `proxy` 11, `not_comparable(conditions.pilot_mode)` 10, `same_quantity` 3 (of 24) | `proxy` 15, `not_comparable` 11, `same_quantity` 4 (of 30) |
 | D1, of 65 | `no_data` 41, `underpowered` 15, `decidable` 9 | `no_data` 35, `underpowered` 18, `decidable` 10, `uncheckable` 2 |
-| V1, of 65 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 |
+| V1, of 65 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 | `reproduced` 2, `inconclusive` 61, `not_reproduced` 2 (extraction alone, v0.1 verdict rule: 4, 61, 0) |
 | P2, of 65 | identical hypothesis wording in 1 pair | (unchanged) |
 
-The v0.2 outcome distribution: `supported` 4; undecided because `no_data` 35,
-`not_comparable` 11, `underpowered` 10, `misses_threshold` 2, `no_positive_control` 2,
-`uncheckable` 1 (a source run whose mean difference is exactly 0). No pair changed its
-verdict: the 4 reproduced pairs are the same, and every newly readable pair is
-inconclusive (underpowered pilots, a pilot-mode setting written by one run only, no
-random-agent control, or a zero source effect). In v0.1 the undecided reasons were
-`no_data` 41, `not_comparable` 10, `underpowered` 7, `misses_threshold` 2,
-`no_positive_control` 1.
+The v0.2 outcome distribution: `supported` 2, `opposite_effect` 2; undecided because
+`no_data` 35, `not_comparable` 11, `source_null` 7, `underpowered` 4,
+`no_positive_control` 3, `misses_threshold` 1. In v0.1 the outcomes were `supported` 4 and
+undecided because `no_data` 41, `not_comparable` 10, `underpowered` 7,
+`misses_threshold` 2, `no_positive_control` 1.
 
-A check added in v0.2: in 2 of the 4 reproduced pairs the source run's own mean
-difference is negative (experimental below baseline; CodeScientist judged that source run
-"refute"). The record's direction is the hypothesis's (experimental above baseline, the
-bootstrap's own one-sided test), and the source effect enters only as a magnitude for
-power, so the rubric reads these reruns as reproducing the hypothesis, not the source's
-result. This is a property of the v0.1 design, unchanged here, and should be read with
-the verdicts.
+Each change on its own:
+- **Extraction alone** (v0.2 extraction, v0.1 verdict rule) changes no verdict: the same
+  4 reproduced pairs, and every newly readable pair is inconclusive (underpowered pilots,
+  a pilot-mode setting written by one run only, no random-agent control, or a zero source
+  effect).
+- **The verdict rule** turns 2 of the 4 reproduced pairs into `not_reproduced`
+  (`opposite_effect`). In both (cooking-graph-explorer, copy 1 to copies 3 and 4) the
+  source run's own mean difference is negative (experimental below baseline; CodeScientist
+  judged that source run "refute"), significantly so in its own direction, and the rerun is
+  significantly positive. v0.1 read them as reproducing the hypothesis wording
+  (experimental above baseline); they contradict the source's finding. The other 2
+  reproduced pairs (simple-goal-explorer) have a positive source effect and stay
+  reproduced. 7 pairs whose source run claims no effect (not significant in its own
+  direction, or a zero difference) become `source_null`, all inconclusive before as well
+  (6 underpowered, 1 uncheckable).
 
 Per-comparison table (pairs whose primary stays ambiguous; never counted among the 65):
-17 comparisons from 4 pairs are found in both runs: `reproduced` 3, `inconclusive` 14
-(`no_positive_control` 7, `underpowered` 3, `not_comparable` 3, `misses_threshold` 1). All
-3 reproduced comparisons are pairwise comparisons of state-representation levels whose
-source run found the opposite sign; "baseline" and "experimental" there are only the
-order of two levels, so the declared positive direction is not the hypothesis's.
+17 comparisons from 4 pairs are found in both runs. Under v0.2: `reproduced` 6,
+`not_reproduced` 4 (all `opposite_effect`), `inconclusive` 7 (`not_comparable` 3,
+`source_null` 2, `underpowered` 1, `no_positive_control` 1). The 6 reproduced are pairwise
+comparisons of state-representation levels in which the source run and the rerun both
+found the richer representation less accurate (a negative source effect, reproduced as
+negative) and one similarity-metric comparison; the 4 opposite effects are reruns that
+found the other sign. With the v0.1 verdict rule the same 17 gave `reproduced` 3 and
+`inconclusive` 14, and all 3 reproduced had a source effect of the other sign.
 
 Agreement with CodeScientist's own labels (its meta-analysis judges each run support,
 refute or inconclusive from the run's write-up): our verdict for the reproduction run
 matches theirs (reproduced ~ support, not_reproduced ~ refute, inconclusive ~
-inconclusive) in 18 of 65 pairs (27.69%, 95% CI 18.29% to 39.58%) in both v0.1 and v0.2.
-The v0.1 3 x 3 counts: where they say support, we say inconclusive in 25 and reproduced
-in 2; where they say refute, we say inconclusive in all 20; where they say inconclusive,
-we say inconclusive in 16 and reproduced in 2 (v0.2: the same cells). Most of the
+inconclusive) in 18 of 65 pairs (27.69%, 95% CI 18.29% to 39.58%) in both v0.1 and v0.2,
+with different cells. The v0.1 3 x 3 counts: where they say support, we say inconclusive
+in 25 and reproduced in 2; where they say refute, we say inconclusive in all 20; where
+they say inconclusive, we say inconclusive in 16 and reproduced in 2. Under v0.2 the 2
+pairs they call inconclusive and v0.1 called reproduced are `not_reproduced` (still a
+disagreement); the other cells are unchanged. Most of the
 disagreement is the rubric refusing to decide: among the v0.1 recoverable pairs, every
 reproduction run they label refute (6) has a non-significant bootstrap p, where the
 rubric's "rejected" also requires adequate power and a passing positive control. Against
@@ -380,6 +421,16 @@ points, and D1 still classes about half the planted pairs underpowered. The miss
 is mostly weak marginal dependence (the target is spread over several columns), not the
 shape of the relation.
 
+**The v0.2 verdict rule on DiscoveryBench.** Every v0.2 verdict above and below
+(Spearman, derived pairs) uses verdict rule v0.2; the Pearson table above keeps v0.1.
+Under v0.2 the Pearson verdict counts are the same (planted 171 / 2 / 185, nulls 35 / 7 /
+1527: every pair v0.1 reproduced or rejected has a source half that claims an effect),
+but the reasons move: a source half that is not significant now claims
+no effect, so 164 of the 185 inconclusive planted pairs are `source_null` (17
+underpowered, 4 misses threshold) and 1443 of the 1527 inconclusive nulls (80
+underpowered, 4 misses threshold). Among planted pairs D1 calls decidable, 96.61% still
+reproduce; nulls are not reproduced or inconclusive in 97.77%.
+
 **Coverage beyond the gold expressions (v0.2, derived).** Of the 903 queries, 520 give a
 gold hypothesis in prose only and 200 give none. In a prose hypothesis a column is named
 when its name, or its name with underscores read as spaces, occurs as a whole word. 127
@@ -388,7 +439,8 @@ known; the measures are symmetric). The others are not used: 90 name none, 117 o
 186 three or more, where pairs among predictors need not be related. 33 derived pairs have
 a non-numeric column, leaving 94: Pearson reproduces 26 (27.66%, 95% CI 19.63% to 37.44%),
 none is not reproduced, 68 are inconclusive (66 underpowered); among the derived pairs D1
-calls decidable, 92.86% reproduce (n = 28). Spearman reproduces 30 (31.91%). On half B,
+calls decidable, 92.86% reproduce (n = 28); under the v0.2 verdict rule 61 of the 68
+inconclusive are `source_null`. Spearman reproduces 30 (31.91%). On half B,
 Pearson detects 36.17%, Spearman 38.3%, MI 32.98%. Derived pairs carry no positive
 control, and a two-name hypothesis may name two predictors instead of a target and a
 predictor: they are a weaker label than the gold expression and are reported apart.
@@ -446,10 +498,14 @@ the result arrive in one commit: that is why the quickstart on `supported.yaml` 
   from a distortion, so any rewording is an error by design.
 - (a) CodeScientist reruns are reruns in the same environment, not independent data in
   the asta-flows sense; its thresholds (one-sided alpha 0.05, minimum effect 0 on the
-  mean difference, direction experimental above baseline) were fixed by this analysis,
-  not by the runs' authors. The direction is the hypothesis's, not the source run's
-  observed sign: 2 of the 4 reproduced pairs have a source run whose own mean difference
-  is negative. The effect size is derived from the one-sided bootstrap p by a normal
+  mean difference, the bootstrap's one-sided p read in the direction experimental above
+  baseline) were fixed by this analysis, not by the runs' authors. Under verdict rule
+  v0.1 that declared direction was the expected one, so 2 of the 4 pairs v0.1 calls
+  reproduced contradict their own source run; v0.2 expects the source's sign. Reading
+  a one-sided bootstrap p in the other direction as `1 - p` is a continuous
+  approximation (ties at zero differences break it, which is why it is not used at an
+  effect of exactly 0). The verdict rule change was decided after the v0.2 extraction
+  results were seen. The effect size is derived from the one-sided bootstrap p by a normal
   approximation. The primary comparison is identified by a fixed rule (v0.1: the single
   non-random bootstrap block of `results.json`; v0.2: three files in order, then the
   hypothesis and the plan by word matching); where it finds no or several candidates the
