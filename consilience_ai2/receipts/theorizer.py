@@ -16,9 +16,12 @@ Input: one condition directory of the released archive (for example
 - ``predictiveaccuracy/pe-*.html``: the predictive-accuracy evaluation of one law, with
   per-prediction counts of papers that support, contradict or give no evidence.
 
-The export maps each evidence ID to its extraction file and, when the ID is not in the
-store, falls back to the ID itself as the file name (``uuid_to_extraction_id.get(uuid,
-uuid)``), so an unresolved ID still renders as a link, to ``../results/<id>.html``.
+The export maps each evidence ID to its extraction file and, when the ID has no entry in
+that map, falls back silently to the ID itself as the file name (asta-theorizer
+``src/ExportTheoryStoreAsHTML.py`` line 286 at commit c4802aa:
+``extraction_id = uuid_to_extraction_id.get(uuid, uuid)``), so an unmapped ID still
+renders as a link, to ``../results/<id>.html``, a file that does not exist. Why an ID is
+unmapped upstream is not visible in the export and is not inferred here.
 
 Checks
 - **T1** an evidence ID cited by a law that resolves to no evidence record in the same

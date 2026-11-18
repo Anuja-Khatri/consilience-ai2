@@ -677,7 +677,9 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "the export falls back silently to a link to ../results/<id>.html for an ID it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, commit c4802aa)",
+        "why the IDs are unmapped upstream is not established"
       ],
       "ci_hi": 0.018596,
       "ci_lo": 0.01408,
@@ -742,7 +744,9 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "the export falls back silently to a link to ../results/<id>.html for an ID it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, commit c4802aa)",
+        "why the IDs are unmapped upstream is not established"
       ],
       "ci_hi": 0.001672,
       "ci_lo": 0.0,
@@ -974,7 +978,9 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "the export falls back silently to a link to ../results/<id>.html for an ID it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, commit c4802aa)",
+        "why the IDs are unmapped upstream is not established"
       ],
       "ci_hi": 1.0,
       "ci_lo": 0.981606,
@@ -1001,7 +1007,9 @@
     {
       "caveats": [
         "computed on the released HTML export, not the underlying theory store",
-        "literature-supported conditions; each (law, ID) pair counted once"
+        "literature-supported conditions; each (law, ID) pair counted once",
+        "the export falls back silently to a link to ../results/<id>.html for an ID it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, commit c4802aa)",
+        "why the IDs are unmapped upstream is not established"
       ],
       "ci_hi": 0.015625,
       "ci_lo": 0.011826,
@@ -1015,7 +1023,9 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "the export falls back silently to a link to ../results/<id>.html for an ID it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, commit c4802aa)",
+        "why the IDs are unmapped upstream is not established"
       ],
       "ci_hi": 0.01076,
       "ci_lo": 0.002537,

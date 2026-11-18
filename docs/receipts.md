@@ -223,13 +223,20 @@ written by asta-theorizer's `src/ExportTheoryStoreAsHTML.py`.
 Checks:
 
 - **T1**: a cited evidence ID with no record of that ID in the same condition's records.
-  - The export maps an ID to its extraction file with `uuid_to_extraction_id.get(uuid,
-    uuid)`, so an ID that is not in the store still renders as a link, to
-    `../results/<id>.html`, a file that does not exist. T1 counts these links.
-  - Upstream, theory construction in asta-theorizer `src/Theorizer.py` (lines 974 to 982
-    at commit c4802aa) keeps an evidence ID only `if (extraction_result is not None)`,
-    with no log or count of what is skipped. The same pattern drops IDs silently. (The
-    file is `src/Theorizer.py`; there is no `Pipeline.py` at that commit.)
+  - What is verified: the released export contains links to evidence records that do
+    not exist. For example, `theories/theory-172.html` in
+    `html_output-literature-supported-accuracy-focused` cites `e2232.5` to `e2232.9`,
+    linked to `../results/e2232.5.html` to `../results/e2232.9.html`. No such files
+    exist, and `results/extraction-result-2232.html` holds only `e2232.0` to `e2232.4`.
+  - The exporter falls back silently. asta-theorizer `src/ExportTheoryStoreAsHTML.py`
+    line 286 (commit c4802aa) is `extraction_id = uuid_to_extraction_id.get(uuid, uuid)`.
+    The map is built from the `uuid` fields of the store's extraction results
+    (`build_extraction_maps`, lines 875 to 884). An ID with no entry becomes its own
+    file name, with no warning, so it renders as a link to `../results/<id>.html`. T1
+    counts these links.
+  - Why these IDs have no entry upstream is not established. The export cannot show
+    whether the store never held those records or held them and lost them, and the
+    checker does not guess.
 - **T2**: a law whose scope is the empty note "Not specified.", or whose evidence list is
   the empty note "No evidence provided.".
 - **W1 and W2**, at two levels:
@@ -310,9 +317,10 @@ Results:
   accuracy-focused condition.
   - Every unresolved link uses the export's fallback file name (100%,
     `receipts.theorizer.t1_href_fallback_share`).
-  - The IDs come from 18 extraction files that do exist but hold fewer instances than
-    were cited. For example, a law cites `e2232.5` to `e2232.9` while that extraction has
-    `e2232.0` to `e2232.4`.
+  - The unresolved IDs share their extraction number with 18 extraction files that do
+    exist but hold fewer records than were cited. For example, theory-172 cites
+    `e2232.5` to `e2232.9` while `extraction-result-2232.html` holds `e2232.0` to
+    `e2232.4` (the example above).
   - The novelty-focused condition has none.
 - **T2.** 0.88% of all laws have an empty scope and an empty evidence list together.
   All of them are in the parametric accuracy-focused condition (2.48% of its laws).
@@ -411,7 +419,7 @@ The exploratory secondaries are not decision-bearing; both are null:
   by form, not by name.
 - **Theorizer.**
   - The checks read the HTML export, not the theory store, so T1 counts IDs that the
-    export could not map.
+    export could not map. It does not say why they were unmapped upstream.
   - An evidence record holds an extraction, not the paper, so W1 against records
     overstates how often a number is absent from the source paper.
   - The novelty-focused W1 law rate reflects how those laws are written.

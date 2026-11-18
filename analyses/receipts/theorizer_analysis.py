@@ -190,6 +190,10 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     lit = {k: sum(per[cnd][k] for cnd in LITERATURE) for k in per[LITERATURE[0]]}
     allc = {k: sum(per[cnd][k] for cnd in per) for k in per[LITERATURE[0]]}
     cav_html = ["computed on the released HTML export, not the underlying theory store"]
+    cav_t1 = ["the export falls back silently to a link to ../results/<id>.html for an ID "
+              "it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, "
+              "commit c4802aa)",
+              "why the IDs are unmapped upstream is not established"]
     metrics += [
         count("receipts.theorizer.n_theories", totals["theories"],
               "theory files across the four released conditions"),
@@ -215,14 +219,15 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
              cav_html + ["a results file with no record may be an extraction that found nothing"],
              description="results files with at least one evidence record parsed"),
         rate("receipts.theorizer.t1_rate", lit["unresolved"], lit["refs"],
-             cav_html + ["literature-supported conditions; each (law, ID) pair counted once"],
+             cav_html + ["literature-supported conditions; each (law, ID) pair counted once"]
+             + cav_t1,
              description="T1: cited evidence IDs that resolve to no evidence record"),
         count("receipts.theorizer.t1_malformed_ids", lit["malformed"],
               "T1 links whose ID is not of the form e<n>.<k>"),
         rate("receipts.theorizer.t1_theory_rate", lit["t1_theories"], lit["theories"],
-             cav_html, description="theories with at least one T1"),
+             cav_html + cav_t1, description="theories with at least one T1"),
         rate("receipts.theorizer.t1_href_fallback_share", lit["href_fallback"], lit["t1_links"],
-             cav_html, description="T1 links whose href is the export's fallback "
+             cav_html + cav_t1, description="T1 links whose href is the export's fallback "
                                    "../results/<id>.html, which names no extraction file"),
         rate("receipts.theorizer.t2_rate", allc["t2"], allc["laws"],
              cav_html + ["all four conditions"],
@@ -250,7 +255,7 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         s = SHORT[cond]
         c = per[cond]
         metrics += [
-            rate(f"receipts.theorizer.{s}.t1_rate", c["unresolved"], c["refs"], cav_html),
+            rate(f"receipts.theorizer.{s}.t1_rate", c["unresolved"], c["refs"], cav_html + cav_t1),
             rate(f"receipts.theorizer.{s}.w1_law_rate", c["law_w1"], c["law_checked"], cav_html),
             rate(f"receipts.theorizer.{s}.w2_law_rate", c["law_w2"], c["law_checked"], cav_html),
             rate(f"receipts.theorizer.{s}.w1_item_rate", c["item_w1"], c["items_checked"],
