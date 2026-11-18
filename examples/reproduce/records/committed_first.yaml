@@ -1,0 +1,36 @@
+# Synthetic example (planted numbers) for the commit-order demo,
+# examples/reproduce/demo_commit_order.py. In a real run this file is committed twice:
+# first with the test and its thresholds and no reproduction numbers, then again with
+# the result. The demo replays those two commits in a temporary git repository, so P1
+# can credit the thresholds as committed first. Checked in place, in this repository,
+# both stages arrive in one commit and P1 reports thresholds_post_hoc (same_commit).
+schema_version: 1
+id: H2-caffeine-reaction
+hypothesis: "A 200 mg caffeine dose shortens simple reaction time."
+source_hypothesis: "A 200 mg caffeine dose shortens simple reaction time."
+direction: negative
+source:
+  quantity: Cohen's d for reaction time, caffeine minus placebo
+  value: -0.45
+  unit: dimensionless
+  n: 160
+  effect_size: {type: d, value: -0.45}
+  p: 0.005
+  conditions: {cohort: "lab A (2021)", dose: "200 mg", task: "simple reaction time"}
+reproduction:
+  quantity: Cohen's d for reaction time, caffeine minus placebo
+  value: -0.41
+  unit: dimensionless
+  n: 240
+  effect_size: {type: d, value: -0.41}
+  p: 0.002
+  conditions: {cohort: "lab B (2025)", dose: "200 mg", task: "simple reaction time"}
+quantity_mapping: {relation: same_quantity}
+independence_axis: cohort
+thresholds:
+  alpha: 0.05
+  sides: 2
+  minimum_effect: 0.2
+  power: 0.8
+positive_control: {p: 0.001, note: "age vs reaction time recovers its known sign"}
+reported_verdict: supported
