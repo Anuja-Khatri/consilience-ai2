@@ -348,3 +348,15 @@ def test_cli_rule_option(record, tmp_path, capsys):
               "--rule", rule, "--json", "-"])
         out = json.loads(capsys.readouterr().out)
         assert out["verdict"]["verdict"] == want and out["verdict"]["verdict_rule"] == rule
+
+
+def test_v02_no_complement_at_zero_effect(record):
+    # a reproduction with an exactly zero effect and a one-sided p of 1 (ties) is not
+    # significant in the other direction either
+    rec = record({"direction": "positive", "thresholds": {"sides": 1, "minimum_effect": 0,
+                                                          "minimum_effect_scale": "value"},
+                  "source": {"value": -0.31, "effect_size": {"value": -0.31}, "p": 0.999},
+                  "reproduction": {"value": 0.0, "effect_size": {"value": 0.0}, "p": 1.0}})
+    f, v = v1(rec)
+    assert v["outcome_label"] == "rejected"     # not significant; the control passed
+    assert f.details["p"] == 1.0 and f.details["p_from"] == "record"

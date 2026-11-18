@@ -25,7 +25,8 @@ sign of the source effect on the committed scale, under ``v0.1`` the declared
 the committed scale, ``m`` the committed minimum effect, ``sig`` is ``p < alpha`` (p from
 the record, else computed from the effect and n, see ``stats.p_from_effect``). A one-sided
 p in the record is in the declared ``direction`` (default: the source's sign); under
-``v0.2``, when the expected sign is the other one, its complement ``1 - p`` is used.
+``v0.2``, when the expected sign is the other one, its complement ``1 - p`` is used,
+except at a reproduction effect of exactly 0 (no evidence either way).
 
 Under ``v0.2`` the source CLAIMS an effect when its effect on the committed scale is not
 zero, at least ``m`` in size, and significant (its own p below alpha, in its own
@@ -347,7 +348,9 @@ def _minimum_effect(rec: Parsed, alpha: float, backend: str, rule: str = DEFAULT
         e = rep.effect.value
     p = rep.p
     p_from = "record"
-    if p is not None and rule == "v0.2" and rec.sides == 1:
+    if p is not None and rule == "v0.2" and rec.sides == 1 and e != 0:
+        # at a zero effect there is no evidence in either direction (ties make a
+        # one-sided p near 1 both ways), so the complement is not taken
         declared = _declared_sign(rec)
         if declared != 0 and declared != s:
             p, p_from = 1 - p, "record, one-sided complement (1 - p)"

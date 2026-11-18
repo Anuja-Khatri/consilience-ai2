@@ -32,7 +32,7 @@ CS_SOURCE_V02 = "fetch:codescientist+codescientist-full50+codescientist-example-
 DB_SOURCE = "fetch:discoverybench"
 PREREG_V02 = "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320"
 DEVIATIONS_V02 = ("prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended "
-                  "@ 9e1f1da and @ VERDICTRULE")
+                  "@ 9e1f1da and @ 1f92475")
 V01_NOTE = ("v0.1 extraction rule (the single non-random bootstrap block of the final "
             "results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics")
 Z95 = 1.959963984540054
@@ -217,7 +217,7 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
         out.append(count(f"{P}.reproduced_source_sign.{sign}",
                          s["reproduced_source_sign"].get(sign, 0), s["v1"].get("reproduced", 0),
                          caveats=cav, description="reproduced pairs by the sign of the source "
-                         "run's own mean difference (the declared direction is positive)", **kw))
+                         "run's own mean difference", **kw))
     for cell, k in sorted(s["verdict_transitions"].items()):
         a, b = cell.split("|")
         out.append(count(f"{P}.transition.{a}.to_{b}", k, n, caveats=cav,
@@ -251,7 +251,7 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
                          pc["reproduced_source_sign"].get(sign, 0),
                          pc["verdict"].get("reproduced", 0), caveats=pcav,
                          description="reproduced comparisons by the sign of the source run's "
-                         "own mean difference (the declared direction is positive)", **kw))
+                         "own mean difference", **kw))
     b2 = s["batch2"]
     bkw = {"source": CS_SOURCE_V02, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
     bcav = ["the full-50 batch without expert notes: bulk and meta-analysis tables are "
