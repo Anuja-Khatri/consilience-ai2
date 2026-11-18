@@ -1,5 +1,11 @@
 # Limitations
 
+> **In short.** This page lists what the tools cannot do, and how far the results can be
+> trusted. Read it before relying on any result.
+> The main limits: no real AutoDiscovery run is public; the audit's development set is
+> not blind and its preregistered prediction failed; the claim checks compare words and
+> numbers, not meaning; and the samples are small.
+
 What the three tools cannot do, and how far the reported results can be trusted. Each
 component's own document has the full detail: [receipts](receipts.md),
 [audit](audit.md), [reproduce](reproduce.md). Every number below renders from

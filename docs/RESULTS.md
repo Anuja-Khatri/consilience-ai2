@@ -1,5 +1,17 @@
 # Results
 
+> **In short.** This page lists what the three tools measured, with the label of each
+> result. Read it to judge how far the findings go.
+> Key findings: 1.36% of cited evidence links in Theorizer's export point to missing
+> records; two issues in accepted CodeScientist discoveries that the reviewers did not
+> flag (dev); Benjamini–Hochberg cut distractor hits on DiscoveryBench from 7.43% to
+> 2.74%. Of the three held-out preregistered tests, one was null, one went against the
+> prediction (not significant), and one could not be run.
+
+Benjamini–Hochberg (BH) is a standard adjustment of p values when many tests are run. A
+preregistered test is one whose hypothesis and decision rule were committed to git
+before any scoring.
+
 What the three tools measured on data released by Ai2 and its collaborators, and on
 synthetic fixtures. Every number here renders from `results/registry.json`
 (`scripts/numbers_lock.py` checks this in CI). **Every metric**, with its value, 95%
@@ -141,7 +153,8 @@ reruns. Detail and the per-reason table: [audit.md](audit.md),
 | | V1 verdicts: reproduced / not reproduced / inconclusive | 2 / 2 / 61 | | 65 | descriptive |
 | | D1: no data / underpowered / decidable / uncheckable | 35 / 18 / 10 / 2 | | 65 | descriptive |
 | | agreement with CodeScientist's own run labels | 27.69% | 18.29% to 39.58% | 65 | descriptive |
-| | per comparison (pairs whose primary is ambiguous): reproduced / not reproduced / inconclusive | 6 / 4 / 7 | | 17 comparisons from 4 pairs | descriptive || DiscoveryBench synthetic, planted effects on held-out row halves | reproduced | 47.77% | 42.64% to 52.94% | 358 | synthetic |
+| | per comparison (pairs whose primary is ambiguous): reproduced / not reproduced / inconclusive | 6 / 4 / 7 | | 17 comparisons from 4 pairs | descriptive |
+| DiscoveryBench synthetic, planted effects on held-out row halves | reproduced | 47.77% | 42.64% to 52.94% | 358 | synthetic |
 | | reproduced, among pairs D1 calls decidable | 96.61% | 92.8% to 98.44% | 177 | synthetic |
 | | underpowered when the reproduction has 10 rows | 85.02% | 80.74% to 88.48% | 327 | synthetic |
 | | D1 class at 10 rows agrees with empirical power | 96.64% | 94.08% to 98.11% | 327 | synthetic |

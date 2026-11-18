@@ -1,5 +1,23 @@
 # C2 Experiment audit (`consilience-ai2 audit`)
 
+> **In short.** This page explains `consilience-ai2 audit`. It checks each experiment in
+> an AutoDiscovery run or a CodeScientist experiment directory against fixed rules. Do
+> the reported numbers appear in the run's output? Is the n right? Is there a test
+> behind "significant", a real baseline, and control for many tests?
+> Read it if you run or review these agents.
+> Key findings: in two discoveries that the CodeScientist paper's reviewers accepted, it
+> found issues the reviews did not mention ([development set](#development-set-codescientist-table-4-labelled-dev-not-blind);
+> the rules were written knowing these cases). On DiscoveryBench, multiple-testing
+> control removed most chance hits ([A5](#a5-on-discoverybench-synthetic-tasks-labelled-descriptive-null-control-synthetic)).
+> Its preregistered prediction about replication failed, and no real AutoDiscovery run
+> is public, so that adapter is tested on synthetic files only.
+
+AutoDiscovery is Ai2's agent that explores a dataset by proposing and testing
+hypotheses. CodeScientist is Ai2's semi-automated discovery system that designs, runs and
+writes up code experiments. DiscoveryBench is a benchmark of data-driven discovery tasks.
+Benjamini–Hochberg (BH) is a standard adjustment of p values when many tests are run; its
+adjusted values are called q values.
+
 A deterministic, receipt-backed audit of agent-run experiments (rules v0.2,
 `audit-rules-2`). It reads AutoDiscovery
 runs and CodeScientist experiment directories in their native formats and runs fixed rules
@@ -60,6 +78,11 @@ line count inside the field's decoded text. A LaTeX report's preamble, figure an
 options, labels, references and comments are masked and never read as claims.
 
 ## Checks (rules v0.2, `audit-rules-2`)
+
+In plain words: the A codes check that the analysis is reported correctly (numbers, n,
+tests, effect sizes, many tests); the R codes check the research design (baselines,
+reruns, sample size, hard-coded results, unused components); U1 means nothing could be
+checked.
 
 The rules have versions. **v0.2** (`audit-rules-2`, this section) is what the CLI runs.
 **v0.1** (`audit-rules-1`, git tree `cca16a0` of `consilience_ai2/audit`, commit d24d2f7) is
@@ -163,14 +186,18 @@ adapter reads the format, not that the rules transfer to real runs.
 
 The 19 discoveries of the CodeScientist paper's Table 4 (6 accepted, 13 rejected with the
 internal reviewer's reason), matched to the 19 corresponding directories of the released
-example-experiments archive. **The dev set is not blind.** The v0.1 rules were written
-knowing these reasons, and the v0.2 recalibration was decided by people who had inspected
-these cases (the false flags on the accepted discoveries in particular), so neither
-column below measures generalisation; they measure fit to the cases that motivated the
-rules. R2 is given each idea's per-run judgements from the repository's meta-analysis file;
-note that the accepted discoveries are follow-on runs, while those judgements are of the
-idea's five original runs. Per-discovery codes for both versions are in
-`analyses/audit/dev_table.md`. The v0.1 column is recomputed from the frozen v0.1 rules.
+example-experiments archive. In plain words: the reviewers accepted 6 discoveries and
+rejected 13; the question is whether the audit flags the rejected ones for the
+reviewers' reasons, and what it flags in the accepted ones.
+
+**The dev set is not blind.** The v0.1 rules were written knowing these reasons, and the
+v0.2 recalibration was decided by people who had inspected these cases (the false flags on
+the accepted discoveries in particular), so neither column below measures generalisation;
+they measure fit to the cases that motivated the rules. R2 is given each idea's per-run
+judgements from the repository's meta-analysis file; note that the accepted discoveries
+are follow-on runs, while those judgements are of the idea's five original runs.
+Per-discovery codes for both versions are in `analyses/audit/dev_table.md`. The v0.1
+column is recomputed from the frozen v0.1 rules.
 
 | dev, 19 discoveries | v0.1 | v0.2 |
 |---|---|---|
@@ -212,8 +239,8 @@ By reason (rejected discoveries flagged by an intended code at error or warning 
 | 1 (simulation confidence) | A1 error on "AUC = 0.54" | Parser limit. The AUC is computed in the code and written only into the legend of a saved ROC plot (`label=f'ROC curve (AUC = {roc_auc:.2f})'`, then `savefig`); it is in an output, one the audit cannot read. | Warning, `tier: figure_only` (regression test `test_a1_number_possibly_only_in_a_saved_figure_is_a_warning`) |
 | 1 | R1 error on "than random" | Parser bug. The sentence says confidence scores "perform only slightly better than random at predicting accuracy": a negative statement with chance as the natural reference of an AUC, not a random-only baseline. | Not counted (info) (`test_r1_limiting_comparison_to_chance_is_not_flagged`) |
 | 3 (two-stage game generation) | A1 error on "76%" | Parser bug. "29.8 seconds ... compared to 16.9 seconds, a 76% increase": a relative change of two printed numbers (the run printed the means at full precision). | Passes as derived (`test_a1_worded_relative_change_of_printed_numbers_is_derived`) |
-| 3 | A4 error on "significantly" | Genuine. The report says "significant differences" and "significantly more time"; the code runs no test and the output prints no test statistic or p value. The humans accepted the discovery anyway. | Kept as an error |
-| 5 (basic confidence simulation) | A1 error on "SD = 15.8%" | Genuine. The standard deviation of per-game accuracy is printed nowhere; recomputed from the run's `results.json` it is 16.2% (sample) or 16.0% (population), not 15.8%. The humans accepted the discovery anyway. | Kept as an error (`test_a1_unprinted_statistic_stays_an_error`) |
+| 3 | A4 error on "significantly" | Genuine. The report says "significant differences" and "significantly more time"; the code runs no test and the output prints no test statistic or p value. The reviewers accepted the discovery and did not flag this issue. | Kept as an error |
+| 5 (basic confidence simulation) | A1 error on "SD = 15.8%" | Genuine. The standard deviation of per-game accuracy is printed nowhere; recomputed from the run's `results.json` it is 16.2% (sample) or 16.0% (population), not 15.8%. The reviewers accepted the discovery and did not flag this issue. | Kept as an error (`test_a1_unprinted_statistic_stays_an_error`) |
 
 v0.2 adds one error on an accepted discovery: discovery 2's idea has 2 supporting and 2
 refuting runs, which v0.2 calls a result that does not replicate (R2 error); under v0.1 it

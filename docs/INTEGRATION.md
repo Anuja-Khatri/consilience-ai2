@@ -1,9 +1,26 @@
 # Integration
 
-Where each tool hooks into the Asta tools, as file formats and commands. Nothing here
-patches Ai2's code: every hook is a command run beside it, a Makefile snippet the
-project includes, or a script the project copies in. Hook points were read from
-asta-plugins at commit a2dcade and asta-autodiscovery at commit 30e080f.
+> **In short.** This page shows where each tool plugs into the Asta tools, as files and
+> commands. Read it if you run asta-plugins workspaces, AutoDiscovery, or the asta-flows
+> "Secondary reproduction" workflow and want to add a check.
+> Nothing here changes Ai2's code: every hook is a command run beside it, a Makefile
+> snippet, or a script copied into a run.
+
+## Where to add each check
+
+| If you run | Add | Where | Section |
+|---|---|---|---|
+| an asta-plugins workspace, checked with `make check` | the `evidence-receipts.mk` snippet, which runs `consilience-ai2 receipts check` | the workspace's Makefile | [1](#1-evidence-receipts-in-a-workspaces-make-check) |
+| AutoDiscovery (`auto-discovery … --out_dir runs/r1`) | `consilience-ai2 audit run runs/r1`, after the run | the step after the run | [2](#2-experiment-audit-after-an-autodiscovery-run) |
+| the asta-flows "Secondary reproduction" workflow | `verdict.py`, which runs `consilience-ai2 reproduce` on every record | the run's `scripts/` directory | [3](#3-reproduction-verdicts-beside-the-secondary-reproduction-workflow) |
+
+Each tool writes a JSON report ([section 4](#4-output-schemas-version-1)). The same
+checks are also Claude Code plugins ([section 5](#5-claude-code-plugins)).
+
+## Setup
+
+The hook points were read from asta-plugins at commit a2dcade and asta-autodiscovery at
+commit 30e080f. No hook patches Ai2's code.
 
 Install the command once wherever the hook runs:
 

@@ -1,11 +1,68 @@
 # Evidence receipts (`consilience-ai2 receipts`)
 
+> **In short.** This page explains `consilience-ai2 receipts`. It checks the evidence
+> behind written claims: is each quote real and word for word in its source, and does
+> the claim state a number or a certainty that the quote does not?
+> Read it if you write Asta workspaces, or if you came for the Theorizer finding.
+> Key finding: in Theorizer's released export, 195 of 14,343 cited evidence links
+> (distinct law and evidence ID pairs) point to records that are not in the export ([T1, below](#t1-theorizer-evidence-links-that-point-to-missing-records)).
+> The one preregistered test, on SciArena-Eval votes, was null.
+
 Rule-based checks of the evidence behind written claims, for Asta workspaces and for two
 released datasets (Theorizer theories and SciArena-Eval). There are no model calls. The
 same input gives byte-identical output. Every finding carries a receipt: the SHA-256 of
 what was checked and, where there is one, the character span.
 
+Asta is Ai2's set of agents and research skills for science; an Asta workspace is a
+Quarto project whose claims carry `.ev` evidence spans. Theorizer is Ai2's system that
+generates scientific theories from the literature. SciArena-Eval is a released set of
+human votes between two AI answers to the same science question.
+
 Independent work, not affiliated with or endorsed by the Allen Institute for AI (Ai2).
+
+## T1: Theorizer evidence links that point to missing records
+
+**What was checked.** Theorizer's released HTML export holds theories in four
+conditions. Each law in a theory lists its supporting evidence, and each evidence item
+links to evidence records by ID, such as `[e595.3]`. The records are in the condition's
+results files. T1 asks, for each cited ID: is there a record with that ID in the same
+condition's records?
+
+**What was found.** The two literature-supported conditions have 14,343 distinct (law,
+evidence ID) pairs. Of these, 195 (1.36%, 95% interval 1.18% to 1.56%) point to no
+evidence record (`receipts.theorizer.t1_rate`). They fall in seven theories, 0.52% of the
+1338 literature-supported theories, all in the accuracy-focused condition. The
+novelty-focused condition has none.
+
+**An example.** `theories/theory-172.html` in
+`html_output-literature-supported-accuracy-focused` cites `e2232.5` to `e2232.9`, linked
+to `../results/e2232.5.html` to `../results/e2232.9.html`. No such files exist, and
+`results/extraction-result-2232.html` holds only `e2232.0` to `e2232.4`. The other
+unresolved IDs follow the same pattern: they share their extraction number with 18
+extraction files that do exist but hold fewer records than were cited.
+
+**Where the links come from.** The exporter falls back silently. In asta-theorizer
+`src/ExportTheoryStoreAsHTML.py` (commit c4802aa), line 286 is
+
+```python
+extraction_id = uuid_to_extraction_id.get(uuid, uuid)
+```
+
+The map is built from the `uuid` fields of the store's extraction results
+(`build_extraction_maps`, lines 875 to 884). An ID with no entry in the map becomes its
+own file name, with no warning, so it renders as a link to `../results/<id>.html`. The 195
+pairs appear as 205 links in the HTML, and every one of them uses this fallback file
+name (100%, `receipts.theorizer.t1_href_fallback_share`).
+
+**What is not established.** Why these IDs have no entry upstream is not established.
+The export cannot show whether the store never held those records or held them and lost
+them, and the checker does not guess. T1 counts links in the released export; it is not
+a judgement of the theories.
+
+**Check it yourself.** Run `consilience-ai2 fetch all`, then
+`python analyses/receipts/run.py`. The numbers are written to `results/receipts.json`
+under `receipts.theorizer.t1_*`. Each T1 finding's receipt gives the SHA-256 of the
+theory file and the character span of the evidence link.
 
 ## Running it
 
@@ -65,6 +122,9 @@ commit a2dcade) read it.
     absent.
 
 ## Checks
+
+In plain words: the E codes check that each piece of evidence exists, is well formed and
+is quoted exactly; the W codes check that the claim does not overstate its quote.
 
 | Code | Severity | Rule |
 |---|---|---|
@@ -337,20 +397,8 @@ written by asta-theorizer's `src/ExportTheoryStoreAsHTML.py`.
 Checks:
 
 - **T1**: a cited evidence ID with no record of that ID in the same condition's records.
-  - What is verified: the released export contains links to evidence records that do
-    not exist. For example, `theories/theory-172.html` in
-    `html_output-literature-supported-accuracy-focused` cites `e2232.5` to `e2232.9`,
-    linked to `../results/e2232.5.html` to `../results/e2232.9.html`. No such files
-    exist, and `results/extraction-result-2232.html` holds only `e2232.0` to `e2232.4`.
-  - The exporter falls back silently. asta-theorizer `src/ExportTheoryStoreAsHTML.py`
-    line 286 (commit c4802aa) is `extraction_id = uuid_to_extraction_id.get(uuid, uuid)`.
-    The map is built from the `uuid` fields of the store's extraction results
-    (`build_extraction_maps`, lines 875 to 884). An ID with no entry becomes its own
-    file name, with no warning, so it renders as a link to `../results/<id>.html`. T1
-    counts these links.
-  - Why these IDs have no entry upstream is not established. The export cannot show
-    whether the store never held those records or held them and lost them, and the
-    checker does not guess.
+  The example of theory-172, the exporter's fallback at line 286 and what is not
+  established are in [T1, above](#t1-theorizer-evidence-links-that-point-to-missing-records).
 - **T2**: a law whose scope is the empty note "Not specified.", or whose evidence list is
   the empty note "No evidence provided.".
 - **W1 and W2**, at two levels:
@@ -430,14 +478,9 @@ Results:
 
 - **T1.** 1.36% of cited (law, ID) pairs resolve to no record (n = 14343). They fall in
   0.52% of literature-supported theories, seven theories in all, all in the
-  accuracy-focused condition.
-  - Every unresolved link uses the export's fallback file name (100%,
-    `receipts.theorizer.t1_href_fallback_share`).
-  - The unresolved IDs share their extraction number with 18 extraction files that do
-    exist but hold fewer records than were cited. For example, theory-172 cites
-    `e2232.5` to `e2232.9` while `extraction-result-2232.html` holds `e2232.0` to
-    `e2232.4` (the example above).
-  - The novelty-focused condition has none.
+  accuracy-focused condition. Every unresolved link uses the export's fallback file name
+  (100%, `receipts.theorizer.t1_href_fallback_share`). The novelty-focused condition has
+  none. The full explanation is in [T1, above](#t1-theorizer-evidence-links-that-point-to-missing-records).
 - **T2.** 0.88% of all laws have an empty scope and an empty evidence list together.
   All of them are in the parametric accuracy-focused condition (2.48% of its laws).
   None of the literature-supported laws has either.

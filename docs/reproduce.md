@@ -1,5 +1,19 @@
 # Reproduction verdict (`consilience-ai2 reproduce`)
 
+> **In short.** This page explains `consilience-ai2 reproduce`. It turns the verdict
+> rubric of the asta-flows "Secondary reproduction" workflow into code. From a structured
+> record it decides: is it the same quantity, could the test decide, and do the numbers
+> meet thresholds committed in advance?
+> Read it if you run reproductions with asta-flows, or write reproduction records.
+> Key takeaways: on synthetic DiscoveryBench data, planted effects are reproduced in
+> 96.61% of pairs the tool calls decidable, and nulls are not reproduced or inconclusive
+> in 97.77%. On CodeScientist reruns, most pairs are `inconclusive`, because the numbers
+> a verdict needs are missing.
+
+asta-flows is a set of research workflows in asta-plugins, Ai2's repository that
+distributes Asta's research skills as agent plugins. A reproduction record is a YAML or
+JSON file with the source result, the reproduction's result and the thresholds.
+
 Component C3. It turns the verdict rubric of the asta-flows "Secondary reproduction"
 workflow into deterministic code: the verdict is read from the numbers in a structured
 record, against thresholds committed before the result, never from prose. No language
@@ -240,6 +254,10 @@ with SHA-256, `findings` with receipts, `summary`) plus `record` (path, SHA-256,
   `reproduction-verdict`.
 
 ## Results
+
+In plain words: the tool was run on CodeScientist reruns read as reproductions (real
+data, descriptive) and on DiscoveryBench tasks with planted effects and planted nulls
+(synthetic data, where the right answer is known).
 
 All numbers below render from `results/reproduce.json` (written by
 `analyses/reproduce/run.py`). Fixed seeds; the F1 fallback backend is used so the

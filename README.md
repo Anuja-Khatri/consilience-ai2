@@ -1,23 +1,133 @@
 # consilience-ai2
 
-Deterministic validity checks for agent-produced science, built for the file formats of
-Ai2's Asta stack and tested on Ai2's released data.
+Rule-based checks for the outputs of AI research agents, built for the file formats of
+Ai2's Asta tools and tested on data that Ai2 and its collaborators have released.
 
 **Independent work, not affiliated with or endorsed by the Allen Institute for AI (Ai2).**
 
-Three rule-based tools: no model calls, and the same input gives byte-identical output.
-Every finding carries a **receipt**, the SHA-256 of the source it checked plus the file
-and line or the character offsets. Passing checks emit receipts too. An input that
-cannot be decided is reported as `UNCHECKABLE` / `refuse`, never guessed or skipped.
+## Why this exists
 
-| Command | Checks | Reads |
-|---|---|---|
-| `consilience-ai2 receipts check` | Is every quote real, resolvable and verbatim, and does the claim overstate it in number or in certainty? | an Asta workspace: `evidence.yml`, `.qmd` `.ev` spans, `references.bib` |
-| `consilience-ai2 audit run` | Do the reported numbers come from the run? Is the n right? Is there a real test, an effect size, a real baseline, and control for many tests? | AutoDiscovery `mcts_node_*.json` / `mcts_nodes_all.json` or a hosted `results.json`; CodeScientist experiment directories |
-| `consilience-ai2 reproduce check` | Is the reproduction the same quantity, could it decide at all, and what do the numbers say against thresholds committed in advance? | a reproduction record (YAML/JSON) per the asta-flows secondary-reproduction rubric |
+AI research agents now write reports, run experiments and reproduce results. The checks
+on those outputs are mostly judgements made by a language model, and these can vary
+between runs. These tools add a second, rule-based signal: it gives the same answer every
+time and shows exactly what it checked, in a *receipt*. It does not replace the model
+reviewers; it sits beside them.
 
-Design and every check code: [docs/SPEC.md](docs/SPEC.md). Hook points and JSON
-schemas: [docs/INTEGRATION.md](docs/INTEGRATION.md).
+Asta is Ai2's set of agents and research skills for science. The three tools here read
+Asta's file formats as they are, and they call no language model.
+
+## What it found on Ai2's released data
+
+- **Theorizer: some cited evidence is not in the export.** Theorizer is Ai2's system that
+  generates scientific theories made of laws; laws drawn from the literature cite
+  evidence records. In its released export, 1.36% of cited evidence links (195 of 14,343
+  distinct law and evidence ID pairs) point to evidence records that are not in the
+  export. All of them go through a silent fallback in the exporter: an ID it cannot map still becomes a
+  link, to a page that does not exist. Why those IDs are unmapped upstream is not
+  established.
+  [Details](docs/receipts.md#t1-theorizer-evidence-links-that-point-to-missing-records)
+- **CodeScientist: two issues in accepted discoveries.** CodeScientist is Ai2's
+  semi-automated discovery system that designs, runs and writes up code experiments. In
+  the discoveries that the CodeScientist paper's reviewers accepted, the audit found two
+  issues that the reviewers did not flag. One report gives a standard deviation (SD) of
+  15.8% that appears in no output of the run; recomputed from the run's data it is 16.2%.
+  Another report says "significantly" with no statistical test. The rules were written
+  while looking at these data (label: dev).
+  [Details](docs/audit.md#development-set-codescientist-table-4-labelled-dev-not-blind)
+- **DiscoveryBench: multiple-testing control removes most chance hits.** DiscoveryBench is
+  a benchmark of data-driven discovery tasks. On its synthetic tasks, Benjamini–Hochberg
+  correction (a standard adjustment of p values when many tests are run) cut hits among
+  "distractor" columns, the columns outside the task's known answer, from 7.43% to 2.74%
+  of tests. With the target shuffled, so that every hit is false, the share of tasks with
+  any hit fell from 73.25% to 3.82%.
+  [Details](docs/audit.md#a5-on-discoverybench-synthetic-tasks-labelled-descriptive-null-control-synthetic)
+- **Two preregistered tests did not support their predictions.** A *preregistered* test is
+  one whose hypothesis and decision rule were committed to git before any scoring. On
+  SciArena-Eval, a released set of human votes between two AI answers to the same science
+  question, answers with a higher rate of flagged citations did not lose the vote more
+  often (null). On CodeScientist reruns, runs the audit flagged agreed *more* with their
+  reruns, not less (not significant). A third preregistered test could not be run, because
+  too few runs were flagged. [Results](docs/RESULTS.md#preregistered-held-out-tests)
+
+## The three tools at a glance
+
+| Command | The question it answers | You give it | You get back |
+|---|---|---|---|
+| `consilience-ai2 receipts check` | Is each quoted piece of evidence real and word for word in its source, and does the claim go beyond it in number or in certainty? | an Asta workspace (`evidence.yml`, `.qmd` files, `references.bib`) and, if you have them, the source texts | one finding per problem, a receipt for every quote checked, a JSON report |
+| `consilience-ai2 audit run` | Do the numbers in an experiment's write-up come from the run, and are the statistics sound: the right n, a real test, a real baseline, control for many tests? | an AutoDiscovery run directory or a CodeScientist experiment directory | a verdict per experiment (`pass`, `flag` or `refuse`) with receipts, in `validity_audit.json` |
+| `consilience-ai2 reproduce check` | Does a reproduction measure the same thing as the original, could it decide at all, and do its numbers meet thresholds fixed in advance? | a reproduction record (YAML or JSON) | `reproduced`, `not reproduced` or `inconclusive`, with the reason, in `reproduction_verdict.json` |
+
+AutoDiscovery is Ai2's agent that explores a dataset by proposing and testing hypotheses.
+
+A **receipt** is the file and line (or the character offsets) of what was checked, plus
+the SHA-256 fingerprint of that exact source, so anyone can confirm which bytes were
+checked. Passing checks get receipts too. When an input cannot be decided, the tools say
+so rather than guess: a quote with no local source text is `UNCHECKABLE`, and an
+experiment with nothing to check gets the verdict `refuse`. The same input always gives
+byte-identical output.
+
+## Try it in two minutes
+
+The examples ship with the repository, so run them from a clone (Python 3.11 or newer):
+
+```bash
+git clone https://github.com/Anuja-Khatri/consilience-ai2 && cd consilience-ai2
+pip install .
+
+# 1. Evidence receipts, on a synthetic workspace with planted defects
+consilience-ai2 receipts check examples/receipts/seeded --sources examples/receipts/seeded/sources
+
+# 2. Experiment audit, on a synthetic AutoDiscovery run
+consilience-ai2 audit run examples/audit/autodiscovery/synthetic_run --json /tmp/validity_audit.json
+
+# 3. Reproduction verdict, on an example record
+consilience-ai2 reproduce check examples/reproduce/records/supported.yaml --json /tmp/verdict.json
+```
+
+What the output means:
+
+1. Each `::error` or `::warning` line names a file, a line and a check code. GitHub
+   shows these lines inline on a pull request. The last line counts the spans, errors,
+   warnings and receipts. The defects were planted on purpose, so the exit code is 1.
+   The clean workspace, `examples/receipts/clean`, passes with exit code 0.
+2. One line per experiment: `pass`, `flag(warning)`, `flag(error)` or `refuse`, then its
+   q value (its p value adjusted for many tests) and the codes that fired. Each synthetic
+   experiment has one planted defect.
+3. The verdict is `reproduced`, yet the run exits 1. The example record was committed
+   with its thresholds and its result together, so the tool cannot credit the thresholds
+   as fixed first. `python examples/reproduce/demo_commit_order.py` shows the passing
+   case.
+
+Each tool is explained in detail [below](#the-three-tools-in-detail).
+
+## How to read the results
+
+Every result number in this repository is computed by a script, from released data or
+from synthetic fixtures, stored in [`results/registry.json`](results/registry.json), and checked against the docs
+in CI. Each result carries a label. **Held-out**: the prediction was written down and
+committed before looking at the data it was scored on. **Dev**: the rules were written
+while looking at these data, so the result shows fit, not generalisation. **Synthetic**:
+made-up data where the right answer is known, so the result shows that the rules do what
+they say. **Descriptive**: a measured rate, with no hypothesis. **Exploratory**: computed
+and reported, but not used to decide anything.
+
+## What it does not do
+
+- **It does not judge meaning.** The claim checks compare numbers and words. On a
+  hand-checked sample, about half of the number flags and about a third of the certainty
+  flags were a real overreach.
+- **It cannot check a quote without the source text.** Without local text, a quote is
+  `UNCHECKABLE`.
+- **It has not been run on a real AutoDiscovery run.** None is public, so the
+  AutoDiscovery support is tested on synthetic files written from the released format.
+- **It has not shown that its flags predict replication.** That preregistered
+  prediction failed, and the follow-up test could not be run.
+- **It reads text with fixed patterns.** It catches wording, not intent, and misses
+  defects phrased in unusual ways.
+- **Its samples are small.** Most CodeScientist rerun pairs also lack the numbers a
+  reproduction verdict needs.
+
+The full list is in [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 
 ## Install
 
@@ -27,31 +137,48 @@ pip install "git+https://github.com/Anuja-Khatri/consilience-ai2"
 pip install "consilience-ai2[consilience] @ git+https://github.com/Anuja-Khatri/consilience-ai2"
 ```
 
-Python 3.11 or newer. Runtime dependencies: PyYAML, numpy, scipy. The quickstarts below
-run on synthetic examples shipped in the repository, so run them from a clone:
+Python 3.11 or newer. Runtime dependencies: PyYAML, numpy, scipy. The examples above need
+a clone of the repository.
 
-```bash
-git clone https://github.com/Anuja-Khatri/consilience-ai2 && cd consilience-ai2
-pip install .
-```
+The design and every check code are in [docs/SPEC.md](docs/SPEC.md). Hook points and JSON
+schemas are in [docs/INTEGRATION.md](docs/INTEGRATION.md).
 
-## The three tools
+## The three tools in detail
+
+Each check has a short code, such as `E6` or `A1`. The code appears in every finding, so
+a finding can be looked up in the tool's document.
 
 ### Evidence receipts
 
-Checks an asta-plugins workspace as Quarto and its evidence filter read it: unknown
-`.ev` keys (E1), spans with no quote (E2), `cite` keys missing from the bibliography
-(E3), orphaned entries (E4), malformed `provenance` (E5: an exact `asta` subcommand, an
-integer `corpus_id`, an http/https/asta URL, an ISO date), and whether each quote is
-verbatim in local source text after a fixed, versioned normalisation (E6: `FOUND` with
-SHA-256 and offsets, `NOT_FOUND`, or `UNCHECKABLE` without local text). Two warnings:
-a number in the claim that the quote does not support (W1, on by default) and an
-assertive claim over a hedged quote, from a fixed word list (W2, opt-in with
-`--with-w2`). W2 is opt-in because on a hand-checked sample only about a third of its
-flags were real overreach (W1: about half). The W1/W2 rules v0.2 are the default;
-`--rules v0.1` selects the frozen rules of the preregistered SciArena test. Adapters read
-Theorizer's released export (T1 dangling evidence IDs, T2 empty scope or evidence) and
-SciArena-Eval citations.
+This tool checks an asta-plugins workspace: a Quarto project in which claims are marked
+with `.ev` spans that point to stored quotes. asta-plugins is Ai2's repository that
+distributes Asta's research skills as agent plugins. The checker reads the workspace as Quarto and the asta-plugins
+evidence filter read it.
+
+Errors (they fail the run):
+
+- **E1**: a `.ev` span names a key that is not in the evidence store.
+- **E2**: a span has no quote.
+- **E3**: a `cite` key is missing from the bibliography.
+- **E4**: an evidence entry is used by no span.
+- **E5**: the `provenance` is malformed. Each field that is present must be valid: an
+  exact `asta` subcommand, an integer `corpus_id`, an http, https or asta URL, an ISO
+  date.
+- **E6**: the quote is not word for word in the local source text, after a fixed,
+  versioned normalisation. The outcome is `FOUND` (with the SHA-256 and offsets),
+  `NOT_FOUND`, or `UNCHECKABLE` when there is no local text.
+
+Warnings:
+
+- **W1** (on by default): the claim states a number that the quote does not support.
+- **W2** (opt-in, `--with-w2`): the claim is assertive where the quote is hedged, judged
+  from a fixed word list.
+
+W2 is opt-in because on a hand-checked sample only about a third of its flags were real
+overreach (W1: about half). The W1 and W2 rules v0.2 are the default; `--rules v0.1`
+selects the frozen rules of the preregistered SciArena test. Adapters also read
+Theorizer's released export (T1: cited evidence IDs with no record; T2: laws with an empty
+scope or an empty evidence list) and SciArena-Eval citations.
 
 ```bash
 consilience-ai2 receipts check examples/receipts/seeded \
@@ -71,8 +198,9 @@ receipts: 26 spans, 20 entries; 14 errors, 2 warnings, 22 receipts
 
 `%25` is how a GitHub annotation escapes `%`. Add `--with-w2` to also get the planted
 certainty upgrade (`::warning file=defects.qmd,line=29::W2 certainty upgrade: claim says
-causes; quote says may, associated`; 3 warnings). Exit code 1 (errors). The clean workspace, `examples/receipts/clean`, passes with exit
-code 0. A receipt in the JSON report:
+causes; quote says may, associated`; 3 warnings). The exit code is 1, because there are
+errors. The clean workspace, `examples/receipts/clean`, passes with exit code 0. A receipt
+in the JSON report:
 
 ```json
 {"code": "E6", "severity": "info", "file": "controls.qmd", "line": 8, "key": "c-ligature",
@@ -81,19 +209,32 @@ code 0. A receipt in the JSON report:
              "offset": 231, "end": 280, "normalisation": "consilience-ai2.normalise/1"}}
 ```
 
-Doc: [docs/receipts.md](docs/receipts.md).
+Full document: [docs/receipts.md](docs/receipts.md).
 
 ### Experiment audit
 
-Audits each experiment ("node") of an AutoDiscovery run or a CodeScientist experiment
-directory: every reported decimal printed in the output or code at the printed
-precision (A1), the stated n (A2), columns in the dataset metadata (A3), "significant"
-or "surprising" with a printed test (A4), Benjamini–Hochberg q across all the run's p
-values (A5), the minimum detectable effect of a surprising null (A6), an effect size
-(A7), random-only comparators (R1), rerun flips (R2), a power-based n floor (R3),
-hard-coded result literals (R4) and built-but-unused components by static analysis
-(R5). Each node gets `pass`, `flag` or `refuse`. AutoDiscovery's own language-model
-"Validity Check" is hashed and kept beside the verdict, not judged.
+This tool audits each experiment ("node") of an AutoDiscovery run or a CodeScientist
+experiment directory. It asks whether the numbers in the write-up come from the run and
+whether the statistics hold up. The checks:
+
+- **A1**: every reported decimal is printed in the run's output or code, at the printed
+  precision.
+- **A2**: a stated sample size (n) is printed by the run or set in the code.
+- **A3**: the columns the code reads are in the dataset metadata.
+- **A4**: "significant" or "surprising" comes with a printed test.
+- **A5**: Benjamini–Hochberg q values across all the run's p values, which control for
+  running many tests.
+- **A6**: the smallest effect that a "surprising" null result could have detected.
+- **A7**: an effect size is reported (an info note in v0.2).
+- **R1**: the only comparator is random or chance.
+- **R2**: reruns of the same idea flip the result.
+- **R3**: the sample is below a power-based floor.
+- **R4**: result values are hard-coded in the code.
+- **R5**: a component is built but nothing it computes reaches an output (found by static
+  analysis).
+
+Each node gets `pass`, `flag` or `refuse`. AutoDiscovery's own language-model "Validity
+Check" is hashed and kept beside the verdict, not judged.
 
 ```bash
 consilience-ai2 audit run examples/audit/autodiscovery/synthetic_run --json /tmp/validity_audit.json
@@ -117,25 +258,31 @@ node_2_11: refuse U1
 audit (audit-rules-2): 12 nodes, 2 pass, 3 flag(warning), 6 flag(error), 1 refuse; p values parsed for 10; wrote /tmp/validity_audit.json
 ```
 
-One line per node (`<id>: pass|flag(warning)|flag(error)|refuse q=<q> <codes>`, with
-`...` above standing for the q values and the lines left out), then GitHub annotation
-lines, then a summary. Exit code 1 (error-severity findings). The rules are v0.2
-(`audit-rules-2`): severities recalibrated on the development set, A7 (no effect size) an
-info note, A1 tiers, R2 split.
+The output is one line per node (`<id>: pass|flag(warning)|flag(error)|refuse q=<q>
+<codes>`; `...` above stands for the q values and the lines left out), then GitHub
+annotation lines, then a summary. The exit code is 1, because there are error-severity
+findings. The rules are v0.2 (`audit-rules-2`): severities recalibrated on the
+development set, A7 (no effect size) an info note, A1 tiers, R2 split.
 
-The run in `examples/audit/autodiscovery/` is **synthetic**: no AutoDiscovery run outputs
-are public, so it was written from the released node schema with one defect planted per
-node. Doc: [docs/audit.md](docs/audit.md).
+The run in `examples/audit/autodiscovery/` is **synthetic**. No AutoDiscovery run
+outputs are public, so it was written from the released node schema, with one defect
+planted per node. Full document: [docs/audit.md](docs/audit.md).
 
 ### Reproduction verdict
 
-Turns the verdict rubric of the asta-flows "Secondary reproduction" workflow into code
-that reads only the numbers in a structured record: faithfulness (F1: same quantity,
-proxy, substitution, or not comparable), decidability (D1: power at the source effect
-from the reproduction's n; underpowered, no data, not identifiable), the verdict
-against the committed thresholds (V1: reproduced, not reproduced, inconclusive), whether
-the thresholds were committed before the result in git (P1), and whether the hypothesis
-was copied verbatim (P2).
+asta-flows is a set of research workflows in asta-plugins. Its "Secondary reproduction"
+workflow has a written rubric for deciding whether a result reproduced. This tool turns
+that rubric into code. It reads only the numbers in a structured record:
+
+- **F1, faithfulness**: is the reproduction the same quantity, a proxy, a substitution,
+  or not comparable?
+- **D1, decidability**: could the test decide at all? This is the power at the source
+  effect, given the reproduction's n. The outcomes are decidable, underpowered, no data
+  and not identifiable.
+- **V1, verdict**: reproduced, not reproduced or inconclusive, against the thresholds
+  committed in advance.
+- **P1, commit order**: were the thresholds committed before the result, in git?
+- **P2, hypothesis copy**: was the hypothesis copied word for word?
 
 ```bash
 consilience-ai2 reproduce check examples/reproduce/records/supported.yaml --json /tmp/verdict.json
@@ -151,10 +298,10 @@ consilience-ai2 reproduce check examples/reproduce/records/supported.yaml --json
 wrote /tmp/verdict.json
 ```
 
-The numbers support the reproduction, and the run still exits 1: the example record was
-committed with its thresholds and its result in the same commit, so P1 cannot credit
-the thresholds as fixed first. In a real run, commit the thresholds before the result,
-as the demo does: it builds a scratch git repository, commits the plan and thresholds
+The numbers support the reproduction, and the run still exits 1. The example record was
+committed with its thresholds and its result in the same commit, so P1 cannot credit the
+thresholds as fixed first. In a real run, commit the thresholds before the result. The
+demo does this: it builds a scratch git repository, commits the plan and thresholds
 first and the result second, and exits 0.
 
 ```bash
@@ -174,18 +321,19 @@ wrote reproduction_verdict.json
 exit 0
 ```
 
-Since v0.2 the verdict reads the source's finding: the expected direction is the source
-effect's sign (`--rule v0.1` for the declared direction). The other records in `examples/reproduce/records/` show an underpowered test, a
-substitution, a proxy that is rejected, and a unit mismatch. Doc:
-[docs/reproduce.md](docs/reproduce.md).
+Since v0.2, the verdict reads the source's finding: the expected direction is the sign of
+the source effect (`--rule v0.1` uses the declared direction). The other records in
+`examples/reproduce/records/` show an underpowered test, a substitution, a proxy that is
+rejected, and a unit mismatch. Full document: [docs/reproduce.md](docs/reproduce.md).
 
 ## Results on Ai2's released data
 
 Every number below renders from [`results/registry.json`](results/registry.json); CI
 fails if one does not. Labels: **held-out** = preregistered by commit before scoring;
 **dev** = the rules were written knowing these data; **exploratory**, **descriptive**
-(a measured rate, no hypothesis) and **synthetic** (true by construction). Full table
-with n, intervals and sources: [docs/RESULTS.md](docs/RESULTS.md).
+(a measured rate, no hypothesis) and **synthetic** (true by construction); see
+[How to read the results](#how-to-read-the-results). The full table, with n, intervals
+and sources, is in [docs/RESULTS.md](docs/RESULTS.md).
 
 | Tool | Data | Result | n | Label |
 |---|---|---|---|---|
@@ -207,11 +355,11 @@ with n, intervals and sources: [docs/RESULTS.md](docs/RESULTS.md).
 
 What these do not show is in [docs/LIMITATIONS.md](docs/LIMITATIONS.md). In short: no
 real AutoDiscovery run is public, so the AutoDiscovery adapter is tested on synthetic
-fixtures only; the audit's dev set is not blind, its v0.1 held-out prediction failed and
-the v0.2 held-out was not testable; W1/W2 are lexical (on a hand-checked sample about
-half of W1 flags and a third of W2 flags were real); E6 needs local source text; parsing is regex-level; DiscoveryBench's
-planted/null labels are impure; samples are small; and most CodeScientist rerun pairs
-lack the numbers a verdict needs.
+fixtures only. The audit's dev set is not blind, its v0.1 held-out prediction failed, and
+the v0.2 held-out was not testable. W1 and W2 are lexical (on a hand-checked sample,
+about half of W1 flags and a third of W2 flags were real). E6 needs local source text.
+Parsing is regex-level. DiscoveryBench's planted and null labels are impure. Samples are
+small, and most CodeScientist rerun pairs lack the numbers a verdict needs.
 
 ## Data
 
@@ -235,8 +383,8 @@ python analyses/reproduce/run.py
 make lock        # registry, results table and numbers lock
 ```
 
-`fetch all` fetches every source. Fetching one at a time, note that the reproduction
-analysis also needs `codescientist-example-experiments`
+`fetch all` fetches every source. If you fetch one source at a time, note that the
+reproduction analysis also needs `codescientist-example-experiments`
 (`consilience-ai2 fetch codescientist-example-experiments`).
 
 Sources, licences and citations: `consilience_ai2/fetch/sources.yaml` and
