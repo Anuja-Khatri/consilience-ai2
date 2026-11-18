@@ -29,14 +29,19 @@ out.
 1. **Run it on the workspace root** (the directory with `_quarto.yml`):
    `consilience-ai2 receipts check . --json _receipts/receipts.json`.
    Add `--sources <dir>` when local source text exists: a directory of `<cite>.txt` or
-   `<corpus_id>.txt` files, a Theorizer `paperstore.json`, or an AutoDiscovery
-   `index.json`. Without it every E6 is `UNCHECKABLE`, which does not fail the run.
+   `<corpus_id>.txt` files, an Asta `paperstore.json` (a theory run keeps one at
+   `<run>/theory/paperstore.json`), or an AutoDiscovery `index.json`. Repeat
+   `--sources` to try several in order. Without it every E6 is `UNCHECKABLE`, which does
+   not fail the run.
 2. **Read the annotation lines.** Each is `::error file=…,line=…::CODE message` (or
    `::warning`). Fix E codes in `evidence.yml`, `references.bib` or the `.qmd` span they
    name. For `E6 NOT_FOUND`, copy the quote again from the source; never edit a quote
    to make it match something it does not say.
-3. **Treat W1 and W2 as prompts to read, not verdicts.** A W1 number may come from
-   another source or a calculation; a W2 word may be fine in context. When the claim
+3. **Treat W1 and W2 as prompts to read, not verdicts.** They are lexical. On a
+   hand-checked sample, about half of the W1 flags and fewer of the W2 flags were a real
+   overreach. A W1 number may be a name (`Industry 4.0`), a figure reference, or a
+   difference the reader can compute; a W2 hedge in the source may be about something
+   else. When the claim
    does overstate the quote, reword the claim. For whether the quote supports the claim
    at all, load `asta-tools:check-claims`.
 4. **Wire it into `make check`** when the project wants it on every PR: copy

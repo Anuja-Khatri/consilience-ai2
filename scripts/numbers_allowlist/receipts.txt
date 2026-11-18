@@ -16,3 +16,10 @@
 1.5
 1.234
 0.4213
+#
+# Numbers quoted from false-alarm examples in the precision sample (text from the data,
+# not results): docs/receipts.md, "Precision of W1 and W2".
+88.79
+16.7%
+62.4%
+79.1%

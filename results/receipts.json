@@ -40,6 +40,222 @@
     },
     {
       "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.670303,
+      "ci_lo": 0.403989,
+      "description": "precision of W1 (rules v0.1): flagged units labelled a true overreach",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v01",
+      "n": 50,
+      "source": "fetch:sciarena-eval+theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.54
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.665015,
+      "ci_lo": 0.300313,
+      "description": "precision of W1 (rules v0.1): flagged units labelled a true overreach, sciarena only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v01_sciarena",
+      "n": 25,
+      "source": "fetch:sciarena-eval",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.48
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.765967,
+      "ci_lo": 0.407395,
+      "description": "precision of W1 (rules v0.1): flagged units labelled a true overreach, theorizer only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v01_theorizer",
+      "n": 25,
+      "source": "fetch:theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.6
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.688378,
+      "ci_lo": 0.42306,
+      "description": "precision of W1 (rules v0.2): flagged units labelled a true overreach",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v02",
+      "n": 50,
+      "source": "fetch:sciarena-eval+theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.56
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.665015,
+      "ci_lo": 0.300313,
+      "description": "precision of W1 (rules v0.2): flagged units labelled a true overreach, sciarena only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v02_sciarena",
+      "n": 25,
+      "source": "fetch:sciarena-eval",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.48
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.797521,
+      "ci_lo": 0.445185,
+      "description": "precision of W1 (rules v0.2): flagged units labelled a true overreach, theorizer only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w1_v02_theorizer",
+      "n": 25,
+      "source": "fetch:theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.64
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.395532,
+      "ci_lo": 0.158715,
+      "description": "precision of W2 (rules v0.1): flagged units labelled a true overreach",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v01",
+      "n": 50,
+      "source": "fetch:sciarena-eval+theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.26
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.475766,
+      "ci_lo": 0.142839,
+      "description": "precision of W2 (rules v0.1): flagged units labelled a true overreach, sciarena only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v01_sciarena",
+      "n": 25,
+      "source": "fetch:sciarena-eval",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.28
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.1"
+      ],
+      "ci_hi": 0.434297,
+      "ci_lo": 0.114963,
+      "description": "precision of W2 (rules v0.1): flagged units labelled a true overreach, theorizer only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v01_theorizer",
+      "n": 25,
+      "source": "fetch:theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.24
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.458103,
+      "ci_lo": 0.207582,
+      "description": "precision of W2 (rules v0.2): flagged units labelled a true overreach",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v02",
+      "n": 50,
+      "source": "fetch:sciarena-eval+theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.32
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.554815,
+      "ci_lo": 0.202479,
+      "description": "precision of W2 (rules v0.2): flagged units labelled a true overreach, sciarena only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v02_sciarena",
+      "n": 25,
+      "source": "fetch:sciarena-eval",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.36
+    },
+    {
+      "caveats": [
+        "dev: one annotator (the author of the rules), not blind, not independent",
+        "labels and short spans in analyses/receipts/precision_sample.jsonl",
+        "25 SciArena citing sentences and 25 Theorizer evidence items per version, drawn by a fixed hash (see precision_sample.py); the two datasets are weighted equally, not by their number of flags",
+        "W1/W2 rules v0.2"
+      ],
+      "ci_hi": 0.475766,
+      "ci_lo": 0.142839,
+      "description": "precision of W2 (rules v0.2): flagged units labelled a true overreach, theorizer only",
+      "dev_or_heldout": "dev",
+      "metric_id": "receipts.precision.w2_v02_theorizer",
+      "n": 25,
+      "source": "fetch:theorizer-paper-data",
+      "test": "Wilson 95% interval on the labelled sample",
+      "unit": "proportion",
+      "value": 0.28
+    },
+    {
+      "caveats": [
         "exploratory secondary analysis named in the preregistration; not decision-bearing",
         "decision under the preregistered rule: null",
         "sign-test p=0.0682; permutation p=0.06829",
@@ -303,8 +519,54 @@
     },
     {
       "caveats": [
-        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
+        "W1/W2 rules v0.2 (descriptive; the preregistered test uses rules v0.1 and is not re-scored)",
         "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.033111,
+      "ci_lo": 0.029292,
+      "description": "W1 or W2 (rules v0.2) per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.v02.w1_or_w2_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.031145
+    },
+    {
+      "caveats": [
+        "W1/W2 rules v0.2 (descriptive; the preregistered test uses rules v0.1 and is not re-scored)",
+        "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.016353,
+      "ci_lo": 0.013683,
+      "description": "W1 (rules v0.2) per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.v02.w1_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.01496
+    },
+    {
+      "caveats": [
+        "W1/W2 rules v0.2 (descriptive; the preregistered test uses rules v0.1 and is not re-scored)",
+        "each citation is checked against the passages of every citation in its sentence"
+      ],
+      "ci_hi": 0.017959,
+      "ci_lo": 0.015157,
+      "description": "W2 (rules v0.2) per resolved inline citation",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.sciarena.v02.w2_rate",
+      "n": 31819,
+      "source": "fetch:sciarena-eval",
+      "unit": "proportion",
+      "value": 0.0165
+    },
+    {
+      "caveats": [
+        "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
+        "each citation is checked against the passages of every citation in its sentence",
+        "W1/W2 rules v0.1 (the frozen rules of the preregistered test)"
       ],
       "ci_hi": 0.029873,
       "ci_lo": 0.026246,
@@ -319,7 +581,8 @@
     {
       "caveats": [
         "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
-        "each citation is checked against the passages of every citation in its sentence"
+        "each citation is checked against the passages of every citation in its sentence",
+        "W1/W2 rules v0.1 (the frozen rules of the preregistered test)"
       ],
       "ci_hi": 0.015565,
       "ci_lo": 0.012963,
@@ -334,7 +597,8 @@
     {
       "caveats": [
         "inline citations are matched by their concise_authors string (<Name> et al. <year><letter>)",
-        "each citation is checked against the passages of every citation in its sentence"
+        "each citation is checked against the passages of every citation in its sentence",
+        "W1/W2 rules v0.1 (the frozen rules of the preregistered test)"
       ],
       "ci_hi": 0.015368,
       "ci_lo": 0.012782,
@@ -692,7 +956,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.009634,
       "ci_lo": 0.005322,
@@ -705,7 +970,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.008382,
       "ci_lo": 0.000974,
@@ -718,7 +984,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.029788,
       "ci_lo": 0.021794,
@@ -731,7 +998,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.003652,
       "ci_lo": 0.0,
@@ -759,7 +1027,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.236608,
       "ci_lo": 0.197189,
@@ -772,7 +1041,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.869071,
       "ci_lo": 0.820264,
@@ -785,7 +1055,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.032373,
       "ci_lo": 0.017596,
@@ -798,7 +1069,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.00865,
       "ci_lo": 0.000654,
@@ -1095,6 +1367,179 @@
     {
       "caveats": [
         "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.00906,
+      "ci_lo": 0.004897,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_accuracy.w1_item_rate",
+      "n": 6003,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.006663
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.008382,
+      "ci_lo": 0.000974,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_accuracy.w1_law_rate",
+      "n": 1048,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.002863
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.028892,
+      "ci_lo": 0.021025,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_accuracy.w2_item_rate",
+      "n": 6003,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.024654
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.003652,
+      "ci_lo": 0.0,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_accuracy.w2_law_rate",
+      "n": 1048,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.0
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.234145,
+      "ci_lo": 0.194884,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_novelty.w1_item_rate",
+      "n": 1674,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.213859
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.867961,
+      "ci_lo": 0.819001,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_novelty.w1_law_rate",
+      "n": 839,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.845054
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.032373,
+      "ci_lo": 0.017596,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_novelty.w2_item_rate",
+      "n": 1674,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.023895
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.01046,
+      "ci_lo": 0.001217,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.lit_novelty.w2_law_rate",
+      "n": 839,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.003576
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.057031,
+      "ci_lo": 0.047104,
+      "description": "W1 (rules v0.2): a number in an evidence item absent from the records it cites",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.w1_item_rate",
+      "n": 7677,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.051843
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.399417,
+      "ci_lo": 0.355719,
+      "description": "W1 (rules v0.2): a number in the law statement absent from its cited records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.w1_law_rate",
+      "n": 1887,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.377318
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.028191,
+      "ci_lo": 0.021262,
+      "description": "W2 (rules v0.2): assertive evidence item over hedged records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.w2_item_rate",
+      "n": 7677,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.024489
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.2 (descriptive; the v0.1 rates are the receipts.theorizer.* metrics without v02)"
+      ],
+      "ci_hi": 0.004664,
+      "ci_lo": 0.000541,
+      "description": "W2 (rules v0.2): assertive law over hedged cited records",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "receipts.theorizer.v02.w2_law_rate",
+      "n": 1887,
+      "source": "fetch:theorizer-paper-data",
+      "unit": "proportion",
+      "value": 0.00159
+    },
+    {
+      "caveats": [
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)",
         "evidence items with at least one resolved record",
         "a record holds the extraction, not the full paper"
       ],
@@ -1111,6 +1556,7 @@
     {
       "caveats": [
         "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)",
         "laws with at least one resolved evidence record",
         "the novelty-focused condition asks for quantitative predictions, whose thresholds are absent from the evidence by design"
       ],
@@ -1126,7 +1572,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.028887,
       "ci_lo": 0.021868,
@@ -1140,7 +1587,8 @@
     },
     {
       "caveats": [
-        "computed on the released HTML export, not the underlying theory store"
+        "computed on the released HTML export, not the underlying theory store",
+        "W1/W2 rules v0.1 (the frozen rules)"
       ],
       "ci_hi": 0.003856,
       "ci_lo": 0.000291,
