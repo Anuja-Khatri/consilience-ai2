@@ -6,7 +6,7 @@
 - ``consilience_ai2.receipts.sciarena``: SciArena-Eval responses with inline citations
   (citation resolution, W1, W2 and a verbatim check of quoted text).
 - ``number_overreach`` (W1) and ``certainty_upgrade`` (W2) compare any claim with any
-  source text.
+  source text, under rules ``v0.2`` (the default) or the frozen ``v0.1``.
 
 No language-model calls; the same inputs give byte-identical reports.
 """

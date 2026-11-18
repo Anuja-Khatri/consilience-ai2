@@ -36,12 +36,15 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from consilience_ai2.core.normalise import find_normalised
-from consilience_ai2.core.numbers import NumberToken, extract_numbers
+from consilience_ai2.core.numbers import NumberToken
 from consilience_ai2.receipts.claims import (
+    DEFAULT_RULES,
     CertaintyProfile,
     certainty_profile,
     certainty_upgrade,
+    check_rules,
     number_overreach,
+    w1_source_tokens,
 )
 
 INLINE = re.compile(r"(?<![\w\-'’])((?:\([^\s()]+\))|[^\s(),;\[\]]+) et al\. (?:\d{4}|None)[a-z]+\b")
@@ -137,7 +140,8 @@ class ResponseResult:
 class PassageCache:
     """Number tokens and certainty profiles per passage text, computed once."""
 
-    def __init__(self) -> None:
+    def __init__(self, rules: str = DEFAULT_RULES) -> None:
+        self.rules = check_rules(rules)
         self._tokens: dict[str, list[NumberToken]] = {}
         self._profiles: dict[str, CertaintyProfile] = {}
 
@@ -145,7 +149,7 @@ class PassageCache:
         out: list[NumberToken] = []
         for t in texts:
             if t not in self._tokens:
-                self._tokens[t] = extract_numbers(t)
+                self._tokens[t] = w1_source_tokens(t, self.rules)
             out.extend(self._tokens[t])
         return out
 
@@ -155,7 +159,7 @@ class PassageCache:
         n: list[str] = []
         for t in texts:
             if t not in self._profiles:
-                self._profiles[t] = certainty_profile(t)
+                self._profiles[t] = certainty_profile(t, rules=self.rules)
             p = self._profiles[t]
             h.extend(p.hedged)
             a.extend(p.assertive)
@@ -170,9 +174,11 @@ def _passage_text(c: Any) -> str | None:
 
 
 def check_response(vote_index: int, side: str, response: str, citations: list[Any],
-                   cache: PassageCache | None = None) -> ResponseResult:
-    """Resolution, W1, W2 and the verbatim check for one response."""
-    cache = cache or PassageCache()
+                   cache: PassageCache | None = None,
+                   rules: str = DEFAULT_RULES) -> ResponseResult:
+    """Resolution, W1, W2 and the verbatim check for one response. The W1/W2 rule
+    version is the cache's; ``rules`` is used only when no cache is given."""
+    cache = cache or PassageCache(rules)
     by_key: dict[str, int] = {}
     for i, c in enumerate(citations):
         if isinstance(c, dict) and isinstance(c.get("concise_authors"), str):
@@ -199,8 +205,8 @@ def check_response(vote_index: int, side: str, response: str, citations: list[An
         unsupported: list[str] = []
         w2d: dict[str, Any] = {}
         if passages:
-            c1 = number_overreach(claim, "", cache.tokens(passages))
-            c2 = certainty_upgrade(claim, "", cache.profile(passages))
+            c1 = number_overreach(claim, "", cache.tokens(passages), cache.rules)
+            c2 = certainty_upgrade(claim, "", cache.profile(passages), cache.rules)
             w1, w2 = c1.flagged, c2.flagged
             unsupported = [t.text for t in c1.unsupported]
             w2d = c2.details() if c2.flagged else {}
@@ -226,8 +232,9 @@ def check_response(vote_index: int, side: str, response: str, citations: list[An
 
 
 def check_vote(vote_index: int, vote: dict[str, Any],
-               cache: PassageCache | None = None) -> tuple[ResponseResult, ResponseResult]:
-    cache = cache or PassageCache()
+               cache: PassageCache | None = None,
+               rules: str = DEFAULT_RULES) -> tuple[ResponseResult, ResponseResult]:
+    cache = cache or PassageCache(rules)
     a = check_response(vote_index, "A", vote.get("responseA") or "",
                        vote.get("citations_a") or [], cache)
     b = check_response(vote_index, "B", vote.get("responseB") or "",

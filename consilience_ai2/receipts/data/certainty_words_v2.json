@@ -1,0 +1,53 @@
+{
+  "version": "consilience-ai2.certainty/2",
+  "description": "Word lists for the W2 certainty-upgrade check, rules v0.2. Words are matched whole, case-insensitively, on text normalised with consilience_ai2.core.normalise. W2 flags a claim that contains at least one assertive word (not negated) and no hedged word, when its quote or cited passage contains at least one hedged word and no assertive word (not negated). Negation scope is the clause: an assertive word is negated when a negator (or any word ending in n't) occurs earlier in the same clause, where a clause ends at any of 'clause_punctuation' or at any of 'clause_conjunctions'. 'or' is not a boundary, because under negation it coordinates inside the scope ('did not show or confirm'); 'yet' is not one either, because in scientific prose it is mostly the adverb ('has not yet been shown'). The lists extend consilience-ai2.certainty/1 (every v1 word is kept); 'added' lists the new words with the reason for each group. No published hedging lexicon under a permissive licence fit: the MIT-licensed words/hedges list (Titus Wormer) mixes boosters (always, certainly, clearly, definitely, must) into its hedges and includes very common function words (about, can, find, found, most, will), and Hyland's hedge and booster lists (Metadiscourse, 2005) are not under a permissive licence, so neither is copied. The added words follow the published categories instead: epistemic verbs, adverbs and adjectives that lower (hedges) or raise (boosters) the writer's commitment, plus morphological forms missing from v1. Any change to these lists changes 'version'.",
+  "negation_scope": "clause",
+  "clause_punctuation": [",", ";", ":", ".", "!", "?", "(", ")", "[", "]", "—", "–"],
+  "clause_conjunctions": ["although", "and", "because", "but", "however", "nevertheless", "nonetheless", "since", "though", "unless", "whereas", "while", "whilst"],
+  "negators": ["cannot", "fail", "failed", "failing", "fails", "lack", "lacked", "lacking", "lacks", "neither", "never", "no", "nobody", "none", "nor", "not", "nothing", "unable", "without"],
+  "hedged": [
+    "apparently", "appear", "appeared", "appearing", "appears",
+    "arguably",
+    "associated", "association", "associations",
+    "conceivable", "conceivably",
+    "correlate", "correlated", "correlates", "correlating", "correlation", "correlations",
+    "could",
+    "hypothesise", "hypothesised", "hypothesises", "hypothesize", "hypothesized", "hypothesizes",
+    "indicate", "indicated", "indicates", "indicating", "indicative",
+    "likely",
+    "linked",
+    "may", "might",
+    "perhaps", "plausible", "plausibly", "possibility", "possible", "possibly", "postulate", "postulated", "postulates", "potential", "potentially",
+    "preliminary", "presumably", "presumed", "probable", "probably", "putative", "putatively",
+    "seem", "seemed", "seemingly", "seems",
+    "speculate", "speculated", "speculates", "speculation", "speculative", "speculatively",
+    "suggest", "suggested", "suggesting", "suggestion", "suggestive", "suggests",
+    "tend", "tended", "tends",
+    "tentative", "tentatively",
+    "uncertain", "unclear", "unlikely"
+  ],
+  "assertive": [
+    "always",
+    "causal", "causally", "causation", "cause", "caused", "causes", "causing",
+    "certainly", "clearly", "conclusively",
+    "confirm", "confirmed", "confirming", "confirms",
+    "definitely", "definitively",
+    "demonstrate", "demonstrated", "demonstrates", "demonstrating",
+    "establish", "established", "establishes", "establishing",
+    "evidently",
+    "guarantee", "guaranteed", "guarantees",
+    "incontrovertibly", "indisputably", "irrefutably",
+    "obviously",
+    "prove", "proved", "proven", "proves", "proving",
+    "show", "showed", "showing", "shown", "shows",
+    "unambiguously", "undeniably", "undoubtedly", "unequivocally", "unquestionably"
+  ],
+  "added": {
+    "hedged, epistemic adverbs and adjectives that lower commitment": ["arguably", "conceivable", "conceivably", "probable", "putatively", "seemingly", "speculatively", "uncertain", "unclear", "unlikely", "potential", "possibility"],
+    "hedged, epistemic verbs that present a claim as proposed rather than shown": ["postulate", "postulated", "postulates", "presumed", "tend", "tended", "tends", "speculation", "suggestion"],
+    "hedged, forms missing from v1 lemmas": ["appearing", "correlating", "hypothesises", "hypothesizes", "indicating", "indicative", "speculated", "speculates"],
+    "assertive, adverbs that raise commitment": ["evidently", "incontrovertibly", "indisputably", "irrefutably", "obviously", "unambiguously", "undeniably", "unquestionably"],
+    "assertive, forms missing from v1 lemmas": ["causation", "confirming", "demonstrating", "establishing", "proving", "showing"],
+    "negators, verbs and pronouns that negate a following booster ('failed to show', 'none confirmed')": ["fail", "failed", "failing", "fails", "lack", "lacked", "lacking", "lacks", "nobody", "none", "nothing", "unable"]
+  }
+}
