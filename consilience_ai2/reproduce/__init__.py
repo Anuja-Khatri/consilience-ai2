@@ -21,12 +21,15 @@ from consilience_ai2.reproduce.comparability import (
 )
 from consilience_ai2.reproduce.decide import (
     D1_CLASSES,
+    DEFAULT_RULE,
     OUTCOMES,
     VERDICT_OF,
+    VERDICT_RULES,
     aggregate,
     check_decidability,
     check_hypothesis,
     check_verdict,
+    source_claim,
 )
 from consilience_ai2.reproduce.gitorder import check_commit_order
 from consilience_ai2.reproduce.record import (
@@ -43,7 +46,8 @@ from consilience_ai2.reproduce.stats import p_from_effect, power
 from consilience_ai2.reproduce.verdict import CHECKS, RUBRIC, TOOL, check_file, evaluate
 
 __all__ = [
-    "CHECKS", "D1_CLASSES", "OUTCOMES", "RUBRIC", "SCHEMA_VERSION", "TOOL", "VERDICT_OF",
+    "CHECKS", "D1_CLASSES", "DEFAULT_RULE", "OUTCOMES", "RUBRIC", "SCHEMA_VERSION", "TOOL",
+    "VERDICT_OF", "VERDICT_RULES", "source_claim",
     "Faithfulness", "Parsed", "RecordError", "aggregate", "check_commit_order",
     "check_decidability", "check_faithfulness", "check_file", "check_hypothesis",
     "check_verdict", "consilience_version", "evaluate", "load_file", "p_from_effect",

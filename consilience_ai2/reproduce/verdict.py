@@ -24,6 +24,7 @@ from consilience_ai2.core.hashing import sha256_file, sha256_json, sha256_text
 from consilience_ai2.core.normalise import NORMALISATION_VERSION
 from consilience_ai2.reproduce.comparability import check_faithfulness, resolve_backend
 from consilience_ai2.reproduce.decide import (
+    DEFAULT_RULE,
     check_decidability,
     check_hypothesis,
     check_verdict,
@@ -52,8 +53,11 @@ def _key_lines(text: str) -> dict[str, int]:
 def evaluate(data: dict[str, Any], *, record_path: str | Path | None = None,
              repo: str | Path | None = None, backend: str = "auto", pack: str | None = None,
              skip: tuple[str, ...] = (), file_sha256: str | None = None,
-             display: str | None = None, lines: dict[str, int] | None = None) -> Report:
-    """Check one record (already loaded as a dict). See ``check_file`` for a path."""
+             display: str | None = None, lines: dict[str, int] | None = None,
+             rule: str = DEFAULT_RULE) -> Report:
+    """Check one record (already loaded as a dict). See ``check_file`` for a path.
+    ``rule`` is the V1 verdict rule: ``v0.2`` (the source's finding, default) or
+    ``v0.1`` (the declared direction); see ``decide``."""
     be = resolve_backend(backend)
     shown = display or (Path(record_path).name if record_path else "<record>")
     try:
@@ -107,7 +111,7 @@ def evaluate(data: dict[str, Any], *, record_path: str | Path | None = None,
             details={"decidability": d1.cls, "reason": d1.reason, **d1.details}))
     out["decidability"] = d1.cls
 
-    v1 = check_verdict(rec, f1, d1, be)
+    v1 = check_verdict(rec, f1, d1, be, rule)
     reported = rec.data.get("reported_verdict")
     agrees = None if reported is None else reported == v1.outcome
     if "V1" not in skip:
@@ -121,7 +125,7 @@ def evaluate(data: dict[str, Any], *, record_path: str | Path | None = None,
                      "caveats": caveats, "reported_verdict": reported,
                      "reported_agrees": agrees, **v1.details}))
     out.update({"outcome": v1.outcome, "outcome_label": v1.label, "verdict": v1.verdict,
-                "reason": v1.reason})
+                "reason": v1.reason, "verdict_rule": rule})
 
     if "P1" not in skip:
         p1 = check_commit_order(rec.data, record_path, repo)
@@ -158,7 +162,8 @@ def evaluate(data: dict[str, Any], *, record_path: str | Path | None = None,
 
 
 def check_file(path: str | Path, *, repo: str | Path | None = None, backend: str = "auto",
-               pack: str | None = None, skip: tuple[str, ...] = ()) -> Report:
+               pack: str | None = None, skip: tuple[str, ...] = (),
+               rule: str = DEFAULT_RULE) -> Report:
     """Check a record file (YAML or JSON)."""
     p = Path(path)
     try:
@@ -174,4 +179,5 @@ def check_file(path: str | Path, *, repo: str | Path | None = None, backend: str
         return report
     text = p.read_text(encoding="utf-8")
     return evaluate(data, record_path=p, repo=repo, backend=backend, pack=pack, skip=skip,
-                    file_sha256=sha256_file(p), display=p.name, lines=_key_lines(text))
+                    file_sha256=sha256_file(p), display=p.name, lines=_key_lines(text),
+                    rule=rule)
