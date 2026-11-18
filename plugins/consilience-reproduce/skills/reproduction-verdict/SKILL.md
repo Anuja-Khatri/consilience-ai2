@@ -42,7 +42,9 @@ faithfulness check. Without it the check still runs, comparing units by name.
    (`consilience_ai2/reproduce/data/reproduction_record.schema.json`); worked examples are
    in the repository's `examples/reproduce/records/`.
 2. **Run the test**, then add the reproduction's numbers (effect, p, n, and se or ci for
-   an equivalence margin) and the positive control's p. Commit again.
+   an equivalence margin) and the positive control's p. Commit again. Two commits, in
+   this order, are what lets P1 credit the thresholds as fixed first; the repository's
+   `examples/reproduce/demo_commit_order.py` replays them in a scratch repository.
 3. **Check it:**
 
    ```bash

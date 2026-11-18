@@ -7,6 +7,7 @@
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
         "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics",
         "their label is a language-model judgement of the run's write-up"
       ],
       "ci_hi": 0.3958,
@@ -22,10 +23,101 @@
     },
     {
       "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "completed reruns in the batch without expert notes",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.completed_runs",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 94
+    },
+    {
+      "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "of those run directories, present here",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.found_in.codescientist_repository",
+      "n": 250,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "of those run directories, present here",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.found_in.example_experiments_zip",
+      "n": 250,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "of those run directories, present here",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.found_in.full50_zip",
+      "n": 250,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "(source, later run) pairs that batch would give",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.pairs",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 60
+    },
+    {
+      "caveats": [
+        "the full-50 batch without expert notes: bulk and meta-analysis tables are released, run outputs are not"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "run directories the batch's experiment list names",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.batch2.run_directories_named",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50+codescientist-example-experiments",
+      "unit": "count",
+      "value": 250
+    },
+    {
+      "caveats": [
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -41,7 +133,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -57,7 +150,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -73,7 +167,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -89,7 +184,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": 0.4908,
       "ci_lo": 0.2623,
@@ -106,7 +202,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -122,7 +219,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -138,7 +236,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -154,7 +253,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -171,7 +271,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -188,7 +289,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -205,7 +307,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -222,7 +325,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -238,7 +342,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -254,7 +359,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -270,7 +376,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -286,7 +393,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -302,7 +410,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -318,7 +427,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -335,7 +445,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -352,7 +463,1575 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 reproduced pairs by the sign of the source run's own mean difference (added in v0.2 as a check)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.reproduced_source_sign.negative",
+      "n": 4,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 reproduced pairs by the sign of the source run's own mean difference (added in v0.2 as a check)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.reproduced_source_sign.positive",
+      "n": 4,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 reproduced pairs by the sign of the source run's own mean difference (added in v0.2 as a check)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.reproduced_source_sign.zero",
+      "n": 4,
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "their label is a language-model judgement of the run's write-up"
+      ],
+      "ci_hi": 0.3958,
+      "ci_lo": 0.1829,
+      "description": "pairs where our V1 verdict matches CodeScientist's judgement of the reproduction run",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.agreement_with_run_labels",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "test": "exact agreement",
+      "unit": "fraction",
+      "value": 0.2769
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.coverage.ambiguous_primary",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.coverage.no_test_output",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 14
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.coverage.recoverable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 32
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.coverage.test_output_incomplete",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": 0.6108,
+      "ci_lo": 0.3746,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.coverage_recoverable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "fraction",
+      "value": 0.4923
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.d1.decidable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 14
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.d1.no_data",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 33
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.d1.underpowered",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 18
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.supported",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.undecided-misses_threshold",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.undecided-no_data",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 33
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.undecided-no_positive_control",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.undecided-not_comparable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.outcome.undecided-underpowered",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.per_comparison.n",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.per_comparison.v1.inconclusive",
+      "n": 6,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.per_comparison.v1.not_reproduced",
+      "n": 6,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.per_comparison.v1.reproduced",
+      "n": 6,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.v1.inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 59
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "the v0.2 rule as preregistered, superseded by the corrected rule (deviations in prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.as_preregistered.v1.reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.coverage.ambiguous_primary",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 17
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.coverage.no_test_output",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 14
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.coverage.recoverable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 30
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.coverage.test_output_incomplete",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": 0.5815,
+      "ci_lo": 0.3459,
+      "description": "pairs whose two runs both give a primary bootstrap comparison under the v0.2 rule",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.coverage_recoverable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "fraction",
+      "value": 0.4615
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.d1.decidable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.d1.no_data",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.d1.uncheckable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.d1.underpowered",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 18
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.f1.not_comparable",
+      "n": 30,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.f1.proxy",
+      "n": 30,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 15
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "F1 among recoverable pairs",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.f1.same_quantity",
+      "n": 30,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs recoverable under v0.2 and not under v0.1",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.newly_recoverable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.supported",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-misses_threshold",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-no_data",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 35
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-no_positive_control",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-not_comparable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-uncheckable",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.outcome.undecided-underpowered",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 10
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.n",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 17
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.supported",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-misses_threshold",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-no_positive_control",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-not_comparable",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.outcome.undecided-underpowered",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "pairs contributing at least one matched comparison",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.pairs",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.negative",
+      "n": 3,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.positive",
+      "n": 3,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced comparisons by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.reproduced_source_sign.zero",
+      "n": 3,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.v1.inconclusive",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 14
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.v1.not_reproduced",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da",
+        "per comparison, not per pair: pairs whose primary stays ambiguous, each comparison found in both runs judged on its own; not counted among the 65 pairs",
+        "for comparisons among several conditions the block's baseline and experimental are an ordering, so the declared positive direction need not be the hypothesis's"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.per_comparison.v1.reproduced",
+      "n": 17,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.negative",
+      "n": 4,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.positive",
+      "n": 4,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "reproduced pairs by the sign of the source run's own mean difference (the declared direction is positive)",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.reproduced_source_sign.zero",
+      "n": 4,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "completed runs of the ideas read",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs",
+      "n": null,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 103
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "output files that parsed only with the restricted literal reader",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.files_repaired",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.log.json.experiment_plan",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.log.json.single",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.results.json.hypothesis",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.results.json.single",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 47
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.to_save.hypothesis",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "readable runs by tier and basis of the primary",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.ok_by.to_save.single",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 6
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.status.ambiguous_primary",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 18
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.status.no_test_output",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 22
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.status.ok",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.runs.status.test_output_incomplete",
+      "n": 103,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 verdict to v0.2 verdict, per pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.transition.inconclusive.to_inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 verdict to v0.2 verdict, per pair",
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.transition.reproduced.to_reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.v1.inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 61
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.v1.reproduced",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 4
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_inconclusive.theirs_inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 16
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_inconclusive.theirs_refute",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 20
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_inconclusive.theirs_support",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 25
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_reproduced.theirs_inconclusive",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.2 extraction rule: results.json, then to_save/, then log.json of the final iteration; several candidates resolved by the hypothesis, then the experiment plan, else left no_data",
+        "corrected after one run of the preregistered rule and before any number was committed; see prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended @ 9e1f1da"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "reproduce.cs.v0_2.vs_labels.ours_reproduced.theirs_support",
+      "n": 65,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:codescientist+codescientist-full50",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
+        "thresholds fixed by this analysis, not by the runs' authors",
+        "only the full-50 batch with expert notes has released run outputs",
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -368,7 +2047,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -384,7 +2064,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -401,7 +2082,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -418,7 +2100,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -435,7 +2118,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -452,7 +2136,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -468,7 +2153,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -484,7 +2170,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -500,7 +2187,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -516,7 +2204,8 @@
         "reruns of the same idea in the same environment, not independent data in the asta-flows sense",
         "thresholds fixed by this analysis, not by the runs' authors",
         "only the full-50 batch with expert notes has released run outputs",
-        "P1 not checked (records built in memory)"
+        "P1 not checked (records built in memory)",
+        "v0.1 extraction rule (the single non-random bootstrap block of the final results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics"
       ],
       "ci_hi": null,
       "ci_lo": null,
@@ -1004,6 +2693,955 @@
       "source": "fetch:discoverybench",
       "unit": "count",
       "value": 374
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.9802,
+      "ci_lo": 0.7735,
+      "description": "among pairs D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.decidable_reproduced_rate",
+      "n": 28,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9286
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.4299,
+      "ci_lo": 0.2431,
+      "description": "pairs whose half-B mi test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.detected_b.mi",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "binned mutual information, 199 permutations",
+      "unit": "fraction",
+      "value": 0.3298
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "detected by MI, missed by Pearson, on half B",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.detected_b.mi_not_pearson",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 3
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.4625,
+      "ci_lo": 0.2718,
+      "description": "pairs whose half-B pearson test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.detected_b.pearson",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Pearson r, two-sided",
+      "unit": "fraction",
+      "value": 0.3617
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.484,
+      "ci_lo": 0.2911,
+      "description": "pairs whose half-B spearman test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.detected_b.spearman",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Spearman rho, two-sided",
+      "unit": "fraction",
+      "value": 0.383
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict, derived pairs",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.inconclusive",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 68
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict, derived pairs",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.not_reproduced",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.outcome.supported",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 26
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.outcome.undecided-misses_threshold",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.outcome.undecided-underpowered",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 66
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "Pearson verdict, derived pairs",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.reproduced",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 26
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.3744,
+      "ci_lo": 0.1963,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.reproduced_rate",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.2766
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.9943,
+      "ci_lo": 0.8381,
+      "description": "among Spearman records D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.decidable_reproduced_rate",
+      "n": 31,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9677
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.inconclusive",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 64
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.not_reproduced",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.outcome.supported",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 30
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.outcome.undecided-no_positive_control",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.outcome.undecided-underpowered",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 63
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.reproduced",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 30
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.4189,
+      "ci_lo": 0.2336,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.reproduced_rate",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.3191
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0",
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": 0.7569,
+      "ci_lo": 0.5701,
+      "description": "Spearman records D1 classes underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived.spearman.underpowered_rate",
+      "n": 94,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.6702
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "prose gold hypotheses naming 0 columns",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_named.0",
+      "n": 520,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 90
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "prose gold hypotheses naming 1 columns",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_named.1",
+      "n": 520,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 117
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "prose gold hypotheses naming 2 columns",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_named.2",
+      "n": 520,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 127
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "prose gold hypotheses naming 3+ columns",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_named.3",
+      "n": 520,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 186
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_skipped.already_planted_or_repeated",
+      "n": 127,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_skipped.constant_in_a_half",
+      "n": 127,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 0
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.derived_skipped.not_numeric",
+      "n": 127,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 33
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.0941,
+      "ci_lo": 0.0673,
+      "description": "pairs whose half-B mi test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.detected_b.mi",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "binned mutual information, 199 permutations",
+      "unit": "fraction",
+      "value": 0.0797
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "detected by MI, missed by Pearson, on half B",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.detected_b.mi_not_pearson",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 63
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.0989,
+      "ci_lo": 0.0714,
+      "description": "pairs whose half-B pearson test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.detected_b.pearson",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Pearson r, two-sided",
+      "unit": "fraction",
+      "value": 0.0841
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.1023,
+      "ci_lo": 0.0743,
+      "description": "pairs whose half-B spearman test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.detected_b.spearman",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Spearman rho, two-sided",
+      "unit": "fraction",
+      "value": 0.0873
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.8981,
+      "ci_lo": 0.6806,
+      "description": "among Spearman records D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.decidable_reproduced_rate",
+      "n": 48,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.8125
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.inconclusive",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1523
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.not_reproduced",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9818,
+      "ci_lo": 0.9662,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.not_reproduced_or_inconclusive_rate",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9751
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.rejected",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.supported",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 39
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.undecided-misses_threshold",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.undecided-uncheckable",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.outcome.undecided-underpowered",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1520
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.reproduced",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 39
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.0338,
+      "ci_lo": 0.0182,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.reproduced_rate",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.0249
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9763,
+      "ci_lo": 0.959,
+      "description": "Spearman records D1 classes underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.null.spearman.underpowered_rate",
+      "n": 1569,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9688
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.601,
+      "ci_lo": 0.4985,
+      "description": "pairs whose half-B mi test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.detected_b.mi",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "binned mutual information, 199 permutations",
+      "unit": "fraction",
+      "value": 0.5503
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "detected by MI, missed by Pearson, on half B",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.detected_b.mi_not_pearson",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 29
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5873,
+      "ci_lo": 0.4845,
+      "description": "pairs whose half-B pearson test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.detected_b.pearson",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Pearson r, two-sided",
+      "unit": "fraction",
+      "value": 0.5363
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5983,
+      "ci_lo": 0.4957,
+      "description": "pairs whose half-B spearman test has p < 0.05",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.detected_b.spearman",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "test": "Spearman rho, two-sided",
+      "unit": "fraction",
+      "value": 0.5475
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.9941,
+      "ci_lo": 0.9503,
+      "description": "among Spearman records D1 classes decidable",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.decidable_reproduced_rate",
+      "n": 173,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.9827
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.inconclusive",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 186
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.not_reproduced",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.outcome.rejected",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.outcome.supported",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 170
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.outcome.undecided-misses_threshold",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.outcome.undecided-underpowered",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 185
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.reproduced",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 170
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5266,
+      "ci_lo": 0.4237,
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.reproduced_rate",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.4749
+    },
+    {
+      "caveats": [
+        "sensitivity analysis next to the Pearson verdicts, which it does not replace",
+        "row halves of one synthetic table, seed 0"
+      ],
+      "ci_hi": 0.5681,
+      "ci_lo": 0.4651,
+      "description": "Spearman records D1 classes underpowered",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.planted.spearman.underpowered_rate",
+      "n": 358,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "fraction",
+      "value": 0.5168
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "queries with a prose gold hypothesis and no gold expression",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.queries_gold_text_only",
+      "n": 903,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 520
+    },
+    {
+      "caveats": [
+        "derived: predictors read from column names in the prose gold hypothesis (exactly two named columns); not the generator's gold expression"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "queries with neither",
+      "dev_or_heldout": "synthetic",
+      "metric_id": "reproduce.db.v0_2.queries_no_gold",
+      "n": 903,
+      "prereg": "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320",
+      "source": "fetch:discoverybench",
+      "unit": "count",
+      "value": 200
     }
   ],
   "schema_version": 1

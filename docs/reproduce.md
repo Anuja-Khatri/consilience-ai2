@@ -217,45 +217,117 @@ with SHA-256, `findings` with receipts, `summary`) plus `record` (path, SHA-256,
 
 All numbers below render from `results/reproduce.json` (written by
 `analyses/reproduce/run.py`). Fixed seeds; the F1 fallback backend is used so the
-numbers do not depend on whether `consilience` is installed.
+numbers do not depend on whether `consilience` is installed. Two versions are reported:
+**v0.1**, the first release, under its original metric ids, and **v0.2**, which changes
+coverage and parsing only (`*.v0_2.*` metric ids). The verdict code, thresholds and pairs
+are the same in both. The v0.2 rule was preregistered in
+`prereg/reproduce/cs_extraction_v0_2.md` before any v0.2 number existed; three flaws found
+in it after one run, and before any number was committed, are corrected in
+`prereg/reproduce/cs_extraction_v0_2_deviations.md`, and the rule as preregistered is
+reported too (`reproduce.cs.v0_2.as_preregistered.*`).
 
 ### (a) CodeScientist reruns as reproductions (descriptive)
 
 The full-50 batch with expert notes (the batch whose run outputs are released): 50
 ideas, 5 runs each. 24 ideas have at least 2 completed runs, giving 65 (source,
 reproduction) pairs: the first completed run is the source, each later one a
-reproduction. Design in `analyses/reproduce/codescientist_reruns.py`.
+reproduction. Design in `analyses/reproduce/codescientist_reruns.py`; v0.2 parsers in
+`analyses/reproduce/cs_extract.py`.
 
-Coverage: the numbers (CodeScientist's own bootstrap comparison) are recoverable for
-both runs in 24 of 65 pairs (36.9%, 95% CI 26.2% to 49.1%). The rest: 22 pairs have
-no bootstrap block in a run's final results file, 15 have more than one candidate
-comparison (several metrics or several baselines; fail-closed, no choice is made), 4
-have an unreadable results file. These pairs are D1 `no_data`.
+**What v0.2 changes.** v0.1 read one file per run, the final iteration's
+`results.json`, and used its bootstrap comparison only when there was exactly one. v0.2
+reads, in this order, `results.json` (unchanged, so every v0.1 reading stands),
+`to_save/**/*.json` (files the run saved for its report), and bootstrap results printed in
+`log.json` (as JSON or as a Python dict). It parses tolerantly (a BOM, cp1252, NaN tokens,
+Python literals, trailing commas; nothing is executed). Several candidate comparisons are
+resolved by the run's stated hypothesis, then its experiment plan: the candidate with the
+largest share of its distinctive words in the text wins, and a tie is left undecided.
+Undecided pairs stay `no_data`, and every comparison found in both runs is judged
+separately (the per-comparison table below). A mean difference of exactly 0 is recorded as
+a zero effect. Runs with no bootstrap block anywhere are classified instead of read.
 
-| Check | Outcome (n) |
-|---|---|
-| F1, of 24 recoverable pairs | `proxy` 11 (the runs name their comparison differently), `not_comparable(conditions.pilot_mode)` 10 (the pilot-mode setting is written by one run only), `same_quantity` 3 |
-| D1, of 65 | `no_data` 41, `underpowered` 15, `decidable` 9 |
-| V1, of 65 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 |
-| P2, of 65 | the two runs state the hypothesis in identical words in 1 pair |
+Coverage, v0.1 to v0.2 (pairs whose two runs both give the primary comparison):
 
-The undecided reasons: `no_data` 41, `not_comparable` 10, `underpowered` 7,
-`misses_threshold` 2, `no_positive_control` 1. Underpowered is common because
-the runs are pilots (5 to 25 episodes in the recoverable pairs) and the source effects
-are small.
+| | v0.1 | v0.2 |
+|---|---|---|
+| recoverable | 24 of 65 (36.92%, 95% CI 26.23% to 49.08%) | 30 of 65 (46.15%, 95% CI 34.59% to 58.15%) |
+| no bootstrap block in `results.json` | 22 | (read further: below) |
+| several candidates, no choice | 15 | 17 |
+| unreadable `results.json` | 4 | 0 (the 3 files are empty, not malformed) |
+| no test output in any final file | (not classified) | 14 |
+| a p-value without an estimate or n | (not classified) | 4 |
+
+Where the 41 v0.1 `no_data` pairs went: 5 of the 22 without a block in `results.json`
+became recoverable (blocks in `to_save/` or `log.json`), 12 have no test output at all
+(accuracy tables, per-item data or plots: a verdict would need a test this analysis would
+have to invent), 4 report only a p-value (a correlation without n, pairwise p-values
+without estimates), and 1 is now several candidates; 1 of the 15 ambiguous pairs was
+resolved (by the hypothesis); of the 4 unreadable pairs (one empty source file), 2 are
+several candidates and 2 have no test output. Of the 103 completed runs, 61 give a
+primary comparison under v0.2 (47 from `results.json` as in v0.1, 2 more from it by the
+hypothesis rule; 7 from `to_save/`, 1 of them by the hypothesis; 5 from `log.json`, 1 of
+them by the plan), 18 stay ambiguous, 22 have no test output and 2 a p-value only. No file
+needed the literal reader. The rule as preregistered recovered 32 pairs (49.23%), 2 more,
+because it picked the comparison with the longest name when the plan named every
+candidate (deviation 1).
+
+| Check | v0.1 | v0.2 |
+|---|---|---|
+| F1, of the recoverable pairs | `proxy` 11, `not_comparable(conditions.pilot_mode)` 10, `same_quantity` 3 (of 24) | `proxy` 15, `not_comparable` 11, `same_quantity` 4 (of 30) |
+| D1, of 65 | `no_data` 41, `underpowered` 15, `decidable` 9 | `no_data` 35, `underpowered` 18, `decidable` 10, `uncheckable` 2 |
+| V1, of 65 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 | `reproduced` 4, `inconclusive` 61, `not_reproduced` 0 |
+| P2, of 65 | identical hypothesis wording in 1 pair | (unchanged) |
+
+The v0.2 outcome distribution: `supported` 4; undecided because `no_data` 35,
+`not_comparable` 11, `underpowered` 10, `misses_threshold` 2, `no_positive_control` 2,
+`uncheckable` 1 (a source run whose mean difference is exactly 0). No pair changed its
+verdict: the 4 reproduced pairs are the same, and every newly readable pair is
+inconclusive (underpowered pilots, a pilot-mode setting written by one run only, no
+random-agent control, or a zero source effect). In v0.1 the undecided reasons were
+`no_data` 41, `not_comparable` 10, `underpowered` 7, `misses_threshold` 2,
+`no_positive_control` 1.
+
+A check added in v0.2: in 2 of the 4 reproduced pairs the source run's own mean
+difference is negative (experimental below baseline; CodeScientist judged that source run
+"refute"). The record's direction is the hypothesis's (experimental above baseline, the
+bootstrap's own one-sided test), and the source effect enters only as a magnitude for
+power, so the rubric reads these reruns as reproducing the hypothesis, not the source's
+result. This is a property of the v0.1 design, unchanged here, and should be read with
+the verdicts.
+
+Per-comparison table (pairs whose primary stays ambiguous; never counted among the 65):
+17 comparisons from 4 pairs are found in both runs: `reproduced` 3, `inconclusive` 14
+(`no_positive_control` 7, `underpowered` 3, `not_comparable` 3, `misses_threshold` 1). All
+3 reproduced comparisons are pairwise comparisons of state-representation levels whose
+source run found the opposite sign; "baseline" and "experimental" there are only the
+order of two levels, so the declared positive direction is not the hypothesis's.
 
 Agreement with CodeScientist's own labels (its meta-analysis judges each run support,
 refute or inconclusive from the run's write-up): our verdict for the reproduction run
 matches theirs (reproduced ~ support, not_reproduced ~ refute, inconclusive ~
-inconclusive) in 18 of 65 pairs (27.7%, 95% CI 18.3% to 39.6%). The 3 x 3 counts:
-where they say support, we say inconclusive in 25 and reproduced in 2; where they say
-refute, we say inconclusive in all 20; where they say inconclusive, we say inconclusive
-in 16 and reproduced in 2. Most of the disagreement is the rubric refusing to decide:
-among the recoverable pairs, every reproduction run they label refute (6) has a
-non-significant bootstrap p, where the rubric's "rejected" also requires adequate power
-and a passing positive control. Against their run-level consistency
-(the two runs' judgements the same or different): of 25 pairs with the same judgement
-we call 2 reproduced and 23 inconclusive; of 40 with different judgements, 2 and 38.
+inconclusive) in 18 of 65 pairs (27.69%, 95% CI 18.29% to 39.58%) in both v0.1 and v0.2.
+The v0.1 3 x 3 counts: where they say support, we say inconclusive in 25 and reproduced
+in 2; where they say refute, we say inconclusive in all 20; where they say inconclusive,
+we say inconclusive in 16 and reproduced in 2 (v0.2: the same cells). Most of the
+disagreement is the rubric refusing to decide: among the v0.1 recoverable pairs, every
+reproduction run they label refute (6) has a non-significant bootstrap p, where the
+rubric's "rejected" also requires adequate power and a passing positive control. Against
+their run-level consistency (the two runs' judgements the same or different): of 25 pairs
+with the same judgement we call 2 reproduced and 23 inconclusive; of 40 with different
+judgements, 2 and 38.
+
+### (a') The batch without expert notes
+
+The CodeScientist repository releases two full-50 batches: with expert notes (above) and
+without. The second has bulk and meta-analysis tables in the repository, 94 completed
+runs, which would give 60 (source, rerun) pairs, but no run outputs anywhere we looked:
+its 250 run directories (named in `data/all-experiments.json`) are absent from the
+full-50 archive (whose only top-level directory is the with-notes batch), from the
+example-experiments archive (Table 4's 20 experiments: 10 from the with-notes batch, 10
+follow-on runs) and from the repository tree, which has no other archive. The bulk table
+holds only prose summaries of results, which a verdict read from numbers cannot use. The
+batch is therefore counted, not judged (`reproduce.cs.batch2.*`); a separate group needs
+the run outputs, which are not released.
 
 ### (b) DiscoveryBench planted effects and nulls (synthetic)
 
@@ -271,29 +343,90 @@ direction from the source. Design in `analyses/reproduce/discoverybench_planted.
 | planted | 358 | 171 | 2 | 185 (underpowered 181, misses threshold 4) |
 | null | 1569 | 35 | 7 | 1527 (underpowered 1523, misses threshold 4) |
 
-- Nulls are mostly not reproduced or inconclusive: 97.8% (95% CI 96.9% to 98.4%).
-- Planted effects are NOT mostly reproduced overall: 47.8% (95% CI 42.6% to 52.9%).
+- Nulls are mostly not reproduced or inconclusive: 97.77% (95% CI 96.91% to 98.39%).
+- Planted effects are NOT mostly reproduced overall: 47.77% (95% CI 42.64% to 52.94%).
   D1 classes about half of them underpowered: the planted functions are often
   non-linear or shared among several columns, so the marginal correlation on the
   source half is small and the reproduction half cannot detect it at that size. Among
-  planted pairs D1 calls decidable, 96.6% reproduce (95% CI 92.8% to 98.4%; n = 177);
-  among those whose source half was itself significant, 88.1% (n = 194).
+  planted pairs D1 calls decidable, 96.61% reproduce (95% CI 92.8% to 98.44%; n = 177);
+  among those whose source half was itself significant, 88.14% (n = 194).
 - The 35 reproduced nulls are all significant on the whole table (35 of 35; 122 of the
   1569 nulls are). They are columns the generator made dependent on the target
   indirectly, so the "null" label is impure there; the verdict follows the data.
 - Deliberately small reproductions (the first 10 rows of half B): classed underpowered
-  in 85.0% of planted pairs (n = 327) and 99.7% of nulls (n = 1430). The planted pairs
+  in 85.02% of planted pairs (n = 327) and 99.72% of nulls (n = 1430). The planted pairs
   still called decidable at 10 rows are those with the largest source correlations. Checked
   against empirical power (200 random subsamples of 10 rows from half B, the same test):
-  D1's class agrees with whether the empirical power reaches 0.8 in 96.6% of planted
-  pairs and 99.9% of nulls.
+  D1's class agrees with whether the empirical power reaches 0.8 in 96.64% of planted
+  pairs and 99.86% of nulls.
 
-### (c) P1 on a scratch git repository
+**Sensitivity to the association measure (v0.2).** Is the underpowering a linear-measure
+artefact? Two non-linear measures, fixed in the preregistration, beside the Pearson
+results (which they do not replace):
+
+| Group | Pearson: reproduced | Spearman: reproduced | Spearman: underpowered | detected on half B: Pearson / Spearman / binned MI |
+|---|---|---|---|---|
+| planted (358) | 47.77% | 47.49% (95% CI 42.37% to 52.66%) | 51.68% | 53.63% / 54.75% / 55.03% |
+| null (1569) | 2.23% | 2.49% | 96.88% | 8.41% / 8.73% / 7.97% |
+
+Spearman's rho gives the full verdict (same halves, thresholds and procedure; D1 by the
+Fisher-z formula, an approximation for rho); among planted pairs it calls decidable,
+98.27% reproduce (n = 173); nulls are not reproduced or inconclusive in 97.51%. Mutual
+information after a fixed binning (by value up to 4 values, else quartiles; permutation p
+from 199 permutations) has no closed-form power, so it gives detection only: it finds 29
+planted pairs Pearson misses on half B, and 63 nulls. The answer is no: a rank or binned
+dependence measure moves the planted detection rate by about one to one and a half
+points, and D1 still classes about half the planted pairs underpowered. The missing power
+is mostly weak marginal dependence (the target is spread over several columns), not the
+shape of the relation.
+
+**Coverage beyond the gold expressions (v0.2, derived).** Of the 903 queries, 520 give a
+gold hypothesis in prose only and 200 give none. In a prose hypothesis a column is named
+when its name, or its name with underscores read as spaces, occurs as a whole word. 127
+hypotheses name exactly two columns: each gives one derived planted pair (no target is
+known; the measures are symmetric). The others are not used: 90 name none, 117 one, and
+186 three or more, where pairs among predictors need not be related. 33 derived pairs have
+a non-numeric column, leaving 94: Pearson reproduces 26 (27.66%, 95% CI 19.63% to 37.44%),
+none is not reproduced, 68 are inconclusive (66 underpowered); among the derived pairs D1
+calls decidable, 92.86% reproduce (n = 28). Spearman reproduces 30 (31.91%). On half B,
+Pearson detects 36.17%, Spearman 38.3%, MI 32.98%. Derived pairs carry no positive
+control, and a two-name hypothesis may name two predictors instead of a target and a
+predictor: they are a weaker label than the gold expression and are reported apart.
+
+### (c) P1 on a scratch git repository, and the demo
 
 `tests/reproduce/test_commit_order.py` builds temporary repositories and checks every
 P1 outcome and reason, by declared refs and by the record file's history, including
 unrelated histories, thresholds changed after the result and changed back, and an
 unparseable old version of the record.
+
+`examples/reproduce/demo_commit_order.py` shows the workflow P1 credits. It builds a
+temporary git repository and commits `examples/reproduce/records/committed_first.yaml`
+twice: first the plan (the test, the source numbers, the reproduction's quantity,
+conditions and planned n, and the thresholds; no reproduction result), then the result.
+The check passes P1 (`committed_first`) and exits 0:
+
+```bash
+python examples/reproduce/demo_commit_order.py
+```
+
+```text
+c1f75ef plan: test and thresholds, before the run
+a75b596 result: reproduction numbers
+::notice file=committed_first.yaml,line=3::P2 hypothesis copy: verbatim
+::notice file=committed_first.yaml,line=19::D1 decidability: decidable
+::notice file=committed_first.yaml,line=19::F1 faithfulness: same_quantity
+::notice file=committed_first.yaml,line=35::P1 commit order: committed_first
+::notice file=committed_first.yaml,line=35::V1 verdict from the numbers: reproduced (supported)
+{"decidability": "decidable", "faithfulness": "same_quantity", "outcome_label": "supported", "verdict": "reproduced"}
+wrote reproduction_verdict.json
+exit 0
+```
+
+Fixed commit identities and dates make the output byte-identical; nothing is written to
+the user's git configuration (`--keep DIR` keeps the repository). Checked in place in
+this repository, the same record fails P1 with `same_commit`, because here the plan and
+the result arrive in one commit: that is why the quickstart on `supported.yaml` exits 1.
 
 ## Limits
 
@@ -313,12 +446,24 @@ unparseable old version of the record.
   from a distortion, so any rewording is an error by design.
 - (a) CodeScientist reruns are reruns in the same environment, not independent data in
   the asta-flows sense; its thresholds (one-sided alpha 0.05, minimum effect 0 on the
-  mean difference) were fixed by this analysis, not by the runs' authors. The effect
-  size is derived from the one-sided bootstrap p by a normal approximation. The primary
-  comparison is identified by a fixed rule (the single non-random bootstrap block); where
-  that rule finds no or several candidates the pair is `no_data`, which is 41 of 65.
-  CodeScientist's labels are a language-model reading of each run's write-up, not ground
-  truth.
+  mean difference, direction experimental above baseline) were fixed by this analysis,
+  not by the runs' authors. The direction is the hypothesis's, not the source run's
+  observed sign: 2 of the 4 reproduced pairs have a source run whose own mean difference
+  is negative. The effect size is derived from the one-sided bootstrap p by a normal
+  approximation. The primary comparison is identified by a fixed rule (v0.1: the single
+  non-random bootstrap block of `results.json`; v0.2: three files in order, then the
+  hypothesis and the plan by word matching); where it finds no or several candidates the
+  pair is `no_data`: 41 of 65 in v0.1, 35 in v0.2. Word matching is lexical: it can pick
+  the comparison whose name shares the hypothesis's words without being the one the
+  hypothesis means, and it cannot choose among comparisons the plan names equally. The
+  v0.2 rule was corrected once after seeing its choices (the deviations file); both
+  versions are reported. 18 pairs (14 with no test output, 4 with a p-value only) cannot
+  be judged without inventing a test. CodeScientist's labels are a language-model reading
+  of each run's write-up, not ground truth. The batch without expert notes has no
+  released run outputs and is not judged.
 - (b) "Planted" means in the gold expression, not "linearly detectable"; "null" means
   named by no query, not independent. Both labels come from the released metadata and
   are imperfect in the ways reported above. The halves come from one synthetic table.
+  Derived planted pairs rest on exact column names in prose and may pair two predictors;
+  Spearman's D1 uses an approximation; the mutual-information binning is one fixed
+  choice, and MI gives detection only.
