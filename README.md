@@ -91,8 +91,9 @@ What the output means:
    warnings and receipts. The defects were planted on purpose, so the exit code is 1.
    The clean workspace, `examples/receipts/clean`, passes with exit code 0.
 2. One line per experiment: `pass`, `flag(warning)`, `flag(error)` or `refuse`, then its
-   q value (its p value adjusted for many tests) and the codes that fired. Each synthetic
-   experiment has one planted defect.
+   q value (its p value adjusted for many tests) and the codes that fired. The synthetic run has
+   one clean experiment, one with nothing to check, and one planted defect in each of
+   the others.
 3. The verdict is `reproduced`, yet the run exits 1. The example record was committed
    with its thresholds and its result together, so the tool cannot credit the thresholds
    as fixed first. `python examples/reproduce/demo_commit_order.py` shows the passing
