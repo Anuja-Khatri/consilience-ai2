@@ -73,7 +73,7 @@ Ai2 and its collaborators have released.
 Report format, version 1:
 
 ```json
-{"version": 1, "tool": "consilience-ai2 receipts", "tool_version": "0.1.0",
+{"version": 1, "tool": "consilience-ai2 receipts", "tool_version": "0.2.0",
  "inputs": [{"path": "evidence.yml", "sha256": "…", "role": "evidence"}],
  "findings": [{"code": "E6", "severity": "error", "message": "…", "file": "index.qmd",
                "line": 42, "key": "…",
