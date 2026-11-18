@@ -11,7 +11,7 @@
     "id": {"type": "string", "minLength": 1},
     "hypothesis": {"type": "string", "description": "The hypothesis text as tested in the reproduction."},
     "source_hypothesis": {"type": "string", "description": "The hypothesis text of the source finding (for an AutoDS run, the mcts_node hypothesis)."},
-    "direction": {"enum": ["positive", "negative"], "description": "The hypothesized sign of the effect. Default: the sign of the source effect."},
+    "direction": {"enum": ["positive", "negative"], "description": "The hypothesized sign of the effect, and the direction of any one-sided p in the record. Default: the sign of the source effect. Verdict rule v0.2 expects the sign of the source effect whatever this says; rule v0.1 expects this sign."},
     "source": {"$ref": "#/$defs/measurement"},
     "reproduction": {"$ref": "#/$defs/measurement"},
     "quantity_mapping": {

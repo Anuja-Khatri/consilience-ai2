@@ -47,6 +47,10 @@ unchanged, and the empirical-power draws keep their order):
   the target's bins (seed derived from seed 0 and the pair by SHA-256). MI has no
   closed-form power, so it gives no verdict: it is reported as the share of pairs whose
   association half B detects at p < alpha, beside the same share for Pearson and Spearman.
+- **Verdict rule v0.2**: every v0.2 verdict (Pearson, Spearman, derived) uses the v0.2
+  verdict rule: the expected direction is the source half's sign, and a source half that
+  is not significant or below the minimum |r| claims no effect, so the pair is
+  ``undecided(source_null)``. The v0.1 Pearson verdicts above keep the v0.1 rule.
 - **Derived planted pairs** (labelled derived): a query with a natural-language gold
   hypothesis (``true_hypothesis``) but no gold expression names its columns in prose only,
   and gives no target. A column is named when its name, or its name with underscores read
@@ -200,9 +204,15 @@ def _record(task: str, target: str, pred: str, kind: str, a: tuple[float, float,
 
 def _sensitivity(task: str, target: str, c: str, kind: str, x: np.ndarray, y: np.ndarray,
                  half_a: np.ndarray, half_b: np.ndarray, rho_a: dict, rho_b: dict,
-                 controls: list[str], pearson_p_b: float) -> dict[str, Any]:
-    """The Spearman verdict and the half-B detections (Pearson, Spearman, MI) of a pair."""
-    out: dict[str, Any] = {"pearson_p_b": pearson_p_b}
+                 controls: list[str], pearson_p_b: float,
+                 pearson_record: dict[str, Any]) -> dict[str, Any]:
+    """The v0.2 verdicts (Pearson and Spearman, verdict rule v0.2) and the half-B
+    detections (Pearson, Spearman, MI) of a pair."""
+    pv = evaluate(pearson_record, backend="fallback", skip=("P1", "P2"),
+                  rule="v0.2").extra["verdict"]
+    out: dict[str, Any] = {"pearson_p_b": pearson_p_b, "pv_verdict": pv["verdict"],
+                           "pv_outcome": pv["outcome_label"],
+                           "pv_decidability": pv["decidability"]}
     sa, sb = rho_a.get(c), rho_b.get(c)
     if sa is None or sb is None:
         out.update(s_verdict=None, s_outcome=None, s_decidability=None, spearman_p_b=None)
@@ -213,7 +223,7 @@ def _sensitivity(task: str, target: str, c: str, kind: str, x: np.ndarray, y: np
         cp = rho_b[ctrl][1] if ctrl else None
         sv = evaluate(_record(task, target, c, kind, (sa[0], sa[1], len(half_a)),
                               (sb[0], sb[1], len(half_b)), cp, measure="Spearman rho"),
-                      backend="fallback", skip=("P1", "P2")).extra["verdict"]
+                      backend="fallback", skip=("P1", "P2"), rule="v0.2").extra["verdict"]
         out.update(s_verdict=sv["verdict"], s_outcome=sv["outcome_label"],
                    s_decidability=sv["decidability"], spearman_p_b=sb[1])
     out["mi_p_b"] = mi_test(x[half_b], y[half_b], f"{task}:{target}:{c}")[1]
@@ -244,12 +254,13 @@ def _derived(task: str, prose: list[dict], header: list[str], num, half_a: np.nd
         if ra is None or rb is None:
             cnt["derived_skipped_constant_in_a_half"] += 1
             continue
-        v = evaluate(_record(task, b_col, a_col, "derived", (ra[0], ra[1], len(half_a)),
-                             (rb[0], rb[1], len(half_b)), None),
-                     backend="fallback", skip=("P1", "P2")).extra["verdict"]
+        prec = _record(task, b_col, a_col, "derived", (ra[0], ra[1], len(half_a)),
+                       (rb[0], rb[1], len(half_b)), None)
+        v = evaluate(prec, backend="fallback", skip=("P1", "P2"),
+                     rule="v0.1").extra["verdict"]
         rho = {a_col: (_rho(x[half_a], y[half_a]), _rho(x[half_b], y[half_b]))}
         sens = _sensitivity(task, b_col, a_col, "derived", x, y, half_a, half_b,
-                            {a_col: rho[a_col][0]}, {a_col: rho[a_col][1]}, [], rb[1])
+                            {a_col: rho[a_col][0]}, {a_col: rho[a_col][1]}, [], rb[1], prec)
         full = _r(x, y)
         out.append({"task": task, "target": b_col, "column": a_col, "kind": "derived",
                     "r_a": ra[0], "p_a": ra[1], "r_b": rb[0],
@@ -349,8 +360,9 @@ def analyse() -> dict[str, Any]:
                     cp = stats_b[ctrl][1] if ctrl else None
                     a = (ra[0], ra[1], len(half_a))
                     b = (rb[0], rb[1], len(half_b))
-                    v = evaluate(_record(task, target, c, kind, a, b, cp), backend="fallback",
-                                 skip=("P1", "P2")).extra["verdict"]
+                    prec = _record(task, target, c, kind, a, b, cp)
+                    v = evaluate(prec, backend="fallback", skip=("P1", "P2"),
+                                 rule="v0.1").extra["verdict"]
                     # small reproduction: first SMALL_N rows of half B
                     xs, ys = num(c)[half_b[:SMALL_N]], y[half_b[:SMALL_N]]  # type: ignore[index]
                     rs = _r(xs, ys)
@@ -359,7 +371,7 @@ def analyse() -> dict[str, Any]:
                     if rs is not None:
                         small = evaluate(
                             _record(task, target, c, kind, a, (rs[0], rs[1], SMALL_N), cp),
-                            backend="fallback", skip=("P1", "P2")).extra["verdict"]
+                            backend="fallback", skip=("P1", "P2"), rule="v0.1").extra["verdict"]
                         hits = 0
                         xb, yb = num(c)[half_b], y[half_b]  # type: ignore[index]
                         sign = 1 if ra[0] > 0 else -1
@@ -372,7 +384,7 @@ def analyse() -> dict[str, Any]:
                         emp = hits / DRAWS
                     full = _r(num(c), y)  # type: ignore[arg-type]
                     sens = _sensitivity(task, target, c, kind, num(c), y, half_a, half_b,
-                                        rho_a, rho_b, planted, rb[1])
+                                        rho_a, rho_b, planted, rb[1], prec)
                     rows_out.append({
                         "task": task, "target": target, "column": c, "kind": kind,
                         "r_a": ra[0], "p_a": ra[1], "r_b": rb[0],
@@ -416,7 +428,15 @@ def summarise(res: dict[str, Any]) -> dict[str, Any]:
                 1 for r in g if r["verdict"] == "reproduced" and r["full_p"] is not None
                 and r["full_p"] < 0.05),
         }
-        # v0.2 sensitivity: Spearman verdicts and half-B detections
+        # v0.2: Pearson under the v0.2 verdict rule, Spearman verdicts, half-B detections
+        out[kind]["pearson_v02"] = {
+            "n": len(g),
+            "verdict": dict(Counter(r["pv_verdict"] for r in g)),
+            "outcome": dict(Counter(r["pv_outcome"] for r in g)),
+            "decidability": dict(Counter(r["pv_decidability"] for r in g)),
+            "decidable_verdict": dict(Counter(r["pv_verdict"] for r in g
+                                              if r["pv_decidability"] == "decidable")),
+        }
         sp = [r for r in g if r["s_verdict"] is not None]
         alpha = THRESHOLDS["alpha"]
         out[kind]["spearman"] = {

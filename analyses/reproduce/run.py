@@ -32,7 +32,7 @@ CS_SOURCE_V02 = "fetch:codescientist+codescientist-full50+codescientist-example-
 DB_SOURCE = "fetch:discoverybench"
 PREREG_V02 = "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320"
 DEVIATIONS_V02 = ("prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1, amended "
-                  "@ 9e1f1da")
+                  "@ 9e1f1da and @ VERDICTRULE")
 V01_NOTE = ("v0.1 extraction rule (the single non-random bootstrap block of the final "
             "results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics")
 Z95 = 1.959963984540054
@@ -119,7 +119,9 @@ def codescientist_metrics_v02_prereg(res: dict) -> list[dict]:
     s = cs.summarise_v02(res, "v02p")
     kw = {"source": CS_SOURCE, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
     cav = CS_CAVEATS + [f"the v0.2 rule as preregistered, superseded by the corrected rule "
-                        f"(deviations in {DEVIATIONS_V02})"]
+                        f"(deviations in {DEVIATIONS_V02})",
+                        "judged with the v0.1 verdict rule (declared direction), as the "
+                        "preregistration assumed"]
     P = "reproduce.cs.v0_2.as_preregistered"
     n = s["n_pairs"]
     out = [rate(f"{P}.coverage_recoverable", s["coverage"].get("recoverable", 0), n,
@@ -137,6 +139,27 @@ def codescientist_metrics_v02_prereg(res: dict) -> list[dict]:
     return out
 
 
+def codescientist_metrics_v02_extraction_only(res: dict) -> list[dict]:
+    """The v0.2 extraction judged with the v0.1 verdict rule: what the parsing change
+    alone does, separated from the verdict-rule change."""
+    s = cs.summarise_v02(res, "v02x")
+    kw = {"source": CS_SOURCE, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
+    cav = CS_CAVEATS + ["v0.2 extraction rule with the v0.1 verdict rule (declared "
+                        "direction), to separate the two changes"]
+    P = "reproduce.cs.v0_2.extraction_only"
+    n = s["n_pairs"]
+    out = [rate(f"{P}.agreement_with_run_labels", s["agree"], s["n_labelled"], caveats=cav,
+                test="exact agreement", **kw)]
+    for key in ("v1", "outcome"):
+        for cls, k in sorted(s[key].items()):
+            out.append(count(f"{P}.{key}.{slug(cls)}", k, n, caveats=cav, **kw))
+    pc = s["per_comparison"]
+    for v in ("reproduced", "not_reproduced", "inconclusive"):
+        out.append(count(f"{P}.per_comparison.v1.{v}", pc["verdict"].get(v, 0), pc["n"],
+                         caveats=cav, **kw))
+    return out
+
+
 def codescientist_metrics_v02(res: dict) -> list[dict]:
     """The v0.2 extraction rule on the same 65 pairs (``prereg/reproduce/
     cs_extraction_v0_2.md`` with the corrections in ``..._deviations.md``), its change
@@ -147,7 +170,10 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
                         "of the final iteration; several candidates resolved by the "
                         "hypothesis, then the experiment plan, else left no_data",
                         f"corrected after one run of the preregistered rule and before "
-                        f"any number was committed; see {DEVIATIONS_V02}"]
+                        f"any number was committed; see {DEVIATIONS_V02}",
+                        "v0.2 verdict rule: the expected direction is the source run's "
+                        "sign; a source that claims no effect is undecided(source_null) "
+                        f"(deviation 4 in {DEVIATIONS_V02})"]
     P = "reproduce.cs.v0_2"
     n = s["n_pairs"]
     out = [
@@ -209,8 +235,8 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
                   "comparison found in both runs judged on its own; not counted among the "
                   "65 pairs",
                   "for comparisons among several conditions the block's baseline and "
-                  "experimental are an ordering, so the declared positive direction need not "
-                  "be the hypothesis's"]
+                  "experimental are an ordering; under the v0.2 verdict rule the expected "
+                  "direction is the source run's sign, not that ordering"]
     out.append(count(f"{P}.per_comparison.n", pc["n"], None, caveats=pcav, **kw))
     out.append(count(f"{P}.per_comparison.pairs", pc["n_pairs"], n, caveats=pcav,
                      description="pairs contributing at least one matched comparison", **kw))
@@ -306,7 +332,9 @@ def discoverybench_metrics_v02(s: dict) -> list[dict]:
     the derived planted pairs. Rules in ``prereg/reproduce/cs_extraction_v0_2.md``."""
     kw = {"source": DB_SOURCE, "dev_or_heldout": "synthetic", "prereg": PREREG_V02}
     cav = ["sensitivity analysis next to the Pearson verdicts, which it does not replace",
-           "row halves of one synthetic table, seed 0"]
+           "row halves of one synthetic table, seed 0",
+           "v0.2 verdict rule: the expected direction is the source half's sign; a source "
+           "half that claims no effect is undecided(source_null)"]
     dcav = ["derived: predictors read from column names in the prose gold hypothesis "
             "(exactly two named columns); not the generator's gold expression"]
     P = "reproduce.db.v0_2"
@@ -330,18 +358,23 @@ def discoverybench_metrics_v02(s: dict) -> list[dict]:
         g = s[kind]
         gc = cav + (dcav if kind == "derived" else [])
         n = g["n"]
-        if kind == "derived":
-            for v in ("reproduced", "not_reproduced", "inconclusive"):
-                out.append(count(f"{P}.derived.{v}", g["verdict"].get(v, 0), n, caveats=gc,
-                                 description="Pearson verdict, derived pairs", **kw))
-            for cls, k in sorted(g["outcome"].items()):
-                out.append(count(f"{P}.derived.outcome.{slug(cls)}", k, n, caveats=gc, **kw))
-            out.append(rate(f"{P}.derived.reproduced_rate", g["verdict"].get("reproduced", 0),
-                            n, caveats=gc, **kw))
-            dec = g["decidable_verdict"]
-            out.append(rate(f"{P}.derived.decidable_reproduced_rate",
-                            dec.get("reproduced", 0), sum(dec.values()), caveats=gc,
-                            description="among pairs D1 classes decidable", **kw))
+        pv = g["pearson_v02"]
+        pre = f"{P}.derived" if kind == "derived" else f"{P}.{kind}.pearson"
+        for v in ("reproduced", "not_reproduced", "inconclusive"):
+            out.append(count(f"{pre}.{v}", pv["verdict"].get(v, 0), n, caveats=gc,
+                             description="Pearson verdict under the v0.2 verdict rule", **kw))
+        for cls, k in sorted(pv["outcome"].items()):
+            out.append(count(f"{pre}.outcome.{slug(cls)}", k, n, caveats=gc, **kw))
+        out.append(rate(f"{pre}.reproduced_rate", pv["verdict"].get("reproduced", 0),
+                        n, caveats=gc, **kw))
+        dec = pv["decidable_verdict"]
+        out.append(rate(f"{pre}.decidable_reproduced_rate",
+                        dec.get("reproduced", 0), sum(dec.values()), caveats=gc,
+                        description="among pairs D1 classes decidable", **kw))
+        if kind == "null":
+            ok = pv["verdict"].get("not_reproduced", 0) + pv["verdict"].get("inconclusive", 0)
+            out.append(rate(f"{pre}.not_reproduced_or_inconclusive_rate", ok, n, caveats=gc,
+                            **kw))
         sp = g["spearman"]
         for v in ("reproduced", "not_reproduced", "inconclusive"):
             out.append(count(f"{P}.{kind}.spearman.{v}", sp["verdict"].get(v, 0), sp["n"],
@@ -381,6 +414,7 @@ def main() -> int:
     db_sum = db.summarise(db.analyse())
     metrics = (codescientist_metrics(cs_res) + codescientist_metrics_v02(cs_res)
                + codescientist_metrics_v02_prereg(cs_res)
+               + codescientist_metrics_v02_extraction_only(cs_res)
                + discoverybench_metrics(db_sum) + discoverybench_metrics_v02(db_sum))
     path = write_results("reproduce", metrics, REPO / "results")
     print(f"wrote {path.relative_to(REPO)} ({len(metrics)} metrics)")

@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from consilience_ai2.reproduce.comparability import BACKENDS
+from consilience_ai2.reproduce.decide import DEFAULT_RULE, VERDICT_RULES
 from consilience_ai2.reproduce.verdict import CHECKS, check_file
 
 DEFAULT_OUT = "reproduction_verdict.json"
@@ -35,6 +36,10 @@ def register(subparsers) -> None:
                    help="consilience compare pack for the conditions (name or path)")
     c.add_argument("--skip", metavar="CODE", action="append", default=[], choices=CHECKS,
                    help="skip a check (repeatable)")
+    c.add_argument("--rule", choices=VERDICT_RULES, default=DEFAULT_RULE,
+                   help="V1 verdict rule: v0.2 judges against the source's finding (its "
+                        "sign; a null source is undecided(source_null)), v0.1 against the "
+                        f"declared direction (default: {DEFAULT_RULE})")
     c.set_defaults(func=run_check)
     p.set_defaults(func=lambda args: (p.print_help(sys.stderr), 2)[1])
 
@@ -46,7 +51,7 @@ def run_check(args: argparse.Namespace) -> int:
         return 2
     try:
         report = check_file(record, repo=args.repo, backend=args.backend, pack=args.pack,
-                            skip=tuple(args.skip))
+                            skip=tuple(args.skip), rule=args.rule)
     except ValueError as exc:  # e.g. --backend consilience without the package
         print(f"consilience-ai2 reproduce: {exc}", file=sys.stderr)
         return 2

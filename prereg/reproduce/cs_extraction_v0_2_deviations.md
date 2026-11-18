@@ -57,3 +57,38 @@ mean difference of exactly 0 is now recorded as a zero effect (dz = 0): on a sou
 D1 then finds no source effect and is `uncheckable`; on a reproduction run V1 reads a
 zero effect. Only a sign disagreement leaves the effect size out. Verdicts of those two
 pairs are inconclusive either way.
+
+## 4. The verdict rule: a reproduction tests the source's finding
+
+Decided after the v0.2 extraction results were seen (in particular: in 2 of the 4
+reproduced CodeScientist pairs the source run's own mean difference is negative while the
+record's declared direction is positive). This is a change of the verdict rule, not of
+extraction, and it changes conclusions; it is not presented as preregistered.
+
+Rationale: a reproduction tests the source's finding, not the hypothesis wording. Under
+the v0.1 rule the expected sign was the declared `direction` (in the CodeScientist
+analysis, experimental above baseline, the bootstrap's one-sided test), and the source
+effect entered only as a magnitude for power, so a rerun could "reproduce" a hypothesis
+the source run itself contradicted.
+
+Verdict rule v0.2 (`consilience_ai2/reproduce/decide.py`, the default of the CLI and the
+API; `--rule v0.1` keeps the old rule):
+
+- the expected direction is the sign of the source effect on the committed scale;
+- the source claims an effect when that effect is not zero, at least the committed
+  minimum effect in size, and significant in its own direction (a one-sided p in the
+  record is in the declared direction; when the source's sign is the other one, its
+  complement 1 - p is used; without a p, p is computed from the source's effect size
+  and n);
+- a source that claims no effect cannot be reproduced by a minimum-effect test: the
+  record is `undecided(source_null)`. A record that commits an equivalence margin is
+  judged by the two one-sided tests against it (equivalence mode, unchanged: it already
+  tests the source's value, sign included);
+- `no_data` and `not_identifiable` come before `source_null`; the other D1 classes after.
+
+Reported: the v0.1 numbers unchanged (v0.1 rule); the v0.2 numbers with the v0.2 rule;
+and, to separate the two changes, the v0.2 extraction with the v0.1 rule
+(`reproduce.cs.v0_2.extraction_only.*`). The rule as preregistered
+(`reproduce.cs.v0_2.as_preregistered.*`) keeps the v0.1 verdict rule it assumed. In the
+DiscoveryBench analysis the v0.1 Pearson numbers keep the v0.1 rule; every v0.2 verdict
+(Pearson, Spearman, derived pairs) uses the v0.2 rule.

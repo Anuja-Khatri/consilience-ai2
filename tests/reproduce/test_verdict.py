@@ -7,14 +7,15 @@ import pytest
 from consilience_ai2.reproduce import OUTCOMES, VERDICT_OF, aggregate, evaluate
 
 
-def v1(rec, backend="fallback"):
-    rep = evaluate(rec, backend=backend, skip=("P1",))
+def v1(rec, backend="fallback", rule="v0.2"):
+    rep = evaluate(rec, backend=backend, skip=("P1",), rule=rule)
     f = next(x for x in rep.findings if x.code == "V1")
     return f, rep.extra["verdict"]
 
 
-def label(rec, backend="fallback"):
-    return v1(rec, backend)[1]["outcome_label"], v1(rec, backend)[1]["verdict"]
+def label(rec, backend="fallback", rule="v0.2"):
+    v = v1(rec, backend, rule)[1]
+    return v["outcome_label"], v["verdict"]
 
 
 def test_supported(record):
@@ -43,7 +44,10 @@ def test_proxy_carries_a_caveat(record):
     ({"source": {"effect_size": {"value": 0}}}, "uncheckable"),
 ])
 def test_not_decidable_is_undecided_even_when_significant(record, over, reason):
-    assert label(record(over)) == (f"undecided({reason})", "inconclusive")
+    assert label(record(over), rule="v0.1") == (f"undecided({reason})", "inconclusive")
+    # v0.2: a zero source effect is a source that claims no effect
+    want = "source_null" if reason == "uncheckable" else reason
+    assert label(record(over)) == (f"undecided({want})", "inconclusive")
 
 
 def test_opposite_effect(record):
@@ -129,10 +133,15 @@ def test_p_computed_for_proportions(record):
 
 
 def test_direction_declared_and_missing(record):
+    # v0.1: the declared direction decides; v0.2: the source's sign does
     rec = record(direction="negative")
-    assert label(rec) == ("opposite_effect", "not_reproduced")
+    assert label(rec, rule="v0.1") == ("opposite_effect", "not_reproduced")
+    f, v = v1(rec)
+    assert v["verdict"] == "reproduced"
+    assert f.details["declared_direction_disagrees_with_source"] is True
     rec = record(source={"value": 0, "effect_size": {"value": 0}})
-    assert label(rec)[0] == "undecided(uncheckable)"
+    assert label(rec, rule="v0.1")[0] == "undecided(uncheckable)"
+    assert label(rec)[0] == "undecided(source_null)"
 
 
 def test_value_scale_with_units(record):
@@ -149,7 +158,8 @@ def test_value_scale_needs_a_value(record):
     rec = record(thresholds={"minimum_effect": 0.1, "minimum_effect_scale": "value"})
     del rec["reproduction"]["value"]
     del rec["source"]["value"]
-    assert label(rec)[0] == "undecided(no_reproduction_value)"
+    assert label(rec, rule="v0.1")[0] == "undecided(no_reproduction_value)"
+    assert label(rec)[0] == "undecided(no_source_effect)"   # v0.2 reads the source first
 
 
 def test_effect_scale_needs_an_effect(record):
@@ -249,3 +259,92 @@ def test_aggregate_refuses_unknown():
 def test_verdict_mapping_is_total():
     assert set(VERDICT_OF) == set(OUTCOMES)
     assert VERDICT_OF["partly_supported"] == "inconclusive"
+
+
+# --- v0.2: the expected direction is the source's -------------------------------------
+
+@pytest.mark.parametrize("src_r,rep_r,want", [
+    (0.31, 0.27, ("supported", "reproduced")),             # positive source, same sign
+    (-0.31, -0.27, ("supported", "reproduced")),           # negative source, same sign
+    (-0.31, 0.27, ("opposite_effect", "not_reproduced")),  # negative source, other sign
+    (0.31, -0.27, ("opposite_effect", "not_reproduced")),  # positive source, other sign
+])
+def test_v02_direction_is_the_source_sign(record, src_r, rep_r, want):
+    rec = record(source={"value": src_r, "effect_size": {"value": src_r}},
+                 reproduction={"value": rep_r, "effect_size": {"value": rep_r}})
+    assert label(rec) == want
+
+
+def test_v02_declared_direction_does_not_override_the_source(record):
+    rec = record(direction="positive", source={"value": -0.31, "effect_size": {"value": -0.31}},
+                 reproduction={"value": 0.27, "effect_size": {"value": 0.27}})
+    assert label(rec, rule="v0.1") == ("supported", "reproduced")
+    assert label(rec) == ("opposite_effect", "not_reproduced")
+
+
+@pytest.mark.parametrize("over", [
+    {"source": {"p": 0.2}},                                       # non-significant source
+    {"source": {"value": 0.05, "effect_size": {"value": 0.05}}},  # below the minimum effect
+    {"source": {"value": 0, "effect_size": {"value": 0}}},        # zero
+])
+def test_v02_source_null_is_undecided_in_minimum_effect_mode(record, over):
+    f, v = v1(record(over))
+    assert (v["outcome_label"], v["verdict"]) == ("undecided(source_null)", "inconclusive")
+    assert f.details["source_claims_effect"] is False
+
+
+def test_v02_source_null_in_equivalence_mode_is_judged_by_tost(record, delete):
+    rec = record(thresholds={"minimum_effect": delete, "equivalence_margin": 0.1},
+                 source={"value": 0.02, "effect_size": {"value": 0.02}, "p": 0.8},
+                 reproduction={"value": 0.01, "effect_size": {"value": 0.01}, "se": 0.02,
+                               "n": 2000})
+    assert label(rec) == ("supported", "reproduced")
+    assert label(rec, rule="v0.1") == ("supported", "reproduced")
+    rec["reproduction"]["value"] = 0.3      # wholly outside the margin: not equivalent
+    assert label(rec) == ("rejected", "not_reproduced")
+
+
+def test_v02_one_sided_p_complement(record):
+    # one-sided p's are in the declared direction; the source is negative, so 1 - p
+    base = {"direction": "positive", "thresholds": {"sides": 1},
+            "source": {"value": -0.31, "effect_size": {"value": -0.31}, "p": 0.999},
+            "reproduction": {"value": -0.27, "effect_size": {"value": -0.27}, "p": 0.998}}
+    f, v = v1(record(base))
+    assert v["verdict"] == "reproduced"
+    assert f.details["source_p_from"].startswith("record, one-sided complement")
+    assert f.details["p"] == pytest.approx(0.002)
+    # a source that is not significant in its own direction claims no effect
+    assert label(record(base, source={"p": 0.5}))[0] == "undecided(source_null)"
+
+
+def test_v02_source_p_computed_when_absent(record, delete):
+    f, v = v1(record(source={"p": delete}))
+    assert v["verdict"] == "reproduced"
+    assert f.details["source_p_from"] == "computed from effect size and n"
+    rec = record(source={"p": delete, "n": delete})
+    assert label(rec)[0] == "undecided(no_source_test)"
+
+
+def test_v02_no_data_before_source_null(record):
+    rec = record(source={"p": 0.5}, reproduction={"status": "no_data"})
+    assert label(rec)[0] == "undecided(no_data)"
+
+
+def test_unknown_rule_refused(record):
+    with pytest.raises(ValueError):
+        evaluate(record(), backend="fallback", skip=("P1",), rule="v9")
+
+
+def test_cli_rule_option(record, tmp_path, capsys):
+    import json
+
+    import yaml
+
+    from consilience_ai2.cli import main
+    path = tmp_path / "r.yaml"
+    path.write_text(yaml.safe_dump(record(direction="negative")), encoding="utf-8")
+    for rule, want in (("v0.1", "not_reproduced"), ("v0.2", "reproduced")):
+        main(["reproduce", "check", str(path), "--backend", "fallback", "--skip", "P1",
+              "--rule", rule, "--json", "-"])
+        out = json.loads(capsys.readouterr().out)
+        assert out["verdict"]["verdict"] == want and out["verdict"]["verdict_rule"] == rule

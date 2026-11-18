@@ -13,15 +13,34 @@ D1 decision table (first matching row wins)
 | 4 | power is below ``thresholds.power`` (default 0.8): at the source effect with the reproduction's n (minimum-effect mode), or of the two one-sided tests at zero difference with the reproduction's standard error (equivalence mode) | ``underpowered`` |
 | 5 | otherwise | ``decidable`` |
 
-V1 decision table, minimum-effect mode. ``s`` is the hypothesized sign (``direction``,
-else the sign of the source effect), ``e`` the reproduction effect on the committed
-scale, ``m`` the committed minimum effect, ``sig`` is ``p < alpha`` (p from the record,
-else computed from the effect and n, see ``stats.p_from_effect``).
+Two verdict rules (``VERDICT_RULES``). ``v0.2`` (the default) judges the reproduction
+against the SOURCE's finding: a reproduction tests the source's finding, not the
+hypothesis wording. ``v0.1`` (the first release) judges it against the declared
+``direction``. They differ only in minimum-effect mode; equivalence mode already tests
+the source's value, sign included, and is the same in both.
+
+V1 decision table, minimum-effect mode. ``s`` is the expected sign: under ``v0.2`` the
+sign of the source effect on the committed scale, under ``v0.1`` the declared
+``direction``, else the sign of the source effect. ``e`` is the reproduction effect on
+the committed scale, ``m`` the committed minimum effect, ``sig`` is ``p < alpha`` (p from
+the record, else computed from the effect and n, see ``stats.p_from_effect``). A one-sided
+p in the record is in the declared ``direction`` (default: the source's sign); under
+``v0.2``, when the expected sign is the other one, its complement ``1 - p`` is used.
+
+Under ``v0.2`` the source CLAIMS an effect when its effect on the committed scale is not
+zero, at least ``m`` in size, and significant (its own p below alpha, in its own
+direction). A source that claims no effect is ``undecided(source_null)``: a minimum-effect
+record has no equivalence margin, and a null can only be reproduced by an equivalence
+test (commit an ``equivalence_margin`` instead, which is judged by the two one-sided
+tests below).
 
 | # | Condition | Outcome | V1 |
 |---|---|---|---|
 | 1 | F1 is ``substitution`` | ``not_a_reproduction`` | ``inconclusive`` |
 | 2 | F1 is ``not_comparable`` | ``undecided`` (not_comparable) | ``inconclusive`` |
+| 3a | (v0.2) D1 is ``no_data`` or ``not_identifiable`` | ``undecided`` (the D1 class) | ``inconclusive`` |
+| 3b | (v0.2) the source's effect or its test cannot be read | ``undecided`` (no_source_effect, no_source_test) | ``inconclusive`` |
+| 3c | (v0.2) the source claims no effect | ``undecided`` (source_null) | ``inconclusive`` |
 | 3 | D1 is not ``decidable`` | ``undecided`` (the D1 class) | ``inconclusive`` |
 | 4 | a threshold, the effect, the direction or p cannot be read | ``undecided`` (named) | ``inconclusive`` |
 | 5 | ``sig`` and ``s*e < 0`` | ``opposite_effect`` | ``not_reproduced`` |
@@ -72,6 +91,8 @@ VERDICT_OF = {
     "not_a_reproduction": "inconclusive",
 }
 D1_CLASSES = ("decidable", "underpowered", "no_data", "not_identifiable", "uncheckable")
+VERDICT_RULES = ("v0.1", "v0.2")
+DEFAULT_RULE = "v0.2"
 
 
 def _r(x: float | None, nd: int = 6) -> float | None:
@@ -206,12 +227,87 @@ def _direction(rec: Parsed) -> int:
     return 1 if base > 0 else -1
 
 
-def check_verdict(rec: Parsed, f1: Faithfulness, d1: Decidability, backend: str) -> Verdict:
+def _declared_sign(rec: Parsed) -> int:
+    d = rec.data.get("direction")
+    return 1 if d == "positive" else -1 if d == "negative" else 0
+
+
+def _sign(x: float) -> int:
+    return 1 if x > 0 else -1 if x < 0 else 0
+
+
+def source_claim(rec: Parsed, backend: str = "fallback") -> tuple[bool | None, int,
+                                                                   dict[str, Any], str | None]:
+    """Does the source claim an effect, and in which direction? ``(claims, sign,
+    details, reason)``; ``claims`` is None (with a ``reason``) when it cannot be read.
+
+    The source effect is read on the committed scale (its value in the source unit, or
+    its effect size). It claims an effect when that effect is not zero, at least the
+    committed minimum effect in size, and significant in its own direction: the record's
+    p (a one-sided p is in the declared ``direction``, so its complement ``1 - p`` is
+    used when the source's sign is the other one), else p computed from the source's
+    effect size and n."""
+    src = rec.source
+    m, alpha = rec.minimum_effect, rec.alpha
+    if m is None or alpha is None:
+        return None, 0, {}, "no_committed_threshold"
+    if rec.minimum_effect_scale == "value":
+        e = src.value
+    else:
+        e = src.effect.value if src.effect is not None else None
+    if e is None:
+        return None, 0, {}, "no_source_effect"
+    s = _sign(e)
+    p = src.p
+    p_from = "record"
+    if p is not None:
+        declared = _declared_sign(rec)
+        if rec.sides == 1 and declared != 0 and s != 0 and declared != s:
+            p, p_from = 1 - p, "record, one-sided complement (1 - p)"
+    elif src.effect is not None and src.effect.value is not None and src.n:
+        try:
+            p = stats.p_from_effect(src.effect.type, src.effect.value, src.n, rec.sides,
+                                    _sign(src.effect.value) or 1, src.effect.n_groups)
+        except stats.PowerError:
+            return None, s, {}, "no_source_test"
+        p_from = "computed from effect size and n"
+    else:
+        return None, s, {}, "no_source_test"
+    sig = p < alpha
+    big = abs(e) >= m
+    claims = s != 0 and sig and big
+    det = {"source_effect": _r(e), "source_p": _r(p), "source_p_from": p_from,
+           "source_significant": sig, "source_meets_minimum_effect": big,
+           "source_claims_effect": claims,
+           "expected_direction": {1: "positive", -1: "negative", 0: None}[s]}
+    declared = rec.data.get("direction")
+    if declared is not None and s != 0 and _declared_sign(rec) != s:
+        det["declared_direction"] = declared
+        det["declared_direction_disagrees_with_source"] = True
+    return claims, s, det, None
+
+
+def check_verdict(rec: Parsed, f1: Faithfulness, d1: Decidability, backend: str,
+                  rule: str = DEFAULT_RULE) -> Verdict:
+    if rule not in VERDICT_RULES:
+        raise ValueError(f"unknown verdict rule {rule!r} (one of {VERDICT_RULES})")
     if f1.cls == "substitution":
         return Verdict("not_a_reproduction", "inconclusive", "substitution",
                        {"note": "a substitution is not a reproduction and is not run"})
     if f1.cls == "not_comparable":
         return _undecided("not_comparable")
+    claim: tuple[bool | None, int, dict[str, Any], str | None] | None = None
+    unreadable_th = any(u.field.startswith("thresholds.") for u in rec.unreadable)
+    if rule == "v0.2" and rec.mode == "minimum_effect":
+        if d1.cls in ("no_data", "not_identifiable"):
+            return _undecided(d1.cls)
+        if not unreadable_th and rec.alpha is not None and rec.minimum_effect is not None:
+            claim = source_claim(rec, backend)
+            claims, _, cdet, why = claim
+            if claims is None:
+                return _undecided(why or "no_source_test", rule=rule)
+            if not claims:
+                return _undecided("source_null", rule=rule, **cdet)
     if d1.cls != "decidable":
         return _undecided(d1.cls)
     for u in rec.unreadable:
@@ -221,15 +317,21 @@ def check_verdict(rec: Parsed, f1: Faithfulness, d1: Decidability, backend: str)
     assert alpha is not None  # D1 would be uncheckable otherwise
     if rec.mode == "equivalence":
         return _equivalence(rec, alpha, backend)
-    return _minimum_effect(rec, alpha, backend)
+    return _minimum_effect(rec, alpha, backend, rule, claim)
 
 
-def _minimum_effect(rec: Parsed, alpha: float, backend: str) -> Verdict:
+def _minimum_effect(rec: Parsed, alpha: float, backend: str, rule: str = DEFAULT_RULE,
+                    claim: tuple | None = None) -> Verdict:
     rep, src = rec.reproduction, rec.source
     m = rec.minimum_effect
     if m is None:
         return _undecided("no_committed_threshold")
-    s = _direction(rec)
+    if rule == "v0.2":
+        if claim is None:
+            claim = source_claim(rec, backend)
+        s, cdet = claim[1], claim[2]
+    else:
+        s, cdet = _direction(rec), {}
     if s == 0:
         return _undecided("no_direction")
     if rec.minimum_effect_scale == "value":
@@ -245,6 +347,10 @@ def _minimum_effect(rec: Parsed, alpha: float, backend: str) -> Verdict:
         e = rep.effect.value
     p = rep.p
     p_from = "record"
+    if p is not None and rule == "v0.2" and rec.sides == 1:
+        declared = _declared_sign(rec)
+        if declared != 0 and declared != s:
+            p, p_from = 1 - p, "record, one-sided complement (1 - p)"
     if p is None:
         if rep.effect is None or rep.effect.value is None or rep.n is None:
             return _undecided("no_test", note="no p, and no effect size with n to compute it")
@@ -261,7 +367,8 @@ def _minimum_effect(rec: Parsed, alpha: float, backend: str) -> Verdict:
                            rec.minimum_effect_scale, "minimum_effect": m, "p": _r(p),
                            "p_from": p_from, "alpha": alpha, "sides": rec.sides,
                            "direction": "positive" if s > 0 else "negative",
-                           "significant": sig, "meets_minimum_effect": big}
+                           "significant": sig, "meets_minimum_effect": big, "rule": rule,
+                           **cdet}
     if sig and se < 0:
         return Verdict("opposite_effect", "not_reproduced", None, det)
     if sig and se > 0:
@@ -357,5 +464,6 @@ def check_hypothesis(rec: Parsed) -> HypothesisCopy:
 
 
 __all__ = ["Decidability", "Verdict", "HypothesisCopy", "check_decidability",
-           "check_verdict", "check_hypothesis", "aggregate", "OUTCOMES", "VERDICT_OF",
-           "D1_CLASSES", "NORMALISATION_VERSION"]
+           "check_verdict", "check_hypothesis", "aggregate", "source_claim", "OUTCOMES",
+           "VERDICT_OF", "D1_CLASSES", "VERDICT_RULES", "DEFAULT_RULE",
+           "NORMALISATION_VERSION"]

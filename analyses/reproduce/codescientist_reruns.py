@@ -347,7 +347,7 @@ def batch2_search(full50: zipfile.ZipFile) -> dict[str, Any]:
 
 
 def _comparison_pairs(idea: str, src: dict, rep: dict, key: str,
-                      rule: str) -> list[dict[str, Any]]:
+                      rule: str, verdict_rule: str) -> list[dict[str, Any]]:
     """Per-comparison records for a pair with an ambiguous side: every comparison whose
     words match exactly one candidate in each run (the same comparison in both)."""
     cfg = cx.RULES[rule]
@@ -373,13 +373,20 @@ def _comparison_pairs(idea: str, src: dict, rep: dict, key: str,
         r2 = {**rep, "cmp": nb}
         rec = build_record(idea, s2, r2, key="cmp")
         rec["id"] += ":" + " ".join(k)
-        v = evaluate(rec, backend="fallback", skip=("P1",)).extra["verdict"]
+        v = evaluate(rec, backend="fallback", skip=("P1",), rule=verdict_rule).extra["verdict"]
         out.append({"idea": idea, "source": src["name"], "reproduction": rep["name"],
                     "comparison": " ".join(k), "source_value": _value(na), **v})
     return out
 
 
 RULE_KEYS = {"v0.2": "numbers_v02", "v0.2-prereg": "numbers_v02p"}
+# result tag -> (run numbers key, extraction rule, verdict rule). v02: the v0.2 result;
+# v02x: the v0.2 extraction judged with the v0.1 verdict rule (to separate the two
+# changes); v02p: the extraction rule as preregistered, with the v0.1 verdict rule it
+# assumed.
+VARIANTS = {"v02": ("numbers_v02", "v0.2", "v0.2"),
+            "v02x": ("numbers_v02", "v0.2", "v0.1"),
+            "v02p": ("numbers_v02p", "v0.2-prereg", "v0.1")}
 
 
 def _value(num: dict) -> float | None:
@@ -437,9 +444,9 @@ def analyse() -> dict[str, Any]:
         ideas[idea].append(run)
 
     out: dict[str, Any] = {"pairs": []}
-    for key in RULE_KEYS.values():
-        out[f"pairs_{key[8:]}"] = []
-        out[f"per_comparison_{key[8:]}"] = []
+    for tag in VARIANTS:
+        out[f"pairs_{tag}"] = []
+        out[f"per_comparison_{tag}"] = []
     for idea in sorted(ideas):
         runs = sorted(ideas[idea], key=lambda r: r["copy"])
         if len(runs) < 2:
@@ -449,27 +456,30 @@ def analyse() -> dict[str, Any]:
                       "theirs": judgement.get(_key(rep["name"])),
                       "theirs_source": judgement.get(_key(runs[0]["name"])),
                       "category": category.get(_key(idea))}
-            for key in ("numbers", *RULE_KEYS.values()):
+            plan = [("pairs", "numbers", "v0.1")] + [
+                (f"pairs_{tag}", key, vrule) for tag, (key, _, vrule) in VARIANTS.items()]
+            for dest, key, vrule in plan:
                 rec = build_record(idea, runs[0], rep, key=key)
-                v = evaluate(rec, backend="fallback", skip=("P1",)).extra["verdict"]
+                v = evaluate(rec, backend="fallback", skip=("P1",),
+                             rule=vrule).extra["verdict"]
                 extra = {}
                 if key != "numbers":
                     extra = {"source_tier": runs[0][key].get("tier"),
                              "reproduction_tier": rep[key].get("tier"),
                              "source_basis": runs[0][key].get("basis"),
                              "reproduction_basis": rep[key].get("basis")}
-                out["pairs" if key == "numbers" else f"pairs_{key[8:]}"].append(
+                out[dest].append(
                     {**common, "source_status": runs[0][key]["status"],
                      "reproduction_status": rep[key]["status"],
                      "source_value": _value(runs[0][key]), **extra, **v})
-            for rule, key in RULE_KEYS.items():
+            for tag, (key, rule, vrule) in VARIANTS.items():
                 st = {runs[0][key]["status"], rep[key]["status"]}
                 if "ambiguous_primary" in st and st <= {"ok", "ambiguous_primary"}:
-                    out[f"per_comparison_{key[8:]}"].extend(
-                        _comparison_pairs(idea, runs[0], rep, key, rule))
-    for key in RULE_KEYS.values():
+                    out[f"per_comparison_{tag}"].extend(
+                        _comparison_pairs(idea, runs[0], rep, key, rule, vrule))
+    for tag, (key, _, _) in VARIANTS.items():
         allruns = [r for rs in ideas.values() for r in rs]
-        out[f"runs_{key[8:]}"] = {
+        out[f"runs_{tag}"] = {
             "status": dict(Counter(r[key]["status"] for r in allruns)),
             "tier_basis": dict(Counter(f'{r[key].get("tier")}|{r[key].get("basis")}'
                                        for r in allruns if r[key]["status"] == "ok")),
@@ -528,7 +538,8 @@ def summarise(res: dict[str, Any], pairs_key: str = "pairs") -> dict[str, Any]:
 
 
 def summarise_v02(res: dict[str, Any], tag: str = "v02") -> dict[str, Any]:
-    """v0.2 counts (``tag``: ``v02`` the corrected rule, ``v02p`` as preregistered): the
+    """v0.2 counts (``tag``: ``v02`` the v0.2 result, ``v02x`` the v0.2 extraction with
+    the v0.1 verdict rule, ``v02p`` the extraction as preregistered): the
     pair summary, the change from v0.1, run-level extraction, the per-comparison report
     and the second-batch search."""
     s = summarise(res, f"pairs_{tag}")
@@ -560,4 +571,5 @@ def summarise_v02(res: dict[str, Any], tag: str = "v02") -> dict[str, Any]:
 if __name__ == "__main__":
     r = analyse()
     print(json.dumps({"v0.1": summarise(r), "v0.2": summarise_v02(r),
+                      "v0.2-extraction-only": summarise_v02(r, "v02x"),
                       "v0.2-prereg": summarise_v02(r, "v02p")}, indent=2, sort_keys=True))
