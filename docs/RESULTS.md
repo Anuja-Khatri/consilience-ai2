@@ -134,10 +134,10 @@ relation comes from a fixed rule that names the target and gold columns from the
 text; it often picks the wrong target (it equals `target_col` in 32.68% of the 153
 machine-readable queries it can be compared on), so its distractor numbers are less clean.
 
-In v0.2, 3 of 6 accepted discoveries still carry an error. Two are genuine issues the
-reviewers did not flag: discovery 5's SD 15.8% appears in no output (recomputed from the
-run it is 16.2% sample / 16.0% population), and discovery 3 says "significantly" with no
-test. The third is a new R2 error: discovery 2's idea has 2 supporting and 2 refuting
+In v0.2, 3 of 6 accepted discoveries still carry an error. Two are small reporting
+details that are easy to miss by eye: discovery 5's SD 15.8% does not appear in the output
+(recomputed from the run it is 16.2% sample / 16.0% population), and discovery 3 says
+"significantly" without a printed test. The third is a new R2 error: discovery 2's idea has 2 supporting and 2 refuting
 reruns. Detail and the per-reason table: [audit.md](audit.md),
 `analyses/audit/dev_table.md`.
 

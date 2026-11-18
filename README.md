@@ -1,60 +1,32 @@
 # consilience-ai2
 
-Rule-based checks for the outputs of AI research agents, built for the file formats of
-Ai2's Asta tools and tested on data that Ai2 and its collaborators have released.
+Rule-based checks for the outputs of AI research agents, built to work with the file
+formats of Ai2's Asta tools and tried on data that Ai2 and its collaborators have openly
+released.
 
 **Independent work, not affiliated with or endorsed by the Allen Institute for AI (Ai2).**
 
-## Why this exists
+## What this is
 
-AI research agents now write reports, run experiments and reproduce results. The checks
-on those outputs are mostly judgements made by a language model, and these can vary
-between runs. These tools add a second, rule-based signal: it gives the same answer every
-time and shows exactly what it checked, in a *receipt*. It does not replace the model
-reviewers; it sits beside them.
+Ai2 has released an unusually open set of tools and data for AI-assisted science: the
+Asta agents and research skills, Theorizer, CodeScientist, AutoDiscovery, DiscoveryBench
+and SciArena. This project is built on top of that openness. It would not be possible
+without it.
+
+It offers one small, complementary piece: **rule-based checks that sit beside the model
+reviewers already in these tools**. They give the same answer every time, call no language
+model, and show exactly what they checked, in a *receipt*. They are meant to help, not to
+replace any existing step or to grade anyone's work.
 
 Asta is Ai2's set of agents and research skills for science. The three tools here read
-Asta's file formats as they are, and they call no language model.
-
-## What it found on Ai2's released data
-
-- **Theorizer: some cited evidence is not in the export.** Theorizer is Ai2's system that
-  generates scientific theories made of laws; laws drawn from the literature cite
-  evidence records. In its released export, 1.36% of cited evidence links (195 of 14,343
-  distinct law and evidence ID pairs) point to evidence records that are not in the
-  export. All of them go through a silent fallback in the exporter: an ID it cannot map still becomes a
-  link, to a page that does not exist. Why those IDs are unmapped upstream is not
-  established.
-  [Details](docs/receipts.md#t1-theorizer-evidence-links-that-point-to-missing-records)
-- **CodeScientist: two issues in accepted discoveries.** CodeScientist is Ai2's
-  semi-automated discovery system that designs, runs and writes up code experiments. In
-  the discoveries that the CodeScientist paper's reviewers accepted, the audit found two
-  issues that the reviewers did not flag. One report gives a standard deviation (SD) of
-  15.8% that appears in no output of the run; recomputed from the run's data it is 16.2%.
-  Another report says "significantly" with no statistical test. The rules were written
-  while looking at these data (label: dev).
-  [Details](docs/audit.md#development-set-codescientist-table-4-labelled-dev-not-blind)
-- **DiscoveryBench: multiple-testing control removes most chance hits.** DiscoveryBench is
-  a benchmark of data-driven discovery tasks. On its synthetic tasks, Benjamini–Hochberg
-  correction (a standard adjustment of p values when many tests are run) cut hits among
-  "distractor" columns, the columns outside the task's known answer, from 7.43% to 2.74%
-  of tests. With the target shuffled, so that every hit is false, the share of tasks with
-  any hit fell from 73.25% to 3.82%.
-  [Details](docs/audit.md#a5-on-discoverybench-synthetic-tasks-labelled-descriptive-null-control-synthetic)
-- **Two preregistered tests did not support their predictions.** A *preregistered* test is
-  one whose hypothesis and decision rule were committed to git before any scoring. On
-  SciArena-Eval, a released set of human votes between two AI answers to the same science
-  question, answers with a higher rate of flagged citations did not lose the vote more
-  often (null). On CodeScientist reruns, runs the audit flagged agreed *more* with their
-  reruns, not less (not significant). A third preregistered test could not be run, because
-  too few runs were flagged. [Results](docs/RESULTS.md#preregistered-held-out-tests)
+Asta's file formats as they are.
 
 ## The three tools at a glance
 
-| Command | The question it answers | You give it | You get back |
+| Command | The question it helps answer | You give it | You get back |
 |---|---|---|---|
-| `consilience-ai2 receipts check` | Is each quoted piece of evidence real and word for word in its source, and does the claim go beyond it in number or in certainty? | an Asta workspace (`evidence.yml`, `.qmd` files, `references.bib`) and, if you have them, the source texts | one finding per problem, a receipt for every quote checked, a JSON report |
-| `consilience-ai2 audit run` | Do the numbers in an experiment's write-up come from the run, and are the statistics sound: the right n, a real test, a real baseline, control for many tests? | an AutoDiscovery run directory or a CodeScientist experiment directory | a verdict per experiment (`pass`, `flag` or `refuse`) with receipts, in `validity_audit.json` |
+| `consilience-ai2 receipts check` | Is each quoted piece of evidence word for word in its source, and does the claim stay within it in number and in certainty? | an Asta workspace (`evidence.yml`, `.qmd` files, `references.bib`) and, if you have them, the source texts | one note per item to look at, a receipt for every quote checked, a JSON report |
+| `consilience-ai2 audit run` | Do the numbers in an experiment's write-up appear in the run's output, and are the basic statistical checks in place: the n, a test, a baseline, control for many tests? | an AutoDiscovery run directory or a CodeScientist experiment directory | a result per experiment (`pass`, `flag` or `refuse`) with receipts, in `validity_audit.json` |
 | `consilience-ai2 reproduce check` | Does a reproduction measure the same thing as the original, could it decide at all, and do its numbers meet thresholds fixed in advance? | a reproduction record (YAML or JSON) | `reproduced`, `not reproduced` or `inconclusive`, with the reason, in `reproduction_verdict.json` |
 
 AutoDiscovery is Ai2's agent that explores a dataset by proposing and testing hypotheses.
@@ -63,8 +35,44 @@ A **receipt** is the file and line (or the character offsets) of what was checke
 the SHA-256 fingerprint of that exact source, so anyone can confirm which bytes were
 checked. Passing checks get receipts too. When an input cannot be decided, the tools say
 so rather than guess: a quote with no local source text is `UNCHECKABLE`, and an
-experiment with nothing to check gets the verdict `refuse`. The same input always gives
+experiment with nothing to check gets the result `refuse`. The same input always gives
 byte-identical output.
+
+## What we learned by running it on released data
+
+To test the tools honestly, we ran them on data Ai2 and its collaborators have published.
+Our own limits come first.
+
+- **Our tools have real limits.** Two preregistered tests did not support our
+  predictions. (A *preregistered* test is one whose hypothesis and decision rule were
+  committed to git before any scoring.) On SciArena-Eval, a released set of human votes
+  between two AI answers to the same science question, answers with more flagged
+  citations did not lose the vote more often (null). On CodeScientist reruns, runs our
+  audit flagged agreed *more* with their reruns, not less (not significant). A third test
+  could not be run, because too few runs were flagged. On a hand-checked sample, only
+  about half of our number flags were real. [Results](docs/RESULTS.md#preregistered-held-out-tests)
+- **Theorizer's released export: a small number of evidence links did not resolve.**
+  Theorizer generates scientific theories whose laws cite evidence records. In the
+  released export, 195 of 14,343 cited evidence links (1.36%) point to a page that is not
+  in the export; the export script quietly keeps an ID it cannot match as a link. We
+  could not tell why those IDs are unmatched, and it may be a packaging detail.
+  [Details](docs/receipts.md#t1-theorizer-evidence-links-that-point-to-missing-records)
+- **CodeScientist's released experiments: two small details a rule-based check can
+  catch.** CodeScientist designs, runs and writes up code experiments. In two discoveries
+  from the paper's released set, a reported standard deviation (15.8%) does not appear in
+  the run's output (recomputed from the run's data it is 16.2%), and one write-up uses
+  "significantly" without a printed test. These are the kind of small details that are
+  easy to miss by eye; our rules were written while looking at these data (label: dev).
+  [Details](docs/audit.md#development-set-codescientist-table-4-labelled-dev-not-blind)
+- **DiscoveryBench: standard multiple-testing control helps a simple scan.** On
+  DiscoveryBench's synthetic tasks, a Benjamini–Hochberg correction (a standard
+  adjustment of p values when many tests are run) cut chance hits among unrelated
+  "distractor" columns from 7.43% to 2.74% of tests; with the target shuffled, so that
+  every hit is false, the share of tasks with any hit fell from 73.25% to 3.82%.
+  [Details](docs/audit.md#a5-on-discoverybench-synthetic-tasks-labelled-descriptive-null-control-synthetic)
+
+All of this is shared in the hope that it is useful. Corrections and suggestions are very
+welcome.
 
 ## Try it in two minutes
 
@@ -348,7 +356,7 @@ and sources, is in [docs/RESULTS.md](docs/RESULTS.md).
 | audit | CodeScientist full-50 reruns | H1 (audit rules v0.1) **not supported in the predicted direction**: runs the audit flags agreed more with their reruns (0.4408) than runs it passed (0.3433); stratified permutation p = 0.0845 | 80 | held-out |
 | audit | CodeScientist external ratings | H2 **null**: soundness 0.6296 flagged against 0.6667 passed, p = 0.8561 (same papers as the dev set) | 20 | exploratory |
 | audit | CodeScientist v0.2 held-out (the 13 unused full-50 runs) | **not testable**: the v0.2 audit flags 1 of 13 at error severity, below the preregistered minimum of 3 per group | 13 | held-out |
-| audit | CodeScientist Table 4 discoveries | v0.1: 9 of 13 rejected discoveries flagged by a code meant for the reviewers' reason; 3 of 6 accepted carry an error-severity code. v0.2: 8 of 13 caught by an intended code; 8 of 13 rejected and 3 of 6 accepted carry an error. Of those 3, 2 are genuine issues the reviewers did not flag (discovery 5's SD 15.8% appears in no output; recomputed it is 16.2% sample / 16.0% population. Discovery 3 says "significantly" with no test) and 1 is a new R2 error (2 support / 2 refute reruns) | 19 | dev |
+| audit | CodeScientist Table 4 discoveries | v0.1: 9 of 13 rejected discoveries flagged by a code meant for the reviewers' reason; 3 of 6 accepted carry an error-severity code. v0.2: 8 of 13 caught by an intended code; 8 of 13 rejected and 3 of 6 accepted carry an error. Of those 3, 2 are small reporting details a rule-based check can surface (discovery 5's SD 15.8% does not appear in the output; recomputed it is 16.2% sample / 16.0% population. Discovery 3 says "significantly" without a printed test) and 1 is a new R2 error (2 support / 2 refute reruns) | 19 | dev |
 | audit | DiscoveryBench synthetic tasks (A5) | Benjamini–Hochberg cuts distractor-column hits from 7.43% to 2.74% of tests (63.14% fewer); with a permuted target, tasks with any hit fall from 73.25% to 3.82%. Derived set (720 queries without a machine-readable relation, 483 scanned): BH cuts distractor hits from 7.42% to 2.79%; combined coverage 70.87% of queries | 4456 / 15356 tests | descriptive / synthetic |
 | audit | CodeScientist resistor report | its success-rate table reproduces exactly from its `results.json`, 9 of 9 cells | 9 | descriptive |
 | reproduce | CodeScientist reruns as reproductions | numbers recoverable in both runs: 36.92% (v0.1) → 46.15% (v0.2, 95% CI 34.59% to 58.15%); verdicts 4/0/61 (v0.1) → 2 reproduced, 2 not reproduced, 61 inconclusive (v0.2, the expected direction is the source effect's sign; the 2 former "reproduced" pairs contradict their own source run); 27.69% agreement with CodeScientist's own run labels in both | 65 | descriptive |

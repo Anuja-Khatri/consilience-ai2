@@ -41,7 +41,7 @@ to `../results/e2232.5.html` to `../results/e2232.9.html`. No such files exist, 
 unresolved IDs follow the same pattern: they share their extraction number with 18
 extraction files that do exist but hold fewer records than were cited.
 
-**Where the links come from.** The exporter falls back silently. In asta-theorizer
+**Where the links come from.** The exporter keeps an unmatched ID as a link, without a warning. In asta-theorizer
 `src/ExportTheoryStoreAsHTML.py` (commit c4802aa), line 286 is
 
 ```python
