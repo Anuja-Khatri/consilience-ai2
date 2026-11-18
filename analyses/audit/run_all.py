@@ -11,7 +11,11 @@ fixed seeds. Re-running on the same data gives the same bytes. Writes:
 - ``analyses/audit/details/*.json``: per-analysis details (codes per run, exclusions).
 
 The held-out analysis (``codescientist_heldout.py``) runs only once its
-preregistration (``prereg/audit/heldout_prereg.md``) is committed.
+preregistration (``prereg/audit/heldout_prereg.md``) is committed. It is the rules v0.1
+result and always runs with the frozen v0.1 rules (``rules_versions``); the dev analysis
+reports v0.1 (frozen) and v0.2 (working copy) side by side. The v0.2 held-out test
+(``codescientist_heldout_v2.py``) runs only once ``prereg/audit/heldout_v2_prereg.md`` is
+committed.
 """
 
 from __future__ import annotations
@@ -26,10 +30,14 @@ REPO = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(REPO))
 
+from rules_versions import V01, run_under  # noqa: E402
+
 from consilience_ai2.core.results import write_results  # noqa: E402
 
 MODULES = ["codescientist_dev", "resistor_table", "discoverybench_a5"]
-HELDOUT = "codescientist_heldout"
+HELDOUT = "codescientist_heldout"            # rules v0.1, preregistered, frozen rules
+HELDOUT_V2 = "codescientist_heldout_v2"      # rules v0.2, preregistered separately
+PREREG_V2 = REPO / "prereg" / "audit" / "heldout_v2_prereg.md"
 
 
 def _dump(obj) -> str:
@@ -43,9 +51,14 @@ def main() -> int:
     mods = list(MODULES)
     if (HERE / f"{HELDOUT}.py").exists():
         mods.append(HELDOUT)
+    if (HERE / f"{HELDOUT_V2}.py").exists() and PREREG_V2.exists():
+        mods.append(HELDOUT_V2)
     for name in mods:
         mod = importlib.import_module(name)
-        ms, info = mod.run()
+        if name == HELDOUT:
+            ms, info = run_under(V01, name)
+        else:
+            ms, info = mod.run()
         metrics.extend(ms)
         (details_dir / f"{name}.json").write_text(_dump(info), encoding="utf-8")
         if name == "codescientist_dev":

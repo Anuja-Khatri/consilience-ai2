@@ -4,10 +4,23 @@ Each check reads a ``Node`` (and, for A5, the whole ``Run``) and returns ``Check
 records. A check that passes returns an ``info`` record with a receipt; a check that
 cannot apply returns nothing and is listed in the node's ``not_applicable``.
 
-Severities (fixed): A1, A3 (a code read), A4, R1, R4, R5 and U1 are ``error``; A2, A3 (a
-hypothesis mention), A5, A6, A7, R2 and R3 are ``warning``. A node's verdict is
-``refuse`` on U1, A1 or A3 errors (the run's numbers or columns cannot be trusted at all),
-``flag`` on any other error or warning, ``pass`` otherwise.
+Rules version ``audit-rules-2`` (v0.2). Severities are fixed by what a reviewer would do
+with the finding:
+
+- ``error``, the things a reviewer rejects a result for: a number in the write-up that is
+  in no output, code or plan (A1); a column the code reads that the dataset does not have
+  (A3, code); "significant" with no test printed (A4); a random-only comparator (R1);
+  reruns that mostly fail to support the result (R2, refutes at least as many as
+  supports); a hard-coded result (R4); a component that reaches no output (R5); and U1.
+- ``warning``, problems a reviewer would ask about: A1 numbers that agree only at a
+  coarser precision than the write-up prints, or that may be printed only in a saved
+  figure; A2; A3 (a hypothesis mention); A5; A6; R2 with a supporting majority; R3.
+- ``info`` notes on reporting conventions, which never flag: A7 (no effect size), with
+  ``details.status = "not_reported"``.
+
+The verdict (``verdict_level``) is explicit: ``refuse`` when nothing can be checked (U1),
+``flag(error)`` on any other error, ``flag(warning)`` on warnings only, else ``pass``.
+``verdict`` keeps the three-way value (``pass``, ``flag``, ``refuse``).
 """
 
 from __future__ import annotations
@@ -38,11 +51,19 @@ from consilience_ai2.audit.parse import (
     find_tests,
     line_of,
 )
-from consilience_ai2.core.numbers import NumberToken, extract_numbers
+from consilience_ai2.core.numbers import (
+    NumberToken,
+    agrees_at_printed_precision,
+    extract_numbers,
+)
 
 ERROR, WARNING, INFO = "error", "warning", "info"
 CODES = ("A1", "A2", "A3", "A4", "A5", "A6", "A7", "R1", "R2", "R3", "R4", "R5")
-REFUSE_CODES = ("U1", "A1", "A3")
+REFUSE_CODES = ("U1",)
+COARSER_MIN_SIG = 3  # A1 v0.2: significant digits a printed number needs to support a
+                     # claim that shows one more digit than it
+NOT_REPORTED = "not_reported"  # details.status of an info note on a reporting convention
+VERDICT_LEVELS = ("pass", "flag(warning)", "flag(error)", "refuse")
 _SCALES = (Decimal(1), Decimal(100), Decimal("0.01"))
 _BOUND_BEFORE = re.compile(
     r"(?:<|>|≤|≥|<=|>=|\\leq?|\\geq?|\\lt|\\gt|less\s+than|more\s+than|greater\s+than|"
@@ -103,10 +124,17 @@ def _at_code(code: str, sev: str, msg: str, f: TextField, line: int | None, **de
 
 
 class NumberIndex:
-    """Absolute values of every number in a body of text, at each printed precision."""
+    """Absolute values of every number in a body of text, at each printed precision.
+
+    ``printed`` keeps each number printed with at least ``COARSER_MIN_SIG`` significant
+    digits, with the precision it was printed at (its decimal exponent; x100 drops two
+    decimal places, /100 adds two), for the v0.2 precision-mismatch test (``coarser``).
+    The floor keeps that test as specific as the exact test is for a three-digit claim: a
+    looser match against long logs full of numbers would support almost anything."""
 
     def __init__(self, tokens: list[str]):
         vals: set[Decimal] = set()
+        printed: set[tuple[Decimal, int]] = set()
         for t in tokens:
             try:
                 d = Decimal(t)
@@ -114,9 +142,21 @@ class NumberIndex:
                 continue
             if d.is_finite():
                 d = abs(d)
+                tup = d.as_tuple()
+                exp = tup.exponent
                 for s in _SCALES:
                     vals.add(d * s)
+                if isinstance(exp, int) and len(tup.digits) >= COARSER_MIN_SIG and \
+                        any(tup.digits):
+                    for s, shift in ((Decimal(1), 0), (Decimal(100), 2),
+                                     (Decimal("0.01"), -2)):
+                        e = exp + shift
+                        try:
+                            printed.add(((d * s).quantize(Decimal(1).scaleb(e)), e))
+                        except InvalidOperation:
+                            continue
         self.values = vals
+        self.printed = printed
         self._by_quantum: dict[Decimal, set[Decimal]] = {}
 
     def _quantised(self, q: Decimal) -> set[Decimal]:
@@ -142,6 +182,25 @@ class NumberIndex:
         except InvalidOperation:
             return False
         return target in self._quantised(q)
+
+    def coarser(self, tok: NumberToken, places: int = 1) -> bool:
+        """True when ``tok`` agrees with a number printed (with at least
+        ``COARSER_MIN_SIG`` significant digits) with one fewer decimal place than ``tok``
+        shows: the write-up gives one more digit than the run printed."""
+        if tok.value is None or tok.quantum is None:
+            return False
+        ce = tok.quantum.as_tuple().exponent
+        if not isinstance(ce, int):
+            return False
+        v = abs(tok.value)
+        for e in range(ce + 1, ce + 1 + places):
+            for r in (ROUND_HALF_UP, ROUND_HALF_EVEN):
+                try:
+                    if (v.quantize(Decimal(1).scaleb(e), rounding=r), e) in self.printed:
+                        return True
+                except InvalidOperation:
+                    continue
+        return False
 
 
 def _json_walk(obj: Any, depth: int = 0, key: str | None = None):
@@ -312,12 +371,63 @@ def _claim_numbers(f: TextField) -> tuple[list[NumberToken], int, int]:
 # --------------------------------------------------------------------------- checks
 
 
+_CHANGE_RX = re.compile(
+    r"\b(?:increase[sd]?|decrease[sd]?|reduction|reduced|improve(?:ment|d|s)?|gains?|drops?|"
+    r"declines?|rises?|higher|lower|more|less|fewer|faster|slower|larger|smaller|better|worse|"
+    r"differences?|ratio|times|fold|relative)\b", re.IGNORECASE)
+# A sentence for A1: a full stop inside a number ("29.8") or an abbreviation does not end it.
+_SENT_SPAN = re.compile(r"(?:[^.!?\n]|[.!?](?=\S))+(?:[.!?]|$)")
+
+
+def _sentence(text: str, pos: int) -> tuple[int, int]:
+    for m in _SENT_SPAN.finditer(text):
+        if m.start() <= pos < m.end():
+            return m.start(), m.end()
+    return 0, len(text)
+
+
+def _derived(c: Context, f: TextField, t: NumberToken) -> str | None:
+    """v0.2: a relative change, ratio or difference of two other numbers of the same
+    sentence, each of which is itself printed (or in the code or plan), and worded as a
+    change ("a 76% increase"). Returns how it was derived, or None."""
+    s, e = _sentence(f.text, t.start)
+    near = f.text[max(s, t.start - 40):min(e, t.end + 40)]
+    if not _CHANGE_RX.search(near):
+        return None
+    ops = []
+    for o in extract_numbers(f.text[s:e]):
+        if o.status != "ok" or o.value is None or o.role != "value" or o.value == 0:
+            continue
+        if s + o.start == t.start:
+            continue
+        if c.output_index.supports(o) or c.code_index.supports(o) or \
+                c.context_index.supports(o):
+            ops.append(o)
+    for a in ops:
+        for b in ops:
+            if a is b:
+                continue
+            x, y = abs(a.value), abs(b.value)  # type: ignore[arg-type]
+            cands = (("ratio", x / y), ("relative change", abs(x / y - 1)),
+                     ("difference", abs(x - y)))
+            for name, v in cands:
+                if agrees_at_printed_precision(t, v) or \
+                        (t.percent and agrees_at_printed_precision(t, v * 100)):
+                    return f"{name} of {a.text} and {b.text}"
+    return None
+
+
 def check_a1(c: Context) -> list[Check]:
+    """v0.2 tiers for a decimal or percentage in a claim: printed, in the code or plan, or
+    derived (info); printed only at a coarser precision, or possibly printed only in a saved
+    figure (warning); in no output at all (error)."""
     out: list[Check] = []
     claims = c.node.of_kind(CLAIM)
     if not claims or not c.node.of_kind(EVIDENCE):
         return out
     total = supported_out = supported_code = supported_ctx = bounds = ambiguous = 0
+    derived: list[str] = []
+    figs = c.facts.figure_text_lines if c.facts is not None and c.facts.ok else []
     for f in claims:
         toks, b, a = _claim_numbers(f)
         bounds += b
@@ -330,16 +440,31 @@ def check_a1(c: Context) -> list[Check]:
                 supported_code += 1
             elif c.context_index.supports(t):
                 supported_ctx += 1
+            elif (how := _derived(c, f, t)) is not None:
+                derived.append(f"{t.text}: {how}")
+            elif c.output_index.coarser(t):
+                out.append(_at("A1", WARNING,
+                               f"{t.text} agrees with the output only at a coarser precision: "
+                               "the write-up gives more digits than the run printed", f,
+                               t.start, t.end, value=t.text, tier="coarser_precision"))
+            elif figs:
+                out.append(_at("A1", WARNING,
+                               f"{t.text} is in no text output, code or plan; the code writes "
+                               f"formatted values into saved figures (lines {figs[:6]}), which "
+                               "the audit cannot read", f, t.start, t.end, value=t.text,
+                               tier="figure_only", figure_lines=figs[:20]))
             else:
                 out.append(_at("A1", ERROR,
                                f"{t.text} is not printed in the run's output or code at the "
-                               "printed precision", f, t.start, t.end, value=t.text))
+                               "printed precision", f, t.start, t.end, value=t.text,
+                               tier="absent"))
     if not out and total:
         f = claims[0]
-        out.append(_at("A1", INFO, f"all {total} result numbers found in output or code", f,
+        out.append(_at("A1", INFO, f"all {total} result numbers found in output, code or plan"
+                       f"{f' ({len(derived)} derived from them)' if derived else ''}", f,
                        0, 0, checked=total, from_output=supported_out, from_code=supported_code,
-                       from_plan=supported_ctx, bounds_skipped=bounds,
-                       ambiguous_skipped=ambiguous))
+                       from_plan=supported_ctx, derived=len(derived), derived_from=derived[:20],
+                       bounds_skipped=bounds, ambiguous_skipped=ambiguous))
     for ch in out:
         ch.details.setdefault("checked", total)
     return out
@@ -504,14 +629,17 @@ def check_a6(c: Context) -> list[Check]:
 
 
 def check_a7(c: Context) -> list[Check]:
+    """A reporting convention (v0.2: info, never a flag): an effect claim without an effect
+    size gets an info note with ``details.status = "not_reported"``."""
     if not (_is_surprising(c) or c.claims_effect is not None):
         return []
     if c.has_effect is not None:
         f, s, e, what = c.has_effect
         return [_at("A7", INFO, f"effect size present ({what[:40]})", f, s, e)]
     f, s, e = c.claims_effect or (None, None, None)
-    return [_at("A7", WARNING, "an effect is claimed but no effect size (d, r, OR, beta, AUC, "
-                "eta squared, a stated difference) is printed or reported", f, s, e)]
+    return [_at("A7", INFO, "reporting convention: an effect is claimed but no effect size (d, "
+                "r, OR, beta, AUC, eta squared, a stated difference) is printed or reported",
+                f, s, e, status=NOT_REPORTED)]
 
 
 _COMPARE_RX = re.compile(
@@ -525,6 +653,13 @@ _RANDOM_RX = re.compile(
     r"\b(?:than|vs\.?|versus|compared\s+(?:to|with|against)|over|against)\s+(?:a\s+|the\s+)?"
     r"random\b",
     re.IGNORECASE)
+# v0.2: a random or chance comparator qualified by these words is a limiting or negative
+# statement ("only slightly better than random", "no better than chance"), not a claim
+# that rests on beating a random baseline.
+_LIMITING_RX = re.compile(
+    r"\b(?:only|barely|slightly|marginally|hardly|scarcely|no|not|n't|never|near(?:ly)?|"
+    r"close\s+to|indistinguishable|comparable|similar|equivalent)\b", re.IGNORECASE)
+_AT_CHANCE_RX = re.compile(r"\b(?:at|around|about|approximately)\s+(?:the\s+)?$", re.IGNORECASE)
 _FUTURE_RX = re.compile(r"\b(?:future|should|could|would|need(?:s|ed)?|recommend\w*|might)\b",
                         re.IGNORECASE)
 _PLAIN_BASELINE_RX = re.compile(r"\b(?:baselines?|control(?:\s+condition|\s+group)?)\b",
@@ -542,10 +677,17 @@ _SENT = re.compile(r"[^.!?\n]+(?:[.!?]|$)")
 _STOP = {"the", "a", "an", "both", "all", "its", "their", "other", "baseline", "baselines"}
 
 
+def _limiting(sent: str, start: int) -> bool:
+    before = sent[max(0, start - 30):start]
+    return bool(_LIMITING_RX.search(before) or _AT_CHANCE_RX.search(before))
+
+
 def check_r1(c: Context) -> list[Check]:
-    """R1: the only comparator named is random or chance (lexical; see docs/audit.md)."""
+    """R1: the only comparator named is random or chance (lexical; see docs/audit.md).
+    v0.2: a random comparator in a limiting or negative statement is not counted."""
     rnd = None
     other = None
+    limiting = None
     for f in c.node.of_kind(CLAIM):
         for sm in _SENT.finditer(f.text):
             sent = sm.group(0)
@@ -557,9 +699,12 @@ def check_r1(c: Context) -> list[Check]:
                     other = (f, sm.start() + mm.start(), sm.start() + mm.end())
             if not _COMPARE_RX.search(sent):
                 continue
-            r = _RANDOM_RX.search(sent)
-            if r and rnd is None:
-                rnd = (f, sm.start() + r.start(), sm.start() + r.end())
+            for r in _RANDOM_RX.finditer(sent):
+                span = (f, sm.start() + r.start(), sm.start() + r.end())
+                if _limiting(sent, r.start()):
+                    limiting = limiting or span
+                elif rnd is None:
+                    rnd = span
             if other is None:
                 for o in _PLAIN_BASELINE_RX.finditer(sent):
                     if not _NOT_PLAIN.search(sent[max(0, o.start() - 30):o.start()]):
@@ -572,6 +717,10 @@ def check_r1(c: Context) -> list[Check]:
                         other = (f, sm.start() + o.start(), sm.start() + o.end())
                         break
     if rnd is None:
+        if limiting is not None:
+            f, s, e = limiting
+            return [_at("R1", INFO, "a random or chance comparator appears only in a limiting "
+                        f"or negative statement ({f.text[s:e]!r})", f, s, e)]
         return []
     if other is not None:
         f, s, e = other
@@ -594,8 +743,13 @@ def check_r2(c: Context) -> list[Check]:
     i = len(labels) - s - r
     det = dict(support=s, refute=r, other=i, reruns=len(labels), source=c.node.rerun_source)
     if s and r:
-        return [Check("R2", WARNING, f"verdict flips across {len(labels)} reruns "
-                      f"({s} support, {r} refute, {i} other)", details=det)]
+        if r >= s:
+            return [Check("R2", ERROR, f"verdict flips across {len(labels)} reruns and refutes "
+                          f"are at least as many as supports ({s} support, {r} refute, {i} "
+                          "other): the result does not replicate", details=det)]
+        return [Check("R2", WARNING, f"verdict flips across {len(labels)} reruns, with a "
+                      f"supporting majority ({s} support, {r} refute, {i} other)",
+                      details=det)]
     return [Check("R2", INFO, f"no support/refute flip across {len(labels)} reruns",
                   details=det)]
 
@@ -682,22 +836,35 @@ NODE_CHECKS = (("A1", check_a1), ("A2", check_a2), ("A3", check_a3), ("A4", chec
                ("R3", check_r3), ("R4", check_r4), ("R5", check_r5))
 
 
-def verdict(checks: list[Check], uncheckable: bool) -> str:
-    if uncheckable:
+def verdict_level(checks: list[Check], uncheckable: bool) -> str:
+    """``refuse`` (nothing can be checked), ``flag(error)``, ``flag(warning)`` or ``pass``."""
+    if uncheckable or any(ch.severity == ERROR and ch.code in REFUSE_CODES for ch in checks):
         return "refuse"
-    if any(ch.severity == ERROR and ch.code in REFUSE_CODES for ch in checks):
-        return "refuse"
-    if any(ch.severity in (ERROR, WARNING) for ch in checks):
-        return "flag"
+    if any(ch.severity == ERROR for ch in checks):
+        return "flag(error)"
+    if any(ch.severity == WARNING for ch in checks):
+        return "flag(warning)"
     return "pass"
+
+
+def verdict(checks: list[Check], uncheckable: bool) -> str:
+    """The three-way verdict: ``pass``, ``flag`` or ``refuse``."""
+    level = verdict_level(checks, uncheckable)
+    return "flag" if level.startswith("flag") else level
+
+
+def notes(checks: list[Check]) -> list[str]:
+    """Codes of info notes on reporting conventions (``details.status == "not_reported"``)."""
+    return sorted({ch.code for ch in checks
+                   if ch.severity == INFO and ch.details.get("status") == NOT_REPORTED})
 
 
 def has_kind(node: Node, kind: str) -> bool:
     return any(f.text.strip() for f in node.of_kind(kind))
 
 
-__all__ = ["CODES", "CODE", "Check", "Context", "NODE_CHECKS", "build_context", "check_a5",
-           "has_kind", "verdict"]
+__all__ = ["CODES", "CODE", "Check", "Context", "NODE_CHECKS", "NOT_REPORTED", "VERDICT_LEVELS",
+           "build_context", "check_a5", "has_kind", "notes", "verdict", "verdict_level"]
 
 CLAIM_KINDS_NOTE = ("claim fields (A1, A4, A6, A7, R1, R3, R4): AutoDiscovery analysis, and review "
                     "when the reviewer passed the node; a CodeScientist report (report.tex, else "

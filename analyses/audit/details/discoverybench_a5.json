@@ -1,4 +1,27 @@
 {
+  "derived": {
+    "agreement": {
+      "derived_columns": 520,
+      "gold_columns": 729,
+      "intersection": 499,
+      "machine_readable": 183,
+      "target_agree": 50,
+      "usable": 153
+    },
+    "counts": {
+      "d_bh": 428,
+      "d_n": 15356,
+      "d_raw": 1139,
+      "g_bh": 306,
+      "g_n": 1010,
+      "g_raw": 355
+    },
+    "excluded": {
+      "derived rule names no target and gold column": 186,
+      "target is constant": 51
+    },
+    "scanned": 483
+  },
   "excluded": {
     "no machine-readable gold relation (target_col, relevant_cols)": 720,
     "target is constant": 26

@@ -18,8 +18,11 @@ def test_cli_run_writes_report_and_exit_code(ad_examples, tmp_path, capsys):
     for n in data["nodes"]:
         assert set(n) >= {"id", "llm_validity_check", "checks", "q_value", "verdict"}
         assert n["verdict"] in ("pass", "flag", "refuse")
+        assert n["verdict_level"] in ("pass", "flag(warning)", "flag(error)", "refuse")
+    assert data["rules_version"] == "audit-rules-2"
     printed = capsys.readouterr().out
-    assert "node_2_1: refuse" in printed and "::error" in printed
+    assert "node_2_1: flag(error)" in printed and "node_2_11: refuse" in printed
+    assert "::error" in printed
 
 
 def test_cli_default_output_path_and_byte_identical(ad_examples, tmp_path):

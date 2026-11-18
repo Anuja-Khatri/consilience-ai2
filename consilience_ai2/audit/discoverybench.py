@@ -20,6 +20,17 @@ The scan (deterministic, documented in docs/audit.md):
 
 Nothing here is random. ``permuted_target`` gives a null control: the same scan against
 a copy of the target shuffled with ``numpy.random.default_rng(seed)``.
+
+Derived gold (``derive_gold``, rules v0.2), for queries without a machine-readable gold
+relation. A fixed rule, no language model: text is lower-cased and every run of
+characters other than ``a-z0-9`` becomes one space, in both the text and the column names
+(``conflict_ratio`` -> ``conflict ratio``). A column is *mentioned* when its normalised
+name occurs in the normalised question or gold hypothesis as whole words; a shorter name
+that occurs only inside a mention of a longer column name does not count. The derived
+target is the column mentioned first in the question (else first in the hypothesis); the
+derived gold columns are every other mentioned column. A query is usable when it has a
+derived target and at least one derived gold column. Agreement with the machine-readable
+relation, where both exist, is reported beside the derived results.
 """
 
 from __future__ import annotations
@@ -27,7 +38,8 @@ from __future__ import annotations
 import csv
 import json
 import math
-from dataclasses import dataclass, field
+import re
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import numpy as np
@@ -49,6 +61,8 @@ class Task:
     relevant: list[str]
     columns_meta: list[str]
     has_structured_gold: bool
+    question: str = ""
+    hypothesis: str = ""
 
 
 @dataclass
@@ -87,7 +101,68 @@ def load_task(metadata_path: Path, split: str) -> Task:
     rel = list(q.get("relevant_cols") or [])
     tid = f"{split}/{metadata_path.parent.name}/{metadata_path.stem}"
     return Task(tid, split, metadata_path, metadata_path.parent / ds.get("name", "data.csv"),
-                target, rel, cols, bool(target and rel))
+                target, rel, cols, bool(target and rel), question=q.get("question") or "",
+                hypothesis=q.get("true_hypothesis") or "")
+
+
+_NON_ALNUM = re.compile(r"[^a-z0-9]+")
+
+
+def normalise_words(text: str) -> str:
+    """Lower case, every run of non-alphanumerics one space, padded with spaces."""
+    return " " + _NON_ALNUM.sub(" ", text.lower()).strip() + " "
+
+
+def mentions(text: str, columns: list[str]) -> list[tuple[int, str]]:
+    """(first position, column) of every column whose normalised name occurs in ``text`` as
+    whole words, longest names first when claiming text; sorted by position."""
+    t = normalise_words(text)
+    taken: list[tuple[int, int]] = []
+    found: list[tuple[int, str]] = []
+    for col in sorted(set(columns), key=lambda c: (-len(normalise_words(c)), c)):
+        phrase = normalise_words(col)
+        if phrase.strip() == "":
+            continue
+        first = None
+        start = t.find(phrase)
+        while start != -1:
+            span = (start, start + len(phrase))
+            if not any(a <= span[0] and span[1] <= b for a, b in taken):
+                first = start if first is None else first
+                taken.append(span)
+            start = t.find(phrase, start + 1)
+        if first is not None:
+            found.append((first, col))
+    return sorted(found)
+
+
+@dataclass(frozen=True)
+class DerivedGold:
+    target: str | None
+    relevant: list[str]          # derived gold columns (target excluded)
+    in_question: list[str]
+    in_hypothesis: list[str]
+
+    @property
+    def usable(self) -> bool:
+        return self.target is not None and bool(self.relevant)
+
+
+def derive_gold(task: Task) -> DerivedGold:
+    """The documented rule above: target = first column mentioned in the question (else in
+    the hypothesis), gold = the other mentioned columns."""
+    cols = task.columns_meta
+    q = [c for _, c in mentions(task.question, cols)]
+    h = [c for _, c in mentions(task.hypothesis, cols)]
+    target = q[0] if q else (h[0] if h else None)
+    rel = [c for c in dict.fromkeys(q + h) if c != target]
+    return DerivedGold(target, rel, q, h)
+
+
+def with_derived_gold(task: Task, dg: DerivedGold) -> Task:
+    """A copy of ``task`` whose target and relevant columns are the derived ones."""
+    return replace(task, target=dg.target, relevant=[dg.target, *dg.relevant] if dg.target
+                   else list(dg.relevant), has_structured_gold=False)
 
 
 def read_csv(path: Path) -> dict[str, list[str]]:

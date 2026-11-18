@@ -4,11 +4,16 @@
 Implements prereg/audit/heldout_prereg.md exactly (committed in 3d86441, before this
 script existed). Rules frozen at d24d2f7: the script checks the git tree of
 consilience_ai2/audit and relabels the results exploratory if the rules changed.
+
+This is the rules v0.1 result and it stays one. Since rules v0.2, ``run_all.py`` runs this
+module with the frozen v0.1 rules taken from git (``rules_versions.run_under(V01, ...)``),
+so the tree it checks is the frozen tree itself and the published numbers are
+recomputed, never re-scored with new rules. The v0.2 held-out test is a separate
+preregistration (``codescientist_heldout_v2.py``).
 """
 
 from __future__ import annotations
 
-import subprocess
 from collections import defaultdict
 from pathlib import Path
 
@@ -30,6 +35,7 @@ from codescientist_common import (
     soundness_score,
 )
 from codescientist_dev import TABLE4
+from rules_versions import working_tree
 from scipy.stats import mannwhitneyu
 
 from consilience_ai2.core.results import metric
@@ -47,18 +53,9 @@ SRC_H2 = "fetch:codescientist (reviews) + fetch:codescientist-example-experiment
 
 def rules_tree() -> str | None:
     """Git tree id of consilience_ai2/audit at HEAD, or None when git is unavailable or the
-    directory has uncommitted changes (then the rules cannot be shown to be frozen)."""
-    try:
-        dirty = subprocess.run(["git", "-C", str(REPO), "status", "--porcelain", "--",
-                                "consilience_ai2/audit"], capture_output=True, text=True,
-                               check=False)
-        if dirty.returncode != 0 or dirty.stdout.strip():
-            return None
-        out = subprocess.run(["git", "-C", str(REPO), "rev-parse", "HEAD:consilience_ai2/audit"],
-                             capture_output=True, text=True, check=False)
-        return out.stdout.strip() or None
-    except OSError:
-        return None
+    directory has uncommitted changes (then the rules cannot be shown to be frozen). Under
+    ``rules_versions.run_under`` it is the frozen tree the rules were built from."""
+    return working_tree()
 
 
 def _perm_p(t_obs: float, perm: np.ndarray) -> float:

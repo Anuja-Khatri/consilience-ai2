@@ -18,7 +18,9 @@ def _planted(ad_examples):
 
 
 def _flagged(node):
-    return sorted({c["code"] for c in node["checks"] if c["severity"] in ("error", "warning")})
+    """Codes found: errors, warnings and (rules v0.2) info notes on reporting conventions."""
+    return sorted({c["code"] for c in node["checks"] if c["severity"] in ("error", "warning")}
+                  | set(node["notes"]))
 
 
 def test_every_planted_code_found_and_nothing_else(ad_examples):

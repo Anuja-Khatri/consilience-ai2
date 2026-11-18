@@ -13,11 +13,11 @@ def test_a1_supported_number_passes(aud):
     assert "A1" not in aud.codes_of(d, n.id) and "A1" in aud.info_codes(d, n.id)
 
 
-def test_a1_unsupported_number_refuses_with_receipt(aud):
+def test_a1_unsupported_number_is_an_error_with_receipt(aud):
     n = aud.make_node(analysis="r = 0.42 (p = 0.001)", output="r = 0.24, p = 0.001\n")
     d = aud.run_nodes(n)
     node = d["nodes"][0]
-    assert node["verdict"] == "refuse"
+    assert node["verdict"] == "flag" and node["verdict_level"] == "flag(error)"
     a1 = [c for c in node["checks"] if c["code"] == "A1" and c["severity"] == "error"]
     assert len(a1) == 1
     assert a1[0]["span"] == "0.42" and a1[0]["field"] == "analysis"
@@ -29,9 +29,95 @@ def test_a1_percent_and_scale_and_bounds(aud):
     assert "A1" not in aud.codes_of(aud.run_nodes(n), n.id)
 
 
-def test_a1_more_precision_than_printed_is_flagged(aud):
-    n = aud.make_node(analysis="mean 0.343", output="mean 0.34\n")
-    assert "A1" in aud.codes_of(aud.run_nodes(n), n.id)
+def test_a1_one_more_digit_than_printed_is_a_warning(aud):
+    n = aud.make_node(analysis="mean 0.3431", output="mean 0.343\n", surprising=False)
+    d = aud.run_nodes(n)
+    a1 = [c for c in d["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [(c["severity"], c["details"]["tier"]) for c in a1] == [("warning", "coarser_precision")]
+    assert d["nodes"][0]["verdict_level"] == "flag(warning)"
+
+
+def test_a1_coarser_precision_also_via_percent_scale(aud):
+    n = aud.make_node(analysis="accuracy 65.73%", output="accuracy 0.657\n")
+    a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [c["severity"] for c in a1] == ["warning"]
+
+
+def test_a1_coarser_match_needs_a_specific_printed_number(aud):
+    # the printed number has two significant digits: too unspecific to support 0.343
+    n = aud.make_node(analysis="mean 0.343", output="mean 0.34\n", surprising=False)
+    a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [c["severity"] for c in a1] == ["error"]
+    # two digits fewer than the claim is not a one-digit precision mismatch
+    m = aud.make_node(analysis="mean 0.34312", output="mean 0.343\n", surprising=False)
+    a1 = [c for c in aud.run_nodes(m)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [c["severity"] for c in a1] == ["error"]
+
+
+def test_a1_unprinted_statistic_stays_an_error(aud):
+    # regression (accepted discovery 5): an SD never printed, close to logged numbers
+    n = aud.make_node(analysis="mean = 65.7%, SD = 15.8%",
+                      output="accuracy 0.657258064516129\nconfidence 0.15740989710715314\n"
+                      "runtime 1115.8 16\n", surprising=False)
+    a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [(c["severity"], c["span"]) for c in a1] == [("error", "15.8%")]
+
+
+def test_a1_different_digits_are_not_a_precision_mismatch(aud):
+    # 0.36 is not 0.34 printed with fewer digits: still an error
+    n = aud.make_node(analysis="mean 0.36", output="mean 0.34\n")
+    a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [c["severity"] for c in a1] == ["error"]
+
+
+def test_a1_worded_relative_change_of_printed_numbers_is_derived(aud):
+    # regression (accepted discovery 3): "a 76% increase" from 29.8 and 16.9
+    n = aud.make_node(analysis="The two-stage approach took 29.8 seconds compared to 16.9 "
+                      "seconds, a 76% increase in generation time.",
+                      output="two_stage 29.804775627454124\nsingle_stage 16.88913134733836\n",
+                      surprising=False)
+    d = aud.run_nodes(n)
+    assert "A1" not in aud.codes_of(d, n.id)
+    info = [c for c in d["nodes"][0]["checks"] if c["code"] == "A1"][0]
+    assert info["details"]["derived"] == 1 and "relative change" in info["details"][
+        "derived_from"][0]
+
+
+def test_a1_derived_needs_change_wording_and_printed_operands(aud):
+    # no change word: 76% is not accepted as derived
+    n = aud.make_node(analysis="Times were 29.8 and 16.9 seconds; the score was 76%.",
+                      output="29.8 16.9\n")
+    assert "A1" in aud.codes_of(aud.run_nodes(n), n.id, ("error",))
+    # change word, but an operand (40.1) is not printed anywhere
+    m = aud.make_node(analysis="It took 40.1 seconds against 16.9, a 137% increase.",
+                      output="16.9\n")
+    errs = [c["span"] for c in aud.run_nodes(m)["nodes"][0]["checks"]
+            if c["code"] == "A1" and c["severity"] == "error"]
+    assert "137%" in errs and "40.1" in errs
+
+
+FIG_CODE = ("import matplotlib.pyplot as plt\nfrom sklearn.metrics import auc\n"
+            "roc_auc = auc([0, 1], [0, 1])\n"
+            "plt.plot([0, 1], [0, 1], label=f'AUC = {roc_auc:.2f}')\n"
+            "plt.savefig('roc.pdf')\nprint('done')\n")
+
+
+def test_a1_number_possibly_only_in_a_saved_figure_is_a_warning(aud):
+    # regression (accepted discovery 1): AUC = 0.54 is written only into a saved ROC plot
+    n = aud.make_node(analysis="Confidence predicts accuracy weakly (AUC = 0.54).",
+                      output="done\n", code=FIG_CODE)
+    a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+    assert [(c["severity"], c["details"]["tier"]) for c in a1] == [("warning", "figure_only")]
+    assert a1[0]["details"]["figure_lines"] == [4]
+
+
+def test_a1_figure_rule_needs_formatted_figure_text_and_savefig(aud):
+    no_save = FIG_CODE.replace("plt.savefig('roc.pdf')\n", "")
+    plain_label = FIG_CODE.replace("f'AUC = {roc_auc:.2f}'", "'ROC'")
+    for code in (no_save, plain_label):
+        n = aud.make_node(analysis="AUC = 0.54.", output="done\n", code=code)
+        a1 = [c for c in aud.run_nodes(n)["nodes"][0]["checks"] if c["code"] == "A1"]
+        assert [c["severity"] for c in a1] == ["error"], code
 
 
 def test_a1_code_constant_counts_as_support(aud):
@@ -65,14 +151,14 @@ def test_a3_known_columns_pass(aud):
     assert "A3" not in aud.codes_of(d, n.id) and "A3" in aud.info_codes(d, n.id)
 
 
-def test_a3_unknown_column_refuses(aud):
+def test_a3_unknown_column_is_an_error(aud):
     n = aud.make_node(analysis="r = 0.3, p = 0.01", output="r = 0.3, p = 0.01",
                   code=LOAD + 'x = df["household_size"]\ndf["new_col"] = 1\ny = df["new_col"]\n',
                   columns={"age"})
     d = aud.run_nodes(n)
     a3 = [c for c in d["nodes"][0]["checks"] if c["code"] == "A3" and c["severity"] == "error"]
     assert [c["details"]["column"] for c in a3] == ["household_size"]  # created column is fine
-    assert a3[0]["line"] == 4 and d["nodes"][0]["verdict"] == "refuse"
+    assert a3[0]["line"] == 4 and d["nodes"][0]["verdict_level"] == "flag(error)"
 
 
 def test_a3_groupby_result_labels_are_not_columns(aud):
@@ -150,10 +236,15 @@ def test_a7_effect_size_present_passes(aud):
     assert "A7" not in aud.codes_of(d, n.id) and "A7" in aud.info_codes(d, n.id)
 
 
-def test_a7_missing_effect_size_flags(aud):
+def test_a7_missing_effect_size_is_an_info_note_not_a_flag(aud):
     n = aud.make_node(analysis="Smokers have a significantly higher bmi (t = 3.2, p = 0.001).",
-                  output="t = 3.2, p = 0.001")
-    assert "A7" in aud.codes_of(aud.run_nodes(n), n.id)
+                  output="n = 1200\nt = 3.2, p = 0.001")
+    d = aud.run_nodes(n)
+    node = d["nodes"][0]
+    assert "A7" not in aud.codes_of(d, n.id)
+    a7 = [c for c in node["checks"] if c["code"] == "A7"]
+    assert a7[0]["severity"] == "info" and a7[0]["details"]["status"] == "not_reported"
+    assert node["notes"] == ["A7"] and node["verdict_level"] == "pass"
 
 
 # R1 ---------------------------------------------------------------------------------
@@ -171,11 +262,41 @@ def test_r1_other_comparator_passes(aud):
     assert "R1" not in aud.codes_of(d, n.id) and "R1" in aud.info_codes(d, n.id)
 
 
+def test_r1_limiting_comparison_to_chance_is_not_flagged(aud):
+    # regression (accepted discovery 1): "only slightly better than random"
+    for text in ("ROC analysis shows confidence scores perform only slightly better than "
+                 "random at predicting accuracy (AUC = 0.54).",
+                 "The agent was no better than chance (p = 0.4).",
+                 "Accuracy stayed close to chance compared with the earlier run."):
+        n = aud.make_node(analysis=text, output="AUC = 0.54 p = 0.4 0.51 0.50", surprising=False)
+        d = aud.run_nodes(n)
+        assert "R1" not in aud.codes_of(d, n.id), text
+        r1 = [c for c in d["nodes"][0]["checks"] if c["code"] == "R1"]
+        assert r1 and "limiting" in r1[0]["message"], text
+
+
+def test_r1_superiority_over_random_still_flags_beside_a_limiting_mention(aud):
+    n = aud.make_node(analysis="Ours outperforms the random agent (0.34 vs 0.17, p = 0.001). "
+                      "Earlier variants were only slightly better than random.",
+                      output="0.34 0.17 p = 0.001")
+    assert "R1" in aud.codes_of(aud.run_nodes(n), n.id, ("error",))
+
+
 # R2 ---------------------------------------------------------------------------------
 
-def test_r2_flip_flags(aud):
-    n = aud.make_node(analysis="x", output="y", reruns=["support", "refute", "inconclusive"])
-    assert "R2" in aud.codes_of(aud.run_nodes(n), n.id)
+def test_r2_flip_with_supporting_majority_is_a_warning(aud):
+    n = aud.make_node(analysis="x", output="y",
+                      reruns=["support", "support", "refute", "inconclusive"])
+    assert "R2" in aud.codes_of(aud.run_nodes(n), n.id, ("warning",))
+    assert "R2" not in aud.codes_of(aud.run_nodes(n), n.id, ("error",))
+
+
+def test_r2_flip_without_supporting_majority_is_an_error(aud):
+    for labels in (["support", "refute", "inconclusive"], ["support", "refute", "refute"]):
+        n = aud.make_node(analysis="x", output="y", reruns=labels)
+        d = aud.run_nodes(n)
+        assert "R2" in aud.codes_of(d, n.id, ("error",)), labels
+        assert d["nodes"][0]["verdict_level"] == "flag(error)"
 
 
 def test_r2_consistent_passes_and_needs_reruns(aud):
@@ -257,7 +378,7 @@ def test_r5_dynamic_code_is_uncheckable_not_flagged(aud):
 def test_uncheckable_node_is_refused(aud):
     n = aud.make_node(analysis="x", output=None)
     d = aud.run_nodes(n)
-    assert d["nodes"][0]["verdict"] == "refuse"
+    assert d["nodes"][0]["verdict"] == "refuse" and d["nodes"][0]["verdict_level"] == "refuse"
     assert aud.codes_of(d, n.id) == {"U1"}
 
 
@@ -267,6 +388,16 @@ def test_clean_node_passes_and_llm_text_is_hashed(aud):
                   review="Looks right.", success=True)
     d = aud.run_nodes(n)
     node = d["nodes"][0]
-    assert node["verdict"] == "pass", node["codes"]
+    assert node["verdict"] == "pass" and node["verdict_level"] == "pass", node["codes"]
     assert node["llm_validity_check"]["success"] is True
     assert len(node["llm_validity_check"]["text_sha256"]) == 64
+
+
+def test_verdict_mapping_is_explicit(aud):
+    warn = aud.make_node("node_2_0", analysis="mean 0.3431", output="mean 0.343",
+                         surprising=False)
+    err = aud.make_node("node_2_1", analysis="mean 0.9", output="mean 0.34", surprising=False)
+    d = aud.run_nodes(warn, err)
+    assert [n["verdict_level"] for n in d["nodes"]] == ["flag(warning)", "flag(error)"]
+    assert d["verdict_levels"] == {"pass": 0, "flag(warning)": 1, "flag(error)": 1, "refuse": 0}
+    assert set(d["verdict_mapping"]) == {"pass", "flag(warning)", "flag(error)", "refuse"}
