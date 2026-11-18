@@ -2158,6 +2158,370 @@
     },
     {
       "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1",
+        "secondary (a), no decision"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.fisher_p",
+      "n": 79,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "test": "two-sided Fisher exact test of the 2 x 2 table",
+      "value": 0.3647
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "runs with an error-severity check",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.n_flagged",
+      "n": 79,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 37
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "v0.1 H1 units with a faithfulness category",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.n_runs",
+      "n": 79,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 79
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.perm_p",
+      "n": 79,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "test": "two-sided permutation, labels permuted across runs, 10000 draws, numpy default_rng(20261118); T = share faithful (passed) - share faithful (flagged)",
+      "value": 0.3663
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share rated faithful among flagged runs",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.share_faithful_flagged",
+      "n": 37,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "value": 0.3784
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share rated faithful among passed runs",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.share_faithful_passed",
+      "n": 42,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "value": 0.5
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "secondary (c): the v0.1 H1 units, already used in the v0.1 held-out test, so not blind for the runs",
+        "excluded, no faithfullness_category: 1"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "share faithful, passed minus flagged (H3 predicts > 0)",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h1_units.t_difference",
+      "n": 79,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "test": "two-sided permutation, labels permuted across runs, 10000 draws, numpy default_rng(20261118); T = share faithful (passed) - share faithful (flagged)",
+      "value": 0.1216
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (e): held-out runs with this code at error or warning severity"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.heldout_v2.h3.code.a2",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (e): held-out runs with this code at error or warning severity"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.heldout_v2.h3.code.a5",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 2
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (e): held-out runs with this code at error or warning severity"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.heldout_v2.h3.code.a6",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 7
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (e): held-out runs with this code at error or warning severity"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.heldout_v2.h3.code.r1",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (e): held-out runs with this code at error or warning severity"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "descriptive",
+      "metric_id": "audit.heldout_v2.h3.code.r3",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "runs with an error-severity check",
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout_v2.h3.n_flagged",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "held-out runs (units)",
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout_v2.h3.n_runs",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 13
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (b): runs of ideas in the example-experiments archive removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "runs with an error-severity check",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.no_dev_ideas.n_flagged",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (b): runs of ideas in the example-experiments archive removed"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "held-out runs without dev ideas",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.no_dev_ideas.n_runs",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 11
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (b): runs of ideas in the example-experiments archive removed",
+        "not testable: a group has fewer than 3 runs (10 passed, 1 flagged)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.no_dev_ideas.perm_p",
+      "n": 11,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "value": null
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "not testable: a group has fewer than 3 runs (12 passed, 1 flagged)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "heldout",
+      "metric_id": "audit.heldout_v2.h3.perm_p",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "value": null
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (d): predictor = any error-severity check under the frozen v0.1 rules (audit-rules-1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "runs with an error-severity check",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.v01_predictor.n_flagged",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 1
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (d): predictor = any error-severity check under the frozen v0.1 rules (audit-rules-1)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "description": "held-out runs, v0.1 predictor",
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.v01_predictor.n_runs",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "unit": "runs",
+      "value": 13
+    },
+    {
+      "caveats": [
+        "outcome: faithfullness_category in the with-expert-notes bulk TSV, faithful = 1, deviations or errors = 0 (model-generated in the released data)",
+        "predictor: any error-severity check under rules v0.2 (audit-rules-2); R2 not evaluated",
+        "13 full50 runs never used by the development set, H1 or H2",
+        "secondary (d): predictor = any error-severity check under the frozen v0.1 rules (audit-rules-1)",
+        "not testable: a group has fewer than 3 runs (12 passed, 1 flagged)"
+      ],
+      "ci_hi": null,
+      "ci_lo": null,
+      "dev_or_heldout": "exploratory",
+      "metric_id": "audit.heldout_v2.h3.v01_predictor.perm_p",
+      "n": 13,
+      "prereg": "prereg/audit/heldout_v2_prereg.md (commit 75b85b4b61444f4c001b50a74b867d1d6e4d4828)",
+      "source": "fetch:codescientist-full50 + fetch:codescientist (metaanalysis bulk TSV faithfullness_category)",
+      "value": null
+    },
+    {
+      "caveats": [
         "one table in one report; the recomputation (100 x mean of the within_k_percent booleans per method) was chosen to match the table's column names"
       ],
       "ci_hi": null,

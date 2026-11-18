@@ -264,6 +264,42 @@ specific, checkable defects (an unprinted number, a missing test, a random-only
 comparator); the outcomes here are model-judged rerun agreement and three human ratings
 per paper, and neither moves with those defects at this sample size.
 
+### Held-out v0.2, preregistered (the 13 unused full50 runs): not testable
+
+**Which data H1 used.** The `codescientist-full50` archive holds only the with-expert-notes
+batch (104 run directories); the without-expert-notes batch has meta-analysis files and a
+bulk TSV in the repository but no released run directories, so it cannot be audited. H1
+scored 80 of the 104 directories; 10 are development-set directories (11 counting a
+follow-on run without a judgement); the remaining **13 runs** (ideas with a single judged
+run) were never audited by any version and were in neither H1 nor H2. They are the only
+unused, auditable data, and the v0.2 held-out test uses them.
+
+Preregistered in `prereg/audit/heldout_v2_prereg.md` (commit 75b85b4), committed after the
+v0.2 rules were frozen (commit fd0187a, tree `5aa8b9c` of `consilience_ai2/audit`) and
+before any of these runs was audited; `analyses/audit/codescientist_heldout_v2.py` checked
+that tree when it scored. **H3 (confirmatory):** runs the v0.2 audit flags at error
+severity are less often rated faithful to their plan (`faithfullness_category` in the
+with-expert-notes bulk TSV: faithful 1, deviations or errors 0) than runs it passes.
+Outcome chosen in advance because leave-one-out agreement is undefined for single-run
+ideas and the support/refute judgement does not measure soundness. Test: two-sided
+permutation test of the difference in shares, 10,000 draws, seed 20261118, alpha 0.05;
+not testable if either group has fewer than 3 runs.
+
+**Result (labelled heldout): not testable.** The v0.2 audit put an error on 1 of the 13
+runs (an R1 random-only comparator) and passed 12 (3 with no error or warning, 9 with
+warnings only, mostly A6 underpowered nulls). One flagged run is below the preregistered
+minimum of 3 per group, so no test was run and H3 is neither supported nor refuted. This is
+a limit of the data, not a null result: the only fresh runs are too few and too rarely
+flagged. The frozen v0.1 rules also flag just 1 of the 13 (exploratory secondary (d)), and
+without the 2 runs of development ideas the split is 1 of 11 (secondary (b)); neither is
+testable either.
+
+**Exploratory, not blind for the runs (secondary (c)).** The same predictor and outcome on
+the 79 H1 units that have a faithfulness category (runs already used in the v0.1 held-out
+test; this outcome was never looked at before): 50% of the 42 passed runs and 37.84% of
+the 37 flagged runs were rated faithful, a difference in the predicted direction that is
+not significant (permutation p = 0.3663; Fisher p = 0.3647).
+
 ### A5 on DiscoveryBench synthetic tasks (labelled descriptive; null control synthetic)
 
 `analyses/audit/discoverybench_a5.py`. **Machine-readable set.** Of the 903 synthetic
@@ -346,10 +382,15 @@ So the adapter's transfer to real runs remains untested; no fetch source was add
 
 ## Limits
 
-- **Small n.** The dev set is 19 discoveries; the held-out tests have 80 runs (from 24
+- **Small n.** The dev set is 19 discoveries; the v0.1 held-out tests have 80 runs (from 24
   ideas at most) and 20 papers. Differences of the size these data allow are noisy.
-- **The held-out prediction failed.** Error-level flags did not predict lower rerun
-  agreement or lower external soundness; the audit's value has to rest on the defects it
+- **No fresh held-out test of v0.2 was possible.** The only unused auditable data are 13
+  full50 runs; v0.2 flags 1 of them at error severity, below the preregistered minimum
+  group size, so H3 is not testable. Every other public CodeScientist run with released
+  files has been used in development or in the v0.1 held-out test. The v0.2 numbers above
+  are dev (not blind) or exploratory.
+- **The v0.1 held-out prediction failed.** Error-level flags did not predict lower rerun
+  agreement or lower external soundness, and v0.2 has no held-out result of its own; the audit's value has to rest on the defects it
   names (each with a receipt), not on predicting replication.
 - **The dev set is not blind.** The v0.1 rules were written knowing the CodeScientist
   rejection reasons, the v0.2 recalibration was decided after inspecting the same cases,

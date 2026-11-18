@@ -22,6 +22,7 @@ from consilience_ai2.fetch import require
 # The two full50 meta-analysis files in the codescientist repository. The full50 zip is
 # the with-expert-notes batch (its top folder says so), so that batch's files are used.
 META_GLOB = "*withexpertnotes*meta-analysis.json"
+BULK_GLOB = "*withexpertnotes*bulk.tsv"
 REVIEWS = "reviews/codescientist_external_review_ratings.tsv"
 EXAMPLES_PREFIX = "example-experiments/"
 
@@ -75,6 +76,19 @@ def judgements() -> dict[str, dict[str, str]]:
         for j in ma.get("support_refute_inconclusive_judgements") or []:
             runs[key_of_experiment_name(j["specific_experiment_name"])] = j["judgement"].strip().lower()
     return out
+
+
+def faithfulness() -> dict[str, str]:
+    """run key -> ``faithfullness_category`` (``faithful``, ``deviations``, ``errors`` or
+    empty) from the with-expert-notes bulk TSV, keyed like ``run_key_of_dir``."""
+    files = sorted((codescientist_repo() / "metaanalysis").glob(BULK_GLOB))
+    if len(files) != 1:
+        raise RuntimeError(f"expected one {BULK_GLOB}, found {len(files)}")
+    csv.field_size_limit(1 << 30)
+    with files[0].open(encoding="utf-8", newline="") as fh:
+        rows = list(csv.DictReader(fh, delimiter="\t"))
+    return {key_of_experiment_name(r["experiment_name"]): (r.get("faithfullness_category") or "")
+            .strip().lower() for r in rows}
 
 
 def reviews() -> dict[str, list[tuple[str, str]]]:

@@ -12,5 +12,6 @@ fixed seeds; reruns are byte-identical.
 | `resistor_table.py` | the resistor report's table recomputed from results.json | descriptive |
 | `discoverybench_a5.py` | A5: distractor hits with and without BH on synthetic tasks; machine-readable and derived gold sets | descriptive / synthetic |
 | `codescientist_heldout.py` | rules v0.1 preregistered held-out tests (`prereg/audit/heldout_prereg.md`), always run with the frozen v0.1 rules | heldout / exploratory |
+| `codescientist_heldout_v2.py` | rules v0.2 preregistered held-out test on the 13 unused full50 runs (`prereg/audit/heldout_v2_prereg.md`) | heldout / exploratory |
 
 See docs/audit.md for the results and their limits.

@@ -1,0 +1,1349 @@
+{
+  "frozen": true,
+  "frozen_commit": "fd0187a8c38d7682e78f980f5b760a43a818c305",
+  "frozen_tree": "5aa8b9ccb6f4eda312cefb9a9ec1ad74ea657458",
+  "h1_units": {
+    "T": 0.1216216216216216,
+    "excluded": {
+      "no faithfullness_category": 1
+    },
+    "fisher_p": 0.36473356816724073,
+    "n": 79,
+    "n_flagged": 37,
+    "n_passed": 42,
+    "p": 0.36626337366263373,
+    "share_flagged": 0.3783783783783784,
+    "share_passed": 0.5,
+    "table_passed_flagged": [
+      [
+        21,
+        21
+      ],
+      [
+        14,
+        23
+      ]
+    ],
+    "units": [
+      {
+        "category": "deviations",
+        "codes": [
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy1-20250204-171300",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy2-20250204-171307",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy3-20250204-171345",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A6"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy4-20250204-171655",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "actionoutcometracking",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": true,
+        "dir": "actionoutcometrackingcopy5-20250204-171748",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "actionoutcometracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy1-20250204-162824",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy2-20250204-163010",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy3-20250204-163019",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy4-20250204-163024",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "basicconfidencesimulation",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "basicconfidencesimulationcopy5-20250204-163027",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "basicconfidencesimulation",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy1-20250204-163356",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "cookinggraphexplorer",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy2-20250204-163700",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "cookinggraphexplorer",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "cookinggraphexplorercopy3-20250204-163713",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "cookinggraphexplorer",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A4"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy1-20250204-151122",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy3-20250204-151129",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "hierarchicalelimination",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A4"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy4-20250204-151131",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A4",
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "hierarchicaleliminationcopy5-20250204-151135",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "hierarchicalelimination",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgfailuredetectioncopy1-20250204-201642",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "kgfailuredetection",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "kgfailuredetectioncopy5-20250204-202209",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "kgfailuredetection",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy1-20250204-194947",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy2-20250204-195034",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy3-20250204-195047",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy4-20250204-195134",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "kgstatetrackingcopy5-20250204-195323",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "kgstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A2"
+        ],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy1-20250204-150958",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "llmgraphverification",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "errors",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy2-20250204-151003",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "llmgraphverification",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "llmgraphverificationcopy5-20250204-151011",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "llmgraphverification",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "locationgraphcookingcopy1-20250204-153815",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "locationgraphcooking",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2",
+          "A6"
+        ],
+        "dev_idea": true,
+        "dir": "locationgraphcookingcopy3-20250204-154244",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "locationgraphcooking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy1-20250204-200102",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A5",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy2-20250204-200208",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A6"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy3-20250204-200217",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "progressivestatecomplexity",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy4-20250204-200457",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "progressivestatecomplexity",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "progressivestatecomplexitycopy5-20250204-200719",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "progressivestatecomplexity",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy1-20250204-161803",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "reactivegraphconfidence",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy2-20250204-161957",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "reactivegraphconfidence",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "reactivegraphconfidencecopy5-20250204-162230",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "reactivegraphconfidence",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy1-20250204-225849",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "resistorsubstitutionadvisor",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy2-20250204-230138",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy3-20250204-230453",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy4-20250204-230847",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "resistorsubstitutionadvisor",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "resistorsubstitutionadvisorcopy5-20250204-232430",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "resistorsubstitutionadvisor",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simpledualreflectioncopy1-20250204-172939",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simpledualreflection",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A6",
+          "R1"
+        ],
+        "dev_idea": false,
+        "dir": "simpledualreflectioncopy5-20250204-174807",
+        "error_codes": [
+          "A1",
+          "R1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "simpledualreflection",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy1-20250204-151103",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplegoalexplorer",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy3-20250204-151108",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "simplegoalexplorer",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegoalexplorercopy5-20250204-151119",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplegoalexplorer",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy1-20250204-150945",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplegraphalignment",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy2-20250204-150948",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy3-20250204-150950",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy4-20250204-150953",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "simplegraphalignmentcopy5-20250204-150956",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplegraphalignment",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simplemetagraphscopy3-20250204-204506",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplemetagraphs",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A2",
+          "A4",
+          "R3"
+        ],
+        "dev_idea": false,
+        "dir": "simplemetagraphscopy4-20250204-204509",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplemetagraphs",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy2-20250204-193739",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy3-20250204-194014",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy4-20250204-194126",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplemetaphorgraph",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "simplemetaphorgraphcopy5-20250204-194257",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simplemetaphorgraph",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "simpleplanningagentcopy2-20250204-151156",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "simpleplanningagent",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simpleplanningagentcopy5-20250204-151924",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simpleplanningagent",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simpleselfevaluationcopy4-20250204-180805",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simpleselfevaluation",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simpleselfevaluationcopy5-20250204-181218",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simpleselfevaluation",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy1-20250204-192655",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy2-20250204-192832",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy3-20250204-193040",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simplesocialgraphs",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A5"
+        ],
+        "dev_idea": true,
+        "dir": "simplesocialgraphscopy5-20250204-193321",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "simplesocialgraphs",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy1-20250204-152901",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy2-20250204-153109",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy3-20250204-153307",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simulationconfidenceanalysis",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy4-20250204-153321",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "simulationconfidenceanalysis",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "simulationconfidenceanalysiscopy5-20250204-153659",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simulationconfidenceanalysis",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2"
+        ],
+        "dev_idea": true,
+        "dir": "templateworldgenerationcopy1-20250204-174847",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "templateworldgeneration",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1"
+        ],
+        "dev_idea": true,
+        "dir": "templateworldgenerationcopy4-20250204-175511",
+        "error_codes": [
+          "A1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "templateworldgeneration",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy1-20250204-155033",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "twostagegamegeneration",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4",
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy2-20250204-155648",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A1",
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy3-20250204-160025",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy4-20250204-160405",
+        "error_codes": [
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A1",
+          "A4"
+        ],
+        "dev_idea": true,
+        "dir": "twostagegamegenerationcopy5-20250204-160504",
+        "error_codes": [
+          "A1",
+          "A4"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "twostagegamegeneration",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A5",
+          "R1"
+        ],
+        "dev_idea": true,
+        "dir": "wordnetcookingexplorationcopy1-20250204-150927",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 1,
+        "flagged": true,
+        "idea": "wordnetcookingexploration",
+        "verdict_level": "flag(error)"
+      }
+    ]
+  },
+  "h3": {
+    "excluded": {},
+    "n": 13,
+    "n_flagged": 1,
+    "n_passed": 12,
+    "result": "not testable",
+    "supported": false,
+    "units": [
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": true,
+        "dir": "basicknowledgesharingcopy4-20250204-184735",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "basicknowledgesharing",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "failurepatternlearningcopy1-20250204-170354",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "failurepatternlearning",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "R3"
+        ],
+        "dev_idea": true,
+        "dir": "knowledgegraphdiscoverycopy4-20250204-224635",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "knowledgegraphdiscovery",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A5",
+          "R1"
+        ],
+        "dev_idea": false,
+        "dir": "knowledgegraphverificationcopy3-20250204-172855",
+        "error_codes": [
+          "R1"
+        ],
+        "faithful": 0,
+        "flagged": true,
+        "idea": "knowledgegraphverification",
+        "verdict_level": "flag(error)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "knowledgeguidedreactcopy1-20250204-232706",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "knowledgeguidedreact",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "reactknowledgeretrievalcopy4-20250204-151027",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "reactknowledgeretrieval",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "ruleguidedactionvalidationcopy3-20250204-194818",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "ruleguidedactionvalidation",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A2",
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simpledecompositionmemorycopy4-20250204-201329",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "simpledecompositionmemory",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simplegraphstatetrackingcopy2-20250204-170041",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplegraphstatetracking",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "errors",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "simplememorypruningcopy4-20250204-151057",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simplememorypruning",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "errors",
+        "codes": [],
+        "dev_idea": false,
+        "dir": "simpletaskreflectioncopy2-20250204-164234",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "simpletaskreflection",
+        "verdict_level": "pass"
+      },
+      {
+        "category": "deviations",
+        "codes": [
+          "A5"
+        ],
+        "dev_idea": false,
+        "dir": "staticknowledgecomparisoncopy1-20250204-191401",
+        "error_codes": [],
+        "faithful": 0,
+        "flagged": false,
+        "idea": "staticknowledgecomparison",
+        "verdict_level": "flag(warning)"
+      },
+      {
+        "category": "faithful",
+        "codes": [
+          "A6"
+        ],
+        "dev_idea": false,
+        "dir": "subgoalqualityevaluationcopy3-20250204-181919",
+        "error_codes": [],
+        "faithful": 1,
+        "flagged": false,
+        "idea": "subgoalqualityevaluation",
+        "verdict_level": "flag(warning)"
+      }
+    ]
+  },
+  "no_dev_ideas": {
+    "n": 11,
+    "n_flagged": 1,
+    "n_passed": 10,
+    "result": "not testable"
+  },
+  "per_code": {
+    "A2": 1,
+    "A5": 2,
+    "A6": 7,
+    "R1": 1,
+    "R3": 1
+  },
+  "rules_tree": "5aa8b9ccb6f4eda312cefb9a9ec1ad74ea657458",
+  "v01_predictor": {
+    "flags": {
+      "basicknowledgesharingcopy4-20250204-184735": false,
+      "failurepatternlearningcopy1-20250204-170354": false,
+      "knowledgegraphdiscoverycopy4-20250204-224635": false,
+      "knowledgegraphverificationcopy3-20250204-172855": true,
+      "knowledgeguidedreactcopy1-20250204-232706": false,
+      "reactknowledgeretrievalcopy4-20250204-151027": false,
+      "ruleguidedactionvalidationcopy3-20250204-194818": false,
+      "simpledecompositionmemorycopy4-20250204-201329": false,
+      "simplegraphstatetrackingcopy2-20250204-170041": false,
+      "simplememorypruningcopy4-20250204-151057": false,
+      "simpletaskreflectioncopy2-20250204-164234": false,
+      "staticknowledgecomparisoncopy1-20250204-191401": false,
+      "subgoalqualityevaluationcopy3-20250204-181919": false
+    },
+    "n": 13,
+    "n_flagged": 1,
+    "n_passed": 12,
+    "result": "not testable"
+  }
+}
