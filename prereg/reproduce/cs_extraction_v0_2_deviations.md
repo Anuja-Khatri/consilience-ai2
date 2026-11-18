@@ -49,3 +49,11 @@ of the implied dz, the effect size is left out of the record; for a source run D
 verdicts, never add a `reproduced`. In the v0.1 reading only reproduction runs and runs of
 single-run ideas are affected, never the source run of a pair, so the v0.1 pair verdicts
 do not depend on it; they are left as they were.
+
+Amendment, also before any v0.2 number was committed: leaving the effect size out made
+F1 report `not_comparable(effect_size)` (one side with an effect size, the other
+without) for the two pairs with a zero difference, a label that names the wrong cause. A
+mean difference of exactly 0 is now recorded as a zero effect (dz = 0): on a source run
+D1 then finds no source effect and is `uncheckable`; on a reproduction run V1 reads a
+zero effect. Only a sign disagreement leaves the effect size out. Verdicts of those two
+pairs are inconclusive either way.

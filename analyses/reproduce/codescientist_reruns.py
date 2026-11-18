@@ -198,9 +198,9 @@ def _final_files(z: zipfile.ZipFile, members: list[str]) -> tuple[str | None, di
 def numbers_from_block(blk: cx.Block, pilot_mode: Any,
                        zero_effect: bool = True) -> dict[str, Any]:
     """Record fields from one bootstrap block (the same reading as v0.1). With
-    ``zero_effect`` (the corrected v0.2 rule) the effect size is left out when the mean
-    difference is 0 or of the other sign than the effect size implied by p, so a zero
-    difference is never read as an effect (D1 is then uncheckable on that side)."""
+    ``zero_effect`` (the corrected v0.2 rule) a mean difference of exactly 0 is a zero
+    effect (dz = 0, so D1 finds no source effect and is uncheckable), and an effect size
+    whose sign disagrees with the mean difference is left out (fail closed)."""
     b = blk.raw
     me, mb, p, n = (_number(b["mean_experimental"]), _number(b["mean_baseline"]),
                     _number(b["p_value"]), b["dataset_size"])
@@ -211,8 +211,11 @@ def numbers_from_block(blk: cx.Block, pilot_mode: Any,
                                         "experimental minus mean baseline",
                             "value": me - mb, "unit": "dimensionless", "n": n, "p": p}
     dz = dz_from_p(p, n, b.get("num_resamples"))
-    if dz is not None and zero_effect and (me - mb == 0 or (me - mb > 0) != (dz > 0)):
-        dz = None
+    if dz is not None and zero_effect:
+        if me - mb == 0:
+            dz = 0.0
+        elif (me - mb > 0) != (dz > 0):
+            dz = None
     if dz is not None:
         meas["effect_size"] = {"type": "dz", "value": dz}
     return {"status": "ok", "path": blk.where, "measurement": meas, "pilot_mode": pilot_mode}
@@ -372,11 +375,19 @@ def _comparison_pairs(idea: str, src: dict, rep: dict, key: str,
         rec["id"] += ":" + " ".join(k)
         v = evaluate(rec, backend="fallback", skip=("P1",)).extra["verdict"]
         out.append({"idea": idea, "source": src["name"], "reproduction": rep["name"],
-                    "comparison": " ".join(k), **v})
+                    "comparison": " ".join(k), "source_value": _value(na), **v})
     return out
 
 
 RULE_KEYS = {"v0.2": "numbers_v02", "v0.2-prereg": "numbers_v02p"}
+
+
+def _value(num: dict) -> float | None:
+    return num["measurement"]["value"] if num.get("status") == "ok" else None
+
+
+def _sign(v: float | None) -> str:
+    return "none" if v is None else "positive" if v > 0 else "negative" if v < 0 else "zero"
 
 
 def analyse() -> dict[str, Any]:
@@ -449,7 +460,8 @@ def analyse() -> dict[str, Any]:
                              "reproduction_basis": rep[key].get("basis")}
                 out["pairs" if key == "numbers" else f"pairs_{key[8:]}"].append(
                     {**common, "source_status": runs[0][key]["status"],
-                     "reproduction_status": rep[key]["status"], **extra, **v})
+                     "reproduction_status": rep[key]["status"],
+                     "source_value": _value(runs[0][key]), **extra, **v})
             for rule, key in RULE_KEYS.items():
                 st = {runs[0][key]["status"], rep[key]["status"]}
                 if "ambiguous_primary" in st and st <= {"ok", "ambiguous_primary"}:
@@ -498,7 +510,11 @@ def summarise(res: dict[str, Any], pairs_key: str = "pairs") -> dict[str, Any]:
             p["theirs_source"] in THEIRS_TO_OURS]
     consistent = Counter(("same" if p["theirs"] == p["theirs_source"] else "different",
                           p["verdict"]) for p in both)
+    # the source run's own mean difference beside each reproduced verdict: the direction
+    # is the declared one (experimental above baseline), not the source's observed sign
+    rep_sign = Counter(_sign(p["source_value"]) for p in pairs if p["verdict"] == "reproduced")
     return {"n_pairs": len(pairs), "coverage": dict(cov), "f1": dict(f1),
+            "reproduced_source_sign": dict(rep_sign),
             "n_recoverable": len(recoverable), "f1_not_comparable": dict(f1_targets),
             "d1": dict(d1),
             "v1": dict(v1), "outcome": dict(outcome), "p2": dict(p2),
@@ -531,6 +547,9 @@ def summarise_v02(res: dict[str, Any], tag: str = "v02") -> dict[str, Any]:
               "newly_recoverable_how": dict(how),
               "runs": res[f"runs_{tag}"],
               "per_comparison": {"n": len(pc),
+                                 "reproduced_source_sign": dict(Counter(
+                                     _sign(p["source_value"]) for p in pc
+                                     if p["verdict"] == "reproduced")),
                                  "n_pairs": len({(p["source"], p["reproduction"]) for p in pc}),
                                  "verdict": dict(Counter(p["verdict"] for p in pc)),
                                  "outcome": dict(Counter(p["outcome_label"] for p in pc))},

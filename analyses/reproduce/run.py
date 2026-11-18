@@ -31,7 +31,7 @@ CS_SOURCE = "fetch:codescientist+codescientist-full50"
 CS_SOURCE_V02 = "fetch:codescientist+codescientist-full50+codescientist-example-experiments"
 DB_SOURCE = "fetch:discoverybench"
 PREREG_V02 = "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320"
-DEVIATIONS_V02 = "prereg/reproduce/cs_extraction_v0_2_deviations.md"
+DEVIATIONS_V02 = "prereg/reproduce/cs_extraction_v0_2_deviations.md @ 3fb41e1"
 V01_NOTE = ("v0.1 extraction rule (the single non-random bootstrap block of the final "
             "results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics")
 Z95 = 1.959963984540054
@@ -186,14 +186,30 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
         ours, theirs = cell.split("|")
         out.append(count(f"{P}.vs_labels.ours_{ours}.theirs_{theirs}", k, s["n_labelled"],
                          caveats=cav, **kw))
+    for sign in ("positive", "zero", "negative"):
+        out.append(count(f"{P}.reproduced_source_sign.{sign}",
+                         s["reproduced_source_sign"].get(sign, 0), s["v1"].get("reproduced", 0),
+                         caveats=cav, description="reproduced pairs by the sign of the source "
+                         "run's own mean difference (the declared direction is positive)", **kw))
     for cell, k in sorted(s["verdict_transitions"].items()):
         a, b = cell.split("|")
         out.append(count(f"{P}.transition.{a}.to_{b}", k, n, caveats=cav,
                          description="v0.1 verdict to v0.2 verdict, per pair", **kw))
     pc = s["per_comparison"]
+    s01 = cs.summarise(res)
+    for sign in ("positive", "zero", "negative"):
+        out.append(count(f"reproduce.cs.reproduced_source_sign.{sign}",
+                         s01["reproduced_source_sign"].get(sign, 0),
+                         s01["v1"].get("reproduced", 0), source=CS_SOURCE,
+                         dev_or_heldout="descriptive", caveats=CS_CAVEATS + [V01_NOTE],
+                         description="v0.1 reproduced pairs by the sign of the source run's "
+                         "own mean difference (added in v0.2 as a check)"))
     pcav = cav + ["per comparison, not per pair: pairs whose primary stays ambiguous, each "
                   "comparison found in both runs judged on its own; not counted among the "
-                  "65 pairs"]
+                  "65 pairs",
+                  "for comparisons among several conditions the block's baseline and "
+                  "experimental are an ordering, so the declared positive direction need not "
+                  "be the hypothesis's"]
     out.append(count(f"{P}.per_comparison.n", pc["n"], None, caveats=pcav, **kw))
     out.append(count(f"{P}.per_comparison.pairs", pc["n_pairs"], n, caveats=pcav,
                      description="pairs contributing at least one matched comparison", **kw))
@@ -203,6 +219,12 @@ def codescientist_metrics_v02(res: dict) -> list[dict]:
     for cls, k in sorted(pc["outcome"].items()):
         out.append(count(f"{P}.per_comparison.outcome.{slug(cls)}", k, pc["n"], caveats=pcav,
                          **kw))
+    for sign in ("positive", "zero", "negative"):
+        out.append(count(f"{P}.per_comparison.reproduced_source_sign.{sign}",
+                         pc["reproduced_source_sign"].get(sign, 0),
+                         pc["verdict"].get("reproduced", 0), caveats=pcav,
+                         description="reproduced comparisons by the sign of the source run's "
+                         "own mean difference (the declared direction is positive)", **kw))
     b2 = s["batch2"]
     bkw = {"source": CS_SOURCE_V02, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
     bcav = ["the full-50 batch without expert notes: bulk and meta-analysis tables are "

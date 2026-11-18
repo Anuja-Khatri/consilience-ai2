@@ -276,20 +276,21 @@ def test_run_numbers_v02_reads_the_final_iteration():
     assert cs.run_numbers(z, z.namelist())["status"] == "unreadable_results_file"
 
 
-@pytest.mark.parametrize("mb,me,p,expect", [(1.0, 1.0, 1.0, None),      # zero difference
+@pytest.mark.parametrize("mb,me,p,expect", [(1.0, 1.0, 1.0, "zero"),    # zero difference
                                              (0.5, 0.4, 0.01, None),     # sign disagrees
                                              (0.2, 0.5, 0.01, "positive"),
                                              (0.5, 0.2, 0.99, "negative")])
-def test_zero_or_inconsistent_difference_gives_no_effect_size(mb, me, p, expect):
+def test_zero_or_inconsistent_difference(mb, me, p, expect):
     cs = _load("codescientist_reruns")
     blk = cx.file_blocks({"b": boot(mb=mb, me=me, p=p, n=10)}, "results.json")[0]
     es = cs.numbers_from_block(blk, None)["measurement"].get("effect_size")
+    pre = cs.numbers_from_block(blk, None, zero_effect=False)["measurement"]["effect_size"]
     if expect is None:
-        assert es is None
-        # as preregistered, the effect size was kept
-        assert cs.numbers_from_block(blk, None, zero_effect=False)["measurement"]["effect_size"]
+        assert es is None and pre["value"] > 0      # as preregistered, it was kept
+    elif expect == "zero":
+        assert es["value"] == 0.0 and pre["value"] < -1   # as preregistered: a large effect
     else:
-        assert (es["value"] > 0) == (expect == "positive")
+        assert (es["value"] > 0) == (expect == "positive") and es == pre
 
 
 def test_extract_rule_prereg_vs_corrected():
