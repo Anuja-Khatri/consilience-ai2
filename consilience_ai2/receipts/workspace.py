@@ -468,7 +468,8 @@ class WorkspaceChecker:
         return self.report
 
 
-def check_workspace(root: str | Path, sources: str | Path | SourceStore | None = None,
+def check_workspace(root: str | Path,
+                    sources: str | Path | list[str | Path] | SourceStore | None = None,
                     rules: str = DEFAULT_RULES) -> Report:
     """Run E0-E6, W1 and W2 on the workspace at ``root``; return the report.
 

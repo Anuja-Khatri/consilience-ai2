@@ -1,6 +1,6 @@
 """``consilience-ai2 receipts``: evidence receipts for Asta workspaces.
 
-    consilience-ai2 receipts check <workspace_dir> [--sources DIR|paperstore.json|index.json]
+    consilience-ai2 receipts check <workspace_dir> [--sources DIR|paperstore.json|index.json ...]
                                    [--json OUT] [--no-annotations] [--fail-on-warnings]
                                    [--rules v0.1|v0.2]
 
@@ -35,9 +35,10 @@ def register(subparsers: argparse._SubParsersAction) -> None:
     c = sub.add_parser("check", help="check a workspace directory",
                        description="Check a workspace directory and report findings.")
     c.add_argument("workspace", help="the workspace directory (holds _quarto.yml or evidence.yml)")
-    c.add_argument("--sources", metavar="DIR|FILE",
+    c.add_argument("--sources", metavar="DIR|FILE", action="append",
                    help="local source text for E6: a directory of <cite>.txt / <corpus_id>.txt "
-                        "files, a Theorizer paperstore.json, or an AutoDiscovery index.json")
+                        "files, an Asta paperstore.json, or an AutoDiscovery index.json; "
+                        "repeat to try several in order")
     c.add_argument("--json", metavar="OUT", help="write the version-1 JSON report here")
     c.add_argument("--no-annotations", action="store_true",
                    help="do not print GitHub annotation lines")
