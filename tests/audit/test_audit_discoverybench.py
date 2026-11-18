@@ -76,3 +76,43 @@ def test_permuted_target_is_deterministic(tmp_path):
 
 def by_q(sc):
     return min(t.q for t in sc.tests if t.q is not None)
+
+
+# derived gold (rules v0.2) ------------------------------------------------------------
+
+def _nl_task(tmp_path, question, hypothesis=""):
+    from consilience_ai2.audit.discoverybench import Task
+    return Task("t", "train", tmp_path / "m.json", tmp_path / "data.csv", None, [],
+                ["conflict_count", "conflict_count_last_decade", "number_of_ziggurats",
+                 "conflict_ratio", "age"], False, question=question, hypothesis=hypothesis)
+
+
+def test_mentions_are_whole_words_and_longest_first(tmp_path):
+    from consilience_ai2.audit.discoverybench import mentions
+    cols = ["conflict_count", "conflict_count_last_decade", "age"]
+    got = [c for _, c in mentions("How does the conflict count last decade relate to "
+                                  "average income?", cols)]
+    assert got == ["conflict_count_last_decade"]  # not conflict_count; "age" not in "average"
+    got = [c for _, c in mentions("Conflict-count and AGE.", cols)]
+    assert got == ["conflict_count", "age"]
+
+
+def test_derive_gold_target_is_first_in_question(tmp_path):
+    from consilience_ai2.audit.discoverybench import derive_gold, with_derived_gold
+    t = _nl_task(tmp_path, "Is the conflict ratio related to the number of ziggurats?",
+                 "Cities with more number of ziggurats and a higher conflict count have ...")
+    dg = derive_gold(t)
+    assert dg.usable and dg.target == "conflict_ratio"
+    assert dg.relevant == ["number_of_ziggurats", "conflict_count"]
+    td = with_derived_gold(t, dg)
+    assert td.target == "conflict_ratio" and not td.has_structured_gold
+    assert set(td.relevant) == {"conflict_ratio", "number_of_ziggurats", "conflict_count"}
+
+
+def test_derive_gold_unusable_without_two_columns(tmp_path):
+    from consilience_ai2.audit.discoverybench import derive_gold
+    assert not derive_gold(_nl_task(tmp_path, "Does the conflict ratio change?")).usable
+    assert not derive_gold(_nl_task(tmp_path, "What explains city growth?")).usable
+    # hypothesis only: target is its first mention
+    dg = derive_gold(_nl_task(tmp_path, "What explains it?", "age drives conflict ratio"))
+    assert dg.target == "age" and dg.relevant == ["conflict_ratio"]

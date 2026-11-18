@@ -91,6 +91,7 @@ def save_nodes(nodes_dict_or_list, log_dirname, **kwargs):
             d["deterministic_checks"] = {
                 "tool": data["tool"], "tool_version": data["tool_version"],
                 "rules_version": data["rules_version"], "verdict": n["verdict"],
+                "verdict_level": n["verdict_level"], "notes": n["notes"],
                 "codes": n["codes"], "q_value": n["q_value"],
                 "llm_validity_check": n["llm_validity_check"],
                 "checks": [c for c in n["checks"] if c["severity"] != "info"],

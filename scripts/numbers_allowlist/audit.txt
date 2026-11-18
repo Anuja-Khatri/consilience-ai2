@@ -10,3 +10,11 @@
 1%
 10%
 0.975  # z quantile for a two-sided alpha of 0.05
+# Quoted from released CodeScientist reports in docs/audit.md (the dev false-flag table),
+# not results of this project: discovery 1 "AUC = 0.54"; discovery 3 "29.8 seconds ...
+# 16.9 seconds, a 76% increase"; discovery 5 "SD = 15.8%".
+0.54
+29.8
+16.9
+76%
+15.8%

@@ -23,6 +23,11 @@ Four questions are asked of the code:
   uncheckable instead. The analysis is sound in that direction and incomplete: a
   component whose output is logged anywhere is "used", even if the reported metric does
   not depend on it.
+- ``figure_text_lines`` (A1, rules v0.2): lines of plotting calls (``plot``, ``bar``,
+  ``text``, ``annotate``, ``title``, ``legend``, axis labels...) that write a formatted
+  value into figure text (an f-string with a replacement field, ``str.format`` or ``%``
+  formatting), in code that also calls ``savefig``. A number such a run prints only in a
+  saved figure is in an output the audit cannot read.
 """
 
 from __future__ import annotations
@@ -83,6 +88,13 @@ NONMUTATING_FUNCS = {
     "list", "tuple", "dict", "set", "frozenset", "sum", "min", "max", "abs", "round",
     "enumerate", "zip", "range", "hasattr", "id", "hash", "any", "all", "iter", "format",
 }
+# Plotting calls whose arguments become text in a figure (matplotlib / seaborn names).
+FIGURE_TEXT_CALLS = {
+    "plot", "bar", "barh", "scatter", "hist", "errorbar", "pie", "boxplot", "violinplot",
+    "text", "annotate", "figtext", "title", "suptitle", "set_title", "legend", "xlabel",
+    "ylabel", "set_xlabel", "set_ylabel", "table", "bar_label", "set_text", "lineplot",
+    "barplot", "scatterplot", "histplot", "heatmap",
+}
 _FORMULA_FUNCS = {"ols", "logit", "glm", "mixedlm", "from_formula", "poisson", "probit",
                   "quantreg", "gee", "wls", "negativebinomial"}
 _FORMULA_SKIP = {"C", "I", "Q", "np", "log", "exp", "sqrt", "center", "scale", "standardize",
@@ -110,6 +122,7 @@ class CodeFacts:
     unused_components: list[tuple[str, int, str]] = field(default_factory=list)
     components_checked: int = 0
     r5_uncheckable: str | None = None
+    figure_text_lines: list[int] = field(default_factory=list)
 
 
 def _call_name(func: ast.AST) -> tuple[str | None, str | None]:
@@ -756,6 +769,40 @@ def _unused(tree: ast.Module) -> tuple[list[tuple[str, int, str]], int, str | No
     return out, checked, None
 
 
+def _formats_a_value(e: ast.AST) -> bool:
+    """True when ``e`` contains a string built from a runtime value: an f-string with a
+    replacement field, ``"...".format(...)`` or ``"..." % x``."""
+    for n in ast.walk(e):
+        if isinstance(n, ast.JoinedStr) and any(isinstance(v, ast.FormattedValue)
+                                                for v in n.values):
+            return True
+        if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and \
+                n.func.attr == "format" and isinstance(n.func.value, ast.Constant) and \
+                isinstance(n.func.value.value, str):
+            return True
+        if isinstance(n, ast.BinOp) and isinstance(n.op, ast.Mod) and \
+                isinstance(n.left, ast.Constant) and isinstance(n.left.value, str):
+            return True
+    return False
+
+
+def _figure_text_lines(tree: ast.AST) -> list[int]:
+    """Lines of plotting calls that write a formatted value into a figure, when the code
+    saves figures (``savefig``); empty otherwise."""
+    calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)]
+    if not any(_call_name(c.func)[1] == "savefig" or _call_name(c.func)[0] == "savefig"
+               for c in calls):
+        return []
+    lines = set()
+    for c in calls:
+        name, attr = _call_name(c.func)
+        if (attr or name) not in FIGURE_TEXT_CALLS:
+            continue
+        if any(_formats_a_value(a) for a in list(c.args) + [k.value for k in c.keywords]):
+            lines.add(c.lineno)
+    return sorted(lines)
+
+
 def analyse(code: str) -> CodeFacts:
     """All static facts about ``code``; ``ok`` is False when it does not parse."""
     try:
@@ -766,6 +813,7 @@ def analyse(code: str) -> CodeFacts:
     facts.literals = _literals(tree)
     facts.n_constants = _n_constants(tree)
     facts.columns_read, facts.columns_created, facts.uses_dummies = _columns(tree)
+    facts.figure_text_lines = _figure_text_lines(tree)
     try:
         facts.unused_components, facts.components_checked, facts.r5_uncheckable = _unused(tree)
     except RecursionError:  # pragma: no cover - pathological nesting

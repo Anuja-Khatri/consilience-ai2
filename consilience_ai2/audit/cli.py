@@ -3,7 +3,8 @@
     consilience-ai2 audit run OUT_DIR [--format autodiscovery|codescientist]
                                       [--metadata FILE] [--json OUT]
 
-Writes ``OUT_DIR/validity_audit.json`` (or ``--json OUT``), prints one line per node and
+Writes ``OUT_DIR/validity_audit.json`` (or ``--json OUT``), prints one line per node
+(``<id>: pass|flag(warning)|flag(error)|refuse q=<q> <codes>``) and
 GitHub annotation lines for errors and warnings. Exit code 0 when no node has an
 error-severity finding, 1 otherwise (or on unreadable input), 2 on a usage error.
 """
@@ -55,11 +56,12 @@ def run(args: argparse.Namespace) -> int:
     report.write(out)
     for n in data["nodes"]:
         q = "" if n["q_value"] is None else f" q={n['q_value']:.3g}"
-        print(f"{n['id']}: {n['verdict']}{q} {' '.join(n['codes'])}".rstrip())
+        print(f"{n['id']}: {n['verdict_level']}{q} {' '.join(n['codes'])}".rstrip())
     for line in report.annotations():
         if not line.startswith("::notice"):
             print(line)
-    v = data["verdicts"]
-    print(f"audit: {data['n_nodes']} nodes, {v['pass']} pass, {v['flag']} flag, "
+    v = data["verdict_levels"]
+    print(f"audit ({data['rules_version']}): {data['n_nodes']} nodes, {v['pass']} pass, "
+          f"{v['flag(warning)']} flag(warning), {v['flag(error)']} flag(error), "
           f"{v['refuse']} refuse; p values parsed for {data['n_with_pvalue']}; wrote {out}")
     return report.exit_code()
