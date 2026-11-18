@@ -44,7 +44,7 @@ tests below).
 | 3c | (v0.2) the source claims no effect | ``undecided`` (source_null) | ``inconclusive`` |
 | 3 | D1 is not ``decidable`` | ``undecided`` (the D1 class) | ``inconclusive`` |
 | 4 | a threshold, the effect, the direction or p cannot be read | ``undecided`` (named) | ``inconclusive`` |
-| 5 | ``sig`` and ``s*e < 0`` | ``opposite_effect`` | ``not_reproduced`` |
+| 5 | ``sig`` and ``s*e < 0``; (v0.2, one-sided) or ``1 - p < alpha`` and ``s*e < 0`` | ``opposite_effect`` | ``not_reproduced`` |
 | 6 | ``sig`` and ``s*e > 0`` and ``abs(e) >= m`` | ``supported`` | ``reproduced`` |
 | 7 | ``s*e > 0`` and exactly one of ``sig``, ``abs(e) >= m`` | ``undecided`` (misses_threshold) | ``inconclusive`` |
 | 8 | not ``sig``, and ``s*e <= 0`` or ``abs(e) < m``, and a positive control passed | ``rejected`` | ``not_reproduced`` |
@@ -366,13 +366,18 @@ def _minimum_effect(rec: Parsed, alpha: float, backend: str, rule: str = DEFAULT
     sig = p < alpha
     big = abs(e) >= m
     se = s * e
+    # v0.2, one-sided: "significant in the other direction" is read with the one-sided p
+    # in the other direction (1 - p); a one-sided test in s alone can never show it
+    sig_other = rule == "v0.2" and rec.sides == 1 and se < 0 and (1 - p) < alpha
     det: dict[str, Any] = {"mode": "minimum_effect", "effect": _r(e), "scale":
                            rec.minimum_effect_scale, "minimum_effect": m, "p": _r(p),
                            "p_from": p_from, "alpha": alpha, "sides": rec.sides,
                            "direction": "positive" if s > 0 else "negative",
                            "significant": sig, "meets_minimum_effect": big, "rule": rule,
                            **cdet}
-    if sig and se < 0:
+    if sig_other:
+        det["p_other_direction"] = _r(1 - p)
+    if (sig and se < 0) or sig_other:
         return Verdict("opposite_effect", "not_reproduced", None, det)
     if sig and se > 0:
         if big:

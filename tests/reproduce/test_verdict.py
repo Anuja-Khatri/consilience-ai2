@@ -360,3 +360,19 @@ def test_v02_no_complement_at_zero_effect(record):
     f, v = v1(rec)
     assert v["outcome_label"] == "rejected"     # not significant; the control passed
     assert f.details["p"] == 1.0 and f.details["p_from"] == "record"
+
+
+def test_v02_one_sided_opposite_effect(record):
+    # negative source (significant in its own direction); the rerun is significantly
+    # positive: one-sided in the source's direction it is not significant, but it is
+    # significant in the other direction, so it is an opposite effect
+    base = {"direction": "positive", "thresholds": {"sides": 1},
+            "source": {"value": -0.31, "effect_size": {"value": -0.31}, "p": 0.999},
+            "reproduction": {"value": 0.27, "effect_size": {"value": 0.27}, "p": 0.001}}
+    f, v = v1(record(base))
+    assert (v["outcome_label"], v["verdict"]) == ("opposite_effect", "not_reproduced")
+    assert f.details["p_other_direction"] == pytest.approx(0.001)
+    # v0.1 reads the declared direction: supported
+    assert label(record(base), rule="v0.1") == ("supported", "reproduced")
+    # not significant either way: not an opposite effect
+    assert label(record(base, reproduction={"p": 0.3}))[0] != "opposite_effect"
