@@ -21,8 +21,8 @@ out.
 | E4 | An evidence entry is referenced by no span | yes |
 | E5 | `provenance` is malformed: `method` not an exact `asta` subcommand, `corpus_id` not an integer, `url` not http/https/asta, `retrieved` not an ISO date | yes |
 | E6 | Quote verbatim in local source text: `FOUND` (receipt), `NOT_FOUND` (fails), `UNCHECKABLE` (no local text) | only `NOT_FOUND` |
-| W1 | A number in the claim is not in the quote | no (warning) |
-| W2 | The claim is assertive where the quote is hedged (fixed word list) | no (warning) |
+| W1 | A number in the claim is not in the quote (on by default) | no (warning) |
+| W2 | The claim is assertive where the quote is hedged (fixed word list); opt-in with `--with-w2` | no (warning) |
 
 ## Procedure
 
@@ -38,19 +38,21 @@ out.
    name. For `E6 NOT_FOUND`, copy the quote again from the source; never edit a quote
    to make it match something it does not say.
 3. **Treat W1 and W2 as prompts to read, not verdicts.** They are lexical. On a
-   hand-checked sample, about half of the W1 flags and fewer of the W2 flags were a real
-   overreach. A W1 number may be a name (`Industry 4.0`), a figure reference, or a
-   difference the reader can compute; a W2 hedge in the source may be about something
-   else. When the claim
-   does overstate the quote, reword the claim. For whether the quote supports the claim
+   hand-checked sample, about half of the W1 flags and about a third of the W2 flags were
+   a real overreach, so W1 runs by default and W2 is opt-in: add `--with-w2` to run it.
+   A W1 number may be a name (`Industry 4.0`), a figure reference, or a difference the
+   reader can compute; a W2 hedge in the source may be about something else. When the
+   claim does overstate the quote, reword the claim. For whether the quote supports the claim
    at all, load `asta-tools:check-claims`.
 4. **Wire it into `make check`** when the project wants it on every PR: copy
    `assets/evidence-receipts.mk` into the project (for example next to the Makefile) and
    add `include evidence-receipts.mk` to the project's Makefile, beside its other
    project-owned checks. It adds `evidence-receipts` as a prerequisite of `check`.
    Settings: `CONSILIENCE_AI2` (the command), `RECEIPTS_SOURCES` (passed as
-   `--sources`), `RECEIPTS_REPORT` (the JSON report path). Then run `make check`.
+   `--sources`), `RECEIPTS_REPORT` (the JSON report path), `RECEIPTS_FLAGS` (for example
+   `--with-w2`). Then run `make check`.
 
 Exit code: 0 with no error finding, 1 on any error, 2 on a usage error. Add
-`--fail-on-warnings` to fail on W1 and W2 too. The JSON report (version 1) lists the
-inputs with their SHA-256, every finding with its receipt, and summary counts.
+`--fail-on-warnings` to fail on W1 (and on W2 when `--with-w2` is given) too. The JSON
+report (version 1) lists the inputs with their SHA-256, every finding with its receipt,
+and summary counts.

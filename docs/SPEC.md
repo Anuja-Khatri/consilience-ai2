@@ -113,7 +113,7 @@ sit beside these.
 | E5 | Provenance format: `method` an exact `asta …` subcommand, `corpus_id` an integer, `url` scheme http, https or asta, `retrieved` an ISO date |
 | E6 | Quote not verbatim in the local source after the normalisation of section 3. Outcome `FOUND` (with SHA-256 and offsets), `NOT_FOUND`, or `UNCHECKABLE` (no local text) |
 | W1 | A number in the claim or span that is absent from the quote or cited passage (number overreach) |
-| W2 | A certainty upgrade from quote to claim, from a fixed, published word list (hedged to assertive, for example "may", "suggests", "associated" to "shows", "causes", "proves") |
+| W2 | A certainty upgrade from quote to claim, from a fixed, published word list (hedged to assertive, for example "may", "suggests", "associated" to "shows", "causes", "proves"). Opt-in (`--with-w2`) since 0.2.0: on a hand-checked sample only about a third of its flags were real overreach |
 | T1 | Theorizer: an evidence ID cited by a law that resolves to no evidence record |
 | T2 | Theorizer: a law with an empty scope or an empty evidence list |
 

@@ -45,9 +45,13 @@ Checks an asta-plugins workspace as Quarto and its evidence filter read it: unkn
 integer `corpus_id`, an http/https/asta URL, an ISO date), and whether each quote is
 verbatim in local source text after a fixed, versioned normalisation (E6: `FOUND` with
 SHA-256 and offsets, `NOT_FOUND`, or `UNCHECKABLE` without local text). Two warnings:
-a number in the claim that the quote does not support (W1) and an assertive claim over
-a hedged quote, from a fixed word list (W2). Adapters read Theorizer's released export
-(T1 dangling evidence IDs, T2 empty scope or evidence) and SciArena-Eval citations.
+a number in the claim that the quote does not support (W1, on by default) and an
+assertive claim over a hedged quote, from a fixed word list (W2, opt-in with
+`--with-w2`). W2 is opt-in because on a hand-checked sample only about a third of its
+flags were real overreach (W1: about half). The W1/W2 rules v0.2 are the default;
+`--rules v0.1` selects the frozen rules of the preregistered SciArena test. Adapters read
+Theorizer's released export (T1 dangling evidence IDs, T2 empty scope or evidence) and
+SciArena-Eval citations.
 
 ```bash
 consilience-ai2 receipts check examples/receipts/seeded \
@@ -56,14 +60,18 @@ consilience-ai2 receipts check examples/receipts/seeded \
 
 ```text
 ::error file=defects.qmd,line=7::E1 .ev span references unknown key "d-missing-key"
+...
 ::error file=defects.qmd,line=23::E6 NOT_FOUND: the quote is not verbatim in file:smith2024.txt
-::warning file=defects.qmd,line=29::W2 certainty upgrade: claim says causes; quote says may, associated
+::warning file=defects.qmd,line=25::W1 number in the claim not in the quote: 91.2%25
+...
 ::error file=evidence.yml,line=66::E5 provenance.method 'asta search papers' is not an exact asta subcommand
 ...
-receipts: 26 spans, 20 entries; 14 errors, 3 warnings, 22 receipts
+receipts: 26 spans, 20 entries; 14 errors, 2 warnings, 22 receipts
 ```
 
-Exit code 1 (errors). The clean workspace, `examples/receipts/clean`, passes with exit
+`%25` is how a GitHub annotation escapes `%`. Add `--with-w2` to also get the planted
+certainty upgrade (`::warning file=defects.qmd,line=29::W2 certainty upgrade: claim says
+causes; quote says may, associated`; 3 warnings). Exit code 1 (errors). The clean workspace, `examples/receipts/clean`, passes with exit
 code 0. A receipt in the JSON report:
 
 ```json
@@ -93,22 +101,27 @@ consilience-ai2 audit run examples/audit/autodiscovery/synthetic_run --json /tmp
 
 ```text
 node_2_0: pass ...
-node_2_1: refuse ... A1
+node_2_1: flag(error) ... A1
 ...
-node_2_4: flag A4
+node_2_4: flag(error) A4
 ...
 node_2_11: refuse U1
+...
 ::error file=mcts_node_2_1.json,line=1::A1 0.42 is not printed in the run's output or code at the printed precision
 ::error file=mcts_node_2_10.json,line=5::R5 function 'build_interaction_features' is used but nothing it computes reaches any printed or saved output
+...
 ::error file=mcts_node_2_3.json,line=5::A3 column 'household_size' is read by the code but is not in the dataset metadata
+...
 ::error file=mcts_node_2_8.json,line=1::R1 the only comparator named is random or chance
 ...
-audit: 12 nodes, 1 pass, 8 flag, 3 refuse; p values parsed for 10; wrote /tmp/validity_audit.json
+audit (audit-rules-2): 12 nodes, 2 pass, 3 flag(warning), 6 flag(error), 1 refuse; p values parsed for 10; wrote /tmp/validity_audit.json
 ```
 
-One line per node (`<id>: pass|flag|refuse q=<q> <codes>`, with `...` above standing
-for the q values and the lines left out), then GitHub annotation lines, then a summary.
-Exit code 1 (error-severity findings).
+One line per node (`<id>: pass|flag(warning)|flag(error)|refuse q=<q> <codes>`, with
+`...` above standing for the q values and the lines left out), then GitHub annotation
+lines, then a summary. Exit code 1 (error-severity findings). The rules are v0.2
+(`audit-rules-2`): severities recalibrated on the development set, A7 (no effect size) an
+info note, A1 tiers, R2 split.
 
 The run in `examples/audit/autodiscovery/` is **synthetic**: no AutoDiscovery run outputs
 are public, so it was written from the released node schema with one defect planted per
@@ -140,8 +153,29 @@ wrote /tmp/verdict.json
 
 The numbers support the reproduction, and the run still exits 1: the example record was
 committed with its thresholds and its result in the same commit, so P1 cannot credit
-the thresholds as fixed first. In a real run, commit the thresholds before the result.
-The other records in `examples/reproduce/records/` show an underpowered test, a
+the thresholds as fixed first. In a real run, commit the thresholds before the result,
+as the demo does: it builds a scratch git repository, commits the plan and thresholds
+first and the result second, and exits 0.
+
+```bash
+python examples/reproduce/demo_commit_order.py
+```
+
+```text
+c1f75ef plan: test and thresholds, before the run
+a75b596 result: reproduction numbers
+::notice file=committed_first.yaml,line=3::P2 hypothesis copy: verbatim
+::notice file=committed_first.yaml,line=19::D1 decidability: decidable
+::notice file=committed_first.yaml,line=19::F1 faithfulness: same_quantity
+::notice file=committed_first.yaml,line=35::P1 commit order: committed_first
+::notice file=committed_first.yaml,line=35::V1 verdict from the numbers: reproduced (supported)
+{"decidability": "decidable", "faithfulness": "same_quantity", "outcome_label": "supported", "verdict": "reproduced"}
+wrote reproduction_verdict.json
+exit 0
+```
+
+Since v0.2 the verdict reads the source's finding: the expected direction is the source
+effect's sign (`--rule v0.1` for the declared direction). The other records in `examples/reproduce/records/` show an underpowered test, a
 substitution, a proxy that is rejected, and a unit mismatch. Doc:
 [docs/reproduce.md](docs/reproduce.md).
 
@@ -155,24 +189,27 @@ with n, intervals and sources: [docs/RESULTS.md](docs/RESULTS.md).
 
 | Tool | Data | Result | n | Label |
 |---|---|---|---|---|
-| receipts | SciArena-Eval votes | **Null.** The response with the higher W1+W2 flag rate lost the human vote in 50.09% of votes (95% CI 45.9% to 54.27%), sign-test p = 1.0 | 569 | held-out |
+| receipts | SciArena-Eval votes | **Null.** The response with the higher W1+W2 flag rate (rules v0.1) lost the human vote in 50.09% of votes (95% CI 45.9% to 54.27%), sign-test p = 1.0 | 569 | held-out |
 | receipts | Theorizer laws (released export) | T1: 1.36% of cited (law, evidence ID) pairs resolve to no evidence record, all through the export's fallback link | 14343 | descriptive |
 | receipts | Theorizer laws | T2: 0.88% of laws have an empty scope and an empty evidence list, all in the parametric accuracy-focused condition | 4187 | descriptive |
-| receipts | Theorizer laws | W1: 37.78% state a number absent from their cited records; 84.62% in the novelty-focused condition, whose laws are quantitative predictions by design | 1887 | descriptive |
-| receipts | SciArena-Eval citations | all but one of 31820 inline citations resolve to a listed passage; W1 1.42% and W2 1.4% of resolved citations | 31819 | descriptive |
+| receipts | Theorizer laws | W1 (rules v0.1): 37.78% state a number absent from their cited records; 84.62% in the novelty-focused condition, whose laws are quantitative predictions by design | 1887 | descriptive |
+| receipts | SciArena-Eval citations | all but one of 31820 inline citations resolve to a listed passage; W1 1.42% and W2 1.4% of resolved citations (rules v0.1; 1.5% and 1.65% under v0.2) | 31819 | descriptive |
+| receipts | Theorizer and SciArena flags, read by hand | precision W1 54% (v0.1) and 56% (v0.2); W2 26% and 32%; differences inside the intervals | 50 per check and version | dev |
 | receipts | seeded synthetic workspace | 100% of planted defects found, 0 findings on the clean controls | 17 | synthetic |
 | audit | CodeScientist full-50 reruns | H1 **not supported in the predicted direction**: runs the audit flags agreed more with their reruns (0.4408) than runs it passed (0.3433); stratified permutation p = 0.0845 | 80 | held-out |
 | audit | CodeScientist external ratings | H2 **null**: soundness 0.6296 flagged against 0.6667 passed, p = 0.8561 (same papers as the dev set) | 20 | exploratory |
-| audit | CodeScientist Table 4 discoveries | 9 of 13 rejected discoveries flagged by a code meant for the reviewers' reason; 3 of 6 accepted carry an error-severity code | 19 | dev |
-| audit | DiscoveryBench synthetic tasks (A5) | Benjamini–Hochberg cuts distractor-column hits from 7.43% to 2.74% of tests (63.14% fewer); with a permuted target, tasks with any hit fall from 73.25% to 3.82% | 4456 tests | descriptive / synthetic |
+| audit | CodeScientist v0.2 held-out (the 13 unused full-50 runs) | **not testable**: the v0.2 audit flags 1 of 13 at error severity, below the preregistered minimum of 3 per group | 13 | held-out |
+| audit | CodeScientist Table 4 discoveries | v0.1: 9 of 13 rejected discoveries flagged by a code meant for the reviewers' reason; 3 of 6 accepted carry an error-severity code. v0.2: 8 of 13 caught by an intended code; 8 of 13 rejected and 3 of 6 accepted carry an error. Of those 3, 2 are genuine issues the reviewers did not flag (discovery 5's SD 15.8% appears in no output; recomputed it is 16.2% sample / 16.0% population. Discovery 3 says "significantly" with no test) and 1 is a new R2 error (2 support / 2 refute reruns) | 19 | dev |
+| audit | DiscoveryBench synthetic tasks (A5) | Benjamini–Hochberg cuts distractor-column hits from 7.43% to 2.74% of tests (63.14% fewer); with a permuted target, tasks with any hit fall from 73.25% to 3.82%. Derived set (720 queries without a machine-readable relation, 483 scanned): BH cuts distractor hits from 7.42% to 2.79%; combined coverage 70.87% of queries | 4456 / 15356 tests | descriptive / synthetic |
 | audit | CodeScientist resistor report | its success-rate table reproduces exactly from its `results.json`, 9 of 9 cells | 9 | descriptive |
-| reproduce | CodeScientist reruns as reproductions | numbers recoverable in both runs for 36.92% of pairs (95% CI 26.23% to 49.08%); verdicts 4 reproduced, 0 not reproduced, 61 inconclusive; 27.69% agreement with CodeScientist's own run labels | 65 | descriptive |
+| reproduce | CodeScientist reruns as reproductions | numbers recoverable in both runs: 36.92% (v0.1) → 46.15% (v0.2, 95% CI 34.59% to 58.15%); verdicts 4/0/61 (v0.1) → 2 reproduced, 2 not reproduced, 61 inconclusive (v0.2, the expected direction is the source effect's sign; the 2 former "reproduced" pairs contradict their own source run); 27.69% agreement with CodeScientist's own run labels in both | 65 | descriptive |
 | reproduce | DiscoveryBench planted effects and nulls, held-out row halves | nulls not reproduced or inconclusive 97.77%; planted effects reproduced 47.77% overall and 96.61% where D1 calls the test decidable | 1569 / 358 / 177 | synthetic |
 
 What these do not show is in [docs/LIMITATIONS.md](docs/LIMITATIONS.md). In short: no
 real AutoDiscovery run is public, so the AutoDiscovery adapter is tested on synthetic
-fixtures only; the audit's dev set is not blind and its held-out prediction failed;
-W1/W2 are lexical; E6 needs local source text; parsing is regex-level; DiscoveryBench's
+fixtures only; the audit's dev set is not blind, its v0.1 held-out prediction failed and
+the v0.2 held-out was not testable; W1/W2 are lexical (on a hand-checked sample about
+half of W1 flags and a third of W2 flags were real); E6 needs local source text; parsing is regex-level; DiscoveryBench's
 planted/null labels are impure; samples are small; and most CodeScientist rerun pairs
 lack the numbers a verdict needs.
 
@@ -197,6 +234,10 @@ python analyses/audit/run_all.py
 python analyses/reproduce/run.py
 make lock        # registry, results table and numbers lock
 ```
+
+`fetch all` fetches every source. Fetching one at a time, note that the reproduction
+analysis also needs `codescientist-example-experiments`
+(`consilience-ai2 fetch codescientist-example-experiments`).
 
 Sources, licences and citations: `consilience_ai2/fetch/sources.yaml` and
 [NOTICE](NOTICE).

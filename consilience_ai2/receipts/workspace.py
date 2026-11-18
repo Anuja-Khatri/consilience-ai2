@@ -20,8 +20,11 @@ Codes (severity): E0 unreadable input (error) or a file named in ``_quarto.yml``
 matter that does not exist (warning), E1 unknown key (error), E2 no resolvable
 quote (error), E3 ``cite`` not in the bibliography (error), E4 orphaned entry (error),
 E5 provenance format (error), E6 verbatim check (``NOT_FOUND`` error; ``FOUND`` and
-``UNCHECKABLE`` info), W1 number overreach (warning), W2 certainty upgrade (warning).
-The run fails (exit 1) on any error.
+``UNCHECKABLE`` info), W1 number overreach (warning), W2 certainty upgrade (warning,
+opt-in: ``with_w2=True``). The run fails (exit 1) on any error.
+
+W2 is off by default: on a hand-checked sample only about a third of its flags were real
+overreach. W1 is on by default, as a warning (about half of its flags were real).
 """
 
 from __future__ import annotations
@@ -61,6 +64,7 @@ _BIB_NOT_ENTRY = {"string", "preamble", "comment"}
 _ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _SCHEME = re.compile(r"^([A-Za-z][A-Za-z0-9+.\-]*):")
 _SUBWORD = re.compile(r"^[a-z][a-z0-9-]*$")
+CHECKS = ("E0", "E1", "E2", "E3", "E4", "E5", "E6", "W1")  # W2 is opt-in (with_w2)
 
 
 # --------------------------------------------------------------------------- data
@@ -169,10 +173,12 @@ def valid_iso_date(s: str) -> bool:
 class WorkspaceChecker:
     """Collects inputs, then runs every check. Use ``check_workspace`` for one call."""
 
-    def __init__(self, root: Path, sources: SourceStore, rules: str = DEFAULT_RULES) -> None:
+    def __init__(self, root: Path, sources: SourceStore, rules: str = DEFAULT_RULES,
+                 with_w2: bool = False) -> None:
         self.root = root
         self.sources = sources
         self.rules = check_rules(rules)
+        self.with_w2 = with_w2
         self.report = Report(tool=TOOL, tool_version=__version__)
         self.store: dict[str, Entry] = {}
         self.bib: set[str] = set()
@@ -351,6 +357,8 @@ class WorkspaceChecker:
                 "number in the claim not in the quote: " + ", ".join(t.text for t in w1.unsupported),
                 file=ev.file, line=s.line, key=ev.key, receipt=receipt,
                 details={"claim": claim, **w1.details()}))
+        if not self.with_w2:
+            return
         w2 = certainty_upgrade(claim, ev.quote, rules=self.rules)
         if w2.flagged:
             self.report.add(Finding(
@@ -457,6 +465,7 @@ class WorkspaceChecker:
             "checked_spans": len(self.spans),
             "entries": len(self.store) + len(self.doc_entries),
             "sources": self.sources.describe(),
+            "checks": list(CHECKS) + (["W2"] if self.with_w2 else []),
             "rules": {
                 "w1_w2_rules": self.rules,
                 "normalisation": NORMALISATION_VERSION,
@@ -470,9 +479,12 @@ class WorkspaceChecker:
 
 def check_workspace(root: str | Path,
                     sources: str | Path | list[str | Path] | SourceStore | None = None,
-                    rules: str = DEFAULT_RULES) -> Report:
-    """Run E0-E6, W1 and W2 on the workspace at ``root``; return the report.
+                    rules: str = DEFAULT_RULES, with_w2: bool = False) -> Report:
+    """Run E0-E6 and W1 (and W2 when ``with_w2``) on the workspace at ``root``; return
+    the report.
 
-    ``rules`` selects the W1/W2 rule version (``v0.1`` or ``v0.2``, the default)."""
+    ``rules`` selects the W1/W2 rule version (``v0.1`` or ``v0.2``, the default).
+    ``with_w2`` turns on the W2 certainty-upgrade check, which is off by default: on a
+    hand-checked sample only about a third of its flags were real overreach."""
     store = sources if isinstance(sources, SourceStore) else open_sources(sources)
-    return WorkspaceChecker(Path(root).resolve(), store, rules).run()
+    return WorkspaceChecker(Path(root).resolve(), store, rules, with_w2).run()

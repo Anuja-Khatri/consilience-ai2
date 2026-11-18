@@ -10,19 +10,26 @@ component's own document has the full detail: [receipts](receipts.md),
 - **No real AutoDiscovery run is public.** The AutoDiscovery adapter of the audit is
   tested only on synthetic fixtures written from the released schema
   (`MCTSNode.to_dict` at asta-autodiscovery commit 30e080f). They show that the adapter
-  reads the format, not that the rules transfer to real AutoDiscovery runs. The in-run
-  wrapper (`examples/audit/run_with_audit.py`) was exercised only against those
-  fixtures; no AutoDiscovery run was made.
+  reads the format, not that the rules transfer to real AutoDiscovery runs. The search
+  for public outputs of real runs (repositories, Hugging Face, the paper's ancillary
+  files) is documented in [audit.md](audit.md) under "Real AutoDiscovery outputs"; it
+  found none. The in-run wrapper (`examples/audit/run_with_audit.py`) was exercised only
+  against those fixtures; no AutoDiscovery run was made.
 - **The audit's development set is not blind.** The rules were written knowing the
   CodeScientist reviewers' rejection reasons for the 19 discoveries of the paper's
   Table 4. The dev numbers measure fit to the cases that motivated the rules, not
   generalisation. The external-ratings test (H2) uses the same 20 papers, so it is
   labelled exploratory, not held-out.
-- **The audit's held-out prediction failed.** Preregistered H1 predicted that runs the
+- **The audit's held-out prediction failed (rules v0.1), and v0.2 has no held-out
+  result.** Preregistered H1, scored with the frozen v0.1 rules, predicted that runs the
   audit flags agree less with their reruns. They agreed more (0.4408 against 0.3433),
   and the difference is not significant (stratified permutation p = 0.0845). H2 is null.
-  The audit's value has to rest on the specific, receipt-backed defects it names, not on
-  predicting replication.
+  The v0.2 held-out test (H3, preregistered on the 13 full-50 runs no version had
+  audited) was not testable: v0.2 flags 1 of the 13 at error severity, below the
+  preregistered minimum of 3 per group. No other unused public data exists: every other
+  CodeScientist run with released files was used in development or in the v0.1 test,
+  and no real AutoDiscovery run is public. The audit's value has to rest on the
+  specific, receipt-backed defects it names, not on predicting replication.
 - **The receipts held-out test is a null.** On SciArena, the response with the higher
   W1+W2 flag rate lost the human vote in 50.09% of 569 included votes (sign-test
   p = 1.0). This is no evidence of a difference at that sample size; it is not evidence
@@ -33,10 +40,26 @@ component's own document has the full detail: [receipts](receipts.md),
   Effects of the size these data can show are noisy.
 - **Low coverage on CodeScientist reruns.** Read as reproductions, only 36.92% of the 65
   (source, rerun) pairs (95% CI 26.23% to 49.08%) have the numbers the verdict needs in
-  both runs' results files. The rest are classed `no_data`, so most verdicts there are
-  `inconclusive` by construction. The reruns are reruns in the same environment, not
+  both runs' results files under v0.1, and 46.15% (95% CI 34.59% to 58.15%) under the
+  v0.2 extraction, which also reads the files a run saved for its report and its log.
+  The rest are classed `no_data`, so most verdicts there are `inconclusive` by
+  construction; 18 pairs have no usable test at all (14 with no test output in any final
+  file, 4 with a p value but no estimate or n), and a verdict on them would need a test
+  this analysis would have to invent. The reruns are reruns in the same environment, not
   independent data, and the thresholds were fixed by this analysis, not by the runs'
-  authors.
+  authors. The batch without expert notes is not released as run outputs (only tables of
+  prose summaries), so it is counted, not judged.
+- **The reproduction verdict rule changed after results were seen.** Verdict rule v0.2
+  (the expected direction is the sign of the source effect) was decided after the v0.2
+  extraction results were seen, and it changes conclusions (2 of the 4 v0.1 "reproduced"
+  pairs become `not_reproduced`). It is recorded as a deviation in
+  `prereg/reproduce/cs_extraction_v0_2_deviations.md`; the v0.1 numbers keep the v0.1
+  rule, and the v0.2 extraction is also reported under the v0.1 rule to separate the two
+  changes.
+- **One-sided p values read in the other direction.** When a record's one-sided p is in
+  the declared direction and the verdict rule needs the other direction, v0.2 uses
+  `1 - p`. For a one-sided bootstrap p this is a continuous approximation: ties at a zero
+  difference break it, which is why it is not used at an effect of exactly 0.
 - **Labels from other systems are not ground truth.** CodeScientist's per-run
   support/refute/inconclusive judgements and its consistency labels are language-model
   readings of each run's write-up (released data, not produced here). The audit's R2 and
@@ -48,7 +71,11 @@ component's own document has the full detail: [receipts](receipts.md),
   reproduced nulls are significant on the whole table), and a distractor hit in the A5
   scan is "outside the gold relation", not necessarily false. Only the permuted-target
   control is false by construction. 720 of the 903 synthetic queries have no
-  machine-readable gold relation and are not used by the A5 scan.
+  machine-readable gold relation. 483 of them are now scanned with a relation derived
+  from the query text by a fixed rule (rules v0.2), reported apart: the rule finds real
+  relation columns but often picks the wrong target, so its distractor numbers are less
+  clean than the machine-readable set's. The rest name no usable target and gold column
+  or have a constant target.
 - **Synthetic suites are true by construction.** The seeded workspace (100% recall of
   17 planted defects, 0 false findings on the controls) and the synthetic AutoDiscovery
   run show that the rules do what they say. They do not say how often real outputs have
@@ -57,11 +84,15 @@ component's own document has the full detail: [receipts](receipts.md),
 ## What the checks can and cannot see
 
 - **Lexical, not semantic (receipts W1, W2).** W1 compares numbers and W2 compares words
-  from a fixed, published list. Neither judges meaning or support. A W1 number may come
-  from elsewhere in the paper, a calculation or a unit conversion; a W2 word may be
-  appropriate in context; the lists miss hedges and assertions phrased in other words;
-  negation is read only within two words. Whether a quote supports a claim is out of
-  scope (asta-plugins leaves that to its `check-claims` skill).
+  from a fixed, published list. Neither judges meaning or support. On a hand-checked
+  sample of 50 flags per check and rule version (one annotator, the author of the rules;
+  labelled dev), W1 precision was 54% (v0.1) and 56% (v0.2) and W2 precision 26% and 32%:
+  about half of W1 flags and a third of W2 flags were a real overreach. W2 is therefore
+  opt-in (`--with-w2`); W1 stays on by default as a warning. A W1 number may come from
+  elsewhere in the paper, a calculation or a unit conversion; the most common W2 false
+  alarm is a hedge in the source that is about a different statement; the lists miss
+  hedges and assertions phrased in other words. Whether a quote supports a claim is out
+  of scope (asta-plugins leaves that to its `check-claims` skill).
 - **E6 needs local text.** Without `--sources`, every quote is `UNCHECKABLE`. Quotes are
   compared as written in `evidence.yml` (Markdown in a quote is not rendered), and text
   extracted from a PDF can differ from the published wording in ways the normalisation

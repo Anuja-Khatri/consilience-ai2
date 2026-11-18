@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "consilience-ai2"
-version = "0.1.0"
+version = "0.2.0"
 description = "Deterministic validity checks for agent-produced science: evidence receipts, experiment audit and reproduction verdicts, read from the native file formats of Ai2's Asta tools. Every finding carries a receipt."
 readme = "README.md"
 requires-python = ">=3.11"

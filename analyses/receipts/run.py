@@ -55,7 +55,8 @@ def model_id_redactor():
 def seeded_metrics() -> list[dict]:
     ws = REPO / "examples" / "receipts" / "seeded"
     exp = json.loads((ws / "expected_findings.json").read_text())
-    rep = check_workspace(ws, ws / exp["sources"])
+    # W2 is opt-in in the checker; the planted W2 is counted, so run it explicitly
+    rep = check_workspace(ws, ws / exp["sources"], with_w2="--with-w2" in exp["flags"])
     got = {(f.code, f.severity, f.file, f.line, f.key,
             (f.details or {}).get("outcome") if f.code == "E6" else None)
            for f in rep.findings if f.severity != "info"}
@@ -83,7 +84,7 @@ def seeded_metrics() -> list[dict]:
 
 def asta_example_metrics() -> list[dict]:
     ws = require("asta-plugins") / "examples" / "workspace"
-    rep = check_workspace(ws)
+    rep = check_workspace(ws, with_w2=True)  # W1 and W2 both counted, as registered
     s = rep.summary()["by_severity"]
     src = "fetch:asta-plugins"
     return [

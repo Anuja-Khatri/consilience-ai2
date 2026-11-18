@@ -1,5 +1,61 @@
 # Changelog
 
+## [0.2.0] - 2026-11-18
+
+A fix round on all three tools. Every v0.1 number keeps its value, n and metric id; v0.2
+numbers sit beside them under their own ids. Results: [docs/RESULTS.md](docs/RESULTS.md);
+limits: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
+
+### Fixed
+- **Receipts, Theorizer T1: the cause was misattributed.** The dangling evidence links
+  were attributed to lines of asta-theorizer's `src/Theorizer.py` that assign training
+  extraction IDs; those lines do not write the links. The verified cause is the HTML
+  exporter's silent fallback: `src/ExportTheoryStoreAsHTML.py` line 286 (commit c4802aa)
+  is `extraction_id = uuid_to_extraction_id.get(uuid, uuid)`, so an unmapped ID becomes
+  its own file name and renders as a link to a record that does not exist. Why the IDs
+  are unmapped upstream is not established. The docs, the adapter docstring and the T1
+  caveats say so; a regression test pins the exporter line and an example.
+
+### Changed
+- **Receipts: W1/W2 rules v0.2 are the default** (`--rules v0.1` for the frozen rules of
+  the preregistered SciArena test), and **W2 is opt-in** (`--with-w2`,
+  `check_workspace(..., with_w2=True)`): W2 is opt-in because on a hand-checked sample
+  only about a third of its flags were real overreach. W1 stays on by default, as a
+  warning (about half of its flags were real). Each report records the codes that ran
+  (`checks`). The analyses compute W2 explicitly, so no reported W2 rate changes.
+- **Audit: rules v0.2 (`audit-rules-2`).** Severities recalibrated on the development
+  set (an error is what a reviewer would reject a result for); only U1 refuses; A7 (no
+  effect size) is an info note, not a flag; A1 has tiers (error only when a number is
+  absent; a derived relative change passes; one digit more than printed, or a number
+  possibly only in a saved figure, is a warning); R1 excludes limiting statements ("only
+  slightly better than random"); R2 is split (an error when refuting reruns are at least
+  as many as supporting ones, else a warning); each node has a `verdict_level` (`pass`,
+  `flag(warning)`, `flag(error)`, `refuse`). The v0.1 results
+  are recomputed from the frozen v0.1 rules taken from git. A v0.2 held-out test was
+  preregistered on the 13 full-50 runs no version had audited; it was not testable (1
+  flagged, below the preregistered minimum of 3 per group).
+- **Reproduce: extraction v0.2 and verdict rule v0.2.** The CodeScientist extraction
+  reads the files a run saved for its report and its log as well as `results.json`, with
+  tolerant parsing (preregistered, deviations recorded). Under verdict rule v0.2 (the
+  default) the expected direction is the sign of the source effect, and a source that
+  claims no effect is `undecided(source_null)`; `--rule v0.1` keeps the declared
+  direction. The rule change was decided after the v0.2 extraction results were seen.
+
+### Added
+- A hand-labelled precision sample of W1 and W2 flags (50 per check and rule version,
+  SciArena and Theorizer; one annotator, labelled dev).
+- Receipts sources: the Asta PaperStore JSON format pinned (`theory/paperstore.json`),
+  and `--sources` is repeatable (stores tried in order).
+- Audit A5: a derived set on DiscoveryBench (a target and gold columns named from the
+  query text by a fixed rule) for the queries without a machine-readable relation.
+- Reproduce: a DiscoveryBench sensitivity analysis (Spearman's rho and binned mutual
+  information beside Pearson), derived pairs from prose hypotheses, and a count of the
+  CodeScientist batch whose run outputs are not released.
+- `examples/reproduce/demo_commit_order.py`: commits the thresholds before the result in
+  a scratch repository, so P1 passes and the check exits 0.
+- The audit documents the search for public outputs of real AutoDiscovery runs (none
+  found).
+
 ## [0.1.0] - 2026-11-17
 
 First release: the shared core, data fetch, and the three tools, each measured on data

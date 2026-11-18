@@ -11,7 +11,7 @@
       "name": "consilience-audit",
       "source": "./plugins/consilience-audit",
       "description": "Deterministic, receipt-backed audit of agent-run experiments (AutoDiscovery runs, CodeScientist experiment directories): are the reported numbers in the output, is the n right, is there a real test, effect size, baseline and multiplicity control. Runs beside AutoDiscovery's Validity Check; never calls a model.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Anuja Khatri"
       },
@@ -33,7 +33,7 @@
       "name": "consilience-receipts",
       "source": "./plugins/consilience-receipts",
       "description": "Deterministic evidence receipts for Asta workspaces: unknown .ev keys, missing quotes, citations missing from references.bib, orphaned entries, provenance format, quotes verbatim in local source text (with SHA-256 and offsets), number overreach and certainty upgrades. No model calls.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Anuja Khatri"
       },
@@ -54,7 +54,7 @@
       "name": "consilience-reproduce",
       "source": "./plugins/consilience-reproduce",
       "description": "Reproduction verdicts read from the numbers: the asta-flows secondary-reproduction rubric (faithfulness, decidability, outcome) as deterministic checks, plus commit-order and verbatim-hypothesis checks, with receipts",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Anuja Khatri"
       },

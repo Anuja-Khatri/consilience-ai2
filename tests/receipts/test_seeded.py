@@ -25,12 +25,26 @@ def _expected(seeded):
 
 def test_every_planted_defect_found_exactly(seeded):
     exp, planted, receipts = _expected(seeded)
-    report = check_workspace(seeded, seeded / exp["sources"])
+    assert exp["flags"] == ["--with-w2"]
+    report = check_workspace(seeded, seeded / exp["sources"], with_w2=True)
     got = _items(report)
     got_defects = Counter({k: v for k, v in got.items() if k[1] != "info"})
     got_receipts = Counter({k: v for k, v in got.items() if k[1] == "info"})
     assert got_defects == planted
     assert got_receipts == receipts
+
+
+def test_w2_is_opt_in(seeded):
+    """Without with_w2 the planted W2 is not reported; every other finding is the same."""
+    exp, planted, receipts = _expected(seeded)
+    report = check_workspace(seeded, seeded / exp["sources"])
+    got = _items(report)
+    no_w2 = Counter({k: v for k, v in planted.items() if k[0] != "W2"})
+    assert Counter({k: v for k, v in got.items() if k[1] != "info"}) == no_w2
+    assert Counter({k: v for k, v in got.items() if k[1] == "info"}) == receipts
+    assert "W2" not in report.extra["checks"]
+    on = check_workspace(seeded, seeded / exp["sources"], with_w2=True)
+    assert on.extra["checks"] == ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "W1", "W2"]
 
 
 def test_every_code_is_planted(seeded):
@@ -41,7 +55,7 @@ def test_every_code_is_planted(seeded):
 
 def test_no_finding_on_controls(seeded):
     exp, _, _ = _expected(seeded)
-    report = check_workspace(seeded, seeded / exp["sources"])
+    report = check_workspace(seeded, seeded / exp["sources"], with_w2=True)
     for f in report.findings:
         if f.severity == "info":
             continue
@@ -99,6 +113,12 @@ def test_cli_exit_codes_annotations_and_json(seeded, clean, tmp_path, capsys):
     assert rc == 1
     lines = capsys.readouterr().out.splitlines()
     assert "::error file=defects.qmd,line=7::E1 .ev span references unknown key \"d-missing-key\"" in lines
+    assert not any("::W2 " in ln for ln in lines)  # W2 is opt-in
+    assert any(ln.startswith("::warning file=defects.qmd,line=25::W1 ") for ln in lines)
+    rc = main(["receipts", "check", str(seeded), "--sources", str(seeded / "sources"),
+               "--with-w2"])
+    assert rc == 1
+    lines = capsys.readouterr().out.splitlines()
     assert any(ln.startswith("::warning file=defects.qmd,line=29::W2 ") for ln in lines)
     assert not any(ln.startswith("::notice") for ln in lines)
     assert json.loads(out.read_text())["summary"]["by_severity"]["error"] == 14
@@ -113,7 +133,13 @@ def test_cli_fail_on_warnings_and_usage(seeded, make_ws, tmp_path):
         "index.qmd": '[It proves 3 things]{.ev key="k"}\n',
     })
     assert main(["receipts", "check", str(ws)]) == 0
-    assert main(["receipts", "check", str(ws), "--fail-on-warnings"]) == 1
+    assert main(["receipts", "check", str(ws), "--fail-on-warnings"]) == 1  # W1 on "3"
+    w2_only = make_ws({
+        "evidence.yml": 'evidence:\n  k:\n    quote: "it may help"\n',
+        "index.qmd": '[It proves this]{.ev key="k"}\n',
+    })
+    assert main(["receipts", "check", str(w2_only), "--fail-on-warnings"]) == 0
+    assert main(["receipts", "check", str(w2_only), "--with-w2", "--fail-on-warnings"]) == 1
     assert main(["receipts", "check", str(ws), "--sources", str(tmp_path / "nope")]) == 2
     assert main(["receipts"]) == 2
 

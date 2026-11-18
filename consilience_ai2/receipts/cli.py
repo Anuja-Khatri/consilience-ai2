@@ -2,12 +2,16 @@
 
     consilience-ai2 receipts check <workspace_dir> [--sources DIR|paperstore.json|index.json ...]
                                    [--json OUT] [--no-annotations] [--fail-on-warnings]
-                                   [--rules v0.1|v0.2]
+                                   [--rules v0.1|v0.2] [--with-w2]
+
+W2 (certainty upgrade) is opt-in with ``--with-w2``: on a hand-checked sample only about
+a third of its flags were real overreach. W1 (number overreach) is on by default, as a
+warning; about half of its flags were real.
 
 Prints one GitHub annotation line per error or warning finding (info receipts go to the
 JSON report only, unless ``--all-annotations``), then a one-line summary on stderr.
 Exit code: 0 when there is no error finding, 1 on any error (any E code, including
-``E6 NOT_FOUND``), 2 on a usage error. ``--fail-on-warnings`` also fails on W1 and W2.
+``E6 NOT_FOUND``), 2 on a usage error. ``--fail-on-warnings`` also fails on W1 (and W2 when on).
 """
 
 from __future__ import annotations
@@ -28,7 +32,7 @@ def register(subparsers: argparse._SubParsersAction) -> None:
             "Deterministic checks of an Asta workspace's evidence: unknown keys (E1), "
             "missing quotes (E2), citations missing from the bibliography (E3), orphaned "
             "entries (E4), provenance format (E5), quotes verbatim in local source text "
-            "(E6), number overreach (W1) and certainty upgrades (W2)."
+            "(E6), number overreach (W1) and, with --with-w2, certainty upgrades (W2)."
         ),
     )
     sub = p.add_subparsers(dest="receipts_command", metavar="<subcommand>")
@@ -45,7 +49,11 @@ def register(subparsers: argparse._SubParsersAction) -> None:
     c.add_argument("--all-annotations", action="store_true",
                    help="also print info findings (E6 FOUND / UNCHECKABLE receipts)")
     c.add_argument("--fail-on-warnings", action="store_true",
-                   help="exit 1 on W1/W2 warnings as well as errors")
+                   help="exit 1 on W1 (and W2) warnings as well as errors")
+    c.add_argument("--with-w2", action="store_true",
+                   help="also run W2, the certainty-upgrade check (off by default: on a "
+                        "hand-checked sample only about a third of its flags were real "
+                        "overreach)")
     c.add_argument("--rules", choices=RULE_SETS, default=DEFAULT_RULES,
                    help=f"W1/W2 rule version (default {DEFAULT_RULES}; v0.1 is the frozen "
                         "rule set of the preregistered SciArena test)")
@@ -55,7 +63,8 @@ def register(subparsers: argparse._SubParsersAction) -> None:
 
 def run_check(args: argparse.Namespace) -> int:
     try:
-        report = check_workspace(args.workspace, args.sources, args.rules)
+        report = check_workspace(args.workspace, args.sources, args.rules,
+                                 with_w2=args.with_w2)
     except SourceError as exc:
         print(f"receipts: {exc}", file=sys.stderr)
         return 2

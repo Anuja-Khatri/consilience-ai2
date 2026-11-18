@@ -280,11 +280,15 @@ def test_open_sources_errors(tmp_path):
 def test_w1_w2_in_workspace_both_directions(make_ws):
     ev = ('evidence:\n  a:\n    quote: "accuracy of 87.5% may be associated with size"\n'
           '    cite: good2020\n')
-    r = check_workspace(ws(make_ws, ev, '[accuracy of 87.5%]{.ev key="a"}\n'
-                           '[accuracy of 90%]{.ev key="a"}\n[size causes accuracy]{.ev key="a"}\n'
-                           '[size may affect accuracy]{.ev key="a"}\n'))
+    root = ws(make_ws, ev, '[accuracy of 87.5%]{.ev key="a"}\n'
+                       '[accuracy of 90%]{.ev key="a"}\n[size causes accuracy]{.ev key="a"}\n'
+                       '[size may affect accuracy]{.ev key="a"}\n')
+    r = check_workspace(root, with_w2=True)
     assert [(f.code, f.line) for f in r.findings if f.severity == "warning"] == [
         ("W1", 2), ("W2", 3)]
+    default = check_workspace(root)  # W2 is opt-in
+    assert [(f.code, f.line) for f in default.findings if f.severity == "warning"] == [
+        ("W1", 2)]
     w1 = next(f for f in r.findings if f.code == "W1")
     assert w1.receipt.source == "evidence:a" and w1.details["unsupported"] == ["90%"]
     assert r.exit_code() == 0

@@ -1,7 +1,9 @@
 """Evidence receipts (C1): deterministic, receipt-backed validity checks for evidence.
 
-- ``check_workspace(root, sources=None)``: an Asta workspace (``evidence.yml``,
-  ``references.bib``, ``.qmd`` files with ``.ev`` spans): codes E0-E6, W1, W2.
+- ``check_workspace(root, sources=None, with_w2=False)``: an Asta workspace
+  (``evidence.yml``, ``references.bib``, ``.qmd`` files with ``.ev`` spans): codes E0-E6
+  and W1; W2 only with ``with_w2=True`` (opt-in: on a hand-checked sample only about a
+  third of its flags were real overreach).
 - ``consilience_ai2.receipts.theorizer``: the released Theorizer theories (T1, T2, W1, W2).
 - ``consilience_ai2.receipts.sciarena``: SciArena-Eval responses with inline citations
   (citation resolution, W1, W2 and a verbatim check of quoted text).

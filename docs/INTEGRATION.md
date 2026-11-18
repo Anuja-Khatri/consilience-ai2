@@ -24,8 +24,9 @@ findings inline on the pull request.
 `_quarto.yml`, else `evidence.yml`), the bibliography (`bibliography`, else
 `references.bib`), and every `*.qmd` with `[…]{.ev key="…"}` spans and inline `quote=`.
 `--sources` adds local source text for the verbatim check (E6): a directory of
-`<cite>.txt` / `<corpus_id>.txt`, a Theorizer PaperStore JSON, or an AutoDiscovery
-exploration `index.json`.
+`<cite>.txt` / `<corpus_id>.txt`, an Asta PaperStore JSON (a theory run keeps one at
+`theory/paperstore.json`), or an AutoDiscovery exploration `index.json`. `--sources` is
+repeatable; the stores are tried in the order given.
 
 **Hook.** The workspace Makefile runs its gates under `check`, and a project may add
 its own gates as prerequisites ("when a project grows a new gate, add it here (or as a
@@ -44,10 +45,13 @@ make -C <workspace> check
 consilience-ai2 receipts check . --json _receipts/receipts.json
 ```
 
-and fails on any E code. Settings (set before the include or on the command line):
-`CONSILIENCE_AI2` (the command), `RECEIPTS_DIR` (default `.`), `RECEIPTS_SOURCES`
+and fails on any E code. W1 (number overreach) is reported as a warning; W2 (certainty
+upgrade) is opt-in, because on a hand-checked sample only about a third of its flags were
+real overreach (about half for W1). Settings (set before the include or on the command
+line): `CONSILIENCE_AI2` (the command), `RECEIPTS_DIR` (default `.`), `RECEIPTS_SOURCES`
 (passed as `--sources`), `RECEIPTS_REPORT` (default `_receipts/receipts.json`) and
-`RECEIPTS_FLAGS` (for example `--fail-on-warnings` to fail on W1/W2 too).
+`RECEIPTS_FLAGS` (for example `--with-w2` to run W2, `--fail-on-warnings` to fail on
+warnings too).
 `tests/receipts/test_plugin.py` runs this target against the synthetic workspaces.
 
 **Writes** the report below, plus annotation lines in the style of the workspace's
@@ -71,8 +75,8 @@ consilience-ai2 audit run runs/r1 --metadata data/metadata.json
 # writes runs/r1/validity_audit.json; exit 1 when any node has an error-severity finding
 ```
 
-It prints one line per node (`<id>: pass|flag|refuse q=<q> <codes>`), then annotation
-lines. AutoDiscovery's own "Validity Check" (the node's `review` and `success`) is not
+It prints one line per node (`<id>: pass|flag(warning)|flag(error)|refuse q=<q>
+<codes>`), then annotation lines. AutoDiscovery's own "Validity Check" (the node's `review` and `success`) is not
 judged: its text is hashed and stored beside each verdict as `llm_validity_check`.
 
 **Optional: an in-run wrapper (example only).** `examples/audit/run_with_audit.py`
@@ -129,7 +133,7 @@ same input gives the same bytes. The shared fields come from `consilience_ai2.co
 | Field | Meaning |
 |---|---|
 | `version` | `1` |
-| `tool`, `tool_version` | for example `"consilience-ai2 receipts"`, `"0.1.0"` |
+| `tool`, `tool_version` | for example `"consilience-ai2 receipts"`, `"0.2.0"` |
 | `inputs` | each input read: `path` (relative), `role`, `sha256` |
 | `findings` | each with `code`, `severity` (`error`, `warning`, `info`), `message`, `file`, `line`, `key`, `receipt`, `details` |
 | `receipt` | `source` (what was checked, e.g. `file:smith2024.txt`, `evidence:<key>`, `record:<file>#<field>`), `sha256` of that source, `offset` and `end` (character span, or null), `normalisation` (the text-normalisation version, or null) |
@@ -141,15 +145,19 @@ marks elided values).
 
 ### receipts: the report
 
-Extra fields: `checked_spans`, `entries`, `sources` (kind and size of the local text),
-`rules` (the normalisation, certainty-word and asta-method list versions).
+Extra fields: `checked_spans`, `entries`, `checks` (the codes that ran; `W2` only with
+`--with-w2`), `sources` (kind and size of the local text), `rules` (the W1/W2 rule
+version and the normalisation, number-rule, certainty-word and asta-method list
+versions). From `receipts check examples/receipts/seeded --sources …/sources`:
 
 ```json
-{"version": 1, "tool": "consilience-ai2 receipts", "tool_version": "0.1.0",
+{"version": 1, "tool": "consilience-ai2 receipts", "tool_version": "0.2.0",
  "checked_spans": 26, "entries": 20,
+ "checks": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "W1"],
  "rules": {"asta_methods": "consilience-ai2.asta-methods/1",
-           "certainty_words": "consilience-ai2.certainty/1",
-           "normalisation": "consilience-ai2.normalise/1"},
+           "certainty_words": "consilience-ai2.certainty/2",
+           "normalisation": "consilience-ai2.normalise/1",
+           "numbers": "consilience-ai2.w1/2", "w1_w2_rules": "v0.2"},
  "sources": {"files": 3, "kind": "directory"},
  "inputs": [{"path": "evidence.yml", "role": "evidence", "sha256": "…"}, …],
  "findings": [
@@ -161,12 +169,13 @@ Extra fields: `checked_spans`, `entries`, `sources` (kind and size of the local 
    {"code": "W1", "severity": "warning", "file": "defects.qmd", "line": 25,
     "key": "d-number-overreach",
     "message": "number in the claim not in the quote: …",
-    "details": {"claim": "…", "unsupported": ["…"], "unsupported_offsets": [[15, 20]],
+    "details": {"claim": "…", "number_rules": "consilience-ai2.w1/2",
+                "unsupported": ["…"], "unsupported_offsets": [[15, 20]],
                 "supported": [], "ambiguous": [], "years_skipped": []},
     "receipt": {"source": "evidence:d-number-overreach", "sha256": "…", "offset": null,
                 "end": null, "normalisation": null}}],
- "summary": {"total": 39, "by_severity": {"error": 14, "warning": 3, "info": 22},
-             "by_code": {"E1": 2, "E2": 3, "E3": 2, "E4": 1, "E5": 5, "E6": 23, "W1": 2, "W2": 1}}}
+ "summary": {"total": 38, "by_severity": {"error": 14, "warning": 2, "info": 22},
+             "by_code": {"E1": 2, "E2": 3, "E3": 2, "E4": 1, "E5": 5, "E6": 23, "W1": 2}}}
 ```
 
 E6 `details.outcome` is `FOUND`, `NOT_FOUND` or `UNCHECKABLE`.
@@ -175,28 +184,39 @@ E6 `details.outcome` is `FOUND`, `NOT_FOUND` or `UNCHECKABLE`.
 
 The shared fields, plus the per-node layout of the spec: `run`, `format`
 (`autodiscovery` or `codescientist`), `n_nodes`, `n_with_pvalue`, `parse_coverage`
-(`nodes_checkable`, `nodes_with_pvalue`, `pvalues`, `rate`), `verdicts` (counts),
-`rules_version`, `rules` (each code's rule text and status), `notes`, and `nodes`. Each
-node has its `verdict` (`pass`, `flag`, `refuse`), `codes`, `q_value` (the smallest
-Benjamini–Hochberg q among its p values, or null), `not_applicable`,
+(`nodes_checkable`, `nodes_with_pvalue`, `pvalues`, `rate`), `verdicts` (counts of
+`pass`, `flag`, `refuse`), `verdict_levels` (counts of `pass`, `flag(warning)`,
+`flag(error)`, `refuse`), `verdict_mapping` (the rule behind each level),
+`rules_version` (`audit-rules-2`), `rules` (each code's rule text, severity and status),
+`notes`, and `nodes`. Each node has its `verdict` (`pass`, `flag`, `refuse`) and
+`verdict_level`, `codes`, `notes` (info notes such as A7, which do not flag), `q_value`
+(the smallest Benjamini–Hochberg q among its p values, or null), `not_applicable`,
 `llm_validity_check` (AutoDiscovery's pass flag and the SHA-256 of its review text), and
-`checks`, each with the field and span as written and the receipt flattened in.
+`checks`, each with the field and span as written and the receipt flattened in. From
+`audit run examples/audit/autodiscovery/synthetic_run`:
 
 ```json
-{"version": 1, "tool": "consilience-ai2 audit", "tool_version": "0.1.0",
+{"version": 1, "tool": "consilience-ai2 audit", "tool_version": "0.2.0",
  "run": "synthetic_run", "format": "autodiscovery", "n_nodes": 12, "n_with_pvalue": 10,
  "parse_coverage": {"nodes_checkable": 11, "nodes_with_pvalue": 10, "pvalues": 15, "rate": "…"},
- "verdicts": {"flag": 8, "pass": 1, "refuse": 3}, "rules_version": "audit-rules-1",
+ "rules_version": "audit-rules-2",
+ "verdicts": {"flag": 9, "pass": 2, "refuse": 1},
+ "verdict_levels": {"flag(error)": 6, "flag(warning)": 3, "pass": 2, "refuse": 1},
+ "verdict_mapping": {"flag(error)": "at least one error other than U1",
+                     "flag(warning)": "at least one warning, no error",
+                     "pass": "no error or warning (info only)",
+                     "refuse": "U1: nothing can be checked"},
  "nodes": [
-   {"id": "node_2_1", "verdict": "refuse", "codes": ["A1"], "q_value": "…",
-    "surprising": true, "not_applicable": ["A6", "R1", "R2", "R4"],
+   {"id": "node_2_1", "verdict": "flag", "verdict_level": "flag(error)", "codes": ["A1"],
+    "notes": [], "q_value": "…", "surprising": true,
+    "not_applicable": ["A6", "R1", "R2", "R4"],
     "llm_validity_check": {"success": true, "text_sha256": "c3398653…"},
     "checks": [
-      {"code": "A1", "severity": "error", "field": "analysis", "span": "…",
-       "message": "… is not printed in the run's output or code at the printed precision",
+      {"code": "A1", "severity": "error", "field": "analysis", "span": "0.42",
+       "message": "0.42 is not printed in the run's output or code at the printed precision",
        "file": "mcts_node_2_1.json", "line": 1, "offset": 32, "end": 36,
        "source": "mcts_node_2_1.json#analysis", "sha256": "37a64e60…",
-       "details": {"checked": 2, "value": "…"}}, …]}, …],
+       "details": {"checked": 2, "tier": "absent", "value": "0.42"}}, …]}, …],
  "findings": […], "inputs": […], "summary": {…}}
 ```
 
@@ -210,12 +230,12 @@ Extra fields: `record` (`path`, `sha256`, `id`), `rubric` (the asta-flows source
 `checks_skipped`, and `verdict`:
 
 ```json
-{"version": 1, "tool": "consilience-ai2 reproduce", "tool_version": "0.1.0",
+{"version": 1, "tool": "consilience-ai2 reproduce", "tool_version": "0.2.0",
  "record": {"id": "H1-sleep-recall", "path": "supported.yaml", "sha256": "2c1b2c3b…"},
  "verdict": {"faithfulness": "same_quantity", "decidability": "decidable",
              "outcome": "supported", "outcome_label": "supported", "reason": null,
              "verdict": "reproduced", "commit_order": "thresholds_post_hoc(same_commit)",
-             "hypothesis_copy": "verbatim", "caveats": []},
+             "hypothesis_copy": "verbatim", "verdict_rule": "v0.2", "caveats": []},
  "findings": [
    {"code": "D1", "severity": "info", "file": "supported.yaml", "line": 16,
     "key": "H1-sleep-recall", "message": "decidability: decidable",
@@ -227,10 +247,11 @@ Extra fields: `record` (`path`, `sha256`, `id`), `rubric` (the asta-flows source
              "by_code": {"D1": 1, "F1": 1, "P1": 1, "P2": 1, "V1": 1}}}
 ```
 
-`verdict.verdict` is `reproduced`, `not_reproduced` or `inconclusive`; `outcome_label`
-gives the rubric outcome (`supported`, `opposite_effect`, `rejected`,
-`undecided(<reason>)`, `not_a_reproduction`). The `verdict.py` drop-in wraps one report
-per record as `{"version": 1, "records": [ … ]}`.
+`verdict.verdict` is `reproduced`, `not_reproduced` or `inconclusive`; `verdict_rule` is
+`v0.2` (the expected direction is the source effect's sign) or `v0.1` (`--rule v0.1`, the
+declared direction); `outcome_label` gives the rubric outcome (`supported`,
+`opposite_effect`, `rejected`, `undecided(<reason>)`, `not_a_reproduction`). The
+`verdict.py` drop-in wraps one report per record as `{"version": 1, "records": [ … ]}`.
 
 ## 5. Claude Code plugins
 

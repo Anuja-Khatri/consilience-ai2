@@ -11,22 +11,28 @@ Independent work, not affiliated with or endorsed by the Allen Institute for AI 
 
 ```bash
 consilience-ai2 receipts check <workspace_dir> [--sources DIR|paperstore.json|index.json ...]
-                               [--rules v0.1|v0.2] [--json OUT]
+                               [--rules v0.1|v0.2] [--with-w2] [--json OUT]
 ```
+
+W2 is opt-in because on a hand-checked sample only about a third of its flags were real
+overreach. W1 stays on by default, as a warning: about half of its flags were real (see
+"Precision of W1 and W2" below for the measured precision).
 
 - One GitHub annotation line is printed per error or warning, for example
   `::error file=defects.qmd,line=7::E1 .ev span references unknown key "d-missing-key"`.
   `--all-annotations` also prints the info receipts. `--no-annotations` prints none.
 - `--json OUT` writes the version-1 report (format below).
 - Exit codes: 0 when there is no error; 1 on any error; 2 on a usage error (for example
-  a `--sources` path that does not exist). `--fail-on-warnings` makes W1 and W2 fail the
-  run too.
+  a `--sources` path that does not exist). `--fail-on-warnings` makes warnings (W1, and
+  W2 when it is on) fail the run too.
+- `--with-w2` turns on W2, the certainty-upgrade check. It is off by default.
 - `--rules` picks the W1/W2 rule version: `v0.2` (the default) or `v0.1`, the frozen
   rules of the preregistered SciArena test (see "W1 and W2 rule versions" below).
 - `--sources` may be repeated; the stores are tried in the order given.
 
-Python API: `consilience_ai2.receipts.check_workspace(root, sources=None, rules="v0.2")`
-returns a `Report`; `sources` may be a path or a list of paths. `number_overreach(claim,
+Python API: `consilience_ai2.receipts.check_workspace(root, sources=None, rules="v0.2",
+with_w2=False)` returns a `Report`; `sources` may be a path or a list of paths, and
+`with_w2=True` turns on W2. `number_overreach(claim,
 source, rules=...)` (W1) and `certainty_upgrade(claim, source, rules=...)` (W2) compare
 any claim with any source text.
 
@@ -70,11 +76,13 @@ commit a2dcade) read it.
 | E4 | error | An evidence entry is referenced by no span in any document. Reported at its key's line |
 | E5 | error | Provenance format, one finding per bad field at its line (see below) |
 | E6 | error / info | Verbatim check against local source text: `FOUND` (info, with receipt), `NOT_FOUND` (error), `UNCHECKABLE` (info: no local text) |
-| W1 | warning | Number overreach: a number in the claim (the span's text) that no number in the quote supports |
-| W2 | warning | Certainty upgrade: an assertive claim over a hedged quote |
+| W1 | warning | Number overreach: a number in the claim (the span's text) that no number in the quote supports. On by default |
+| W2 | warning | Certainty upgrade: an assertive claim over a hedged quote. Opt-in (`--with-w2`) |
 
 W1 and W2 are lexical. On a hand-checked sample (see "Precision of W1 and W2" below),
-about half of the W1 flags and about a third of the W2 flags were a real overreach.
+about half of the W1 flags and about a third of the W2 flags were a real overreach. That
+is why W1 runs by default, as a warning, and W2 runs only when asked for. The analyses of
+released data below compute W2 explicitly; their W2 rates do not depend on the default.
 
 The run fails on any error. Warnings and info findings do not fail it.
 
@@ -281,6 +289,7 @@ The report is version 1 of the shared format (see `docs/SPEC.md`, section 3). It
 Fields specific to this component:
 
 - `checked_spans` and `entries`;
+- `checks`: the codes that ran (`E0` to `E6` and `W1`, plus `W2` with `--with-w2`);
 - `sources`: the kind of local text and its size;
 - `rules`: the W1/W2 rule version (`w1_w2_rules`), the normalisation, number-rule,
   word-list and method-list versions.
@@ -301,13 +310,14 @@ The snippet makes `evidence-receipts` a prerequisite of `check`. Its settings ar
 - `RECEIPTS_DIR`: the directory to check;
 - `RECEIPTS_SOURCES`: passed as `--sources`;
 - `RECEIPTS_REPORT`: the JSON path;
-- `RECEIPTS_FLAGS`: for example `--fail-on-warnings`.
+- `RECEIPTS_FLAGS`: for example `--with-w2` or `--fail-on-warnings`.
 
 `tests/receipts/test_plugin.py` runs `make check` with the snippet:
 
 - on the clean synthetic workspace, it passes;
 - on the seeded workspace, it fails;
-- with `--fail-on-warnings`, it fails on a warning.
+- with `--fail-on-warnings`, it fails on a W1 warning, and on a W2 warning only with
+  `--with-w2` as well.
 
 ## Adapters for released data
 
@@ -389,6 +399,8 @@ receipts are in `analyses/receipts/examples.json`.
   lines, nested citations, a `corpus_id` lookup and an `asta://` URL. They also include
   spans inside code and comments, which must not be read.
 
+The W2 defect is planted, so the expected file is written for a run with `--with-w2`;
+without it, every other finding is the same and the W2 is not reported.
 `tests/receipts/test_seeded.py` asserts that the findings equal the expected file exactly.
 Recall is 100% (`receipts.seeded.recall`, n = 17). There are 0 unexpected findings and 0
 false findings on the controls. This is true by construction; it shows that the rules do

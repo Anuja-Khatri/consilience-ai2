@@ -89,4 +89,8 @@ def test_snippet_fail_on_warnings(make_ws, copy_example, tmp_path):
     shutil.copy(SNIPPET, ws / "evidence-receipts.mk")
     (ws / "Makefile").write_text("include evidence-receipts.mk\n")
     assert _make(ws).returncode == 0
+    # the only defect is a W2, which is opt-in
+    assert _make(ws, "RECEIPTS_FLAGS=--fail-on-warnings").returncode == 0
+    assert _make(ws, "RECEIPTS_FLAGS=--with-w2 --fail-on-warnings").returncode != 0
+    (ws / "index.qmd").write_text('[It helps 3 times]{.ev key="k"}\n')  # a W1
     assert _make(ws, "RECEIPTS_FLAGS=--fail-on-warnings").returncode != 0

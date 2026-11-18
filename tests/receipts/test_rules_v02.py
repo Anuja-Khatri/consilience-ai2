@@ -153,8 +153,8 @@ def test_workspace_reports_rules(tmp_path):
     (tmp_path / "evidence.yml").write_text(
         'evidence:\n  k:\n    quote: "Three of five runs may fail."\n')
     (tmp_path / "a.qmd").write_text('[Seven runs clearly fail]{.ev key="k"}\n')
-    r2 = check_workspace(tmp_path, rules="v0.2")
-    r1 = check_workspace(tmp_path, rules="v0.1")
+    r2 = check_workspace(tmp_path, rules="v0.2", with_w2=True)
+    r1 = check_workspace(tmp_path, rules="v0.1", with_w2=True)
     assert r2.extra["rules"]["w1_w2_rules"] == "v0.2"
     assert r2.extra["rules"]["certainty_words"] == "consilience-ai2.certainty/2"
     assert r1.extra["rules"]["numbers"] == "consilience-ai2.w1/1"

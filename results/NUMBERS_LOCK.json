@@ -4,7 +4,7 @@
     "receipts",
     "reproduce"
   ],
-  "n_metrics": 207,
+  "n_metrics": 520,
   "note": "Docs render from this snapshot. A new snapshot requires re-checking every doc that cited the previous one (make lock, then make ci).",
-  "registry_metrics_sha256": "09aec02807e4b863c3494bc0cc04aa6730daa08c39ff1c8200c360fd7278f948"
+  "registry_metrics_sha256": "13fba8bf3faa3bb78a1fe4e94ccdef31918b31fb1e654c1739c58a107d13ef5b"
 }
