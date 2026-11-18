@@ -39,7 +39,14 @@ from consilience_ai2 import __version__
 from consilience_ai2.core.findings import Finding, InputRecord, Receipt, Report
 from consilience_ai2.core.hashing import sha256_text
 from consilience_ai2.core.normalise import NORMALISATION_VERSION, find_normalised
-from consilience_ai2.receipts.claims import certainty_upgrade, certainty_words, number_overreach
+from consilience_ai2.receipts.claims import (
+    DEFAULT_RULES,
+    W1_RULES,
+    certainty_upgrade,
+    certainty_words,
+    check_rules,
+    number_overreach,
+)
 from consilience_ai2.receipts.qmd import Span, find_spans, front_matter, plain_text
 from consilience_ai2.receipts.sources import SourceStore, open_sources
 from consilience_ai2.receipts.yamlnodes import YamlError, load_with_lines
@@ -162,9 +169,10 @@ def valid_iso_date(s: str) -> bool:
 class WorkspaceChecker:
     """Collects inputs, then runs every check. Use ``check_workspace`` for one call."""
 
-    def __init__(self, root: Path, sources: SourceStore) -> None:
+    def __init__(self, root: Path, sources: SourceStore, rules: str = DEFAULT_RULES) -> None:
         self.root = root
         self.sources = sources
+        self.rules = check_rules(rules)
         self.report = Report(tool=TOOL, tool_version=__version__)
         self.store: dict[str, Entry] = {}
         self.bib: set[str] = set()
@@ -336,14 +344,14 @@ class WorkspaceChecker:
         self._check_verbatim(ev)
         qid = f"quote:{ev.file}:{s.line}" if ev.key is None else f"evidence:{ev.key}"
         receipt = Receipt(qid, sha256_text(ev.quote))
-        w1 = number_overreach(claim, ev.quote)
+        w1 = number_overreach(claim, ev.quote, rules=self.rules)
         if w1.flagged:
             self.report.add(Finding(
                 "W1", "warning",
                 "number in the claim not in the quote: " + ", ".join(t.text for t in w1.unsupported),
                 file=ev.file, line=s.line, key=ev.key, receipt=receipt,
                 details={"claim": claim, **w1.details()}))
-        w2 = certainty_upgrade(claim, ev.quote)
+        w2 = certainty_upgrade(claim, ev.quote, rules=self.rules)
         if w2.flagged:
             self.report.add(Finding(
                 "W2", "warning",
@@ -450,15 +458,21 @@ class WorkspaceChecker:
             "entries": len(self.store) + len(self.doc_entries),
             "sources": self.sources.describe(),
             "rules": {
+                "w1_w2_rules": self.rules,
                 "normalisation": NORMALISATION_VERSION,
-                "certainty_words": certainty_words().version,
+                "numbers": W1_RULES[self.rules],
+                "certainty_words": certainty_words(self.rules).version,
                 "asta_methods": asta_methods().version,
             },
         }
         return self.report
 
 
-def check_workspace(root: str | Path, sources: str | Path | SourceStore | None = None) -> Report:
-    """Run E0-E6, W1 and W2 on the workspace at ``root``; return the report."""
+def check_workspace(root: str | Path,
+                    sources: str | Path | list[str | Path] | SourceStore | None = None,
+                    rules: str = DEFAULT_RULES) -> Report:
+    """Run E0-E6, W1 and W2 on the workspace at ``root``; return the report.
+
+    ``rules`` selects the W1/W2 rule version (``v0.1`` or ``v0.2``, the default)."""
     store = sources if isinstance(sources, SourceStore) else open_sources(sources)
-    return WorkspaceChecker(Path(root).resolve(), store).run()
+    return WorkspaceChecker(Path(root).resolve(), store, rules).run()

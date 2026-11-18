@@ -1,15 +1,24 @@
 """Local source text for the E6 verbatim check.
 
-``--sources`` names one of three things (detected from what is at the path):
+``--sources`` names one of three things (detected from what is at the path). It may be
+given more than once; the stores are then tried in the order given and the first one
+that has the text wins (``ChainStore``), so a run's ``paperstore.json`` can be combined
+with a directory of extra text files.
 
 - a **directory** of text files: ``<name>.txt`` or ``<name>.md``, where ``<name>`` is an
   evidence entry's ``cite`` key or its ``provenance.corpus_id``, tried in that order.
   Receipt source ``file:<file name>``; SHA-256 of the file bytes.
-- a Theorizer **PaperStore** JSON (``{"paperstore_lut": ..., "paperstore": ...}``, the
-  format ``PaperStore.save`` writes): looked up by ``provenance.corpus_id`` through the
-  key ``paper-<corpus_id>``; the text is the paper's ``paper_markdown`` when its
-  ``status`` is ``full-text``. Receipt source ``paperstore:<corpus_id>``; SHA-256 of
-  that text (UTF-8).
+- an Asta **PaperStore** JSON (``{"paperstore_lut": ..., "paperstore": ...}``), the
+  format asta-theorizer's ``src/PaperStore.py`` writes with ``PaperStore.save`` (commit
+  c4802aa) and that the asta-plugins ``data-driven-theory-generation`` workflow keeps at
+  ``<run>/theory/paperstore.json``. ``paperstore`` maps a primary key to a paper record;
+  ``paperstore_lut`` maps every alternate key (``paper-<corpus_id>``, ``paper-<s2 sha>``,
+  ``paper-<sanitised title>``) to its primary key. Looked up by ``provenance.corpus_id``
+  through ``paper-<corpus_id>``: first in the LUT, as ``PaperStore._paper_lookup_by_key``
+  does, then as a primary key. The text is the record's ``paper_markdown`` when its
+  ``status`` is ``full-text``; a ``metadata-only``, ``failed`` or ``timeout`` record is
+  uncheckable, with the status as the reason. Receipt source ``paperstore:<corpus_id>``;
+  SHA-256 of that text (UTF-8).
 - an AutoDiscovery exploration **index.json** (``{"experiments": [...]}``, written by
   the asta-flows ``runlog.py``): looked up by the entry's ``source`` field
   ``"run <label>, experiment <n>"``; the text is the experiment's hypothesis, analysis
@@ -159,10 +168,41 @@ class AutoDiscoveryIndexStore(SourceStore):
         return {"kind": self.kind, "experiments": len(self.experiments)}
 
 
-def open_sources(path: str | Path | None) -> SourceStore:
-    """The store for ``--sources`` (a directory or a JSON file), or an empty store."""
+class ChainStore(SourceStore):
+    """Several stores, tried in order; the first that finds the text wins."""
+
+    kind = "chain"
+
+    def __init__(self, stores: list[SourceStore]) -> None:
+        self.stores = stores
+
+    def lookup(self, cite: str | None, entry: dict[str, Any] | None) -> Lookup:
+        reasons: list[str] = []
+        tried: list[str] = []
+        for st in self.stores:
+            lk = st.lookup(cite, entry)
+            if lk.found is not None:
+                return lk
+            if lk.reason:
+                reasons.append(f"{st.kind}: {lk.reason}")
+            tried.extend(t for t in lk.tried if t not in tried)
+        return Lookup(None, "; ".join(reasons) or "no local source text", tuple(tried))
+
+    def describe(self) -> dict[str, Any]:
+        return {"kind": self.kind, "stores": [st.describe() for st in self.stores]}
+
+
+def open_sources(path: str | Path | list[str | Path] | tuple[str | Path, ...] | None,
+                 ) -> SourceStore:
+    """The store for ``--sources``: a directory or a JSON file, a list of them (tried in
+    order), or an empty store."""
     if path is None:
         return SourceStore()
+    if isinstance(path, (list, tuple)):
+        stores = [open_sources(p) for p in path]
+        if not stores:
+            return SourceStore()
+        return stores[0] if len(stores) == 1 else ChainStore(stores)
     p = Path(path)
     if p.is_dir():
         return TextDirStore(p)

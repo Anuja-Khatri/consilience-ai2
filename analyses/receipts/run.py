@@ -19,6 +19,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 
+import precision_sample  # noqa: E402
 import sciarena_analysis  # noqa: E402
 import theorizer_analysis  # noqa: E402
 
@@ -27,13 +28,28 @@ from consilience_ai2.fetch import require  # noqa: E402
 from consilience_ai2.receipts import check_workspace  # noqa: E402
 
 
-def model_id_screen():
-    """The repository's model-identifier patterns, so no example quotes a model name."""
+def _model_id_patterns():
     spec = importlib.util.spec_from_file_location("check_secrets", REPO / "scripts" / "check_secrets.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    pats = [rx for _, rx in mod.MODEL_IDS]
+    return [rx for _, rx in mod.MODEL_IDS]
+
+
+def model_id_screen():
+    """The repository's model-identifier patterns, so no example quotes a model name."""
+    pats = _model_id_patterns()
     return lambda s: any(rx.search(s) for rx in pats)
+
+
+def model_id_redactor():
+    """Replace each model identifier with "[model]" (for the precision sample's spans)."""
+    pats = _model_id_patterns()
+
+    def redact(s: str) -> str:
+        for rx in pats:
+            s = rx.sub("[model]", s)
+        return s
+    return redact
 
 
 def seeded_metrics() -> list[dict]:
@@ -99,12 +115,19 @@ def main() -> int:
     th_metrics, th_out = theorizer_analysis.run(is_model_id)
     metrics += th_metrics
     data = sciarena_analysis.load()
-    checked = sciarena_analysis.check_all(data)
+    # rules v0.1: the frozen measure of the preregistered test; never re-scored
+    checked = sciarena_analysis.check_all(data, "v0.1")
     sa_metrics, sa_out = sciarena_analysis.run_descriptive(data, checked, is_model_id)
     metrics += sa_metrics
     prereg_commit = prereg_commit_hash()
     ho_metrics, ho_out = sciarena_analysis.run_heldout(data, checked, prereg_commit)
     metrics += ho_metrics
+    # rules v0.2: descriptive rates only
+    checked2 = sciarena_analysis.check_all(data, "v0.2")
+    metrics += sciarena_analysis.run_descriptive_v02(checked2)
+    pr_metrics, pr_summary = precision_sample.run(
+        th_out["pool"] + sciarena_analysis.pool(data, checked, checked2), model_id_redactor())
+    metrics += pr_metrics
     path = write_results("receipts", metrics, REPO / "results")
     examples = {
         "note": "Short excerpts with receipts, for illustration. The data are not copied "
@@ -115,6 +138,7 @@ def main() -> int:
         "theorizer_summary": th_out["summary"],
         "sciarena": sa_out["examples"],
         "sciarena_heldout": ho_out,
+        "precision_sample": pr_summary,
     }
     (HERE / "examples.json").write_text(
         json.dumps(examples, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")

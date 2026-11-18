@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from importlib import resources
 
+import pytest
+
 from consilience_ai2.core.numbers import extract_numbers
 from consilience_ai2.receipts.claims import (
     certainty_profile,
@@ -114,15 +116,19 @@ def test_w2_normalisation_and_case():
 
 
 def test_w2_whole_words_only():
-    p = certainty_profile("showcase unlikely mayor")
+    p = certainty_profile("showcase unlikely mayor", rules="v0.1")
+    assert p.hedged == () and p.assertive == ()
+    p = certainty_profile("showcase unlikelihood mayor showings", rules="v0.2")
     assert p.hedged == () and p.assertive == ()
 
 
-def test_word_lists_are_versioned_disjoint_and_sorted():
-    raw = json.loads(resources.files("consilience_ai2.receipts").joinpath(
-        "data/certainty_words.json").read_text())
-    cw = certainty_words()
-    assert cw.version == raw["version"] and cw.version.startswith("consilience-ai2.certainty/")
+@pytest.mark.parametrize(("rules", "path", "version"), [
+    ("v0.1", "data/certainty_words.json", "consilience-ai2.certainty/1"),
+    ("v0.2", "data/certainty_words_v2.json", "consilience-ai2.certainty/2")])
+def test_word_lists_are_versioned_disjoint_and_sorted(rules, path, version):
+    raw = json.loads(resources.files("consilience_ai2.receipts").joinpath(path).read_text())
+    cw = certainty_words(rules)
+    assert cw.version == raw["version"] == version
     assert not (cw.hedged & cw.assertive)
     assert not (cw.negators & (cw.hedged | cw.assertive))
     for k in ("hedged", "assertive", "negators"):

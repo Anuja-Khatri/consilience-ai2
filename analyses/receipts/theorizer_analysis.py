@@ -5,6 +5,11 @@ Reads the four condition directories of the released HTML export through
 (``consilience_ai2.receipts.theorizer``). Returns metric records, examples with
 receipts and the per-condition summary used by ``run.py``.
 
+W1 and W2 are run twice: with rules v0.1 (the frozen rules; the existing metric IDs) and
+with rules v0.2 (descriptive rates under ``receipts.theorizer.v02.*``). Every evidence item
+flagged under either version is returned in a pool for the precision sample
+(``precision_sample.py``).
+
 Exploratory (labelled so): do theories with a high released predictive-accuracy support
 fraction differ in T1 or W1 from theories with a low one? For each literature-supported
 theory, the support fraction is the papers counted as supporting divided by the papers
@@ -40,6 +45,7 @@ SHORT = {LITERATURE[0]: "lit_accuracy", LITERATURE[1]: "lit_novelty",
 PERMUTATIONS = 10_000
 SEED = 0
 EXCERPT = 120
+V01 = "W1/W2 rules v0.1 (the frozen rules)"
 
 
 def data_root() -> Path:
@@ -98,10 +104,15 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     theory_rows: list[dict[str, Any]] = []
     totals = {"theories": 0, "laws": 0, "laws_parsed_statement": 0, "theories_with_laws": 0,
               "results_files": 0, "records": 0, "files_without_records": 0}
+    pool: list[dict[str, Any]] = []
+    v2: dict[str, dict[str, int]] = {}
     for cond in LITERATURE + PARAMETRIC:
         cdir = root / cond
         recs, info = th.load_records(cdir)
-        cache = th.RecordCache()
+        cache = th.RecordCache("v0.1")
+        cache2 = th.RecordCache("v0.2")
+        v2[cond] = dict(law_checked=0, law_w1=0, law_w2=0, items_checked=0, item_w1=0,
+                        item_w2=0)
         totals["results_files"] += info["results_files"]
         totals["records"] += info["records"]
         totals["files_without_records"] += info["files_without_records"]
@@ -112,6 +123,17 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         pa_cache: dict[str, th.PredictiveAccuracy] = {}
         for t in th.iter_theories(cdir):
             findings, results = th.check_theory(t, recs, cond, cache=cache)
+            findings2, results2 = th.check_theory(t, recs, cond, cache=cache2)
+            for r2 in results2:
+                if r2.w1 is not None:
+                    v2[cond]["law_checked"] += 1
+                    v2[cond]["law_w1"] += bool(r2.w1)
+                    v2[cond]["law_w2"] += bool(r2.w2)
+                v2[cond]["items_checked"] += r2.items_checked
+                v2[cond]["item_w1"] += r2.w1_items
+                v2[cond]["item_w2"] += r2.w2_items
+            if cond in LITERATURE:
+                pool += _pool_items(t, recs, cond, findings, findings2)
             c["theories"] += 1
             totals["theories"] += 1
             totals["theories_with_laws"] += bool(t.laws)
@@ -190,6 +212,10 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     lit = {k: sum(per[cnd][k] for cnd in LITERATURE) for k in per[LITERATURE[0]]}
     allc = {k: sum(per[cnd][k] for cnd in per) for k in per[LITERATURE[0]]}
     cav_html = ["computed on the released HTML export, not the underlying theory store"]
+    cav_t1 = ["the export falls back silently to a link to ../results/<id>.html for an ID "
+              "it cannot map (asta-theorizer src/ExportTheoryStoreAsHTML.py line 286, "
+              "commit c4802aa)",
+              "why the IDs are unmapped upstream is not established"]
     metrics += [
         count("receipts.theorizer.n_theories", totals["theories"],
               "theory files across the four released conditions"),
@@ -215,14 +241,15 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
              cav_html + ["a results file with no record may be an extraction that found nothing"],
              description="results files with at least one evidence record parsed"),
         rate("receipts.theorizer.t1_rate", lit["unresolved"], lit["refs"],
-             cav_html + ["literature-supported conditions; each (law, ID) pair counted once"],
+             cav_html + ["literature-supported conditions; each (law, ID) pair counted once"]
+             + cav_t1,
              description="T1: cited evidence IDs that resolve to no evidence record"),
         count("receipts.theorizer.t1_malformed_ids", lit["malformed"],
               "T1 links whose ID is not of the form e<n>.<k>"),
         rate("receipts.theorizer.t1_theory_rate", lit["t1_theories"], lit["theories"],
-             cav_html, description="theories with at least one T1"),
+             cav_html + cav_t1, description="theories with at least one T1"),
         rate("receipts.theorizer.t1_href_fallback_share", lit["href_fallback"], lit["t1_links"],
-             cav_html, description="T1 links whose href is the export's fallback "
+             cav_html + cav_t1, description="T1 links whose href is the export's fallback "
                                    "../results/<id>.html, which names no extraction file"),
         rate("receipts.theorizer.t2_rate", allc["t2"], allc["laws"],
              cav_html + ["all four conditions"],
@@ -233,36 +260,69 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         rate("receipts.theorizer.t2_empty_evidence_rate", allc["t2_evidence"], allc["laws"],
              cav_html),
         rate("receipts.theorizer.w1_law_rate", lit["law_w1"], lit["law_checked"],
-             cav_html + ["laws with at least one resolved evidence record",
+             cav_html + [V01, "laws with at least one resolved evidence record",
                          "the novelty-focused condition asks for quantitative predictions, "
                          "whose thresholds are absent from the evidence by design"],
              description="W1: a number in the law statement absent from its cited records"),
-        rate("receipts.theorizer.w2_law_rate", lit["law_w2"], lit["law_checked"], cav_html,
+        rate("receipts.theorizer.w2_law_rate", lit["law_w2"], lit["law_checked"], cav_html + [V01],
              description="W2: assertive law over hedged cited records"),
         rate("receipts.theorizer.w1_item_rate", lit["item_w1"], lit["items_checked"],
-             cav_html + ["evidence items with at least one resolved record",
+             cav_html + [V01, "evidence items with at least one resolved record",
                          "a record holds the extraction, not the full paper"],
              description="W1: a number in an evidence item absent from the records it cites"),
-        rate("receipts.theorizer.w2_item_rate", lit["item_w2"], lit["items_checked"], cav_html,
+        rate("receipts.theorizer.w2_item_rate", lit["item_w2"], lit["items_checked"],
+             cav_html + [V01],
              description="W2: assertive evidence item over hedged records"),
     ]
     for cond in LITERATURE:
         s = SHORT[cond]
         c = per[cond]
         metrics += [
-            rate(f"receipts.theorizer.{s}.t1_rate", c["unresolved"], c["refs"], cav_html),
-            rate(f"receipts.theorizer.{s}.w1_law_rate", c["law_w1"], c["law_checked"], cav_html),
-            rate(f"receipts.theorizer.{s}.w2_law_rate", c["law_w2"], c["law_checked"], cav_html),
+            rate(f"receipts.theorizer.{s}.t1_rate", c["unresolved"], c["refs"], cav_html + cav_t1),
+            rate(f"receipts.theorizer.{s}.w1_law_rate", c["law_w1"], c["law_checked"],
+                 cav_html + [V01]),
+            rate(f"receipts.theorizer.{s}.w2_law_rate", c["law_w2"], c["law_checked"],
+                 cav_html + [V01]),
             rate(f"receipts.theorizer.{s}.w1_item_rate", c["item_w1"], c["items_checked"],
-                 cav_html),
+                 cav_html + [V01]),
             rate(f"receipts.theorizer.{s}.w2_item_rate", c["item_w2"], c["items_checked"],
-                 cav_html),
+                 cav_html + [V01]),
         ]
     for cond in PARAMETRIC:
         s = SHORT[cond]
         c = per[cond]
         metrics.append(rate(f"receipts.theorizer.{s}.t2_rate", c["t2"], c["laws"],
                             cav_html + ["parametric conditions cite no evidence IDs by design"]))
+
+    # rules v0.2: descriptive rates, beside the v0.1 rates above
+    cav_v2 = cav_html + ["W1/W2 rules v0.2 (descriptive; the v0.1 rates are the "
+                         "receipts.theorizer.* metrics without v02)"]
+    lit2 = {k: sum(v2[cnd][k] for cnd in LITERATURE) for k in v2[LITERATURE[0]]}
+    metrics += [
+        rate("receipts.theorizer.v02.w1_law_rate", lit2["law_w1"], lit2["law_checked"], cav_v2,
+             description="W1 (rules v0.2): a number in the law statement absent from its "
+                         "cited records"),
+        rate("receipts.theorizer.v02.w2_law_rate", lit2["law_w2"], lit2["law_checked"], cav_v2,
+             description="W2 (rules v0.2): assertive law over hedged cited records"),
+        rate("receipts.theorizer.v02.w1_item_rate", lit2["item_w1"], lit2["items_checked"],
+             cav_v2, description="W1 (rules v0.2): a number in an evidence item absent from "
+                                 "the records it cites"),
+        rate("receipts.theorizer.v02.w2_item_rate", lit2["item_w2"], lit2["items_checked"],
+             cav_v2, description="W2 (rules v0.2): assertive evidence item over hedged records"),
+    ]
+    for cond in LITERATURE:
+        sc = SHORT[cond]
+        c2 = v2[cond]
+        metrics += [
+            rate(f"receipts.theorizer.v02.{sc}.w1_law_rate", c2["law_w1"], c2["law_checked"],
+                 cav_v2),
+            rate(f"receipts.theorizer.v02.{sc}.w2_law_rate", c2["law_w2"], c2["law_checked"],
+                 cav_v2),
+            rate(f"receipts.theorizer.v02.{sc}.w1_item_rate", c2["item_w1"], c2["items_checked"],
+                 cav_v2),
+            rate(f"receipts.theorizer.v02.{sc}.w2_item_rate", c2["item_w2"], c2["items_checked"],
+                 cav_v2),
+        ]
 
     # exploratory: predictive-accuracy split, within each literature-supported condition
     expl_summary: dict[str, Any] = {}
@@ -303,4 +363,35 @@ def run(is_model_id) -> tuple[list[dict[str, Any]], dict[str, Any]]:
                     int(x[mask].sum()), int(mask.sum()), expl_cav, split="exploratory"))
     summary = {"per_condition": per, "totals": totals,
                "exploratory": expl_summary}
-    return metrics, {"examples": examples, "summary": summary}
+    return metrics, {"examples": examples, "summary": summary, "pool": pool}
+
+
+def _flag_map(findings) -> dict[str, dict[str, Any]]:
+    """Item-level W1/W2 findings by item key: {key: {"W1": details, "W2": details}}."""
+    out: dict[str, dict[str, Any]] = {}
+    for f in findings:
+        if f.code in ("W1", "W2") and f.details.get("level") == "item":
+            out.setdefault(f.key, {})[f.code] = f
+    return out
+
+
+def _pool_items(t, recs, cond: str, findings, findings2) -> list[dict[str, Any]]:
+    """Evidence items flagged W1 or W2 under either rule version, for the precision sample."""
+    f1, f2 = _flag_map(findings), _flag_map(findings2)
+    out: list[dict[str, Any]] = []
+    for key in sorted(set(f1) | set(f2)):
+        law = t.laws[int(key.split("#statement-")[1].split("/")[0])]
+        n = int(key.split("/item-")[1]) - 1
+        item = law.items[n]
+        rs = [recs[i] for i in item.ids if i in recs]
+        any_f = (f1.get(key) or f2.get(key))
+        fd = next(iter(any_f.values()))
+        out.append({
+            "dataset": "theorizer", "item_id": f"theorizer:{cond}/{t.file}#{key.split('#')[1]}",
+            "claim": th._EID_IN_TEXT.sub(" ", item.text),
+            "source_parts": [r.text for r in rs],
+            "flags": {v: {code: f.details for code, f in fm.get(key, {}).items()}
+                      for v, fm in (("v0.1", f1), ("v0.2", f2))},
+            "receipt": fd.receipt.to_dict(),
+        })
+    return out

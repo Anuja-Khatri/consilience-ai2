@@ -5,6 +5,11 @@ resolved against the response's listed citations and checked for W1 and W2 again
 passages its sentence cites; quoted spans of three or more words are checked verbatim
 (``consilience_ai2.receipts.sciarena``). No vote is read here.
 
+W1 and W2 run under rules v0.1 (the frozen rules: the descriptive metrics without
+``v02`` and the whole held-out test) and under rules v0.2 (``run_descriptive_v02``:
+descriptive rates under ``receipts.sciarena.v02.*`` only). ``pool`` collects every citing
+sentence flagged under either version, for the precision sample.
+
 Held-out part (``run_heldout``): the preregistered test of
 ``prereg/receipts/sciarena_prereg.md`` (committed before this code): in paired votes,
 does the response with the higher W1+W2 flag rate per citation lose more often? Two-sided
@@ -25,6 +30,7 @@ from consilience_ai2.fetch import require
 from consilience_ai2.receipts import sciarena as sa
 
 SOURCE = "fetch:sciarena-eval"
+V01 = "W1/W2 rules v0.1 (the frozen rules of the preregistered test)"
 EXCERPT = 120
 
 
@@ -52,9 +58,75 @@ def excerpt(s: str) -> str:
     return s if len(s) <= EXCERPT else s[:EXCERPT - 3].rstrip() + "..."
 
 
-def check_all(data: list[dict[str, Any]]) -> list[tuple[sa.ResponseResult, sa.ResponseResult]]:
-    cache = sa.PassageCache()
+def check_all(data: list[dict[str, Any]], rules: str = "v0.1",
+              ) -> list[tuple[sa.ResponseResult, sa.ResponseResult]]:
+    """Every vote checked under ``rules`` (v0.1 by default: the preregistered measure)."""
+    cache = sa.PassageCache(rules)
     return [sa.check_vote(i, v, cache) for i, v in enumerate(data)]
+
+
+def run_descriptive_v02(checked2) -> list[dict]:
+    """W1 and W2 rates under rules v0.2, per resolved inline citation (descriptive)."""
+    res = w1 = w2 = flag = 0
+    for a, b in checked2:
+        for r in (a, b):
+            for c in r.citations:
+                if not c.resolved:
+                    continue
+                res += 1
+                w1 += bool(c.w1)
+                w2 += bool(c.w2)
+                flag += bool(c.w1 or c.w2)
+    cav = ["W1/W2 rules v0.2 (descriptive; the preregistered test uses rules v0.1 and is "
+           "not re-scored)",
+           "each citation is checked against the passages of every citation in its sentence"]
+    return [
+        rate("receipts.sciarena.v02.w1_rate", w1, res, cav,
+             description="W1 (rules v0.2) per resolved inline citation"),
+        rate("receipts.sciarena.v02.w2_rate", w2, res, cav,
+             description="W2 (rules v0.2) per resolved inline citation"),
+        rate("receipts.sciarena.v02.w1_or_w2_rate", flag, res, cav,
+             description="W1 or W2 (rules v0.2) per resolved inline citation"),
+    ]
+
+
+def pool(data, checked1, checked2) -> list[dict[str, Any]]:
+    """Citing sentences with a resolved citation flagged W1 or W2 under either version.
+
+    The unit is the sentence: every citation in it shares the claim and the passages."""
+    out: list[dict[str, Any]] = []
+    for (a1, b1), (a2, b2), v in zip(checked1, checked2, data, strict=True):
+        for r1, r2, key in ((a1, a2, "citations_a"), (b1, b2, "citations_b")):
+            cl = v.get(key) or []
+            resp = v.get("response" + r1.side) or ""
+            sents: dict[int, dict[str, Any]] = {}
+            for c1, c2 in zip(r1.citations, r2.citations, strict=True):
+                if not c1.resolved:
+                    continue
+                u = sents.setdefault(c1.sentence_start, {
+                    "c1": c1, "flags": {"v0.1": {}, "v0.2": {}}, "pidx": []})
+                if c1.passage_index not in u["pidx"]:
+                    u["pidx"].append(c1.passage_index)
+                for ver, c in (("v0.1", c1), ("v0.2", c2)):
+                    if c.w1:
+                        u["flags"][ver]["W1"] = {"unsupported": c.unsupported_numbers}
+                    if c.w2:
+                        u["flags"][ver]["W2"] = c.w2_details
+            for start, u in sorted(sents.items()):
+                if not (u["flags"]["v0.1"] or u["flags"]["v0.2"]):
+                    continue
+                c1 = u["c1"]
+                out.append({
+                    "dataset": "sciarena",
+                    "item_id": f"sciarena:{v.get('id')}/response{r1.side}@{start}",
+                    "claim": c1.claim,
+                    "source_parts": [cl[i].get("content") or "" for i in u["pidx"]],
+                    "flags": u["flags"],
+                    "receipt": {"source": f"sciarena-eval:{v.get('id')}/response{r1.side}",
+                                "sha256": _sha(resp), "offset": c1.sentence_start,
+                                "end": c1.sentence_end},
+                })
+    return out
 
 
 def run_descriptive(data: list[dict[str, Any]], checked, is_model_id) -> tuple[list[dict], dict]:
@@ -120,11 +192,11 @@ def run_descriptive(data: list[dict[str, Any]], checked, is_model_id) -> tuple[l
              description="inline citations that resolve to a listed citation with passage text"),
         rate("receipts.sciarena.listed_cited_rate", listed_used, listed, cav[:1],
              description="listed citations that are cited inline at least once"),
-        rate("receipts.sciarena.w1_rate", w1, res, cav,
+        rate("receipts.sciarena.w1_rate", w1, res, cav + [V01],
              description="W1 per resolved inline citation"),
-        rate("receipts.sciarena.w2_rate", w2, res, cav,
+        rate("receipts.sciarena.w2_rate", w2, res, cav + [V01],
              description="W2 per resolved inline citation"),
-        rate("receipts.sciarena.w1_or_w2_rate", flag, res, cav,
+        rate("receipts.sciarena.w1_or_w2_rate", flag, res, cav + [V01],
              description="W1 or W2 per resolved inline citation"),
         metric("receipts.sciarena.n_quoted_spans", q, n=None, source=SOURCE,
                dev_or_heldout="descriptive",

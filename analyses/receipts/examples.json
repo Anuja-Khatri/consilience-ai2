@@ -1,5 +1,26 @@
 {
   "note": "Short excerpts with receipts, for illustration. The data are not copied here: each receipt names the source file, its SHA-256 and the character offsets checked. Theorizer: the released HTML export (theorizer-paper-data). SciArena: SciArena-Eval train.json.",
+  "precision_sample": {
+    "W1": {
+      "drawn_for_both_versions": 48,
+      "units": 52,
+      "v01_false_alarms_dropped_by_v02": 2,
+      "v01_flags_dropped_by_v02": 2,
+      "v01_true_flags_dropped_by_v02": 0,
+      "v02_flags_new_in_v02": 1,
+      "v02_true_flags_new_in_v02": 0
+    },
+    "W2": {
+      "drawn_for_both_versions": 36,
+      "units": 64,
+      "v01_false_alarms_dropped_by_v02": 6,
+      "v01_flags_dropped_by_v02": 6,
+      "v01_true_flags_dropped_by_v02": 0,
+      "v02_flags_new_in_v02": 14,
+      "v02_true_flags_new_in_v02": 5
+    },
+    "units_labelled": 116
+  },
   "sciarena": {
     "W1": [
       {

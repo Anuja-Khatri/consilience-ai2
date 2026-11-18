@@ -16,9 +16,12 @@ Input: one condition directory of the released archive (for example
 - ``predictiveaccuracy/pe-*.html``: the predictive-accuracy evaluation of one law, with
   per-prediction counts of papers that support, contradict or give no evidence.
 
-The export maps each evidence ID to its extraction file and, when the ID is not in the
-store, falls back to the ID itself as the file name (``uuid_to_extraction_id.get(uuid,
-uuid)``), so an unresolved ID still renders as a link, to ``../results/<id>.html``.
+The export maps each evidence ID to its extraction file and, when the ID has no entry in
+that map, falls back silently to the ID itself as the file name (asta-theorizer
+``src/ExportTheoryStoreAsHTML.py`` line 286 at commit c4802aa:
+``extraction_id = uuid_to_extraction_id.get(uuid, uuid)``), so an unmapped ID still
+renders as a link, to ``../results/<id>.html``, a file that does not exist. Why an ID is
+unmapped upstream is not visible in the export and is not inferred here.
 
 Checks
 - **T1** an evidence ID cited by a law that resolves to no evidence record in the same
@@ -46,10 +49,13 @@ from consilience_ai2.core.findings import Finding, Receipt
 from consilience_ai2.core.hashing import sha256_text
 from consilience_ai2.core.numbers import NumberToken, extract_numbers
 from consilience_ai2.receipts.claims import (
+    DEFAULT_RULES,
     CertaintyProfile,
     certainty_profile,
     certainty_upgrade,
+    check_rules,
     number_overreach,
+    w1_source_tokens,
 )
 
 EVIDENCE_ID = re.compile(r"^e\d+\.\d+$")
@@ -290,7 +296,8 @@ class RecordCache:
     concatenation of each record's (a negation never reaches across records).
     """
 
-    def __init__(self) -> None:
+    def __init__(self, rules: str = DEFAULT_RULES) -> None:
+        self.rules = check_rules(rules)
         self._tokens: dict[str, list[NumberToken]] = {}
         self._profiles: dict[str, CertaintyProfile] = {}
 
@@ -298,7 +305,7 @@ class RecordCache:
         out: list[NumberToken] = []
         for r in recs:
             if r.id not in self._tokens:
-                self._tokens[r.id] = extract_numbers(r.text)
+                self._tokens[r.id] = w1_source_tokens(r.text, self.rules)
             out.extend(self._tokens[r.id])
         return out
 
@@ -308,7 +315,7 @@ class RecordCache:
         n: list[str] = []
         for r in recs:
             if r.id not in self._profiles:
-                self._profiles[r.id] = certainty_profile(r.text)
+                self._profiles[r.id] = certainty_profile(r.text, rules=self.rules)
             p = self._profiles[r.id]
             h.extend(p.hedged)
             a.extend(p.assertive)
@@ -318,9 +325,15 @@ class RecordCache:
 
 def check_theory(theory: Theory, records: dict[str, EvidenceRecord], condition: str,
                  emit_info: bool = False, cache: RecordCache | None = None,
-                 ) -> tuple[list[Finding], list[LawResult]]:
-    """T1, T2, W1 and W2 for every law of ``theory`` against ``records``."""
-    cache = cache or RecordCache()
+                 rules: str | None = None) -> tuple[list[Finding], list[LawResult]]:
+    """T1, T2, W1 and W2 for every law of ``theory`` against ``records``.
+
+    ``rules`` is the W1/W2 rule version; it defaults to the cache's (``DEFAULT_RULES``
+    for a new cache) and must equal it when both are given."""
+    cache = cache or RecordCache(rules or DEFAULT_RULES)
+    if rules is not None and check_rules(rules) != cache.rules:
+        raise ValueError(f"rules {rules!r} differ from the cache's {cache.rules!r}")
+    rules = cache.rules
     findings: list[Finding] = []
     results: list[LawResult] = []
     src = f"theorizer:{condition}/{theory.file}"
@@ -352,8 +365,8 @@ def check_theory(theory: Theory, records: dict[str, EvidenceRecord], condition: 
         if law.statement:
             n_stmt = len(extract_numbers(law.statement))
         if resolved and law.statement:
-            c1 = number_overreach(law.statement, "", cache.tokens(resolved))
-            c2 = certainty_upgrade(law.statement, "", cache.profile(resolved))
+            c1 = number_overreach(law.statement, "", cache.tokens(resolved), rules)
+            c2 = certainty_upgrade(law.statement, "", cache.profile(resolved), rules)
             w1, w2 = c1.flagged, c2.flagged
             if c1.flagged:
                 findings.append(Finding(
@@ -377,8 +390,8 @@ def check_theory(theory: Theory, records: dict[str, EvidenceRecord], condition: 
             if not recs or not claim.strip():
                 continue
             checked += 1
-            c1 = number_overreach(claim, "", cache.tokens(recs))
-            c2 = certainty_upgrade(claim, "", cache.profile(recs))
+            c1 = number_overreach(claim, "", cache.tokens(recs), rules)
+            c2 = certainty_upgrade(claim, "", cache.profile(recs), rules)
             a, b = (it.id_offsets[0][0], it.id_offsets[-1][1]) if it.id_offsets else (
                 law.start, law.end)
             irec = _receipt(src, theory.sha256, a, b)
