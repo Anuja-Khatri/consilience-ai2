@@ -1,7 +1,9 @@
 """Extraction rule v0.2 for CodeScientist run outputs: parsers and the primary-comparison
 rule. Pure functions over bytes and parsed objects, so every rule is unit-tested without
 the data (``tests/reproduce/test_cs_extract.py``). The rule is fixed in
-``prereg/reproduce/cs_extraction_v0_2.md``; ``codescientist_reruns.py`` applies it.
+``prereg/reproduce/cs_extraction_v0_2.md``, with the corrections of
+``prereg/reproduce/cs_extraction_v0_2_deviations.md`` (``RULES`` keeps both versions);
+``codescientist_reruns.py`` applies it.
 
 A run's outputs are read from its FINAL iteration (the last ``modal-python-<timestamp>``
 directory that wrote ``modal-output/results.json``, as in v0.1). ``extract_run`` takes a
@@ -31,6 +33,20 @@ from dataclasses import dataclass, field
 from typing import Any
 
 SIG = ("mean_baseline", "mean_experimental", "p_value", "dataset_size")
+
+# The rule as preregistered (``v0.2-prereg``) and as corrected before any v0.2 number was
+# committed (``v0.2``; ``prereg/reproduce/cs_extraction_v0_2_deviations.md``). Both are
+# run and reported.
+RULES = {
+    # scoring: how a candidate's distinctive words found in a text are scored;
+    # item_names: how a list item is named in a label; ordered_key: whether the
+    # cross-run comparison key keeps word order; zero_effect: whether an effect size is
+    # dropped when it disagrees with the mean difference (in codescientist_reruns).
+    "v0.2": {"scoring": "share", "item_names": "values", "ordered_key": True,
+             "zero_effect": True},
+    "v0.2-prereg": {"scoring": "count", "item_names": "fields", "ordered_key": False,
+                    "zero_effect": False},
+}
 
 # ---------------------------------------------------------------------------------------
 # Tolerant JSON
@@ -142,39 +158,46 @@ class Block:
     file: str = ""
 
 
-def _short_strings(d: dict) -> str:
-    return ",".join(f"{k}={d[k]}" for k in sorted(d, key=str)
-                    if isinstance(d[k], str) and len(d[k]) <= 80)
+def _short_strings(d: dict, item_names: str = "values") -> str:
+    """A list item's name: its short string fields in key order, as values only
+    (``boolean,full``) or as ``key=value`` (the preregistered form)."""
+    keys = [k for k in sorted(d, key=str) if isinstance(d[k], str) and len(d[k]) <= 80]
+    if item_names == "fields":
+        return ",".join(f"{k}={d[k]}" for k in keys)
+    return ",".join(d[k] for k in keys)
 
 
-def find_blocks(obj: Any, path: tuple[str, ...] = (), lab: tuple[str, ...] = ()):
+def find_blocks(obj: Any, path: tuple[str, ...] = (), lab: tuple[str, ...] = (),
+                item_names: str = "values"):
     """Every dict holding the CodeScientist bootstrap signature, in v0.1's walk order:
     ``(key_path, label_path, block)``. In the label path a list item is named by its
-    short string fields (``[baseline=boolean,experimental=full]``)."""
+    short string fields (``[boolean,full]``; ``item_names="fields"``:
+    ``[baseline=boolean,experimental=full]``)."""
     if isinstance(obj, dict):
         if all(k in obj for k in SIG):
             yield ".".join(path), ".".join(lab), obj
         for k in sorted(obj, key=str):
-            yield from find_blocks(obj[k], path + (str(k),), lab + (str(k),))
+            yield from find_blocks(obj[k], path + (str(k),), lab + (str(k),), item_names)
     elif isinstance(obj, list):
         for i, v in enumerate(obj):
-            name = _short_strings(v) if isinstance(v, dict) else ""
-            yield from find_blocks(v, path + (f"[{i}]",), lab + (f"[{name}]" if name else "",))
+            name = _short_strings(v, item_names) if isinstance(v, dict) else ""
+            yield from find_blocks(v, path + (f"[{i}]",), lab + (f"[{name}]" if name else "",),
+                                   item_names)
 
 
 def _key(b: dict) -> tuple:
     return tuple(json.dumps(b.get(k), sort_keys=True, default=str) for k in SIG)
 
 
-def file_blocks(obj: Any, file: str) -> list[Block]:
+def file_blocks(obj: Any, file: str, item_names: str = "values") -> list[Block]:
     out = []
-    for path, lab, b in find_blocks(obj):
+    for path, lab, b in find_blocks(obj, item_names=item_names):
         where = path if file == "results.json" else f"{file}:{path}"
         out.append(Block(where, lab, _key(b), b, file))
     return out
 
 
-def log_blocks(log: Any) -> list[Block]:
+def log_blocks(log: Any, item_names: str = "values") -> list[Block]:
     """Bootstrap blocks printed in ``log.json`` (a list of ``{type, runtime_sec,
     message}``). A message's first balanced ``{...}`` is parsed (JSON, else the restricted
     literal evaluator). Its label is the message text before the brace, without a final
@@ -207,7 +230,7 @@ def log_blocks(log: Any) -> list[Block]:
                 head = " ".join(msg[:i].split()).rstrip(":").strip()
                 if not head and prev.endswith(":"):
                     head = prev.rstrip(":").strip()
-                for path, lab, b in find_blocks(obj):
+                for path, lab, b in find_blocks(obj, item_names=item_names):
                     label = head + (f" / {lab}" if lab else "")
                     where = "log.json:" + head + (f" / {path}" if path else "")
                     blk = Block(where, label, _key(b), b, "log.json")
@@ -244,54 +267,65 @@ values mean means json log save
 """.split())
 
 
-def tokens(text: str) -> set[str]:
-    """Lowercase alphanumeric words. Dropped: one-letter and digits-only words, and the
-    fixed stop words (``STOP``: function words and the generic vocabulary of a statistics
-    printout), before or after a final "s" is removed (from words longer than 3 letters
-    not ending in "ss")."""
-    out = set()
+def words(text: str) -> list[str]:
+    """Lowercase alphanumeric words in order of first appearance. Dropped: one-letter
+    and digits-only words, and the fixed stop words (``STOP``: function words and the
+    generic vocabulary of a statistics printout), before or after a final "s" is removed
+    (from words longer than 3 letters not ending in "ss")."""
+    out: list[str] = []
     for w in re.split(r"[^a-z0-9]+", (text or "").casefold()):
-        if len(w) < 2 or w.isdigit():
-            continue
-        if w in STOP:
+        if len(w) < 2 or w.isdigit() or w in STOP:
             continue
         if len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
             w = w[:-1]
-        if w not in STOP:
-            out.add(w)
+        if w not in STOP and w not in out:
+            out.append(w)
     return out
 
 
-def _match(labels: list[str], text: str) -> int | None:
+def tokens(text: str) -> set[str]:
+    """The set of ``words(text)``."""
+    return set(words(text))
+
+
+def _match(labels: list[str], text: str, scoring: str) -> int | None:
     toks = [tokens(lab) for lab in labels]
     common = set.intersection(*toks) if toks else set()
     t = tokens(text)
-    scores = [len((tk - common) & t) for tk in toks]
+    distinct = [tk - common for tk in toks]
+    if scoring == "count":
+        scores: list[float] = [len(d & t) for d in distinct]
+    else:
+        scores = [len(d & t) / len(d) if d else 0.0 for d in distinct]
     best = max(scores)
     if best > 0 and scores.count(best) == 1:
         return scores.index(best)
     return None
 
 
-def choose_primary(labels: list[str], hypothesis: str, plan: str) -> tuple[int | None, str]:
+def choose_primary(labels: list[str], hypothesis: str, plan: str,
+                   scoring: str = "share") -> tuple[int | None, str]:
     """Index of the primary comparison among several candidate labels, and the basis.
 
-    For each candidate, its distinctive words (its tokens minus those every candidate
-    shares) are counted in the run's stated hypothesis. A unique maximum above zero wins
-    (basis ``hypothesis``). Otherwise the same count in the experiment plan
-    (``experiment_plan``). Otherwise ``(None, "ambiguous")``: no choice is made."""
+    Each candidate's distinctive words are its words minus those every candidate shares.
+    Its score in a text is the share of its distinctive words that occur there
+    (``scoring="count"``, as preregistered: their number, which favours longer names).
+    A unique maximum above zero in the run's stated hypothesis wins (basis
+    ``hypothesis``); otherwise in the experiment plan (``experiment_plan``); otherwise
+    ``(None, "ambiguous")``: no choice is made."""
     if len(labels) == 1:
         return 0, "single"
     for text, basis in ((hypothesis, "hypothesis"), (plan, "experiment_plan")):
-        i = _match(labels, text)
+        i = _match(labels, text, scoring)
         if i is not None:
             return i, basis
     return None, "ambiguous"
 
 
-def comparison_key(label: str) -> tuple[str, ...]:
-    """The words of a label, for matching the same comparison across two runs."""
-    return tuple(sorted(tokens(label)))
+def comparison_key(label: str, ordered: bool = True) -> tuple[str, ...]:
+    """The words of a label, for matching the same comparison across two runs: in order
+    (so ``A vs B`` does not match ``B vs A``), or as a sorted set (as preregistered)."""
+    return tuple(words(label)) if ordered else tuple(sorted(tokens(label)))
 
 
 # ---------------------------------------------------------------------------------------
@@ -349,8 +383,12 @@ class RunExtraction:
     source_obj: Any = None             # the parsed file the primary came from
 
 
-def extract_run(files: dict[str, bytes], hypothesis: str = "", plan: str = "") -> RunExtraction:
-    """Apply the v0.2 tiers and the primary-comparison rule to one run's final outputs."""
+def extract_run(files: dict[str, bytes], hypothesis: str = "", plan: str = "",
+                rule: str = "v0.2") -> RunExtraction:
+    """Apply the v0.2 tiers and the primary-comparison rule (``RULES[rule]``) to one
+    run's final outputs."""
+    cfg = RULES[rule]
+    names = cfg["item_names"]
     parsed: dict[str, Any] = {}
     how: dict[str, str] = {}
     for name in sorted(files):
@@ -360,17 +398,18 @@ def extract_run(files: dict[str, bytes], hypothesis: str = "", plan: str = "") -
             parsed[name] = obj
     tiers: list[tuple[str, list[Block]]] = []
     if "results.json" in parsed:
-        tiers.append(("results.json", file_blocks(parsed["results.json"], "results.json")))
+        tiers.append(("results.json", file_blocks(parsed["results.json"], "results.json",
+                                                  names)))
     ts: list[Block] = []
     seen: set[tuple] = set()
     for name in sorted(n for n in parsed if n.startswith("to_save/")):
-        for b in file_blocks(parsed[name], name):
+        for b in file_blocks(parsed[name], name, names):
             if b.numbers not in seen:
                 seen.add(b.numbers)
                 ts.append(b)
     tiers.append(("to_save", ts))
     if "log.json" in parsed:
-        tiers.append(("log.json", log_blocks(parsed["log.json"])))
+        tiers.append(("log.json", log_blocks(parsed["log.json"], names)))
     res = RunExtraction(status="", parse=how, results_obj=parsed.get("results.json"))
     for tier, blocks in tiers:
         cands = [b for b in blocks if not is_control(b.where)]
@@ -379,7 +418,7 @@ def extract_run(files: dict[str, bytes], hypothesis: str = "", plan: str = "") -
         res.tier = tier
         res.candidates = cands
         res.controls = [b for b in blocks if is_control(b.where)]
-        i, basis = choose_primary([b.label for b in cands], hypothesis, plan)
+        i, basis = choose_primary([b.label for b in cands], hypothesis, plan, cfg["scoring"])
         res.basis = basis
         if i is None:
             res.status = "ambiguous_primary"

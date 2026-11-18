@@ -31,6 +31,7 @@ CS_SOURCE = "fetch:codescientist+codescientist-full50"
 CS_SOURCE_V02 = "fetch:codescientist+codescientist-full50+codescientist-example-experiments"
 DB_SOURCE = "fetch:discoverybench"
 PREREG_V02 = "prereg/reproduce/cs_extraction_v0_2.md @ 0df1320"
+DEVIATIONS_V02 = "prereg/reproduce/cs_extraction_v0_2_deviations.md"
 V01_NOTE = ("v0.1 extraction rule (the single non-random bootstrap block of the final "
             "results.json); the v0.2 rule is reported beside it as the *.v0_2.* metrics")
 Z95 = 1.959963984540054
@@ -110,14 +111,42 @@ def codescientist_metrics(res: dict) -> list[dict]:
     return out
 
 
+def codescientist_metrics_v02_prereg(res: dict) -> list[dict]:
+    """The v0.2 rule exactly as preregistered (before the deviations), on the same pairs:
+    coverage, verdicts and the per-comparison table, for comparison with the corrected
+    rule."""
+    s = cs.summarise_v02(res, "v02p")
+    kw = {"source": CS_SOURCE, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
+    cav = CS_CAVEATS + [f"the v0.2 rule as preregistered, superseded by the corrected rule "
+                        f"(deviations in {DEVIATIONS_V02})"]
+    P = "reproduce.cs.v0_2.as_preregistered"
+    n = s["n_pairs"]
+    out = [rate(f"{P}.coverage_recoverable", s["coverage"].get("recoverable", 0), n,
+                caveats=cav, **kw)]
+    for reason, k in sorted(s["coverage"].items()):
+        out.append(count(f"{P}.coverage.{slug(reason)}", k, n, caveats=cav, **kw))
+    for key in ("d1", "v1", "outcome"):
+        for cls, k in sorted(s[key].items()):
+            out.append(count(f"{P}.{key}.{slug(cls)}", k, n, caveats=cav, **kw))
+    pc = s["per_comparison"]
+    out.append(count(f"{P}.per_comparison.n", pc["n"], None, caveats=cav, **kw))
+    for v in ("reproduced", "not_reproduced", "inconclusive"):
+        out.append(count(f"{P}.per_comparison.v1.{v}", pc["verdict"].get(v, 0), pc["n"],
+                         caveats=cav, **kw))
+    return out
+
+
 def codescientist_metrics_v02(res: dict) -> list[dict]:
     """The v0.2 extraction rule on the same 65 pairs (``prereg/reproduce/
-    cs_extraction_v0_2.md``), its change from v0.1, and the second-batch search."""
+    cs_extraction_v0_2.md`` with the corrections in ``..._deviations.md``), its change
+    from v0.1, and the second-batch search."""
     s = cs.summarise_v02(res)
     kw = {"source": CS_SOURCE, "dev_or_heldout": "descriptive", "prereg": PREREG_V02}
     cav = CS_CAVEATS + ["v0.2 extraction rule: results.json, then to_save/, then log.json "
                         "of the final iteration; several candidates resolved by the "
-                        "hypothesis, then the experiment plan, else left no_data"]
+                        "hypothesis, then the experiment plan, else left no_data",
+                        f"corrected after one run of the preregistered rule and before "
+                        f"any number was committed; see {DEVIATIONS_V02}"]
     P = "reproduce.cs.v0_2"
     n = s["n_pairs"]
     out = [
@@ -328,6 +357,7 @@ def main() -> int:
     cs_res = cs.analyse()
     db_sum = db.summarise(db.analyse())
     metrics = (codescientist_metrics(cs_res) + codescientist_metrics_v02(cs_res)
+               + codescientist_metrics_v02_prereg(cs_res)
                + discoverybench_metrics(db_sum) + discoverybench_metrics_v02(db_sum))
     path = write_results("reproduce", metrics, REPO / "results")
     print(f"wrote {path.relative_to(REPO)} ({len(metrics)} metrics)")

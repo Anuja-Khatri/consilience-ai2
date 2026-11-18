@@ -195,8 +195,12 @@ def _final_files(z: zipfile.ZipFile, members: list[str]) -> tuple[str | None, di
     return finals[-1], files
 
 
-def numbers_from_block(blk: cx.Block, pilot_mode: Any) -> dict[str, Any]:
-    """Record fields from one bootstrap block (the same reading as v0.1)."""
+def numbers_from_block(blk: cx.Block, pilot_mode: Any,
+                       zero_effect: bool = True) -> dict[str, Any]:
+    """Record fields from one bootstrap block (the same reading as v0.1). With
+    ``zero_effect`` (the corrected v0.2 rule) the effect size is left out when the mean
+    difference is 0 or of the other sign than the effect size implied by p, so a zero
+    difference is never read as an effect (D1 is then uncheckable on that side)."""
     b = blk.raw
     me, mb, p, n = (_number(b["mean_experimental"]), _number(b["mean_baseline"]),
                     _number(b["p_value"]), b["dataset_size"])
@@ -207,18 +211,21 @@ def numbers_from_block(blk: cx.Block, pilot_mode: Any) -> dict[str, Any]:
                                         "experimental minus mean baseline",
                             "value": me - mb, "unit": "dimensionless", "n": n, "p": p}
     dz = dz_from_p(p, n, b.get("num_resamples"))
+    if dz is not None and zero_effect and (me - mb == 0 or (me - mb > 0) != (dz > 0)):
+        dz = None
     if dz is not None:
         meas["effect_size"] = {"type": "dz", "value": dz}
     return {"status": "ok", "path": blk.where, "measurement": meas, "pilot_mode": pilot_mode}
 
 
 def run_numbers_v02(z: zipfile.ZipFile, members: list[str], hypothesis: str,
-                    plan: str) -> dict[str, Any]:
-    """v0.2: the tiers and the primary-comparison rule of ``cs_extract``."""
+                    plan: str, rule: str = "v0.2") -> dict[str, Any]:
+    """v0.2: the tiers and the primary-comparison rule of ``cs_extract`` (``rule``:
+    ``v0.2``, the corrected rule, or ``v0.2-prereg``, as preregistered)."""
     final, files = _final_files(z, members)
     if final is None:
         return {"status": "no_results_file"}
-    ex = cx.extract_run(files, hypothesis, plan)
+    ex = cx.extract_run(files, hypothesis, plan, rule)
     info = {"tier": ex.tier, "basis": ex.basis, "parse": ex.parse,
             "candidates": ex.candidates, "other_tests": ex.other_tests,
             "other_tests_complete": ex.other_tests_complete,
@@ -228,7 +235,7 @@ def run_numbers_v02(z: zipfile.ZipFile, members: list[str], hypothesis: str,
     pm = _pilot_mode(ex.results_obj)
     if pm is None and ex.source_obj is not ex.results_obj:
         pm = _pilot_mode(ex.source_obj)
-    out = numbers_from_block(ex.primary, pm)
+    out = numbers_from_block(ex.primary, pm, cx.RULES[rule]["zero_effect"])
     if out["status"] != "ok":
         return {**out, **info}
     out.update(info, final=final, label=ex.primary.label)
@@ -336,33 +343,40 @@ def batch2_search(full50: zipfile.ZipFile) -> dict[str, Any]:
             "run_directories_named": len(dirs), "run_directories_found": found}
 
 
-def _comparison_pairs(idea: str, src: dict, rep: dict) -> list[dict[str, Any]]:
+def _comparison_pairs(idea: str, src: dict, rep: dict, key: str,
+                      rule: str) -> list[dict[str, Any]]:
     """Per-comparison records for a pair with an ambiguous side: every comparison whose
     words match exactly one candidate in each run (the same comparison in both)."""
-    def cands(run: dict) -> list[cx.Block]:
-        n = run["numbers_v02"]
-        return list(n.get("candidates") or [])
-    sc, rc = cands(src), cands(rep)
-    if src["numbers_v02"]["status"] == "ok":
-        sc = [c for c in sc if c.where == src["numbers_v02"]["path"]]
-    if rep["numbers_v02"]["status"] == "ok":
-        rc = [c for c in rc if c.where == rep["numbers_v02"]["path"]]
-    sk = Counter(cx.comparison_key(c.label) for c in sc)
-    rk = Counter(cx.comparison_key(c.label) for c in rc)
+    cfg = cx.RULES[rule]
+    sc = list(src[key].get("candidates") or [])
+    rc = list(rep[key].get("candidates") or [])
+    if src[key]["status"] == "ok":
+        sc = [c for c in sc if c.where == src[key]["path"]]
+    if rep[key]["status"] == "ok":
+        rc = [c for c in rc if c.where == rep[key]["path"]]
+
+    def ck(c: cx.Block) -> tuple[str, ...]:
+        return cx.comparison_key(c.label, cfg["ordered_key"])
+
+    sk = Counter(ck(c) for c in sc)
+    rk = Counter(ck(c) for c in rc)
     out = []
-    for key in sorted(k for k in sk if sk[k] == 1 and rk.get(k) == 1 and k):
-        a = next(c for c in sc if cx.comparison_key(c.label) == key)
-        b = next(c for c in rc if cx.comparison_key(c.label) == key)
-        na = numbers_from_block(a, src["numbers_v02_pilot"])
-        nb = numbers_from_block(b, rep["numbers_v02_pilot"])
+    for k in sorted(k for k in sk if sk[k] == 1 and rk.get(k) == 1 and k):
+        a = next(c for c in sc if ck(c) == k)
+        b = next(c for c in rc if ck(c) == k)
+        na = numbers_from_block(a, src[key + "_pilot"], cfg["zero_effect"])
+        nb = numbers_from_block(b, rep[key + "_pilot"], cfg["zero_effect"])
         s2 = {**src, "cmp": na}
         r2 = {**rep, "cmp": nb}
         rec = build_record(idea, s2, r2, key="cmp")
-        rec["id"] += ":" + " ".join(key)
+        rec["id"] += ":" + " ".join(k)
         v = evaluate(rec, backend="fallback", skip=("P1",)).extra["verdict"]
         out.append({"idea": idea, "source": src["name"], "reproduction": rep["name"],
-                    "comparison": " ".join(key), **v})
+                    "comparison": " ".join(k), **v})
     return out
+
+
+RULE_KEYS = {"v0.2": "numbers_v02", "v0.2-prereg": "numbers_v02p"}
 
 
 def analyse() -> dict[str, Any]:
@@ -403,17 +417,18 @@ def analyse() -> dict[str, Any]:
         run = {"name": row["experiment_name"], "copy": int(cm.group(1)),
                "hypothesis": row["hypothesis"], "ts": d[1] if d else None}
         run["numbers"] = run_numbers(z, members[d[0]]) if d else {"status": "no_run_directory"}
-        run["numbers_v02"] = (run_numbers_v02(z, members[d[0]], row["hypothesis"],
-                                              plans.get(d[0], ""))
-                              if d else {"status": "no_run_directory"})
-        run["numbers_v02_pilot"] = (run["numbers_v02"]["pilot_mode"]
-                                    if run["numbers_v02"]["status"] == "ok"
-                                    else run["numbers_v02"].get("results_pilot_mode"))
+        for rule, key in RULE_KEYS.items():
+            num = (run_numbers_v02(z, members[d[0]], row["hypothesis"], plans.get(d[0], ""),
+                                   rule) if d else {"status": "no_run_directory"})
+            run[key] = num
+            run[key + "_pilot"] = (num["pilot_mode"] if num["status"] == "ok"
+                                   else num.get("results_pilot_mode"))
         ideas[idea].append(run)
 
-    pairs: list[dict[str, Any]] = []
-    pairs_v02: list[dict[str, Any]] = []
-    per_comparison: list[dict[str, Any]] = []
+    out: dict[str, Any] = {"pairs": []}
+    for key in RULE_KEYS.values():
+        out[f"pairs_{key[8:]}"] = []
+        out[f"per_comparison_{key[8:]}"] = []
     for idea in sorted(ideas):
         runs = sorted(ideas[idea], key=lambda r: r["copy"])
         if len(runs) < 2:
@@ -423,32 +438,36 @@ def analyse() -> dict[str, Any]:
                       "theirs": judgement.get(_key(rep["name"])),
                       "theirs_source": judgement.get(_key(runs[0]["name"])),
                       "category": category.get(_key(idea))}
-            for key, out in (("numbers", pairs), ("numbers_v02", pairs_v02)):
+            for key in ("numbers", *RULE_KEYS.values()):
                 rec = build_record(idea, runs[0], rep, key=key)
                 v = evaluate(rec, backend="fallback", skip=("P1",)).extra["verdict"]
                 extra = {}
-                if key == "numbers_v02":
+                if key != "numbers":
                     extra = {"source_tier": runs[0][key].get("tier"),
                              "reproduction_tier": rep[key].get("tier"),
                              "source_basis": runs[0][key].get("basis"),
                              "reproduction_basis": rep[key].get("basis")}
-                out.append({**common, "source_status": runs[0][key]["status"],
-                            "reproduction_status": rep[key]["status"], **extra, **v})
-            st = {runs[0]["numbers_v02"]["status"], rep["numbers_v02"]["status"]}
-            if "ambiguous_primary" in st and st <= {"ok", "ambiguous_primary"}:
-                per_comparison.extend(_comparison_pairs(idea, runs[0], rep))
-    run_status = Counter(r["numbers_v02"]["status"] for rs in ideas.values() for r in rs)
-    run_tier = Counter(f'{r["numbers_v02"].get("tier")}|{r["numbers_v02"].get("basis")}'
-                       for rs in ideas.values() for r in rs if r["numbers_v02"]["status"] == "ok")
-    repaired = sum(1 for rs in ideas.values() for r in rs
-                   for h in (r["numbers_v02"].get("parse") or {}).values() if h == "repaired")
-    return {"pairs": pairs, "pairs_v02": pairs_v02, "per_comparison": per_comparison,
-            "runs_v02": {"status": dict(run_status), "tier_basis": dict(run_tier),
-                         "files_repaired": repaired,
-                         "n_runs": sum(len(v) for v in ideas.values())},
+                out["pairs" if key == "numbers" else f"pairs_{key[8:]}"].append(
+                    {**common, "source_status": runs[0][key]["status"],
+                     "reproduction_status": rep[key]["status"], **extra, **v})
+            for rule, key in RULE_KEYS.items():
+                st = {runs[0][key]["status"], rep[key]["status"]}
+                if "ambiguous_primary" in st and st <= {"ok", "ambiguous_primary"}:
+                    out[f"per_comparison_{key[8:]}"].extend(
+                        _comparison_pairs(idea, runs[0], rep, key, rule))
+    for key in RULE_KEYS.values():
+        allruns = [r for rs in ideas.values() for r in rs]
+        out[f"runs_{key[8:]}"] = {
+            "status": dict(Counter(r[key]["status"] for r in allruns)),
+            "tier_basis": dict(Counter(f'{r[key].get("tier")}|{r[key].get("basis")}'
+                                       for r in allruns if r[key]["status"] == "ok")),
+            "files_repaired": sum(1 for r in allruns for h in (r[key].get("parse") or {})
+                                  .values() if h == "repaired"),
+            "n_runs": len(allruns)}
+    return {**out,
             "batch2": batch2_search(z),
             "n_ideas_completed": len(ideas),
-            "n_ideas_2plus": len({p["idea"] for p in pairs}),
+            "n_ideas_2plus": len({p["idea"] for p in out["pairs"]}),
             "n_ideas_meta": len(meta)}
 
 
@@ -492,24 +511,25 @@ def summarise(res: dict[str, Any], pairs_key: str = "pairs") -> dict[str, Any]:
             "n_ideas_completed": res["n_ideas_completed"]}
 
 
-def summarise_v02(res: dict[str, Any]) -> dict[str, Any]:
-    """v0.2 counts: the pair summary, the change from v0.1, run-level extraction, the
-    per-comparison report and the second-batch search."""
-    s = summarise(res, "pairs_v02")
+def summarise_v02(res: dict[str, Any], tag: str = "v02") -> dict[str, Any]:
+    """v0.2 counts (``tag``: ``v02`` the corrected rule, ``v02p`` as preregistered): the
+    pair summary, the change from v0.1, run-level extraction, the per-comparison report
+    and the second-batch search."""
+    s = summarise(res, f"pairs_{tag}")
     old = {(p["source"], p["reproduction"]): p for p in res["pairs"]}
     trans = Counter(f'{old[(p["source"], p["reproduction"])]["verdict"]}|{p["verdict"]}'
-                    for p in res["pairs_v02"])
-    newly = [p for p in res["pairs_v02"] if p["source_status"] == "ok"
+                    for p in res[f"pairs_{tag}"])
+    newly = [p for p in res[f"pairs_{tag}"] if p["source_status"] == "ok"
              and p["reproduction_status"] == "ok"
              and not (old[(p["source"], p["reproduction"])]["source_status"] == "ok"
                       and old[(p["source"], p["reproduction"])]["reproduction_status"] == "ok")]
     how = Counter("|".join(sorted({f'{p["source_tier"]}:{p["source_basis"]}',
                                    f'{p["reproduction_tier"]}:{p["reproduction_basis"]}'}))
                   for p in newly)
-    pc = res["per_comparison"]
+    pc = res[f"per_comparison_{tag}"]
     s.update({"verdict_transitions": dict(trans), "n_newly_recoverable": len(newly),
               "newly_recoverable_how": dict(how),
-              "runs": res["runs_v02"],
+              "runs": res[f"runs_{tag}"],
               "per_comparison": {"n": len(pc),
                                  "n_pairs": len({(p["source"], p["reproduction"]) for p in pc}),
                                  "verdict": dict(Counter(p["verdict"] for p in pc)),
@@ -520,5 +540,5 @@ def summarise_v02(res: dict[str, Any]) -> dict[str, Any]:
 
 if __name__ == "__main__":
     r = analyse()
-    print(json.dumps({"v0.1": summarise(r), "v0.2": summarise_v02(r)}, indent=2,
-                     sort_keys=True))
+    print(json.dumps({"v0.1": summarise(r), "v0.2": summarise_v02(r),
+                      "v0.2-prereg": summarise_v02(r, "v02p")}, indent=2, sort_keys=True))

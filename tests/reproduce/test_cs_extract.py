@@ -93,7 +93,9 @@ def test_file_blocks_paths_and_labels():
                             "stats": boot(p=0.4)}]}
     bl = cx.file_blocks(obj, "results.json")
     assert [b.where for b in bl] == ["comparisons.[0].stats", "comparisons.[1].stats"]
-    assert bl[0].label == "comparisons.[baseline=boolean,experimental=full].stats"
+    assert bl[0].label == "comparisons.[boolean,full].stats"
+    pre = cx.file_blocks(obj, "results.json", item_names="fields")
+    assert pre[0].label == "comparisons.[baseline=boolean,experimental=full].stats"
     ts = cx.file_blocks({"bootstrap_results": boot()}, "to_save/analysis.json")
     assert ts[0].where == "to_save/analysis.json:bootstrap_results"
     assert ts[0].label == "bootstrap_results"
@@ -153,9 +155,36 @@ def test_choose_ambiguous_when_tied_everywhere():
     assert cx.choose_primary(["a.[0].stats", "a.[1].stats"], "x", "y") == (None, "ambiguous")
 
 
+def test_share_scoring_does_not_favour_longer_names():
+    # every candidate is fully named in the plan: no choice (as preregistered, the
+    # longer name won on the count of its words)
+    labels = ["summary.boil", "summary.find-living-thing", "summary.use-thermometer"]
+    plan = "Tasks: boil, find-living-thing and use-thermometer."
+    assert cx.choose_primary(labels, "", plan) == (None, "ambiguous")
+    assert cx.choose_primary(labels, "", plan, scoring="count") == (1, "experiment_plan")
+
+
+def test_share_scoring_prefers_the_fully_named_candidate():
+    labels = ["LLM_vs_Mathematical", "LLM_vs_Simple", "Mathematical_vs_Simple"]
+    hyp = "An LLM approach can match traditional mathematical methods."
+    assert cx.choose_primary(labels, hyp, "") == (0, "hypothesis")
+
+
+def test_words_keep_order():
+    assert cx.words("Bootstrap results for LLM vs Simple") == ["llm", "simple"]
+
+
 def test_comparison_key_matches_across_formats():
     assert cx.comparison_key("statistical_tests.LLM_vs_simple") == \
         cx.comparison_key("Bootstrap analysis results for LLM vs Simple")
+    assert cx.comparison_key("comparisons.[boolean,full].stats") == \
+        cx.comparison_key("bootstrap_comparisons.boolean_vs_full")
+
+
+def test_comparison_key_keeps_direction():
+    assert cx.comparison_key("A_alpha vs B_beta") != cx.comparison_key("B_beta vs A_alpha")
+    assert cx.comparison_key("A_alpha vs B_beta", ordered=False) == \
+        cx.comparison_key("B_beta vs A_alpha", ordered=False)
 
 
 # --- other test outputs --------------------------------------------------------------------
@@ -245,6 +274,30 @@ def test_run_numbers_v02_reads_the_final_iteration():
     assert num["control_p"] == 0.001
     # v0.1 reads only results.json of the final iteration: unreadable here
     assert cs.run_numbers(z, z.namelist())["status"] == "unreadable_results_file"
+
+
+@pytest.mark.parametrize("mb,me,p,expect", [(1.0, 1.0, 1.0, None),      # zero difference
+                                             (0.5, 0.4, 0.01, None),     # sign disagrees
+                                             (0.2, 0.5, 0.01, "positive"),
+                                             (0.5, 0.2, 0.99, "negative")])
+def test_zero_or_inconsistent_difference_gives_no_effect_size(mb, me, p, expect):
+    cs = _load("codescientist_reruns")
+    blk = cx.file_blocks({"b": boot(mb=mb, me=me, p=p, n=10)}, "results.json")[0]
+    es = cs.numbers_from_block(blk, None)["measurement"].get("effect_size")
+    if expect is None:
+        assert es is None
+        # as preregistered, the effect size was kept
+        assert cs.numbers_from_block(blk, None, zero_effect=False)["measurement"]["effect_size"]
+    else:
+        assert (es["value"] > 0) == (expect == "positive")
+
+
+def test_extract_rule_prereg_vs_corrected():
+    files = {"results.json": js({"summary": {"boil": boot(), "find-living-thing": boot(p=0.3)}})}
+    plan = "Run boil and find-living-thing."
+    assert cx.extract_run(files, "", plan).status == "ambiguous_primary"
+    ex = cx.extract_run(files, "", plan, rule="v0.2-prereg")
+    assert ex.status == "ok" and ex.primary.where == "summary.find-living-thing"
 
 
 def test_build_record_v02_proxy_note():
